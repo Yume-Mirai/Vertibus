@@ -727,7 +727,7 @@ Main Character Class: `;
   return client;
 }
 
-start()
+
 
 // Process Exit
 const cleanup = async (signal) => {
@@ -750,6 +750,8 @@ server.on('error', (error) => {
 		server.close();
 	} else console.error('Server error:', error);
 });
+
+start();
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {

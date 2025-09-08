@@ -104,14 +104,14 @@ module.exports = core = async (client, m, chatUpdate) => {
   const isCmd = body.startsWith(prefix);
   const pushname = m.pushName || "No Name";
   const botNumber = await client.decodeJid(client.user.id);
-  const itsMe = m.sender == botNumber ? true : false;
+  const itsMe = m.key.fromMe
   let text = (q = args.join(" "));
   const budy = typeof m.text == "string" ? m.text : "";
   const qms = quoted.msg || quoted;
   const mime = qms.mimetype || "";
   const mek = chatUpdate.messages[0];
   const content = JSON.stringify(m.message);
-  const sender = m.sender;
+  const sender = m.isGroup ? m.key.fromMe ? m.sender : m.key.participantPn : m.sender;
   const from = m.chat;
   const reply = m.reply;
 
@@ -128,7 +128,7 @@ module.exports = core = async (client, m, chatUpdate) => {
   const getGroupAdmins = (participants) => {
     admins = [];
     for (let i of participants) {
-      i.admin ? admins.push(i.id) : "";
+      i.admin ? admins.push(i.jid) : "";
     }
     return admins;
   };

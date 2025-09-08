@@ -17,7 +17,7 @@
     "@vitalets/google-translate-api": "^8.0.0",
     "awesome-phonenumber": "^2.73.0",
     "axios": "^1.7.9",
-    "baileys": "latest",
+    "baileys": "https://github.com/WhiskeySockets/Baileys/releases/download/nightly/baileys-nightly.tgz",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0",
     "crypto": "^1.0.1",
