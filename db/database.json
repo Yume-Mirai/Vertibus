@@ -1,8 +1,12 @@
 {
-  "private_usage": 3,
-  "group_usage": 0,
+  "private_usage": 20,
+  "group_usage": 42,
   "store": {},
-  "groups": {},
+  "groups": {
+    "120363406658263857@g.us": {
+      "open": true
+    }
+  },
   "database": {},
   "user": [
     {
@@ -10,6 +14,12 @@
       "language": "ind",
       "latest": true,
       "date": "2026-05-27T13:12:46.706Z"
+    },
+    {
+      "id": "120363406658263857@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-05-27T14:07:22.043Z"
     }
   ]
 }

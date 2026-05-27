@@ -111,7 +111,8 @@ module.exports = core = async (client, m, chatUpdate) => {
   const mime = qms.mimetype || "";
   const mek = chatUpdate.messages[0];
   const content = JSON.stringify(m.message);
-  const sender = m.isGroup ? m.key.fromMe ? m.sender : m.key.participantPn : m.sender;
+//   const sender = m.isGroup ? m.key.fromMe ? m.sender : m.key.participant : m.sender;
+const sender = m.isGroup ? m.key.fromMe ? m.sender : (m.key.participant || m.key.participantLid || m.sender) : m.sender;
   const from = m.chat;
   const reply = m.reply;
 
@@ -136,7 +137,8 @@ module.exports = core = async (client, m, chatUpdate) => {
   const groupId = m.isGroup ? groupMetadata.id : "";
   const groupMembers = m.isGroup ? groupMetadata.participants : "";
   const groupAdmins = m.isGroup ? getGroupAdmins(groupMembers) : "";
-  const isOwner = global.owner.includes(sender.split("@")[0]) || false;
+//   const isOwner = global.owner.includes(sender.split("@")[0]) || false;
+const isOwner = sender ? global.owner.includes(sender.replace(/@(s\.whatsapp\.net|lid|g\.us)/, "")) || false : false;
   const botAdmin = groupAdmins.includes(botNumber) || false;
   const isGroupAdmins = groupAdmins.includes(sender) || false;
 
