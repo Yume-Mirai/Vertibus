@@ -76,9 +76,9 @@ exports.donate = () => {
     return `
 💰 *Donate me on :*
 
-💳 Dana : 083831853737
-💳 GoPay : 083831853737
-💳 ShopeePay : 083831853737
+💳 Dana : 085187238716
+💳 GoPay : 085187238716
+💳 ShopeePay : 085187238716
 `
 }
 

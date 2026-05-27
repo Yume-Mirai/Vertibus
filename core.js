@@ -1440,27 +1440,172 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
             .catch(() => m.reply("Official Website can't be accessed!"));
         break
 
-      case "food":
-        client.sendText(
-          from,
-          `
-*List EXP Food Buff*
-lv = Exp Needed
-1 = 1
-2 = 3
-3 = 9
-4 = 21
-5 = 45
-6 = 93
-7 = 189
-8 = 381
-9 = 765
-10 = 1533`,
-          mek
-        );
-        break;
+       case "food":
+         client.sendText(
+           from,
+           `
+ *List EXP Food Buff*
+ lv = Exp Needed
+ 1 = 1
+ 2 = 3
+ 3 = 9
+ 4 = 21
+ 5 = 45
+ 6 = 93
+ 7 = 189
+ 8 = 381
+ 9 = 765
+ 10 = 1533`,
+           mek
+         );
+         break;
 
-      case "mqmats":
+       case "buff":
+          const buffData = fs.readFileSync("./buff.txt", "utf8");
+          client.sendText(from, buffData, mek);
+          break;
+
+       case "waterres":
+          client.sendText(from, `Anchovy Toast: Water Resistance\n\n2020606 (Biotin)`, mek);
+          break;
+
+       case "maxmp":
+          client.sendText(from, `Ankake Fried Rice: MaxMP\n\n1010216 (Salmonella)\n1011212 (Epiey!!)\n1020808 (ココルル)\n1027777 (Aka Shiro)\n2010510 (Ultimateわんわん)\n2020101 (Paracetamol)\n3017676 (yuxieyoko)\n3204544 (Amatsuka Kirin)\n4261111 (maruna)\n6053838 (朋@)\n7100720 (Juda)\n7150029 (ORCA29)`, mek);
+          break;
+
+       case "pres":
+          client.sendText(from, `Beef Burger: Physical Resistance\n\n1010081 (Kawasaki)\n1020001 (てんげん)\n1231776 (xxxdsmer)\n2020111 (L. casei)\n2020345 (- C H A R M Z ★)\n2200117 (しいぽ)\n4010051 (マグナ)\n6010701 (ramenEso)`, mek);
+          break;
+
+       case "aggro":
+          client.sendText(from, `Beef Stew: +Aggro\nWhite Stew: -Aggro\nLevel 10\n1010207 (Pew_Pew)\n1130832 (咲愛")\n1140002 (Neaki)\n2020606 (Biotin)\n3053131 (DaoNaga)\n3158668 (VoidWolf)\n4220777 (春姫❤)\n5261002 (マンモスマン)\nLevel 9\n2010136 (S y n 彡)\nLevel 8\n3204544 (Amatsuka Kirin)`, mek);
+          break;
+
+       case "dtefire":
+          client.sendText(from, `Bolognese: DTE Fire\nLevel 9\n1121212 (RioCakra)\n3210106 (♧火のうた)\n7088807 (@Ray)\n9181111 (#Ryopin#)\nLevel 7\n8120000 (Lamlo)`, mek);
+          break;
+
+       case "dtelight":
+          client.sendText(from, `Carbonara: DTE Light\nLevel 9\n1020345 (Death · Gun)\nLevel 8\n3111999 (Espur)`, mek);
+          break;
+
+       case "mbarrier":
+          client.sendText(from, `Cheese Cake: Magic Barrier\nLevel 8\n2020505 (Niacin (B3))`, mek);
+          break;
+
+       case "windres":
+          client.sendText(from, `Cheese Toast: Wind Resistance\nLevel 9\n2020222 (Himura Oza)`, mek);
+          break;
+
+       case "pbarrier":
+          client.sendText(from, `Chocolate Cake: Physical Barrier\nLevel 7\n2020111 (L. casei)`, mek);
+          break;
+
+       case "exp":
+          client.sendText(from, `Chocolate Parfait: EXP Gain\nLevel 4\n4040404 (S A R A)`, mek);
+          break;
+
+       case "mres":
+          client.sendText(from, `Fish Burger: Magical Resistance\nLevel 10\n1111575 (Kiyanh)\n1181220 (梨花)\n2020505 (Niacin (B3))\n5200025 (たつ猫☆)\n6190007 (nanako♪)\n7010016 (Lian戀)\n8010016 (° Roulecca)`, mek);
+          break;
+
+       case "drop":
+          client.sendText(from, `Fruit Parfait: Drop Rate\nLevel 6\n4032850 (Aphrodite tiger)\n4196969 (★Shiro☆)\n4245922 (ふると系#)\n7057777 (t a s t y)`, mek);
+          break;
+
+       case "darkres":
+          client.sendText(from, `Garlic Toast: Dark Resistance\nLevel 9\n2020707 (Ascorbic Acid)\nLevel 4\n1010084 (あきら)`, mek);
+          break;
+
+       case "dteearth":
+          client.sendText(from, `Genovese: DTE Earth\nLevel 10\n2020202 (S A R A)\nLevel 9\n1011001 (S i r F a t h)\n4233333 (AlvinXxX)\n7100666 (itspaez)\nLevel 8\n1010216 (Salmonella)`, mek);
+          break;
+
+       case "maxhp":
+          client.sendText(from, `Golden Stir Fry: MaxHP\nLevel 10\n1010032 (★空猫)\n1010084 (あきら)\n1010356 (らいむ03)\n1250015 (雪島いちご)\n2010228 (~シュシュ~)\n3090618 (snow618)\n3092003 (◁ Rikka❤ ▷)\n3191130 (Kail NW)\n3260178 (maluth)\n4262222 (mashilo)\n54154629 (シャルム)\n6010062 (G - Thunder (JPN))\n6199999 (garun1)`, mek);
+          break;
+
+       case "lightres":
+          client.sendText(from, `Honey Toast: Light Resistance\nLevel 9\n1023040 (Quinone (K))\nLevel 4\n4220777 (春姫❤)`, mek);
+          break;
+
+       case "agi":
+          client.sendText(from, `Mentaiko Rice Ball: AGI\nLevel 10\n1220777 (サスケU^ェ^U)\n2020037 (Mana-T)\n4262222 (mashilo)\n7162029 (Player20)\nLevel 9\n1110033 (くりぼー☆)\n6269999 (酒呑)`, mek);
+          break;
+
+       case "dtewind":
+          client.sendText(from, `Naporitan: DTE Wind\nLevel 10\n3030303 (S A R A)`, mek);
+          break;
+
+       case "str":
+          client.sendText(from, `Okaka Rice Ball: STR\nLevel 10\n1010055 (Echidna@)\n1010968 (アジヤ)\n1011069 (A J I)\n1110033 (くりぼー☆)\n2017890 (みさき*)\n2020303 (Amanita)\n2180000 (Ryopin)\n4010024 (いぐるん)\n5261919 (ルージアル)\n7070777 (-Xen-)`, mek);
+          break;
+
+       case "fracbarrier":
+          client.sendText(from, `Pancake: Fractional Brrier\nLevel 10\n1012222 (gaito123)\n4010024 (いぐるん)\n53010043 (昂 k09)\n53190003 (桜乃宮　千都)\n6150029 (29ψ ORCA)\nLevel 9\n1074649 (∮ ノマァ ∮)\n3190038 (☆カーミラ★)\n6010062 (G - Thunder (JPN))`, mek);
+          break;
+
+       case "atk":
+          client.sendText(from, `Pizza Davola: ATK\nLevel 10\n1119876 (キヅツ)\n7170717 (Isuni☆)`, mek);
+          break;
+
+       case "watk":
+          client.sendText(from, `Pizza Margherita: Weapon ATK\nLevel 10\n1010810 (夜トyato☆)\n1011122 (ベッキー)\n1011126 (ヾferyanz)\n1067777 (YusagKurumi)\n1180020 (Rouen)\n1200020 (ティーク)\n2020404 (HbA1c)\n3010777 (わん　•　にやー)\n3180777 (Reon∮)\n4170999 (おりぴ)\n4240242 (Nakean)\n5110834 (加寿葉)\n6010024 (『 G a p a p a 』)\n6130623 (雪羽)\n6269999 (酒呑)\n7050301 (Keith)`, mek);
+          break;
+
+       case "earthres":
+          client.sendText(from, `Pudding Toast: Earth Resistance\nLevel 9\n6150029 (29ψ ORCA)`, mek);
+          break;
+
+       case "dex":
+          client.sendText(from, `Salmon Rice Ball: DEX\nLevel 10\n1010058 (· H20 ·)\n1010106 (Yoku')\n1010261 (イグルー)\n1074649 (∮ ノマァ ∮)\n1112220 (Kirara♥)\n2020222 (Himura Oza)\n3111999 (Espur)\n3220777 (☆エトワール☆)\n7011001 (【MB】 VolT‾へ凸)\n7140777 (Aurianne)`, mek);
+          break;
+
+       case "matk":
+          client.sendText(from, `Seafood Pizza: MATK\nLevel 10\n1024649 (BUFFERIN)`, mek);
+          break;
+
+       case "dodge":
+          client.sendText(from, `Shio Ramen: Dodge\nLevel 7\n2020808 (Ectoplasm)`, mek);
+          break;
+
+       case "acc":
+          client.sendText(from, `Shoyu Ramen: Accuracy\nLevel 10\n2010308 (@alpha)\n4261111 (maruna)\nLevel 9\n1181220 (梨花)\n7160030 (サーベイ)`, mek);
+          break;
+
+       case "dtedark":
+          client.sendText(from, `Squid Ink Pasta: DTE Dark\nLevel 10\n1190020 (チュレ @迷路屋)\n2130776 (サトリール)\n6116116 ((⭗△⭗))\nLevel 9\n5010092 (Who's Wo)`, mek);
+          break;
+
+       case "fireres":
+          client.sendText(from, `Sunny Side Up Toast: Fire Resistance\nLevel 9\n2020101 (Paracetamol)`, mek);
+          break;
+
+       case "cr":
+          client.sendText(from, `Takoyaki: Critical Rate\nLevel 10\n1037777 (Hati Hervor)\n1100000 (I n u G a m i •)\n1181140 (らんな)\n2022020 (#SAM#)\n3010777 (わん　•　にやー)\n3030159 (Lauryn_)\n3149696 (NoiR)\n4010000 (俺が青娥様)\n5119105 (- Kanna -)\n6021230 (☆Ｐｉｎａ☆)\n7162029 (Player20)`, mek);
+          break;
+
+       case "vit":
+          client.sendText(from, `Tuna Mayo Rice Ball: VIT\nLevel 10\n4032850 (Aphrodite tiger)`, mek);
+          break;
+
+       case "int":
+          client.sendText(from, `Umeboshi Rice Ball: INT\nLevel 10\n1010140 (かがり)\n1010498 (桃夏)\n1032222 (Shyturu)\n1047777 (~Zeref~)\n2020707 (Ascorbic Acid)\n5190001 (シェリア.)\n6010701 (ramenEso)\n7130001 (@みげる)`, mek);
+          break;
+
+       case "neutralres":
+          client.sendText(from, `Vanilla Toast: Neutral Resistance\nLevel 9\n2020303 (Amanita)`, mek);
+          break;
+
+       case "dtewater":
+          client.sendText(from, `Vongole: DTE Water\nLevel 10\n1110111 (S A R A)\n3210100 (♧水のうた)\n7150030 (ファレ)\nLevel 9\n7011001 (【MB】 VolT‾へ凸)`, mek);
+          break;
+
+       case "ampr":
+          client.sendText(from, `Yakisoba: AMPR\nLevel 10\n1010017 (평온한날)\n1010596 (冷Hiro☆)\n1011010 (0 kara)\n1023040 (Quinone (K))\n1047777 (~Zeref~)\n1111000 (カンコウ)\n3020777 (白最中)\n3201003 (『 K E R R Y 』)\n4040404 (S A R A)\n4206969 (xenesis5)\n4233333 (AlvinXxX)\n5236969 (黒澤タイア)\n7069420 (👉 * Garu * 👈)\n7088807 (@Ray)\n7220777 (Veny)\n8120000 (Lamlo)`, mek);
+          break;
+
+       case "mqmats":
         mq = lang.mq();
         client.sendText(from, mq, mek);
         break;

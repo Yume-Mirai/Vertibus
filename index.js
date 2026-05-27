@@ -172,15 +172,15 @@ async function start() {
   //create serialize message
   client.serializeM = (m) => smsg(client, m, store);
 
-  // login use pairing code
-  // source code https://github.com/WhiskeySockets/Baileys/blob/master/Example/example.ts#L61
-  if (pairingCode && !client.authState.creds.registered) {
-    const phoneNumber = await question(
-      "Enter your bot number startswith your region code :\n"
-    );
-    const code = await client.requestPairingCode(phoneNumber.trim());
-    console.log(`🎁  Pairing Code : ${code}`);
-  }
+   // login use pairing code
+   // source code https://github.com/WhiskeySockets/Baileys/blob/master/Example/example.ts#L61
+   if (pairingCode && !client.authState.creds.registered) {
+     const phoneNumber = await question(
+       "Enter your bot number startswith your region code :\n"
+     );
+     const code = await client.requestPairingCode(phoneNumber.trim());
+     console.log(`🎁  Pairing Code : ${code}`);
+   }
 
   client.ev.on('presence.update', ({ id, presences: update }) => {
 		store.presences[id] = store.presences?.[id] || {};

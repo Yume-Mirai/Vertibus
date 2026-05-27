@@ -1,0 +1,302 @@
+Anchovy Toast: Water Resistance
+2020606 (Biotin)
+
+Ankake Fried Rice: MaxMP
+1010216 (Salmonella)
+1011212 (Epiey!!)
+1020808 (ココルル)
+1027777 (Aka Shiro)
+2010510 (Ultimateわんわん)
+2020101 (Paracetamol)
+3017676 (yuxieyoko)
+3204544 (Amatsuka Kirin)
+4261111 (maruna)
+6053838 (朋@)
+7100720 (Juda)
+7150029 (ORCA29)
+
+Beef Burger: Physical Resistance
+1010081 (Kawasaki)
+1020001 (てんげん)
+1231776 (xxxdsmer)
+2020111 (L. casei)
+2020345 (- C H A R M Z ★)
+2200117 (しいぽ)
+4010051 (マグナ)
+6010701 (ramenEso)
+
+Beef Stew: +Aggro
+White Stew: -Aggro
+Level 10
+1010207 (Pew_Pew)
+1130832 (咲愛")
+1140002 (Neaki)
+2020606 (Biotin)
+3053131 (DaoNaga)
+3158668 (VoidWolf)
+4220777 (春姫❤)
+5261002 (マンモスマン)
+Level 9
+2010136 (S y n 彡)
+Level 8
+3204544 (Amatsuka Kirin)
+
+Bolognese: DTE Fire
+Level 9
+1121212 (RioCakra)
+3210106 (♧火のうた)
+7088807 (@Ray)
+9181111 (#Ryopin#)
+Level 7
+8120000 (Lamlo)
+
+Carbonara: DTE Light
+Level 9
+1020345 (Death · Gun)
+Level 8
+3111999 (Espur)
+
+Cheese Cake: Magic Barrier
+Level 8
+2020505 (Niacin (B3))
+
+Cheese Toast: Wind Resistance
+Level 9
+2020222 (Himura Oza)
+
+Chocolate Cake: Physical Barrier
+Level 7
+2020111 (L. casei)
+
+Chocolate Parfait: EXP Gain
+Level 4
+4040404 (S A R A)
+
+Fish Burger: Magical Resistance
+Level 10
+1111575 (Kiyanh)
+1181220 (梨花)
+2020505 (Niacin (B3))
+5200025 (たつ猫☆)
+6190007 (nanako♪)
+7010016 (Lian戀)
+8010016 (° Roulecca)
+
+Fruit Parfait: Drop Rate
+Level 6
+4032850 (Aphrodite tiger)
+4196969 (★Shiro☆)
+4245922 (ふると系#)
+7057777 (t a s t y)
+
+Garlic Toast: Dark Resistance
+Level 9
+2020707 (Ascorbic Acid)
+Level 4
+1010084 (あきら)
+
+Genovese: DTE Earth
+Level 10
+2020202 (S A R A)
+Level 9
+1011001 (S i r F a t h)
+4233333 (AlvinXxX)
+7100666 (itspaez)
+Level 8
+1010216 (Salmonella)
+
+Golden Stir Fry: MaxHP
+Level 10
+1010032 (★空猫)
+1010084 (あきら)
+1010356 (らいむ03)
+1250015 (雪島いちご)
+2010228 (~シュシュ~)
+3090618 (snow618)
+3092003 (◁ Rikka❤ ▷)
+3191130 (Kail NW)
+3260178 (maluth)
+4262222 (mashilo)
+54154629 (シャルム)
+6010062 (G - Thunder (JPN))
+6199999 (garun1)
+
+Honey Toast: Light Resistance
+Level 9
+1023040 (Quinone (K))
+Level 4
+4220777 (春姫❤)
+
+Mentaiko Rice Ball: AGI
+Level 10
+1220777 (サスケU^ェ^U)
+2020037 (Mana-T)
+4262222 (mashilo)
+7162029 (Player20)
+Level 9
+1110033 (くりぼー☆)
+6269999 (酒呑)
+
+Miso Ramen: MDEF
+
+Naporitan: DTE Wind
+Level 10
+3030303 (S A R A)
+
+Okaka Rice Ball: STR
+Level 10
+1010055 (Echidna@)
+1010968 (アジヤ)
+1011069 (A J I)
+1110033 (くりぼー☆)
+2017890 (みさき*)
+2020303 (Amanita)
+2180000 (Ryopin)
+4010024 (いぐるん)
+5261919 (ルージアル)
+7070777 (-Xen-)
+
+Pancake: Fractional Brrier
+Level 10
+1012222 (gaito123)
+4010024 (いぐるん)
+53010043 (昂 k09)
+53190003 (桜乃宮　千都)
+6150029 (29ψ ORCA)
+Level 9
+1074649 (∮ ノマァ ∮)
+3190038 (☆カーミラ★)
+6010062 (G - Thunder (JPN))
+
+Peperoncio: DTE Neutral
+
+Pizza Davola: ATK
+Level 10
+1119876 (キヅツ)
+7170717 (Isuni☆)
+
+Pizza Margherita: Weapon ATK
+Level 10
+1010810 (夜トyato☆)
+1011122 (ベッキー)
+1011126 (ヾferyanz)
+1067777 (YusagKurumi)
+1180020 (Rouen)
+1200020 (ティーク)
+2020404 (HbA1c)
+3010777 (わん　•　にやー)
+3180777 (Reon∮)
+4170999 (おりぴ)
+4240242 (Nakean)
+5110834 (加寿葉)
+6010024 (『 G a p a p a 』)
+6130623 (雪羽)
+6269999 (酒呑)
+7050301 (Keith)
+
+Pudding Toast: Earth Resistance
+Level 9
+6150029 (29ψ ORCA)
+
+Salmon Rice Ball: DEX
+Level 10
+1010058 (· H20 ·)
+1010106 (Yoku')
+1010261 (イグルー)
+1074649 (∮ ノマァ ∮)
+1112220 (Kirara♥)
+2020222 (Himura Oza)
+3111999 (Espur)
+3220777 (☆エトワール☆)
+7011001 (【MB】 VolT‾へ凸)
+7140777 (Aurianne)
+
+Seafood Pizza: MATK
+Level 10
+1024649 (BUFFERIN)
+
+Shio Ramen: Dodge
+Level 7
+2020808 (Ectoplasm)
+
+Shoyu Ramen: Accuracy
+Level 10
+2010308 (@alpha)
+4261111 (maruna)
+Level 9
+1181220 (梨花)
+7160030 (サーベイ)
+
+Squid Ink Pasta: DTE Dark
+Level 10
+1190020 (チュレ @迷路屋)
+2130776 (サトリール)
+6116116 ((⭗△⭗))
+Level 9
+5010092 (Who's Wo)
+
+Sunny Side Up Toast: Fire Resistance
+Level 9
+2020101 (Paracetamol)
+
+Takoyaki: Critical Rate
+Level 10
+1037777 (Hati Hervor)
+1100000 (I n u G a m i •)
+1181140 (らんな)
+2022020 (#SAM#)
+3010777 (わん　•　にやー)
+3030159 (Lauryn_)
+3149696 (NoiR)
+4010000 (俺が青娥様)
+5119105 (- Kanna -)
+6021230 (☆Ｐｉｎａ☆)
+7162029 (Player20)
+
+Tonkotsu Ramen: DEF
+
+Tuna Mayo Rice Ball: VIT
+Level 10
+4032850 (Aphrodite tiger)
+
+Umeboshi Rice Ball: INT
+Level 10
+1010140 (かがり)
+1010498 (桃夏)
+1032222 (Shyturu)
+1047777 (~Zeref~)
+2020707 (Ascorbic Acid)
+5190001 (シェリア.)
+6010701 (ramenEso)
+7130001 (@みげる)
+
+Vanilla Toast: Neutral Resistance
+Level 9
+2020303 (Amanita)
+
+Vongole: DTE Water
+Level 10
+1110111 (S A R A)
+3210100 (♧水のうた)
+7150030 (ファレ)
+Level 9
+7011001 (【MB】 VolT‾へ凸)
+
+Yakisoba: AMPR
+Level 10
+1010017 (평온한날)
+1010596 (冷Hiro☆)
+1011010 (0 kara)
+1023040 (Quinone (K))
+1047777 (~Zeref~)
+1111000 (カンコウ)
+3020777 (白最中)
+3201003 (『 K E R R Y 』)
+4040404 (S A R A)
+4206969 (xenesis5)
+4233333 (AlvinXxX)
+5236969 (黒澤タイア)
+7069420 (👉 * Garu * 👈)
+7088807 (@Ray)
+7220777 (Veny)
+8120000 (Lamlo)

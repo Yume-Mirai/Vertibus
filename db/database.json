@@ -1,8 +1,15 @@
 {
-  "private_usage": 0,
+  "private_usage": 3,
   "group_usage": 0,
   "store": {},
   "groups": {},
   "database": {},
-  "user": []
+  "user": [
+    {
+      "id": "6285187238716@s.whatsapp.net",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-05-27T13:12:46.706Z"
+    }
+  ]
 }

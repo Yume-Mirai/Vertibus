@@ -1,6 +1,1030 @@
 {
-  "contacts": {},
-	"presences": {},
-	"messages": {},
+  "contacts": {
+    "1198430138519@lid": {
+      "id": "1198430138519@lid",
+      "name": "veong"
+    },
+    "50856942645288@lid": {
+      "id": "50856942645288@lid",
+      "name": "Padli Justice"
+    },
+    "180547573801116@lid": {
+      "id": "180547573801116@lid",
+      "name": "FK"
+    }
+  },
+  "presences": {
+    "120363406658263857@g.us": {
+      "1198430138519@lid": {
+        "lastKnownPresence": "composing"
+      },
+      "50856942645288@lid": {
+        "lastKnownPresence": "composing"
+      },
+      "180547573801116@lid": {
+        "lastKnownPresence": "composing"
+      }
+    }
+  },
+  "messages": {
+    "6283831853737@s.whatsapp.net": {
+      "array": [
+        {
+          "key": {
+            "remoteJid": "6283831853737@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0F1FBBEB07E38CFDD17"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/mikako"
+            }
+          },
+          "messageTimestamp": "1779887261",
+          "status": "PENDING"
+        }
+      ],
+      "keyId": {}
+    },
+    "6285187238716@s.whatsapp.net": {
+      "array": [
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "AC556104C70AE71BE73196A8EC6AF8B4"
+          },
+          "messageTimestamp": 1779887358,
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "protocolMessage": {
+              "type": "HISTORY_SYNC_NOTIFICATION",
+              "historySyncNotification": {
+                "fileSha256": "EkN3aUIlgIitUjYAQQxsZdyciEHpZJYdvkhzCIbQ+YQ=",
+                "fileLength": "922878",
+                "mediaKey": "XYRrv8gk1L7qLXzlNgPubYabQumCJQscH80U/fPUadI=",
+                "fileEncSha256": "CYrtISP6q1PqV9z9BBi1U5SJUtYB7y7zCCkD1a9wuL0=",
+                "directPath": "/v/t62.31111-24/709607859_1373104594876401_8783718234856123884_n.enc?ccb=11-4&oh=01_Q5Aa4gF2UHyKozIZqfWavbG2z8XbMGNTIlOYAJEtqAMNZ8gIAg&oe=6A3E6386&_nc_sid=5e03e0",
+                "syncType": "FULL",
+                "chunkOrder": 1,
+                "progress": 26,
+                "oldestMsgInChunkTimestampSec": "1778749598",
+                "encHandle": "AQLAIiifRoYAZFZ8Lq1txKqJxbn6rW-A85H7vyYQGLv57knHxSThki8W_ut73xEzNtqNYsRvKqKJCH6cw31TsG7TzPxfiBZYbrLKMgU9-Uz82gT9PrtWPZb4U3NTMyGOTN8"
+              }
+            }
+          },
+          "id": "AC556104C70AE71BE73196A8EC6AF8B4",
+          "isBaileys": false,
+          "chat": "6285187238716@s.whatsapp.net",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "protocolMessage",
+          "msg": {
+            "type": "HISTORY_SYNC_NOTIFICATION",
+            "historySyncNotification": {
+              "fileSha256": "EkN3aUIlgIitUjYAQQxsZdyciEHpZJYdvkhzCIbQ+YQ=",
+              "fileLength": "922878",
+              "mediaKey": "XYRrv8gk1L7qLXzlNgPubYabQumCJQscH80U/fPUadI=",
+              "fileEncSha256": "CYrtISP6q1PqV9z9BBi1U5SJUtYB7y7zCCkD1a9wuL0=",
+              "directPath": "/v/t62.31111-24/709607859_1373104594876401_8783718234856123884_n.enc?ccb=11-4&oh=01_Q5Aa4gF2UHyKozIZqfWavbG2z8XbMGNTIlOYAJEtqAMNZ8gIAg&oe=6A3E6386&_nc_sid=5e03e0",
+              "syncType": "FULL",
+              "chunkOrder": 1,
+              "progress": 26,
+              "oldestMsgInChunkTimestampSec": "1778749598",
+              "encHandle": "AQLAIiifRoYAZFZ8Lq1txKqJxbn6rW-A85H7vyYQGLv57knHxSThki8W_ut73xEzNtqNYsRvKqKJCH6cw31TsG7TzPxfiBZYbrLKMgU9-Uz82gT9PrtWPZb4U3NTMyGOTN8"
+            }
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "AC03B7E9796BE8DC6C1135088B101E8C"
+          },
+          "messageTimestamp": 1779887411,
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "protocolMessage": {
+              "type": "HISTORY_SYNC_NOTIFICATION",
+              "historySyncNotification": {
+                "fileSha256": "3ekq87GUUJmO5Ziugra8lyWrQASR7z86Ol9MUCqpL0k=",
+                "fileLength": "894237",
+                "mediaKey": "9LAedN2FMOa5cTMxTX1tZeYIYjKoz6FO0K2Rta54vl0=",
+                "fileEncSha256": "LIvRQOW+Rv6S48Nv9xZGd5z3MUUeaQV5tfVh3IisR7E=",
+                "directPath": "/v/t62.31111-24/707045239_2797532617250387_4333379751671868283_n.enc?ccb=11-4&oh=01_Q5Aa4gE42JMfsr7acl6vJvuqiSUTk8Um4JOcownH-Oaoxq6T9Q&oe=6A3E474D&_nc_sid=5e03e0",
+                "syncType": "FULL",
+                "chunkOrder": 2,
+                "progress": 53,
+                "oldestMsgInChunkTimestampSec": "1775611106",
+                "encHandle": "AQLYcwcv7yIIxQYBFTPaBHHefT_DrqzvhI6N4sWrM7No8H5c_x39vomFtQdq0ju6gx2c4cC3tlNIvbqc_hSYMuas2QazTveYH-u89qIyl1je7lWwxomlrC1xQWSTfDuV4Fw"
+              }
+            }
+          },
+          "id": "AC03B7E9796BE8DC6C1135088B101E8C",
+          "isBaileys": false,
+          "chat": "6285187238716@s.whatsapp.net",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "protocolMessage",
+          "msg": {
+            "type": "HISTORY_SYNC_NOTIFICATION",
+            "historySyncNotification": {
+              "fileSha256": "3ekq87GUUJmO5Ziugra8lyWrQASR7z86Ol9MUCqpL0k=",
+              "fileLength": "894237",
+              "mediaKey": "9LAedN2FMOa5cTMxTX1tZeYIYjKoz6FO0K2Rta54vl0=",
+              "fileEncSha256": "LIvRQOW+Rv6S48Nv9xZGd5z3MUUeaQV5tfVh3IisR7E=",
+              "directPath": "/v/t62.31111-24/707045239_2797532617250387_4333379751671868283_n.enc?ccb=11-4&oh=01_Q5Aa4gE42JMfsr7acl6vJvuqiSUTk8Um4JOcownH-Oaoxq6T9Q&oe=6A3E474D&_nc_sid=5e03e0",
+              "syncType": "FULL",
+              "chunkOrder": 2,
+              "progress": 53,
+              "oldestMsgInChunkTimestampSec": "1775611106",
+              "encHandle": "AQLYcwcv7yIIxQYBFTPaBHHefT_DrqzvhI6N4sWrM7No8H5c_x39vomFtQdq0ju6gx2c4cC3tlNIvbqc_hSYMuas2QazTveYH-u89qIyl1je7lWwxomlrC1xQWSTfDuV4Fw"
+            }
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "AC6AF576A9F9B2A832EAD428B61AC7CF"
+          },
+          "messageTimestamp": 1779887467,
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "protocolMessage": {
+              "type": "HISTORY_SYNC_NOTIFICATION",
+              "historySyncNotification": {
+                "fileSha256": "M0NlfZdYJQQN5jpEe0LEj/mxg61rTMIFjiWy4rEuyLU=",
+                "fileLength": "610297",
+                "mediaKey": "uX6pA08nufBGz47b2p6cf0fS8kCM2iOQ/TZGS/ABTUs=",
+                "fileEncSha256": "xvHUCf9ibbTN5u4oqMwc11eKVXCbObd+9lgGoaLb52k=",
+                "directPath": "/v/t62.31111-24/568487209_1652370039318019_300956741966854715_n.enc?ccb=11-4&oh=01_Q5Aa4gHjZF13vPnVY-8CjNYYiQIcidyzx-yApZER4diutEpTPQ&oe=6A3E657E&_nc_sid=5e03e0",
+                "syncType": "FULL",
+                "chunkOrder": 3,
+                "progress": 80,
+                "oldestMsgInChunkTimestampSec": "1766997957",
+                "encHandle": "AQLC5g18PN6ZXtTDziGy8t9M0OJFkgV0pBRngFFwCv34qJsJ6NUP_CSNOs4XQ7g2EpwBUj5brEqkTTydYmJFvPSmUI5i5fnHALK-xpVpq7sGS6mzAw90gcCZ9MPqPKWfDbc"
+              }
+            }
+          },
+          "id": "AC6AF576A9F9B2A832EAD428B61AC7CF",
+          "isBaileys": false,
+          "chat": "6285187238716@s.whatsapp.net",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "protocolMessage",
+          "msg": {
+            "type": "HISTORY_SYNC_NOTIFICATION",
+            "historySyncNotification": {
+              "fileSha256": "M0NlfZdYJQQN5jpEe0LEj/mxg61rTMIFjiWy4rEuyLU=",
+              "fileLength": "610297",
+              "mediaKey": "uX6pA08nufBGz47b2p6cf0fS8kCM2iOQ/TZGS/ABTUs=",
+              "fileEncSha256": "xvHUCf9ibbTN5u4oqMwc11eKVXCbObd+9lgGoaLb52k=",
+              "directPath": "/v/t62.31111-24/568487209_1652370039318019_300956741966854715_n.enc?ccb=11-4&oh=01_Q5Aa4gHjZF13vPnVY-8CjNYYiQIcidyzx-yApZER4diutEpTPQ&oe=6A3E657E&_nc_sid=5e03e0",
+              "syncType": "FULL",
+              "chunkOrder": 3,
+              "progress": 80,
+              "oldestMsgInChunkTimestampSec": "1766997957",
+              "encHandle": "AQLC5g18PN6ZXtTDziGy8t9M0OJFkgV0pBRngFFwCv34qJsJ6NUP_CSNOs4XQ7g2EpwBUj5brEqkTTydYmJFvPSmUI5i5fnHALK-xpVpq7sGS6mzAw90gcCZ9MPqPKWfDbc"
+            }
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "AC403580A24FD2452143748723A3F5D1"
+          },
+          "messageTimestamp": 1779887509,
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "protocolMessage": {
+              "type": "HISTORY_SYNC_NOTIFICATION",
+              "historySyncNotification": {
+                "fileSha256": "MADBp2lg2nNRrEDKqeBnTmFpdudzRUz2KSyDQodGpRI=",
+                "fileLength": "307685",
+                "mediaKey": "N4BxE++SBWO36riZX1c3dXSv0UrkaZTbmnsjQzDGYgI=",
+                "fileEncSha256": "h5F/D4LFAN7QHum+RFEYf+73oGBaidDrJS110M+hP+A=",
+                "directPath": "/v/t62.31111-24/564803926_987798753950585_1468227313517283337_n.enc?ccb=11-4&oh=01_Q5Aa4gEM_jLUd1951pSzF3VN5BkcNR9P9zNzOEciRgs7mWsFAg&oe=6A3E57C4&_nc_sid=5e03e0",
+                "syncType": "FULL",
+                "chunkOrder": 4,
+                "progress": 100,
+                "oldestMsgInChunkTimestampSec": "1764586982",
+                "encHandle": "AQJb9R8drhD4UM_iwtqX7VTQllE5vckelTAB6PvZ7-BUaaEuUJWhKwIY1Hg1idxvyIN_ctTSKLhKz3eLlvnUD3wpoizJtDU--u_n5NmhAyBoluK_PZ61gozQvoLX5U5JSCo"
+              }
+            }
+          },
+          "id": "AC403580A24FD2452143748723A3F5D1",
+          "isBaileys": false,
+          "chat": "6285187238716@s.whatsapp.net",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "protocolMessage",
+          "msg": {
+            "type": "HISTORY_SYNC_NOTIFICATION",
+            "historySyncNotification": {
+              "fileSha256": "MADBp2lg2nNRrEDKqeBnTmFpdudzRUz2KSyDQodGpRI=",
+              "fileLength": "307685",
+              "mediaKey": "N4BxE++SBWO36riZX1c3dXSv0UrkaZTbmnsjQzDGYgI=",
+              "fileEncSha256": "h5F/D4LFAN7QHum+RFEYf+73oGBaidDrJS110M+hP+A=",
+              "directPath": "/v/t62.31111-24/564803926_987798753950585_1468227313517283337_n.enc?ccb=11-4&oh=01_Q5Aa4gEM_jLUd1951pSzF3VN5BkcNR9P9zNzOEciRgs7mWsFAg&oe=6A3E57C4&_nc_sid=5e03e0",
+              "syncType": "FULL",
+              "chunkOrder": 4,
+              "progress": 100,
+              "oldestMsgInChunkTimestampSec": "1764586982",
+              "encHandle": "AQJb9R8drhD4UM_iwtqX7VTQllE5vckelTAB6PvZ7-BUaaEuUJWhKwIY1Hg1idxvyIN_ctTSKLhKz3eLlvnUD3wpoizJtDU--u_n5NmhAyBoluK_PZ61gozQvoLX5U5JSCo"
+            }
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "ACD38D23B261A05B2FDB3392840A025C"
+          },
+          "messageTimestamp": 1779887567,
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "protocolMessage": {
+              "type": "PEER_DATA_OPERATION_REQUEST_RESPONSE_MESSAGE",
+              "peerDataOperationRequestResponseMessage": {
+                "peerDataOperationRequestType": "PLACEHOLDER_MESSAGE_RESEND",
+                "stanzaId": "3EB0C43E4F2DBEE6849C2B",
+                "peerDataOperationResult": [
+                  {
+                    "mediaUploadResult": "SUCCESS",
+                    "placeholderMessageResendResponse": {
+                      "webMessageInfoBytes": "CjkKEzEyNjgyMjQxNTA5ODAzNUBsaWQQARogQUM5QkYyQjdGQ0I1NjA4Q0Y1MTk4OTBCQTdGQkJCQUQSWzI0CgUuYnVmZlAAigEl6gESY2xpY2tfdG9fY2hhdF9saW5r8gEId2hhdHNhcHD4AZr3BOgBAJoCIhog3AOtvWdsDSzMnW8M9Bo9ZU+jFsBHUeyrlZyU399zOKEYyNvb0AYgBDDJ29vQBooDINwDrb1nbA0szJ1vDPQaPWVPoxbAR1Hsq5WclN/fczihmgMcNjI4NTE4NzIzODcxNkBzLndoYXRzYXBwLm5ldIgEAA=="
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "id": "ACD38D23B261A05B2FDB3392840A025C",
+          "isBaileys": false,
+          "chat": "6285187238716@s.whatsapp.net",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "protocolMessage",
+          "msg": {
+            "type": "PEER_DATA_OPERATION_REQUEST_RESPONSE_MESSAGE",
+            "peerDataOperationRequestResponseMessage": {
+              "peerDataOperationRequestType": "PLACEHOLDER_MESSAGE_RESEND",
+              "stanzaId": "3EB0C43E4F2DBEE6849C2B",
+              "peerDataOperationResult": [
+                {
+                  "mediaUploadResult": "SUCCESS",
+                  "placeholderMessageResendResponse": {
+                    "webMessageInfoBytes": "CjkKEzEyNjgyMjQxNTA5ODAzNUBsaWQQARogQUM5QkYyQjdGQ0I1NjA4Q0Y1MTk4OTBCQTdGQkJCQUQSWzI0CgUuYnVmZlAAigEl6gESY2xpY2tfdG9fY2hhdF9saW5r8gEId2hhdHNhcHD4AZr3BOgBAJoCIhog3AOtvWdsDSzMnW8M9Bo9ZU+jFsBHUeyrlZyU399zOKEYyNvb0AYgBDDJ29vQBooDINwDrb1nbA0szJ1vDPQaPWVPoxbAR1Hsq5WclN/fczihmgMcNjI4NTE4NzIzODcxNkBzLndoYXRzYXBwLm5ldIgEAA=="
+                  }
+                }
+              ]
+            }
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        }
+      ],
+      "keyId": {}
+    },
+    "120363406658263857@g.us": {
+      "array": [
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC5FE24C0AEDADA7E21A509186CF436A",
+            "participant": "1198430138519@lid",
+            "participantPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779887379,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "senderKeyDistributionMessage": {
+              "groupId": "120363406658263857@g.us",
+              "axolotlSenderKeyDistributionMessage": "MwjV7pGeBhADGiBTkddZ4z7VfifM9NK19cLhgOrbKP9VR6mDMncbbzstQyIhBYoJdpSuGLb354Pd1z4vqII5INq/qB2/yJciCW4Obe1T"
+            },
+            "extendedTextMessage": {
+              "text": "Relog",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC27972BAADCC502CF678C65BB34D431",
+                "participant": "50856942645288@lid",
+                "quotedMessage": {
+                  "imageMessage": {
+                    "url": "https://mmg.whatsapp.net/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0&mms3=true",
+                    "mimetype": "image/jpeg",
+                    "caption": "tetep ngga bisa",
+                    "fileSha256": "DyW29dXb5JqqP9QY43wZXr7ZlBZnPrNfqRMY5FhVNG4=",
+                    "fileLength": "940575",
+                    "height": 720,
+                    "width": 1600,
+                    "mediaKey": "1xOFWqbr1GA5La0tI4xakJ4azg38hh1xrtmXXU2lU1s=",
+                    "fileEncSha256": "F04S+UQ02CfiykidmfHuAf2hzqVrI3d21u3UFYKRvcM=",
+                    "directPath": "/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0",
+                    "mediaKeyTimestamp": "1779886990",
+                    "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIACAASAMBIgACEQEDEQH/xAAuAAACAwEBAAAAAAAAAAAAAAACBAADBQEGAQEBAQAAAAAAAAAAAAAAAAACAQD/2gAMAwEAAhADEAAAAGCYcJQyPSYOtfTGzRHqVzEqk2fqWdLUR2MzQBtJFqhpdYY3A//EACUQAAICAgIABQUAAAAAAAAAAAECAAMEERIhExQiQVMkM0JRUv/aAAgBAQABPwDMqdHHD3ldVB0H2Wl2JVXWzKNGaPyGcG+QzWhFxhbWjliOp5IryIsmNS7W+sjqHPoP4Slq7UDhRMr7Lw9QGMy/sR2+jTgw3NW/3MCxlvYNCGYjbTzlyKqomhLcjKdDuHxCezCSRrcNI9yYaguMCJp9alIuHIoRDjVIO4GRtBmGhL2QodEQqx9xAh13OJnpahQGG5x02uUx1C8tmf/EABwRAAICAgMAAAAAAAAAAAAAAAABAiEQERIiMf/aAAgBAgEBPwCxoR2aL2J08PRCXFWh+n//xAAcEQEBAAICAwAAAAAAAAAAAAABABFBAhIhMXH/2gAIAQMBAT8AhC8NgLBPwvTqN5uXHtuL/9k=",
+                    "contextInfo": {
+                      "forwardingScore": 0,
+                      "featureEligibilities": {
+                        "canBeReshared": true
+                      },
+                      "pairedMediaType": "NOT_PAIRED_MEDIA",
+                      "statusSourceType": "IMAGE"
+                    }
+                  }
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "/nPIUED4CX6ZexcdZapKtna1dbUYMCodUW2sWsXB5DM="
+            }
+          },
+          "id": "AC5FE24C0AEDADA7E21A509186CF436A",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "1198430138519@lid",
+          "participant": "1198430138519@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "Relog",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC27972BAADCC502CF678C65BB34D431",
+              "participant": "50856942645288@lid",
+              "quotedMessage": {
+                "imageMessage": {
+                  "url": "https://mmg.whatsapp.net/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0&mms3=true",
+                  "mimetype": "image/jpeg",
+                  "caption": "tetep ngga bisa",
+                  "fileSha256": "DyW29dXb5JqqP9QY43wZXr7ZlBZnPrNfqRMY5FhVNG4=",
+                  "fileLength": "940575",
+                  "height": 720,
+                  "width": 1600,
+                  "mediaKey": "1xOFWqbr1GA5La0tI4xakJ4azg38hh1xrtmXXU2lU1s=",
+                  "fileEncSha256": "F04S+UQ02CfiykidmfHuAf2hzqVrI3d21u3UFYKRvcM=",
+                  "directPath": "/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0",
+                  "mediaKeyTimestamp": "1779886990",
+                  "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIACAASAMBIgACEQEDEQH/xAAuAAACAwEBAAAAAAAAAAAAAAACBAADBQEGAQEBAQAAAAAAAAAAAAAAAAACAQD/2gAMAwEAAhADEAAAAGCYcJQyPSYOtfTGzRHqVzEqk2fqWdLUR2MzQBtJFqhpdYY3A//EACUQAAICAgIABQUAAAAAAAAAAAECAAMEERIhExQiQVMkM0JRUv/aAAgBAQABPwDMqdHHD3ldVB0H2Wl2JVXWzKNGaPyGcG+QzWhFxhbWjliOp5IryIsmNS7W+sjqHPoP4Slq7UDhRMr7Lw9QGMy/sR2+jTgw3NW/3MCxlvYNCGYjbTzlyKqomhLcjKdDuHxCezCSRrcNI9yYaguMCJp9alIuHIoRDjVIO4GRtBmGhL2QodEQqx9xAh13OJnpahQGG5x02uUx1C8tmf/EABwRAAICAgMAAAAAAAAAAAAAAAABAiEQERIiMf/aAAgBAgEBPwCxoR2aL2J08PRCXFWh+n//xAAcEQEBAAICAwAAAAAAAAAAAAABABFBAhIhMXH/2gAIAQMBAT8AhC8NgLBPwvTqN5uXHtuL/9k=",
+                  "contextInfo": {
+                    "forwardingScore": 0,
+                    "featureEligibilities": {
+                      "canBeReshared": true
+                    },
+                    "pairedMediaType": "NOT_PAIRED_MEDIA",
+                    "statusSourceType": "IMAGE"
+                  }
+                }
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "Relog",
+          "quoted": {
+            "url": "https://mmg.whatsapp.net/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0&mms3=true",
+            "mimetype": "image/jpeg",
+            "caption": "tetep ngga bisa",
+            "fileSha256": "DyW29dXb5JqqP9QY43wZXr7ZlBZnPrNfqRMY5FhVNG4=",
+            "fileLength": "940575",
+            "height": 720,
+            "width": 1600,
+            "mediaKey": "1xOFWqbr1GA5La0tI4xakJ4azg38hh1xrtmXXU2lU1s=",
+            "fileEncSha256": "F04S+UQ02CfiykidmfHuAf2hzqVrI3d21u3UFYKRvcM=",
+            "directPath": "/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0",
+            "mediaKeyTimestamp": "1779886990",
+            "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIACAASAMBIgACEQEDEQH/xAAuAAACAwEBAAAAAAAAAAAAAAACBAADBQEGAQEBAQAAAAAAAAAAAAAAAAACAQD/2gAMAwEAAhADEAAAAGCYcJQyPSYOtfTGzRHqVzEqk2fqWdLUR2MzQBtJFqhpdYY3A//EACUQAAICAgIABQUAAAAAAAAAAAECAAMEERIhExQiQVMkM0JRUv/aAAgBAQABPwDMqdHHD3ldVB0H2Wl2JVXWzKNGaPyGcG+QzWhFxhbWjliOp5IryIsmNS7W+sjqHPoP4Slq7UDhRMr7Lw9QGMy/sR2+jTgw3NW/3MCxlvYNCGYjbTzlyKqomhLcjKdDuHxCezCSRrcNI9yYaguMCJp9alIuHIoRDjVIO4GRtBmGhL2QodEQqx9xAh13OJnpahQGG5x02uUx1C8tmf/EABwRAAICAgMAAAAAAAAAAAAAAAABAiEQERIiMf/aAAgBAgEBPwCxoR2aL2J08PRCXFWh+n//xAAcEQEBAAICAwAAAAAAAAAAAAABABFBAhIhMXH/2gAIAQMBAT8AhC8NgLBPwvTqN5uXHtuL/9k=",
+            "contextInfo": {
+              "forwardingScore": 0,
+              "featureEligibilities": {
+                "canBeReshared": true
+              },
+              "pairedMediaType": "NOT_PAIRED_MEDIA",
+              "statusSourceType": "IMAGE"
+            }
+          },
+          "mentionedJid": [],
+          "text": "Relog"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACDB6FC158E11B499F27FA9E36775B59",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779887479,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "senderKeyDistributionMessage": {
+              "groupId": "120363406658263857@g.us",
+              "axolotlSenderKeyDistributionMessage": "Mwj7s9Z3EA4aIDJmKYPohgWZoIsThvDvwxnHc1lLY5n0DhxLBP4CIXZkIiEFazDjamcjqWpgJgbAYQyjRMuRXmV0qOzE8HimjSjGkF0="
+            },
+            "extendedTextMessage": {
+              "text": "sek nanggung di boss",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC5FE24C0AEDADA7E21A509186CF436A",
+                "participant": "1198430138519@lid",
+                "quotedMessage": {
+                  "conversation": "Relog"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "kBAuFdXo7X3mQsGy7qAq9hxE9cpRoJMwulJHsVXc4uA="
+            }
+          },
+          "id": "ACDB6FC158E11B499F27FA9E36775B59",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "sek nanggung di boss",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC5FE24C0AEDADA7E21A509186CF436A",
+              "participant": "1198430138519@lid",
+              "quotedMessage": {
+                "conversation": "Relog"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "sek nanggung di boss",
+          "quoted": {
+            "text": "Relog",
+            "mtype": "conversation",
+            "id": "AC5FE24C0AEDADA7E21A509186CF436A",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "1198430138519@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "AC5FE24C0AEDADA7E21A509186CF436A"
+              },
+              "message": {
+                "conversation": "Relog"
+              },
+              "participant": "1198430138519@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "sek nanggung di boss"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC5AF9C461A8DE33BAB9099FB1B438CE",
+            "participant": "180547573801116@lid",
+            "participantPn": "6285782190455@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779887694,
+          "pushName": "FK",
+          "broadcast": false,
+          "message": {
+            "senderKeyDistributionMessage": {
+              "groupId": "120363406658263857@g.us",
+              "axolotlSenderKeyDistributionMessage": "Mwiz5s9yEAEaILreQbUdyE0ZOO60icuzG09uRqIQ3vUQIHU7BEUZNOo/IiEFqrEe06fj419JV+sGO9Mw+jgave059ugugwSyEGy3TB8="
+            },
+            "extendedTextMessage": {
+              "text": "Di sofya",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC27972BAADCC502CF678C65BB34D431",
+                "participant": "50856942645288@lid",
+                "quotedMessage": {
+                  "imageMessage": {
+                    "url": "https://mmg.whatsapp.net/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0&mms3=true",
+                    "mimetype": "image/jpeg",
+                    "caption": "tetep ngga bisa",
+                    "fileSha256": "DyW29dXb5JqqP9QY43wZXr7ZlBZnPrNfqRMY5FhVNG4=",
+                    "fileLength": "940575",
+                    "height": 720,
+                    "width": 1600,
+                    "mediaKey": "1xOFWqbr1GA5La0tI4xakJ4azg38hh1xrtmXXU2lU1s=",
+                    "fileEncSha256": "F04S+UQ02CfiykidmfHuAf2hzqVrI3d21u3UFYKRvcM=",
+                    "directPath": "/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0",
+                    "mediaKeyTimestamp": "1779886990",
+                    "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIACAASAMBIgACEQEDEQH/xAAuAAACAwEBAAAAAAAAAAAAAAACBAADBQEGAQEBAQAAAAAAAAAAAAAAAAACAQD/2gAMAwEAAhADEAAAAGCYcJQyPSYOtfTGzRHqVzEqk2fqWdLUR2MzQBtJFqhpdYY3A//EACUQAAICAgIABQUAAAAAAAAAAAECAAMEERIhExQiQVMkM0JRUv/aAAgBAQABPwDMqdHHD3ldVB0H2Wl2JVXWzKNGaPyGcG+QzWhFxhbWjliOp5IryIsmNS7W+sjqHPoP4Slq7UDhRMr7Lw9QGMy/sR2+jTgw3NW/3MCxlvYNCGYjbTzlyKqomhLcjKdDuHxCezCSRrcNI9yYaguMCJp9alIuHIoRDjVIO4GRtBmGhL2QodEQqx9xAh13OJnpahQGG5x02uUx1C8tmf/EABwRAAICAgMAAAAAAAAAAAAAAAABAiEQERIiMf/aAAgBAgEBPwCxoR2aL2J08PRCXFWh+n//xAAcEQEBAAICAwAAAAAAAAAAAAABABFBAhIhMXH/2gAIAQMBAT8AhC8NgLBPwvTqN5uXHtuL/9k=",
+                    "contextInfo": {
+                      "forwardingScore": 0,
+                      "featureEligibilities": {
+                        "canBeReshared": true
+                      },
+                      "pairedMediaType": "NOT_PAIRED_MEDIA",
+                      "statusSourceType": "IMAGE"
+                    }
+                  }
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "P4t2hcAxfVm2qQ+tcbhgRa5pIBW9OwfI1X5GKdOnbDI="
+            }
+          },
+          "id": "AC5AF9C461A8DE33BAB9099FB1B438CE",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "180547573801116@lid",
+          "participant": "180547573801116@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "Di sofya",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC27972BAADCC502CF678C65BB34D431",
+              "participant": "50856942645288@lid",
+              "quotedMessage": {
+                "imageMessage": {
+                  "url": "https://mmg.whatsapp.net/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0&mms3=true",
+                  "mimetype": "image/jpeg",
+                  "caption": "tetep ngga bisa",
+                  "fileSha256": "DyW29dXb5JqqP9QY43wZXr7ZlBZnPrNfqRMY5FhVNG4=",
+                  "fileLength": "940575",
+                  "height": 720,
+                  "width": 1600,
+                  "mediaKey": "1xOFWqbr1GA5La0tI4xakJ4azg38hh1xrtmXXU2lU1s=",
+                  "fileEncSha256": "F04S+UQ02CfiykidmfHuAf2hzqVrI3d21u3UFYKRvcM=",
+                  "directPath": "/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0",
+                  "mediaKeyTimestamp": "1779886990",
+                  "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIACAASAMBIgACEQEDEQH/xAAuAAACAwEBAAAAAAAAAAAAAAACBAADBQEGAQEBAQAAAAAAAAAAAAAAAAACAQD/2gAMAwEAAhADEAAAAGCYcJQyPSYOtfTGzRHqVzEqk2fqWdLUR2MzQBtJFqhpdYY3A//EACUQAAICAgIABQUAAAAAAAAAAAECAAMEERIhExQiQVMkM0JRUv/aAAgBAQABPwDMqdHHD3ldVB0H2Wl2JVXWzKNGaPyGcG+QzWhFxhbWjliOp5IryIsmNS7W+sjqHPoP4Slq7UDhRMr7Lw9QGMy/sR2+jTgw3NW/3MCxlvYNCGYjbTzlyKqomhLcjKdDuHxCezCSRrcNI9yYaguMCJp9alIuHIoRDjVIO4GRtBmGhL2QodEQqx9xAh13OJnpahQGG5x02uUx1C8tmf/EABwRAAICAgMAAAAAAAAAAAAAAAABAiEQERIiMf/aAAgBAgEBPwCxoR2aL2J08PRCXFWh+n//xAAcEQEBAAICAwAAAAAAAAAAAAABABFBAhIhMXH/2gAIAQMBAT8AhC8NgLBPwvTqN5uXHtuL/9k=",
+                  "contextInfo": {
+                    "forwardingScore": 0,
+                    "featureEligibilities": {
+                      "canBeReshared": true
+                    },
+                    "pairedMediaType": "NOT_PAIRED_MEDIA",
+                    "statusSourceType": "IMAGE"
+                  }
+                }
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "Di sofya",
+          "quoted": {
+            "url": "https://mmg.whatsapp.net/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0&mms3=true",
+            "mimetype": "image/jpeg",
+            "caption": "tetep ngga bisa",
+            "fileSha256": "DyW29dXb5JqqP9QY43wZXr7ZlBZnPrNfqRMY5FhVNG4=",
+            "fileLength": "940575",
+            "height": 720,
+            "width": 1600,
+            "mediaKey": "1xOFWqbr1GA5La0tI4xakJ4azg38hh1xrtmXXU2lU1s=",
+            "fileEncSha256": "F04S+UQ02CfiykidmfHuAf2hzqVrI3d21u3UFYKRvcM=",
+            "directPath": "/v/t62.7118-24/709765172_2711624025883855_6662395607714837153_n.enc?ccb=11-4&oh=01_Q5Aa4gHo_3iYPpzwKt24SDEC_x1HUlxwZLPtbngHO_C52Txikw&oe=6A3E5731&_nc_sid=5e03e0",
+            "mediaKeyTimestamp": "1779886990",
+            "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIACAASAMBIgACEQEDEQH/xAAuAAACAwEBAAAAAAAAAAAAAAACBAADBQEGAQEBAQAAAAAAAAAAAAAAAAACAQD/2gAMAwEAAhADEAAAAGCYcJQyPSYOtfTGzRHqVzEqk2fqWdLUR2MzQBtJFqhpdYY3A//EACUQAAICAgIABQUAAAAAAAAAAAECAAMEERIhExQiQVMkM0JRUv/aAAgBAQABPwDMqdHHD3ldVB0H2Wl2JVXWzKNGaPyGcG+QzWhFxhbWjliOp5IryIsmNS7W+sjqHPoP4Slq7UDhRMr7Lw9QGMy/sR2+jTgw3NW/3MCxlvYNCGYjbTzlyKqomhLcjKdDuHxCezCSRrcNI9yYaguMCJp9alIuHIoRDjVIO4GRtBmGhL2QodEQqx9xAh13OJnpahQGG5x02uUx1C8tmf/EABwRAAICAgMAAAAAAAAAAAAAAAABAiEQERIiMf/aAAgBAgEBPwCxoR2aL2J08PRCXFWh+n//xAAcEQEBAAICAwAAAAAAAAAAAAABABFBAhIhMXH/2gAIAQMBAT8AhC8NgLBPwvTqN5uXHtuL/9k=",
+            "contextInfo": {
+              "forwardingScore": 0,
+              "featureEligibilities": {
+                "canBeReshared": true
+              },
+              "pairedMediaType": "NOT_PAIRED_MEDIA",
+              "statusSourceType": "IMAGE"
+            }
+          },
+          "mentionedJid": [],
+          "text": "Di sofya"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC6B5DEB47B8C7C5C6B75752CF147667",
+            "participant": "180547573801116@lid",
+            "participantPn": "6285782190455@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779887701,
+          "pushName": "FK",
+          "broadcast": false,
+          "message": {
+            "conversation": "Bukan di el scaro",
+            "messageContextInfo": {
+              "messageSecret": "UpyeAhDRTFTMctnblbk8yQHaOFcGMoOeDJtPgwTgF8A="
+            }
+          },
+          "id": "AC6B5DEB47B8C7C5C6B75752CF147667",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "180547573801116@lid",
+          "participant": "180547573801116@lid",
+          "mtype": "conversation",
+          "msg": "Bukan di el scaro",
+          "body": "Bukan di el scaro",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Bukan di el scaro"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC68255996F87B2448C29AA47A31E86C",
+            "participant": "180547573801116@lid",
+            "participantPn": "6285782190455@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779887704,
+          "pushName": "FK",
+          "broadcast": false,
+          "message": {
+            "stickerMessage": {
+              "url": "https://mmg.whatsapp.net/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gEOP0rTibkb_RDptyUf0tRE2D6xvlFRRvFOHWZ5kChWKg&oe=6A3E68F1&_nc_sid=5e03e0&mms3=true",
+              "fileSha256": "v0lT19zivLp4Pm+SuSjGrJ4Lx69aEQcOH/NCCESFgF0=",
+              "fileEncSha256": "AGdxh1P+8EWJClml1gSrLb6lVyT+XMp7fiKIKSQMG7A=",
+              "mediaKey": "wOxdgQb6xUGrbHg1S5U/XOQ+vCEx24ctAJcQaix/iO0=",
+              "mimetype": "image/webp",
+              "height": 64,
+              "width": 64,
+              "directPath": "/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gEOP0rTibkb_RDptyUf0tRE2D6xvlFRRvFOHWZ5kChWKg&oe=6A3E68F1&_nc_sid=5e03e0",
+              "fileLength": "152110",
+              "mediaKeyTimestamp": "1779846904",
+              "firstFrameLength": 151800,
+              "firstFrameSidecar": "8Yg/5WrL+juxrQ==",
+              "isAnimated": true,
+              "stickerSentTs": "1779887703972",
+              "isAvatar": false,
+              "isAiSticker": false,
+              "isLottie": false
+            },
+            "messageContextInfo": {
+              "messageSecret": "RyrJ/auoMfheqfTkwWBOqUtDdCOje83aQQ0wgH7hpPc="
+            }
+          },
+          "id": "AC68255996F87B2448C29AA47A31E86C",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "180547573801116@lid",
+          "participant": "180547573801116@lid",
+          "mtype": "stickerMessage",
+          "msg": {
+            "url": "https://mmg.whatsapp.net/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gEOP0rTibkb_RDptyUf0tRE2D6xvlFRRvFOHWZ5kChWKg&oe=6A3E68F1&_nc_sid=5e03e0&mms3=true",
+            "fileSha256": "v0lT19zivLp4Pm+SuSjGrJ4Lx69aEQcOH/NCCESFgF0=",
+            "fileEncSha256": "AGdxh1P+8EWJClml1gSrLb6lVyT+XMp7fiKIKSQMG7A=",
+            "mediaKey": "wOxdgQb6xUGrbHg1S5U/XOQ+vCEx24ctAJcQaix/iO0=",
+            "mimetype": "image/webp",
+            "height": 64,
+            "width": 64,
+            "directPath": "/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gEOP0rTibkb_RDptyUf0tRE2D6xvlFRRvFOHWZ5kChWKg&oe=6A3E68F1&_nc_sid=5e03e0",
+            "fileLength": "152110",
+            "mediaKeyTimestamp": "1779846904",
+            "firstFrameLength": 151800,
+            "firstFrameSidecar": "8Yg/5WrL+juxrQ==",
+            "isAnimated": true,
+            "stickerSentTs": "1779887703972",
+            "isAvatar": false,
+            "isAiSticker": false,
+            "isLottie": false
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        }
+      ],
+      "keyId": {}
+    },
+    "126822415098035@lid": {
+      "array": [
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "AC9BF2B7FCB5608CF519890BA7FBBBAD"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": ".buff",
+              "previewType": "NONE",
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "3AOtvWdsDSzMnW8M9Bo9ZU+jFsBHUeyrlZyU399zOKE="
+            }
+          },
+          "messageTimestamp": "1779887560",
+          "status": "READ",
+          "messageC2STimestamp": "1779887561",
+          "messageSecret": "3AOtvWdsDSzMnW8M9Bo9ZU+jFsBHUeyrlZyU399zOKE=",
+          "originalSelfAuthorUserJidString": "6285187238716@s.whatsapp.net",
+          "isMentionedInStatus": false
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB092532B5EA8CF44B6BB"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Anchovy Toast: Water Resistance\n2020606 (Biotin)\n\nAnkake Fried Rice: MaxMP\n1010216 (Salmonella)\n1011212 (Epiey!!)\n1020808 (ココルル)\n1027777 (Aka Shiro)\n2010510 (Ultimateわんわん)\n2020101 (Paracetamol)\n3017676 (yuxieyoko)\n3204544 (Amatsuka Kirin)\n4261111 (maruna)\n6053838 (朋@)\n7100720 (Juda)\n7150029 (ORCA29)\n\nBeef Burger: Physical Resistance\n1010081 (Kawasaki)\n1020001 (てんげん)\n1231776 (xxxdsmer)\n2020111 (L. casei)\n2020345 (- C H A R M Z ★)\n2200117 (しいぽ)\n4010051 (マグナ)\n6010701 (ramenEso)\n\nBeef Stew: +Aggro\nWhite Stew: -Aggro\nLevel 10\n1010207 (Pew_Pew)\n1130832 (咲愛\")\n1140002 (Neaki)\n2020606 (Biotin)\n3053131 (DaoNaga)\n3158668 (VoidWolf)\n4220777 (春姫❤)\n5261002 (マンモスマン)\nLevel 9\n2010136 (S y n 彡)\nLevel 8\n3204544 (Amatsuka Kirin)\n\nBolognese: DTE Fire\nLevel 9\n1121212 (RioCakra)\n3210106 (♧火のうた)\n7088807 (@Ray)\n9181111 (#Ryopin#)\nLevel 7\n8120000 (Lamlo)\n\nCarbonara: DTE Light\nLevel 9\n1020345 (Death · Gun)\nLevel 8\n3111999 (Espur)\n\nCheese Cake: Magic Barrier\nLevel 8\n2020505 (Niacin (B3))\n\nCheese Toast: Wind Resistance\nLevel 9\n2020222 (Himura Oza)\n\nChocolate Cake: Physical Barrier\nLevel 7\n2020111 (L. casei)\n\nChocolate Parfait: EXP Gain\nLevel 4\n4040404 (S A R A)\n\nFish Burger: Magical Resistance\nLevel 10\n1111575 (Kiyanh)\n1181220 (梨花)\n2020505 (Niacin (B3))\n5200025 (たつ猫☆)\n6190007 (nanako♪)\n7010016 (Lian戀)\n8010016 (° Roulecca)\n\nFruit Parfait: Drop Rate\nLevel 6\n4032850 (Aphrodite tiger)\n4196969 (★Shiro☆)\n4245922 (ふると系#)\n7057777 (t a s t y)\n\nGarlic Toast: Dark Resistance\nLevel 9\n2020707 (Ascorbic Acid)\nLevel 4\n1010084 (あきら)\n\nGenovese: DTE Earth\nLevel 10\n2020202 (S A R A)\nLevel 9\n1011001 (S i r F a t h)\n4233333 (AlvinXxX)\n7100666 (itspaez)\nLevel 8\n1010216 (Salmonella)\n\nGolden Stir Fry: MaxHP\nLevel 10\n1010032 (★空猫)\n1010084 (あきら)\n1010356 (らいむ03)\n1250015 (雪島いちご)\n2010228 (~シュシュ~)\n3090618 (snow618)\n3092003 (◁ Rikka❤ ▷)\n3191130 (Kail NW)\n3260178 (maluth)\n4262222 (mashilo)\n54154629 (シャルム)\n6010062 (G - Thunder (JPN))\n6199999 (garun1)\n\nHoney Toast: Light Resistance\nLevel 9\n1023040 (Quinone (K))\nLevel 4\n4220777 (春姫❤)\n\nMentaiko Rice Ball: AGI\nLevel 10\n1220777 (サスケU^ェ^U)\n2020037 (Mana-T)\n4262222 (mashilo)\n7162029 (Player20)\nLevel 9\n1110033 (くりぼー☆)\n6269999 (酒呑)\n\nMiso Ramen: MDEF\n\nNaporitan: DTE Wind\nLevel 10\n3030303 (S A R A)\n\nOkaka Rice Ball: STR\nLevel 10\n1010055 (Echidna@)\n1010968 (アジヤ)\n1011069 (A J I)\n1110033 (くりぼー☆)\n2017890 (みさき*)\n2020303 (Amanita)\n2180000 (Ryopin)\n4010024 (いぐるん)\n5261919 (ルージアル)\n7070777 (-Xen-)\n\nPancake: Fractional Brrier\nLevel 10\n1012222 (gaito123)\n4010024 (いぐるん)\n53010043 (昂 k09)\n53190003 (桜乃宮　千都)\n6150029 (29ψ ORCA)\nLevel 9\n1074649 (∮ ノマァ ∮)\n3190038 (☆カーミラ★)\n6010062 (G - Thunder (JPN))\n\nPeperoncio: DTE Neutral\n\nPizza Davola: ATK\nLevel 10\n1119876 (キヅツ)\n7170717 (Isuni☆)\n\nPizza Margherita: Weapon ATK\nLevel 10\n1010810 (夜トyato☆)\n1011122 (ベッキー)\n1011126 (ヾferyanz)\n1067777 (YusagKurumi)\n1180020 (Rouen)\n1200020 (ティーク)\n2020404 (HbA1c)\n3010777 (わん　•　にやー)\n3180777 (Reon∮)\n4170999 (おりぴ)\n4240242 (Nakean)\n5110834 (加寿葉)\n6010024 (『 G a p a p a 』)\n6130623 (雪羽)\n6269999 (酒呑)\n7050301 (Keith)\n\nPudding Toast: Earth Resistance\nLevel 9\n6150029 (29ψ ORCA)\n\nSalmon Rice Ball: DEX\nLevel 10\n1010058 (· H20 ·)\n1010106 (Yoku')\n1010261 (イグルー)\n1074649 (∮ ノマァ ∮)\n1112220 (Kirara♥)\n2020222 (Himura Oza)\n3111999 (Espur)\n3220777 (☆エトワール☆)\n7011001 (【MB】 VolT‾へ凸)\n7140777 (Aurianne)\n\nSeafood Pizza: MATK\nLevel 10\n1024649 (BUFFERIN)\n\nShio Ramen: Dodge\nLevel 7\n2020808 (Ectoplasm)\n\nShoyu Ramen: Accuracy\nLevel 10\n2010308 (@alpha)\n4261111 (maruna)\nLevel 9\n1181220 (梨花)\n7160030 (サーベイ)\n\nSquid Ink Pasta: DTE Dark\nLevel 10\n1190020 (チュレ @迷路屋)\n2130776 (サトリール)\n6116116 ((⭗△⭗))\nLevel 9\n5010092 (Who's Wo)\n\nSunny Side Up Toast: Fire Resistance\nLevel 9\n2020101 (Paracetamol)\n\nTakoyaki: Critical Rate\nLevel 10\n1037777 (Hati Hervor)\n1100000 (I n u G a m i •)\n1181140 (らんな)\n2022020 (#SAM#)\n3010777 (わん　•　にやー)\n3030159 (Lauryn_)\n3149696 (NoiR)\n4010000 (俺が青娥様)\n5119105 (- Kanna -)\n6021230 (☆Ｐｉｎａ☆)\n7162029 (Player20)\n\nTonkotsu Ramen: DEF\n\nTuna Mayo Rice Ball: VIT\nLevel 10\n4032850 (Aphrodite tiger)\n\nUmeboshi Rice Ball: INT\nLevel 10\n1010140 (かがり)\n1010498 (桃夏)\n1032222 (Shyturu)\n1047777 (~Zeref~)\n2020707 (Ascorbic Acid)\n5190001 (シェリア.)\n6010701 (ramenEso)\n7130001 (@みげる)\n\nVanilla Toast: Neutral Resistance\nLevel 9\n2020303 (Amanita)\n\nVongole: DTE Water\nLevel 10\n1110111 (S A R A)\n3210100 (♧水のうた)\n7150030 (ファレ)\nLevel 9\n7011001 (【MB】 VolT‾へ凸)\n\nYakisoba: AMPR\nLevel 10\n1010017 (평온한날)\n1010596 (冷Hiro☆)\n1011010 (0 kara)\n1023040 (Quinone (K))\n1047777 (~Zeref~)\n1111000 (カンコウ)\n3020777 (白最中)\n3201003 (『 K E R R Y 』)\n4040404 (S A R A)\n4206969 (xenesis5)\n4233333 (AlvinXxX)\n5236969 (黒澤タイア)\n7069420 (👉 * Garu * 👈)\n7088807 (@Ray)\n7220777 (Veny)\n8120000 (Lamlo)",
+              "contextInfo": {
+                "stanzaId": "AC9BF2B7FCB5608CF519890BA7FBBBAD",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "extendedTextMessage": {
+                    "text": ".buff",
+                    "previewType": "NONE",
+                    "inviteLinkGroupTypeV2": "DEFAULT"
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779887566",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB0049EAA119E49CC86C2"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n*New Update V. 5.4.4a*\nHi No Name.\n\nfitur `!welcome` telah ditambahkan fitur tersebut digunakan untuk mengaktifkan/menonaktifkan pesan selamat datang di grup.\n\n*bot masih dalam pengembangan*\nharap maklumi jika masih banyak error🙏\n\n*laporkan jika ada fitur error kepada owner*\ntanya tanya silahkan pm owner dengan mengetik:\n*!owner*\n",
+              "contextInfo": {
+                "stanzaId": "AC9BF2B7FCB5608CF519890BA7FBBBAD",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "extendedTextMessage": {
+                    "text": ".buff",
+                    "previewType": "NONE",
+                    "inviteLinkGroupTypeV2": "DEFAULT"
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779887566",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "ACF12111A0335B3319F4F02D7E7762FE"
+          },
+          "messageTimestamp": 1779887597,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "extendedTextMessage": {
+              "text": ".menu",
+              "previewType": "NONE",
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            }
+          },
+          "id": "ACF12111A0335B3319F4F02D7E7762FE",
+          "isBaileys": false,
+          "chat": "126822415098035@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": ".menu",
+            "previewType": "NONE",
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": ".menu",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".menu"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB0D89895A4956978ADDB"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n❏ *Vertibus🔹 Menu* ❏\n\n ❏ *Other Menu*\n │•.lvling\n │•.watk\n │•.cdmg\n │•.food\n │•.maze\n │•.bag\n │•.mq\n │•.ailment\n ╰•.mqmats\n\n ❏ *Other Menu*\n │•.sticker\n │•.smeme\n │•.pixiv\n │•.loli\n │•.milf\n │•.anime\n │•.pinterest\n ╰•.brat\n\n ❏ *Group Menu*\n │•.metadata\n │•.hidetag\n │•.tagall\n │•.bot\n │•.add\n │•.kick\n │•.promote\n │•.demote\n │•.welcome\n │•.antilink\n ╰•.antilinkgc\n \n ❏ *Bot Menu*\n │•.owner\n │•.info\n ╰•.donate\n \n💰 *Bantu donasi di :*\n\n💳 dana : 083831853737\n💳 GoPay : 083831853737\n💳 ShopeePay : 083831853737\n",
+              "contextInfo": {
+                "stanzaId": "ACF12111A0335B3319F4F02D7E7762FE",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "extendedTextMessage": {
+                    "text": ".menu",
+                    "previewType": "NONE",
+                    "inviteLinkGroupTypeV2": "DEFAULT"
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779887596",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "ACA8C3B5B34985ECD5DFB4151A9E3F13"
+          },
+          "messageTimestamp": 1779887712,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "extendedTextMessage": {
+              "text": ".lvling",
+              "previewType": "NONE",
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            }
+          },
+          "id": "ACA8C3B5B34985ECD5DFB4151A9E3F13",
+          "isBaileys": false,
+          "chat": "126822415098035@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": ".lvling",
+            "previewType": "NONE",
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": ".lvling",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".lvling"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB04AA76D51219E3DB61C"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Cara penggunaan:\n.lvling <level>|<Bonus EXP>\nContoh:\n.lvling 270|10",
+              "contextInfo": {
+                "stanzaId": "ACA8C3B5B34985ECD5DFB4151A9E3F13",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "extendedTextMessage": {
+                    "text": ".lvling",
+                    "previewType": "NONE",
+                    "inviteLinkGroupTypeV2": "DEFAULT"
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779887711",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "ACCE962A2070CD6DDE4F25A425ABD411"
+          },
+          "messageTimestamp": 1779887740,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "extendedTextMessage": {
+              "text": ".lvling 310|10",
+              "previewType": "NONE",
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            }
+          },
+          "id": "ACCE962A2070CD6DDE4F25A425ABD411",
+          "isBaileys": false,
+          "chat": "126822415098035@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": ".lvling 310|10",
+            "previewType": "NONE",
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": ".lvling 310|10",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".lvling 310|10"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB0D1D19162B6C746DA25"
+          },
+          "message": {
+            "reactionMessage": {
+              "key": {
+                "remoteJid": "126822415098035@lid",
+                "fromMe": true,
+                "id": "ACCE962A2070CD6DDE4F25A425ABD411"
+              },
+              "text": "⏳",
+              "senderTimestampMs": "1779887739508"
+            }
+          },
+          "messageTimestamp": "1779887739",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB01428EB87E0413D5E53"
+          },
+          "message": {
+            "reactionMessage": {
+              "key": {
+                "remoteJid": "126822415098035@lid",
+                "fromMe": true,
+                "id": "ACCE962A2070CD6DDE4F25A425ABD411"
+              },
+              "text": "✔",
+              "senderTimestampMs": "1779887740546"
+            }
+          },
+          "messageTimestamp": "1779887740",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB009C61C4C0EACFD8C99"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "*Leveling lvl 310 & bonus exp 10%*\n",
+              "contextInfo": {
+                "stanzaId": "ACCE962A2070CD6DDE4F25A425ABD411",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "extendedTextMessage": {
+                    "text": ".lvling 310|10",
+                    "previewType": "NONE",
+                    "inviteLinkGroupTypeV2": "DEFAULT"
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779887740",
+          "status": "PENDING"
+        }
+      ],
+      "keyId": {}
+    }
+  },
   "groupMetadata": {}
 }
