@@ -54,26 +54,26 @@ module.exports = core = async (client, m, chatUpdate) => {
     (m.mtype === "conversation")
       ? m.message.conversation
       : (m.mtype == "imageMessage")
-      ? m.message.imageMessage.caption
-      : (m.mtype == "videoMessage")
-      ? m.message.videoMessage.caption
-      : (m.mtype == "extendedTextMessage")
-      ? m.message.extendedTextMessage.text
-      : (m.mtype == "buttonsResponseMessage")
-      ? m.message.buttonsResponseMessage.selectedButtonId
-      : (m.mtype == "listResponseMessage")
-      ? m.message.listResponseMessage.singleSelectReply.selectedRowId
-      : (m.mtype == "templateButtonReplyMessage")
-      ? m.message.templateButtonReplyMessage.selectedId 
-      : (m.mtype == 'interactiveResponseMessage') 
-      ? JSON.parse(m.msg.nativeFlowResponseMessage.paramsJson).id 
-      : (m.mtype == 'templateButtonReplyMessage') 
-      ? m.msg.selectedId
-      : (m.mtype === "messageContextInfo")
-      ? (m.message.buttonsResponseMessage?.selectedButtonId ||
-        m.message.listResponseMessage?.singleSelectReply.selectedRowId ||
-        m.text)
-      : "";
+        ? m.message.imageMessage.caption
+        : (m.mtype == "videoMessage")
+          ? m.message.videoMessage.caption
+          : (m.mtype == "extendedTextMessage")
+            ? m.message.extendedTextMessage.text
+            : (m.mtype == "buttonsResponseMessage")
+              ? m.message.buttonsResponseMessage.selectedButtonId
+              : (m.mtype == "listResponseMessage")
+                ? m.message.listResponseMessage.singleSelectReply.selectedRowId
+                : (m.mtype == "templateButtonReplyMessage")
+                  ? m.message.templateButtonReplyMessage.selectedId
+                  : (m.mtype == 'interactiveResponseMessage')
+                    ? JSON.parse(m.msg.nativeFlowResponseMessage.paramsJson).id
+                    : (m.mtype == 'templateButtonReplyMessage')
+                      ? m.msg.selectedId
+                      : (m.mtype === "messageContextInfo")
+                        ? (m.message.buttonsResponseMessage?.selectedButtonId ||
+                          m.message.listResponseMessage?.singleSelectReply.selectedRowId ||
+                          m.text)
+                        : "";
   const prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/";
   const command = body
     .replace(prefix, "")
@@ -94,12 +94,12 @@ module.exports = core = async (client, m, chatUpdate) => {
     mik.mtype == "buttonsMessage"
       ? mik[Object.keys(mik)[1]]
       : mik.mtype == "templateMessage"
-      ? mik.hydratedTemplate[Object.keys(mik.hydratedTemplate)[1]]
-      : mik.mtype == "product"
-      ? mik[Object.keys(mik)[0]]
-      : m.quoted
-      ? m.quoted
-      : m;
+        ? mik.hydratedTemplate[Object.keys(mik.hydratedTemplate)[1]]
+        : mik.mtype == "product"
+          ? mik[Object.keys(mik)[0]]
+          : m.quoted
+            ? m.quoted
+            : m;
   const args = body.trim().split(/ +/).slice(1);
   const isCmd = body.startsWith(prefix);
   const pushname = m.pushName || "No Name";
@@ -111,8 +111,8 @@ module.exports = core = async (client, m, chatUpdate) => {
   const mime = qms.mimetype || "";
   const mek = chatUpdate.messages[0];
   const content = JSON.stringify(m.message);
-//   const sender = m.isGroup ? m.key.fromMe ? m.sender : m.key.participant : m.sender;
-const sender = m.isGroup ? m.key.fromMe ? m.sender : (m.key.participant || m.key.participantLid || m.sender) : m.sender;
+  //   const sender = m.isGroup ? m.key.fromMe ? m.sender : m.key.participant : m.sender;
+  const sender = m.isGroup ? (m.key.fromMe ? m.sender : (m.key?.participantPn || m.key.participant || m.sender)) : m.sender;
   const from = m.chat;
   const reply = m.reply;
 
@@ -124,12 +124,25 @@ const sender = m.isGroup ? m.key.fromMe ? m.sender : (m.key.participant || m.key
   //security
   const isGroup = m.isGroup;
   const groupMetadata = m.isGroup
-    ? await client.groupMetadata(m.chat).catch((e) => {})
+    ? await client.groupMetadata(m.chat).catch((e) => { })
     : "";
+  const getSenderNumber = (jid) => {
+    if (!jid) return "";
+    return jid.replace(/@(s\.whatsapp\.net|lid|g\.us)/, "");
+  };
+  const senderNumber = getSenderNumber(sender);
+  const isOwner = global.owner.includes(senderNumber) || false;
+  // const getGroupAdmins = (participants) => {
+  //   admins = [];
+  //   for (let i of participants) {
+  //     i.admin ? admins.push(i.jid) : "";
+  //   }
+  //   return admins;
+  // };
   const getGroupAdmins = (participants) => {
     admins = [];
     for (let i of participants) {
-      i.admin ? admins.push(i.jid) : "";
+      i.admin ? admins.push(i.id || i.jid) : "";
     }
     return admins;
   };
@@ -137,10 +150,11 @@ const sender = m.isGroup ? m.key.fromMe ? m.sender : (m.key.participant || m.key
   const groupId = m.isGroup ? groupMetadata.id : "";
   const groupMembers = m.isGroup ? groupMetadata.participants : "";
   const groupAdmins = m.isGroup ? getGroupAdmins(groupMembers) : "";
-//   const isOwner = global.owner.includes(sender.split("@")[0]) || false;
-const isOwner = sender ? global.owner.includes(sender.replace(/@(s\.whatsapp\.net|lid|g\.us)/, "")) || false : false;
-  const botAdmin = groupAdmins.includes(botNumber) || false;
-  const isGroupAdmins = groupAdmins.includes(sender) || false;
+  const adminNumbers = m.isGroup && groupMembers ? groupMembers.filter(p => p.admin).map(p => getSenderNumber(p.jid)) : [];
+  const isAdminByPn = m.key.participantPn && adminNumbers.includes(getSenderNumber(m.key.participantPn));
+  const isOwnerFromLid = m.key.participantLid ? global.owner.includes(getSenderNumber(m.key.participantLid)) : false;
+  const isGroupAdmins = m.isGroup ? (groupAdmins.includes(sender) || adminNumbers.includes(senderNumber) || isAdminByPn || isOwner || isOwnerFromLid) : false;
+  const botAdmin = m.isGroup ? groupAdmins.includes(botNumber) || false : false;
 
   //Media init
   const isMedia = m.mtype === "imageMessage" || m.mtype === "videoMessage";
@@ -161,10 +175,10 @@ const isOwner = sender ? global.owner.includes(sender.replace(/@(s\.whatsapp\.ne
     fs.writeFileSync("./db/message.json", JSON.stringify(infoMSG, null, 2));
   }*/
 
-      //Language
+  //Language
   senderType = m.isGroup ? groupMetadata.id : sender;
   user = global.db.user.findIndex((user) => user.id === senderType);
-  if( global.db.user[user]?.language === "ind" ) {
+  if (global.db.user[user]?.language === "ind") {
     lang = ind;
     language = "ind";
   } else if (global.db.user[user]?.language === "eng") {
@@ -296,12 +310,12 @@ const isOwner = sender ? global.owner.includes(sender.replace(/@(s\.whatsapp\.ne
   if (isCmd && m.isGroup) {
     if (!global.db.groups[groupMetadata.id]) {
       global.db.groups[groupMetadata.id] = {
-        open : true,
-     }
+        open: true,
+      }
     }
     global.db.groups[groupMetadata.id].open ??= true;
     opened = global.db.groups[groupMetadata.id].open;
-    if (!opened && !isGroupAdmins) return;
+    if (!opened && !isGroupAdmins && !itsMe) return;
   }
 
   // Push Message To Console
@@ -337,13 +351,13 @@ const isOwner = sender ? global.owner.includes(sender.replace(/@(s\.whatsapp\.ne
         break;
 
       /* ================ Toram Online Menu ================ */
-       case "cwatk":
-         if (!q) return reply(lang.format(prefix, command));
-         int = parseInt(q);
-         proc = eval((int * 110) / 100 + 10);
-         str = proc.toString();
-         m.reply(str);
-         break;
+      case "cwatk":
+        if (!q) return reply(lang.format(prefix, command));
+        int = parseInt(q);
+        proc = eval((int * 110) / 100 + 10);
+        str = proc.toString();
+        m.reply(str);
+        break;
 
       case "cdmg":
         if (!q) return reply(lang.format(prefix, command));
@@ -482,17 +496,16 @@ Global Price:
               "can't calculate because the end chapter is too low than the beginning MQ!"
             );
           }
-mqData = JSON.parse(
-             fs.readFileSync("./language/Toram-DB/mq-db-eng.json")
-           );
-           //kondisi !mq 260|38 eps58 eps125
-           let lv, percentage;
-           [lv, percentage] = calculateMQ(level, exp, startMQ, endMQ);
-           teksTemplate = `
+          mqData = JSON.parse(
+            fs.readFileSync("./language/Toram-DB/mq-db-eng.json")
+          );
+          //kondisi !mq 260|38 eps58 eps125
+          let lv, percentage;
+          [lv, percentage] = calculateMQ(lvl, exp, startMQ, endMQ);
+          teksTemplate = `
 - *Toram MQ Calculator* -
-Start: CH ${mqData[startMQ - 1]?.chapter || "Unknown"}: ${mqData[startMQ - 1]?.title || "Unknown"}
-End: CH ${mqData[endMQ - 1]?.chapter || "Unknown"}: ${mqData[endMQ - 1]?.title || "Unknown"}
-
+Start: CH ${mqData[startMQ - 1].chapter}: ${mqData[startMQ - 1].title}
+End: CH ${mqData[endMQ - 1].chapter}: ${mqData[endMQ - 1].title}
 After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} with ${percentage}%
 `;
           reply(teksTemplate);
@@ -1201,52 +1214,52 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
                 },
               ],
             },
-{
-               title: "Chapter 15: Coenubia's Awakening",
-               highlight_label: "Chapter 15",
-               rows: [
-                 {
-                   title: "EPS120: Ark Crisis",
-                   description: "Boss: Bakuzan",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps120`,
-                 },
-                 {
-                   title: "EPS121: Coastal Clash",
-                   description: "Boss: Rondine",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps121`,
-                 },
-                 {
-                   title: "EPS122: Unda's Rescue Operation",
-                   description: "Boss: Gula the Gourmet",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps122`,
-                 },
-                 {
-                   title: "EPS123: Unda's Return",
-                   description: "Boss: Goudvis",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps123`,
-                 },
-                 {
-                   title: "EPS124: The Young Man and The Old Tree",
-                   description: "Boss: Puiet",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps124`,
-                 },
-                 {
-                   title: "EPS125: The Village of Lixis",
-                   description: "Boss: Gioco",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps125`,
-                 },
-                 {
-                   title: "EPS126: Visions of a Distant Past",
-                   description: "Boss: Baratok",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps126`,
-                 },
-                 {
-                   title: "EPS127: As the Roots Come to Light",
-                   description: "Boss: Doy & Mari",
-                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps127`,
-                 }
-               ],
-             },
+            {
+              title: "Chapter 15: Coenubia's Awakening",
+              highlight_label: "Chapter 15",
+              rows: [
+                {
+                  title: "EPS120: Ark Crisis",
+                  description: "Boss: Bakuzan",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps120`,
+                },
+                {
+                  title: "EPS121: Coastal Clash",
+                  description: "Boss: Rondine",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps121`,
+                },
+                {
+                  title: "EPS122: Unda's Rescue Operation",
+                  description: "Boss: Gula the Gourmet",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps122`,
+                },
+                {
+                  title: "EPS123: Unda's Return",
+                  description: "Boss: Goudvis",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps123`,
+                },
+                {
+                  title: "EPS124: The Young Man and The Old Tree",
+                  description: "Boss: Puiet",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps124`,
+                },
+                {
+                  title: "EPS125: The Village of Lixis",
+                  description: "Boss: Gioco",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps125`,
+                },
+                {
+                  title: "EPS126: Visions of a Distant Past",
+                  description: "Boss: Baratok",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps126`,
+                },
+                {
+                  title: "EPS127: As the Roots Come to Light",
+                  description: "Boss: Doy & Mari",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps127`,
+                }
+              ],
+            },
           ];
 
           const listMessage = {
@@ -1277,7 +1290,7 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
             ],
           };
 
-          await client.sendButtonMsg(from, templateButton, {quoted: m});
+          await client.sendButtonMsg(from, templateButton, { quoted: m });
         }
         break;
 
@@ -1384,12 +1397,12 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         }
         break;
 
-        case "mob":
-        case "mobs":
-        case "monster":
-        case "boss":{
-         if (!text) return m.reply(lang.format(prefix, command));
-         try {
+      case "mob":
+      case "mobs":
+      case "monster":
+      case "boss": {
+        if (!text) return m.reply(lang.format(prefix, command));
+        try {
           progress("⏳");
           if (language == "eng") {
             url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
@@ -1404,17 +1417,17 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
                 const html = response.data;
                 const $ = cheerio.load(html);
                 const mobs = [];
-                $(".card-container > div").each(function() {
+                $(".card-container > div").each(function () {
                   mobs.push({
                     name: $(this).find(".card-title-inverse").text().trim().replace("_id", ""),
                     level: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(1) > p:nth-child(2) ").text().trim(),
                     location: $(this).find(".item-prop > div:nth-child(2) > a").text().trim(),
-                    difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(), 
-                    element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(), 
-                    hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(), 
-                    exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(), 
-                    tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(), 
-                    drops: $(this).find(".monster-drop-list > .monster-drop").map(function() {
+                    difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(),
+                    element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(),
+                    hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(),
+                    exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(),
+                    tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(),
+                    drops: $(this).find(".monster-drop-list > .monster-drop").map(function () {
                       return $(this).text().trim();
                     }).get()
                   })
@@ -1433,23 +1446,23 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
               }
             })
             .catch(() => m.reply("Official Website can't be accessed!"));
-         } catch(err) {
+        } catch (err) {
           progress("❌");
           m.reply(lang.error(err));
           console.log(err);
-         }
         }
+      }
         break;
-        
-        case "mt":
-         url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
-          axios.get(url)
-            .then((response) => {
-              if (response.status === 200) {
-                const html = response.data;
-                const $ = cheerio.load(html);
-                mtNow = $(".news_border > a").attr("href");
-                axios.get(`https://${language == "eng" ? "en" : "id"}.toram.jp/` + mtNow)
+
+      case "mt":
+        url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
+        axios.get(url)
+          .then((response) => {
+            if (response.status === 200) {
+              const html = response.data;
+              const $ = cheerio.load(html);
+              mtNow = $(".news_border > a").attr("href");
+              axios.get(`https://${language == "eng" ? "en" : "id"}.toram.jp/` + mtNow)
                 .then((response) => {
                   if (response.status === 200) {
                     const html = response.data;
@@ -1462,15 +1475,15 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
                     m.reply("Official Website can't be accessed!");
                   }
                 })
-              }
-            })
-            .catch(() => m.reply("Official Website can't be accessed!"));
+            }
+          })
+          .catch(() => m.reply("Official Website can't be accessed!"));
         break
 
-       case "food":
-         client.sendText(
-           from,
-           `
+      case "food":
+        client.sendText(
+          from,
+          `
  *List EXP Food Buff*
  lv = Exp Needed
  1 = 1
@@ -1483,156 +1496,156 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
  8 = 381
  9 = 765
  10 = 1533`,
-           mek
-         );
-         break;
+          mek
+        );
+        break;
 
-       case "buff":
-          const buffData = fs.readFileSync("./buff.txt", "utf8");
-          client.sendText(from, buffData, mek);
-          break;
+      case "buff":
+        const buffData = fs.readFileSync("./buff.txt", "utf8");
+        client.sendText(from, buffData, mek);
+        break;
 
-       case "waterres":
-          client.sendText(from, `Anchovy Toast: Water Resistance\n\n2020606 (Biotin)`, mek);
-          break;
+      case "waterres":
+        client.sendText(from, `Anchovy Toast: Water Resistance\n\n2020606 (Biotin)`, mek);
+        break;
 
-       case "maxmp":
-          client.sendText(from, `Ankake Fried Rice: MaxMP\n\n1010216 (Salmonella)\n1011212 (Epiey!!)\n1020808 (ココルル)\n1027777 (Aka Shiro)\n2010510 (Ultimateわんわん)\n2020101 (Paracetamol)\n3017676 (yuxieyoko)\n3204544 (Amatsuka Kirin)\n4261111 (maruna)\n6053838 (朋@)\n7100720 (Juda)\n7150029 (ORCA29)`, mek);
-          break;
+      case "maxmp":
+        client.sendText(from, `Ankake Fried Rice: MaxMP\n\n1010216 (Salmonella)\n1011212 (Epiey!!)\n1020808 (ココルル)\n1027777 (Aka Shiro)\n2010510 (Ultimateわんわん)\n2020101 (Paracetamol)\n3017676 (yuxieyoko)\n3204544 (Amatsuka Kirin)\n4261111 (maruna)\n6053838 (朋@)\n7100720 (Juda)\n7150029 (ORCA29)`, mek);
+        break;
 
-       case "pres":
-          client.sendText(from, `Beef Burger: Physical Resistance\n\n1010081 (Kawasaki)\n1020001 (てんげん)\n1231776 (xxxdsmer)\n2020111 (L. casei)\n2020345 (- C H A R M Z ★)\n2200117 (しいぽ)\n4010051 (マグナ)\n6010701 (ramenEso)`, mek);
-          break;
+      case "pres":
+        client.sendText(from, `Beef Burger: Physical Resistance\n\n1010081 (Kawasaki)\n1020001 (てんげん)\n1231776 (xxxdsmer)\n2020111 (L. casei)\n2020345 (- C H A R M Z ★)\n2200117 (しいぽ)\n4010051 (マグナ)\n6010701 (ramenEso)`, mek);
+        break;
 
-       case "aggro":
-          client.sendText(from, `Beef Stew: +Aggro\nWhite Stew: -Aggro\nLevel 10\n1010207 (Pew_Pew)\n1130832 (咲愛")\n1140002 (Neaki)\n2020606 (Biotin)\n3053131 (DaoNaga)\n3158668 (VoidWolf)\n4220777 (春姫❤)\n5261002 (マンモスマン)\nLevel 9\n2010136 (S y n 彡)\nLevel 8\n3204544 (Amatsuka Kirin)`, mek);
-          break;
+      case "aggro":
+        client.sendText(from, `Beef Stew: +Aggro\nWhite Stew: -Aggro\nLevel 10\n1010207 (Pew_Pew)\n1130832 (咲愛")\n1140002 (Neaki)\n2020606 (Biotin)\n3053131 (DaoNaga)\n3158668 (VoidWolf)\n4220777 (春姫❤)\n5261002 (マンモスマン)\nLevel 9\n2010136 (S y n 彡)\nLevel 8\n3204544 (Amatsuka Kirin)`, mek);
+        break;
 
-       case "dtefire":
-          client.sendText(from, `Bolognese: DTE Fire\nLevel 9\n1121212 (RioCakra)\n3210106 (♧火のうた)\n7088807 (@Ray)\n9181111 (#Ryopin#)\nLevel 7\n8120000 (Lamlo)`, mek);
-          break;
+      case "dtefire":
+        client.sendText(from, `Bolognese: DTE Fire\nLevel 9\n1121212 (RioCakra)\n3210106 (♧火のうた)\n7088807 (@Ray)\n9181111 (#Ryopin#)\nLevel 7\n8120000 (Lamlo)`, mek);
+        break;
 
-       case "dtelight":
-          client.sendText(from, `Carbonara: DTE Light\nLevel 9\n1020345 (Death · Gun)\nLevel 8\n3111999 (Espur)`, mek);
-          break;
+      case "dtelight":
+        client.sendText(from, `Carbonara: DTE Light\nLevel 9\n1020345 (Death · Gun)\nLevel 8\n3111999 (Espur)`, mek);
+        break;
 
-       case "mbarrier":
-          client.sendText(from, `Cheese Cake: Magic Barrier\nLevel 8\n2020505 (Niacin (B3))`, mek);
-          break;
+      case "mbarrier":
+        client.sendText(from, `Cheese Cake: Magic Barrier\nLevel 8\n2020505 (Niacin (B3))`, mek);
+        break;
 
-       case "windres":
-          client.sendText(from, `Cheese Toast: Wind Resistance\nLevel 9\n2020222 (Himura Oza)`, mek);
-          break;
+      case "windres":
+        client.sendText(from, `Cheese Toast: Wind Resistance\nLevel 9\n2020222 (Himura Oza)`, mek);
+        break;
 
-       case "pbarrier":
-          client.sendText(from, `Chocolate Cake: Physical Barrier\nLevel 7\n2020111 (L. casei)`, mek);
-          break;
+      case "pbarrier":
+        client.sendText(from, `Chocolate Cake: Physical Barrier\nLevel 7\n2020111 (L. casei)`, mek);
+        break;
 
-       case "exp":
-          client.sendText(from, `Chocolate Parfait: EXP Gain\nLevel 4\n4040404 (S A R A)`, mek);
-          break;
+      case "exp":
+        client.sendText(from, `Chocolate Parfait: EXP Gain\nLevel 4\n4040404 (S A R A)`, mek);
+        break;
 
-       case "mres":
-          client.sendText(from, `Fish Burger: Magical Resistance\nLevel 10\n1111575 (Kiyanh)\n1181220 (梨花)\n2020505 (Niacin (B3))\n5200025 (たつ猫☆)\n6190007 (nanako♪)\n7010016 (Lian戀)\n8010016 (° Roulecca)`, mek);
-          break;
+      case "mres":
+        client.sendText(from, `Fish Burger: Magical Resistance\nLevel 10\n1111575 (Kiyanh)\n1181220 (梨花)\n2020505 (Niacin (B3))\n5200025 (たつ猫☆)\n6190007 (nanako♪)\n7010016 (Lian戀)\n8010016 (° Roulecca)`, mek);
+        break;
 
-       case "drop":
-          client.sendText(from, `Fruit Parfait: Drop Rate\nLevel 6\n4032850 (Aphrodite tiger)\n4196969 (★Shiro☆)\n4245922 (ふると系#)\n7057777 (t a s t y)`, mek);
-          break;
+      case "drop":
+        client.sendText(from, `Fruit Parfait: Drop Rate\nLevel 6\n4032850 (Aphrodite tiger)\n4196969 (★Shiro☆)\n4245922 (ふると系#)\n7057777 (t a s t y)`, mek);
+        break;
 
-       case "darkres":
-          client.sendText(from, `Garlic Toast: Dark Resistance\nLevel 9\n2020707 (Ascorbic Acid)\nLevel 4\n1010084 (あきら)`, mek);
-          break;
+      case "darkres":
+        client.sendText(from, `Garlic Toast: Dark Resistance\nLevel 9\n2020707 (Ascorbic Acid)\nLevel 4\n1010084 (あきら)`, mek);
+        break;
 
-       case "dteearth":
-          client.sendText(from, `Genovese: DTE Earth\nLevel 10\n2020202 (S A R A)\nLevel 9\n1011001 (S i r F a t h)\n4233333 (AlvinXxX)\n7100666 (itspaez)\nLevel 8\n1010216 (Salmonella)`, mek);
-          break;
+      case "dteearth":
+        client.sendText(from, `Genovese: DTE Earth\nLevel 10\n2020202 (S A R A)\nLevel 9\n1011001 (S i r F a t h)\n4233333 (AlvinXxX)\n7100666 (itspaez)\nLevel 8\n1010216 (Salmonella)`, mek);
+        break;
 
-       case "maxhp":
-          client.sendText(from, `Golden Stir Fry: MaxHP\nLevel 10\n1010032 (★空猫)\n1010084 (あきら)\n1010356 (らいむ03)\n1250015 (雪島いちご)\n2010228 (~シュシュ~)\n3090618 (snow618)\n3092003 (◁ Rikka❤ ▷)\n3191130 (Kail NW)\n3260178 (maluth)\n4262222 (mashilo)\n54154629 (シャルム)\n6010062 (G - Thunder (JPN))\n6199999 (garun1)`, mek);
-          break;
+      case "maxhp":
+        client.sendText(from, `Golden Stir Fry: MaxHP\nLevel 10\n1010032 (★空猫)\n1010084 (あきら)\n1010356 (らいむ03)\n1250015 (雪島いちご)\n2010228 (~シュシュ~)\n3090618 (snow618)\n3092003 (◁ Rikka❤ ▷)\n3191130 (Kail NW)\n3260178 (maluth)\n4262222 (mashilo)\n54154629 (シャルム)\n6010062 (G - Thunder (JPN))\n6199999 (garun1)`, mek);
+        break;
 
-       case "lightres":
-          client.sendText(from, `Honey Toast: Light Resistance\nLevel 9\n1023040 (Quinone (K))\nLevel 4\n4220777 (春姫❤)`, mek);
-          break;
+      case "lightres":
+        client.sendText(from, `Honey Toast: Light Resistance\nLevel 9\n1023040 (Quinone (K))\nLevel 4\n4220777 (春姫❤)`, mek);
+        break;
 
-       case "agi":
-          client.sendText(from, `Mentaiko Rice Ball: AGI\nLevel 10\n1220777 (サスケU^ェ^U)\n2020037 (Mana-T)\n4262222 (mashilo)\n7162029 (Player20)\nLevel 9\n1110033 (くりぼー☆)\n6269999 (酒呑)`, mek);
-          break;
+      case "agi":
+        client.sendText(from, `Mentaiko Rice Ball: AGI\nLevel 10\n1220777 (サスケU^ェ^U)\n2020037 (Mana-T)\n4262222 (mashilo)\n7162029 (Player20)\nLevel 9\n1110033 (くりぼー☆)\n6269999 (酒呑)`, mek);
+        break;
 
-       case "dtewind":
-          client.sendText(from, `Naporitan: DTE Wind\nLevel 10\n3030303 (S A R A)`, mek);
-          break;
+      case "dtewind":
+        client.sendText(from, `Naporitan: DTE Wind\nLevel 10\n3030303 (S A R A)`, mek);
+        break;
 
-       case "str":
-          client.sendText(from, `Okaka Rice Ball: STR\nLevel 10\n1010055 (Echidna@)\n1010968 (アジヤ)\n1011069 (A J I)\n1110033 (くりぼー☆)\n2017890 (みさき*)\n2020303 (Amanita)\n2180000 (Ryopin)\n4010024 (いぐるん)\n5261919 (ルージアル)\n7070777 (-Xen-)`, mek);
-          break;
+      case "str":
+        client.sendText(from, `Okaka Rice Ball: STR\nLevel 10\n1010055 (Echidna@)\n1010968 (アジヤ)\n1011069 (A J I)\n1110033 (くりぼー☆)\n2017890 (みさき*)\n2020303 (Amanita)\n2180000 (Ryopin)\n4010024 (いぐるん)\n5261919 (ルージアル)\n7070777 (-Xen-)`, mek);
+        break;
 
-       case "fracbarrier":
-          client.sendText(from, `Pancake: Fractional Brrier\nLevel 10\n1012222 (gaito123)\n4010024 (いぐるん)\n53010043 (昂 k09)\n53190003 (桜乃宮　千都)\n6150029 (29ψ ORCA)\nLevel 9\n1074649 (∮ ノマァ ∮)\n3190038 (☆カーミラ★)\n6010062 (G - Thunder (JPN))`, mek);
-          break;
+      case "fracbarrier":
+        client.sendText(from, `Pancake: Fractional Brrier\nLevel 10\n1012222 (gaito123)\n4010024 (いぐるん)\n53010043 (昂 k09)\n53190003 (桜乃宮　千都)\n6150029 (29ψ ORCA)\nLevel 9\n1074649 (∮ ノマァ ∮)\n3190038 (☆カーミラ★)\n6010062 (G - Thunder (JPN))`, mek);
+        break;
 
-       case "atk":
-          client.sendText(from, `Pizza Davola: ATK\nLevel 10\n1119876 (キヅツ)\n7170717 (Isuni☆)`, mek);
-          break;
+      case "atk":
+        client.sendText(from, `Pizza Davola: ATK\nLevel 10\n1119876 (キヅツ)\n7170717 (Isuni☆)`, mek);
+        break;
 
-       case "watk":
-          client.sendText(from, `Pizza Margherita: Weapon ATK\nLevel 10\n1010810 (夜トyato☆)\n1011122 (ベッキー)\n1011126 (ヾferyanz)\n1067777 (YusagKurumi)\n1180020 (Rouen)\n1200020 (ティーク)\n2020404 (HbA1c)\n3010777 (わん　•　にやー)\n3180777 (Reon∮)\n4170999 (おりぴ)\n4240242 (Nakean)\n5110834 (加寿葉)\n6010024 (『 G a p a p a 』)\n6130623 (雪羽)\n6269999 (酒呑)\n7050301 (Keith)`, mek);
-          break;
+      case "watk":
+        client.sendText(from, `Pizza Margherita: Weapon ATK\nLevel 10\n1010810 (夜トyato☆)\n1011122 (ベッキー)\n1011126 (ヾferyanz)\n1067777 (YusagKurumi)\n1180020 (Rouen)\n1200020 (ティーク)\n2020404 (HbA1c)\n3010777 (わん　•　にやー)\n3180777 (Reon∮)\n4170999 (おりぴ)\n4240242 (Nakean)\n5110834 (加寿葉)\n6010024 (『 G a p a p a 』)\n6130623 (雪羽)\n6269999 (酒呑)\n7050301 (Keith)`, mek);
+        break;
 
-       case "earthres":
-          client.sendText(from, `Pudding Toast: Earth Resistance\nLevel 9\n6150029 (29ψ ORCA)`, mek);
-          break;
+      case "earthres":
+        client.sendText(from, `Pudding Toast: Earth Resistance\nLevel 9\n6150029 (29ψ ORCA)`, mek);
+        break;
 
-       case "dex":
-          client.sendText(from, `Salmon Rice Ball: DEX\nLevel 10\n1010058 (· H20 ·)\n1010106 (Yoku')\n1010261 (イグルー)\n1074649 (∮ ノマァ ∮)\n1112220 (Kirara♥)\n2020222 (Himura Oza)\n3111999 (Espur)\n3220777 (☆エトワール☆)\n7011001 (【MB】 VolT‾へ凸)\n7140777 (Aurianne)`, mek);
-          break;
+      case "dex":
+        client.sendText(from, `Salmon Rice Ball: DEX\nLevel 10\n1010058 (· H20 ·)\n1010106 (Yoku')\n1010261 (イグルー)\n1074649 (∮ ノマァ ∮)\n1112220 (Kirara♥)\n2020222 (Himura Oza)\n3111999 (Espur)\n3220777 (☆エトワール☆)\n7011001 (【MB】 VolT‾へ凸)\n7140777 (Aurianne)`, mek);
+        break;
 
-       case "matk":
-          client.sendText(from, `Seafood Pizza: MATK\nLevel 10\n1024649 (BUFFERIN)`, mek);
-          break;
+      case "matk":
+        client.sendText(from, `Seafood Pizza: MATK\nLevel 10\n1024649 (BUFFERIN)`, mek);
+        break;
 
-       case "dodge":
-          client.sendText(from, `Shio Ramen: Dodge\nLevel 7\n2020808 (Ectoplasm)`, mek);
-          break;
+      case "dodge":
+        client.sendText(from, `Shio Ramen: Dodge\nLevel 7\n2020808 (Ectoplasm)`, mek);
+        break;
 
-       case "acc":
-          client.sendText(from, `Shoyu Ramen: Accuracy\nLevel 10\n2010308 (@alpha)\n4261111 (maruna)\nLevel 9\n1181220 (梨花)\n7160030 (サーベイ)`, mek);
-          break;
+      case "acc":
+        client.sendText(from, `Shoyu Ramen: Accuracy\nLevel 10\n2010308 (@alpha)\n4261111 (maruna)\nLevel 9\n1181220 (梨花)\n7160030 (サーベイ)`, mek);
+        break;
 
-       case "dtedark":
-          client.sendText(from, `Squid Ink Pasta: DTE Dark\nLevel 10\n1190020 (チュレ @迷路屋)\n2130776 (サトリール)\n6116116 ((⭗△⭗))\nLevel 9\n5010092 (Who's Wo)`, mek);
-          break;
+      case "dtedark":
+        client.sendText(from, `Squid Ink Pasta: DTE Dark\nLevel 10\n1190020 (チュレ @迷路屋)\n2130776 (サトリール)\n6116116 ((⭗△⭗))\nLevel 9\n5010092 (Who's Wo)`, mek);
+        break;
 
-       case "fireres":
-          client.sendText(from, `Sunny Side Up Toast: Fire Resistance\nLevel 9\n2020101 (Paracetamol)`, mek);
-          break;
+      case "fireres":
+        client.sendText(from, `Sunny Side Up Toast: Fire Resistance\nLevel 9\n2020101 (Paracetamol)`, mek);
+        break;
 
-       case "cr":
-          client.sendText(from, `Takoyaki: Critical Rate\nLevel 10\n1037777 (Hati Hervor)\n1100000 (I n u G a m i •)\n1181140 (らんな)\n2022020 (#SAM#)\n3010777 (わん　•　にやー)\n3030159 (Lauryn_)\n3149696 (NoiR)\n4010000 (俺が青娥様)\n5119105 (- Kanna -)\n6021230 (☆Ｐｉｎａ☆)\n7162029 (Player20)`, mek);
-          break;
+      case "cr":
+        client.sendText(from, `Takoyaki: Critical Rate\nLevel 10\n1037777 (Hati Hervor)\n1100000 (I n u G a m i •)\n1181140 (らんな)\n2022020 (#SAM#)\n3010777 (わん　•　にやー)\n3030159 (Lauryn_)\n3149696 (NoiR)\n4010000 (俺が青娥様)\n5119105 (- Kanna -)\n6021230 (☆Ｐｉｎａ☆)\n7162029 (Player20)`, mek);
+        break;
 
-       case "vit":
-          client.sendText(from, `Tuna Mayo Rice Ball: VIT\nLevel 10\n4032850 (Aphrodite tiger)`, mek);
-          break;
+      case "vit":
+        client.sendText(from, `Tuna Mayo Rice Ball: VIT\nLevel 10\n4032850 (Aphrodite tiger)`, mek);
+        break;
 
-       case "int":
-          client.sendText(from, `Umeboshi Rice Ball: INT\nLevel 10\n1010140 (かがり)\n1010498 (桃夏)\n1032222 (Shyturu)\n1047777 (~Zeref~)\n2020707 (Ascorbic Acid)\n5190001 (シェリア.)\n6010701 (ramenEso)\n7130001 (@みげる)`, mek);
-          break;
+      case "int":
+        client.sendText(from, `Umeboshi Rice Ball: INT\nLevel 10\n1010140 (かがり)\n1010498 (桃夏)\n1032222 (Shyturu)\n1047777 (~Zeref~)\n2020707 (Ascorbic Acid)\n5190001 (シェリア.)\n6010701 (ramenEso)\n7130001 (@みげる)`, mek);
+        break;
 
-       case "neutralres":
-          client.sendText(from, `Vanilla Toast: Neutral Resistance\nLevel 9\n2020303 (Amanita)`, mek);
-          break;
+      case "neutralres":
+        client.sendText(from, `Vanilla Toast: Neutral Resistance\nLevel 9\n2020303 (Amanita)`, mek);
+        break;
 
-       case "dtewater":
-          client.sendText(from, `Vongole: DTE Water\nLevel 10\n1110111 (S A R A)\n3210100 (♧水のうた)\n7150030 (ファレ)\nLevel 9\n7011001 (【MB】 VolT‾へ凸)`, mek);
-          break;
+      case "dtewater":
+        client.sendText(from, `Vongole: DTE Water\nLevel 10\n1110111 (S A R A)\n3210100 (♧水のうた)\n7150030 (ファレ)\nLevel 9\n7011001 (【MB】 VolT‾へ凸)`, mek);
+        break;
 
-       case "ampr":
-          client.sendText(from, `Yakisoba: AMPR\nLevel 10\n1010017 (평온한날)\n1010596 (冷Hiro☆)\n1011010 (0 kara)\n1023040 (Quinone (K))\n1047777 (~Zeref~)\n1111000 (カンコウ)\n3020777 (白最中)\n3201003 (『 K E R R Y 』)\n4040404 (S A R A)\n4206969 (xenesis5)\n4233333 (AlvinXxX)\n5236969 (黒澤タイア)\n7069420 (👉 * Garu * 👈)\n7088807 (@Ray)\n7220777 (Veny)\n8120000 (Lamlo)`, mek);
-          break;
+      case "ampr":
+        client.sendText(from, `Yakisoba: AMPR\nLevel 10\n1010017 (평온한날)\n1010596 (冷Hiro☆)\n1011010 (0 kara)\n1023040 (Quinone (K))\n1047777 (~Zeref~)\n1111000 (カンコウ)\n3020777 (白最中)\n3201003 (『 K E R R Y 』)\n4040404 (S A R A)\n4206969 (xenesis5)\n4233333 (AlvinXxX)\n5236969 (黒澤タイア)\n7069420 (👉 * Garu * 👈)\n7088807 (@Ray)\n7220777 (Veny)\n8120000 (Lamlo)`, mek);
+        break;
 
-       case "mqmats":
+      case "mqmats":
         mq = lang.mq();
         client.sendText(from, mq, mek);
         break;
@@ -1737,9 +1750,8 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
             anu = await imgbb(options);
 
             teks = `${anu.display_url}`;
-            anu1 = `https://api.memegen.link/images/custom/${
-              text.split("|")[1] ? top : " "
-            }/${text.split("|")[1] ? bottom : top}.png?background=${teks}`;
+            anu1 = `https://api.memegen.link/images/custom/${text.split("|")[1] ? top : " "
+              }/${text.split("|")[1] ? bottom : top}.png?background=${teks}`;
             encmedia = await client.sendImageAsSticker(
               from,
               `${anu1}`,
@@ -1833,9 +1845,8 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
           progress("⏳");
           res = await axios({
             method: "get",
-            url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=${
-              text == "nsfw" ? "1" : "0"
-            }`,
+            url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=${text == "nsfw" ? "1" : "0"
+              }`,
             headers: {
               DNT: 1,
               "Upgrade-Insecure-Request": 1,
@@ -1922,31 +1933,23 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
           time = `${day} ${month} ${year} ${hour}:${minute}:${second}`;
           return time;
         };
-        infoGroup = `*- Group Metadata Info -*\n\n*Group ID:* ${
-          groupMetadata.id
-        }\n*Group Name:* ${groupName}\n*Name Since:* ${timeUnix(
-          groupMetadata.subjectTime
-        )}\n*Group Creation:* ${timeUnix(
-          groupMetadata.creation
-        )}\n*Owner Group:* ${
-          groupMetadata.owner !== undefined
+        infoGroup = `*- Group Metadata Info -*\n\n*Group ID:* ${groupMetadata.id
+          }\n*Group Name:* ${groupName}\n*Name Since:* ${timeUnix(
+            groupMetadata.subjectTime
+          )}\n*Group Creation:* ${timeUnix(
+            groupMetadata.creation
+          )}\n*Owner Group:* ${groupMetadata.owner !== undefined
             ? client.getName(groupMetadata.owner)
             : "-"
-        }\n*Members:* ${groupMetadata.size} member.\n*Join Approval:* ${
-          groupMetadata.joinApprovalMode ? "Yes" : "No"
-        }.\n*Member Add Mode:* ${
-          groupMetadata.memberAddMode ? "Yes" : "No"
-        }.\n*Antilink:* ${
-          global.db.groups[groupMetadata.id]?.antilink ? "Yes" : "No"
-        }\n*Antilinkgc:* ${
-          global.db.groups[groupMetadata.id]?.antilinkgc ? "Yes" : "No"
-        }.\n*Bot open:* ${
-          global.db.groups[groupMetadata.id]?.open ? "Yes" : "No"
-        }.\n*Language: ${language == "eng" ? "English" : "Indonesia"}*\n*Disappearing Message:* ${
-          groupMetadata.ephemeralDuration !== undefined
+          }\n*Members:* ${groupMetadata.size} member.\n*Join Approval:* ${groupMetadata.joinApprovalMode ? "Yes" : "No"
+          }.\n*Member Add Mode:* ${groupMetadata.memberAddMode ? "Yes" : "No"
+          }.\n*Antilink:* ${global.db.groups[groupMetadata.id]?.antilink ? "Yes" : "No"
+          }\n*Antilinkgc:* ${global.db.groups[groupMetadata.id]?.antilinkgc ? "Yes" : "No"
+          }.\n*Bot open:* ${global.db.groups[groupMetadata.id]?.open ? "Yes" : "No"
+          }.\n*Language: ${language == "eng" ? "English" : "Indonesia"}*\n*Disappearing Message:* ${groupMetadata.ephemeralDuration !== undefined
             ? groupMetadata.ephemeralDuration / (24 * 60 * 60) + " Days"
             : "OFF"
-        }.\n*Description:*\n${groupMetadata.desc}`;
+          }.\n*Description:*\n${groupMetadata.desc}`;
         reply(infoGroup);
         break;
 
@@ -2081,28 +2084,28 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
 
         break;
 
-        case "welcome":
+      case "welcome":
         if (!text) return reply("ON/OFF?");
         if (!m.isGroup) return reply(lang.onGroup());
         if (!isGroupAdmins) return reply(lang.onAdmin());
-         if (text.toLowerCase() === "on") {
+        if (text.toLowerCase() === "on") {
           if (global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already on!");
-          if(!global.db.groups[groupMetadata.id]) {
+          if (!global.db.groups[groupMetadata.id]) {
             global.db.groups[groupMetadata.id] = { welcome: true };
           } else {
             global.db.groups[groupMetadata.id].welcome = true;
           }
           reply("Welcome message is now ON!");
-         }
-          if (text.toLowerCase() === "off") {
-            if (!global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already off!");
-            if(!global.db.groups[groupMetadata.id]) {
-              global.db.groups[groupMetadata.id] = { welcome: false };
-            } else {
-              global.db.groups[groupMetadata.id].welcome = false;
-            }
-            reply("Welcome message is now OFF!");
+        }
+        if (text.toLowerCase() === "off") {
+          if (!global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already off!");
+          if (!global.db.groups[groupMetadata.id]) {
+            global.db.groups[groupMetadata.id] = { welcome: false };
+          } else {
+            global.db.groups[groupMetadata.id].welcome = false;
           }
+          reply("Welcome message is now OFF!");
+        }
         break;
 
       case "antilink":
@@ -2262,9 +2265,9 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
   *Name:* ${global.botName}.
   *Bio:* ${bio[0].status.status}.
   *last update Bio:* ${moment
-    .utc(bio[0].status.setAt)
-    .tz("Asia/Jakarta")
-    .format("YYYY-MM-DD HH:mm:ss")}.
+            .utc(bio[0].status.setAt)
+            .tz("Asia/Jakarta")
+            .format("YYYY-MM-DD HH:mm:ss")}.
   *Owner:* ${global.ownerName}.
   *Contact:* wa.me/${global.owner[0]}
   *Private Usage:* ${global.db.private_usage}.
@@ -2272,54 +2275,52 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
   *Total usage:* ${global.db.private_usage + global.db.private_usage}.
   *Total user:* ${global.db.user.length}.
   
-  Kecepatan Respon ${latensi.toFixed(4)} _Second_ \n ${
-          oldd - neww
-        } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
+  Kecepatan Respon ${latensi.toFixed(4)} _Second_ \n ${oldd - neww
+          } _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
   
   💻 Info Server
   RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
   
   _NodeJS Memory Usage_
   ${Object.keys(used)
-    .map(
-      (key, _, arr) =>
-        `${key.padEnd(Math.max(...arr.map((v) => v.length)), " ")}: ${formatp(
-          used[key]
-        )}`
-    )
-    .join("\n")}
+            .map(
+              (key, _, arr) =>
+                `${key.padEnd(Math.max(...arr.map((v) => v.length)), " ")}: ${formatp(
+                  used[key]
+                )}`
+            )
+            .join("\n")}
   
-  ${
-    cpus[0]
-      ? `_Total CPU Usage_
+  ${cpus[0]
+            ? `_Total CPU Usage_
   ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times)
-          .map(
-            (type) =>
-              `- *${(type + "*").padEnd(6)}: ${(
-                (100 * cpu.times[type]) /
-                cpu.total
-              ).toFixed(2)}%`
-          )
-          .join("\n")}
+              .map(
+                (type) =>
+                  `- *${(type + "*").padEnd(6)}: ${(
+                    (100 * cpu.times[type]) /
+                    cpu.total
+                  ).toFixed(2)}%`
+              )
+              .join("\n")}
   _CPU Core(s) Usage (${cpus.length} Core CPU)_
   ${cpus
-    .map(
-      (cpu, i) =>
-        `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(
-          cpu.times
-        )
-          .map(
-            (type) =>
-              `- *${(type + "*").padEnd(6)}: ${(
-                (100 * cpu.times[type]) /
-                cpu.total
-              ).toFixed(2)}%`
-          )
-          .join("\n")}`
-    )
-    .join("\n\n")}`
-      : ""
-  }
+              .map(
+                (cpu, i) =>
+                  `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(
+                    cpu.times
+                  )
+                    .map(
+                      (type) =>
+                        `- *${(type + "*").padEnd(6)}: ${(
+                          (100 * cpu.times[type]) /
+                          cpu.total
+                        ).toFixed(2)}%`
+                    )
+                    .join("\n")}`
+              )
+              .join("\n\n")}`
+            : ""
+          }
                   `.trim();
         reply(respon);
 
