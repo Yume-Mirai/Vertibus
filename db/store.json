@@ -75,6 +75,14 @@
     "174466504110088@lid": {
       "id": "174466504110088@lid",
       "name": "N"
+    },
+    "219438552994024@lid": {
+      "id": "219438552994024@lid",
+      "name": "Nurhida"
+    },
+    "118236272177252@lid": {
+      "id": "118236272177252@lid",
+      "name": "Mizuha"
     }
   },
   "presences": {
@@ -114,6 +122,12 @@
       },
       "174466504110088@lid": {
         "lastKnownPresence": "available"
+      },
+      "219438552994024@lid": {
+        "lastKnownPresence": "composing"
+      },
+      "118236272177252@lid": {
+        "lastKnownPresence": "composing"
       }
     },
     "120363284904551089@g.us": {
@@ -2006,6 +2020,72 @@
           },
           "messageTimestamp": "1779928093",
           "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0E499E2AB6DE586FE81"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779928720",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "AC476D3DC8270CB30263B825454E4D4F"
+          },
+          "messageTimestamp": 1779928734,
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "protocolMessage": {
+              "type": "PEER_DATA_OPERATION_REQUEST_RESPONSE_MESSAGE",
+              "peerDataOperationRequestResponseMessage": {
+                "peerDataOperationRequestType": "PLACEHOLDER_MESSAGE_RESEND",
+                "stanzaId": "3EB0238545481A091680BC",
+                "peerDataOperationResult": [
+                  {
+                    "mediaUploadResult": "SUCCESS",
+                    "placeholderMessageResendResponse": {
+                      "webMessageInfoBytes": "CjkKEzEyNjgyMjQxNTA5ODAzNUBsaWQQARogQUM4QTNCMzk1OUFFQjJDMzVDODQ3OUQ2MDcyNzczN0USWzI0CgUubWVudVAAigEl6gESY2xpY2tfdG9fY2hhdF9saW5r8gEId2hhdHNhcHD4Aeq4B+gBAJoCIhogEXLQPUslyXvt+btUIX5xr4yBZsqsEL8namXI7SNTsM4Yl53e0AYgBDCYnd7QBooDIBFy0D1LJcl77fm7VCF+ca+MgWbKrBC/J2plyO0jU7DOmgMcNjI4NTE4NzIzODcxNkBzLndoYXRzYXBwLm5ldIgEAA=="
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "id": "AC476D3DC8270CB30263B825454E4D4F",
+          "isBaileys": false,
+          "chat": "6285187238716@s.whatsapp.net",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "protocolMessage",
+          "msg": {
+            "type": "PEER_DATA_OPERATION_REQUEST_RESPONSE_MESSAGE",
+            "peerDataOperationRequestResponseMessage": {
+              "peerDataOperationRequestType": "PLACEHOLDER_MESSAGE_RESEND",
+              "stanzaId": "3EB0238545481A091680BC",
+              "peerDataOperationResult": [
+                {
+                  "mediaUploadResult": "SUCCESS",
+                  "placeholderMessageResendResponse": {
+                    "webMessageInfoBytes": "CjkKEzEyNjgyMjQxNTA5ODAzNUBsaWQQARogQUM4QTNCMzk1OUFFQjJDMzVDODQ3OUQ2MDcyNzczN0USWzI0CgUubWVudVAAigEl6gESY2xpY2tfdG9fY2hhdF9saW5r8gEId2hhdHNhcHD4Aeq4B+gBAJoCIhogEXLQPUslyXvt+btUIX5xr4yBZsqsEL8namXI7SNTsM4Yl53e0AYgBDCYnd7QBooDIBFy0D1LJcl77fm7VCF+ca+MgWbKrBC/J2plyO0jU7DOmgMcNjI4NTE4NzIzODcxNkBzLndoYXRzYXBwLm5ldIgEAA=="
+                  }
+                }
+              ]
+            }
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
         }
       ],
       "keyId": {}
@@ -16078,6 +16158,1216 @@
           "quoted": null,
           "mentionedJid": [],
           "text": "Iya jir ku aja baru liat lipe strem karma baru tau kalo ada kode"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC63B1722508A78D75A7A0356B5C0A5F",
+            "participant": "219438552994024@lid",
+            "participantPn": "6281511115841@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779928692,
+          "pushName": "Nurhida",
+          "broadcast": false,
+          "message": {
+            "conversation": "Mt jam berapa bng",
+            "senderKeyDistributionMessage": {
+              "groupId": "120363406658263857@g.us",
+              "axolotlSenderKeyDistributionMessage": "MwjN//ApEAAaIJHkb0rV4ySbgpn3uOaQxpw93LlvpjPF/yMe9TYKsBN+IiEFCob8BVQo/M5cG7Z9BXU3AjfwEOoTePYnGtcGDubM9TQ="
+            },
+            "messageContextInfo": {
+              "messageSecret": "NVN93vLzeLZAFHqNyBSTA6O6mayMiMdtJGjlfNtJRk0="
+            }
+          },
+          "id": "AC63B1722508A78D75A7A0356B5C0A5F",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "219438552994024@lid",
+          "participant": "219438552994024@lid",
+          "mtype": "conversation",
+          "msg": "Mt jam berapa bng",
+          "body": "Mt jam berapa bng",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Mt jam berapa bng"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC3424A0EF27612B6E46A1D58EA3E0BA",
+            "participant": "174466504110088@lid",
+            "participantPn": "62895332462700@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779929876,
+          "pushName": "N",
+          "broadcast": false,
+          "message": {
+            "conversation": "Tag semua ga sih kalau ada adv gratis gitu",
+            "messageContextInfo": {
+              "messageSecret": "pxLTAHW46ngn5szYw+JVyIbf6uyzDy4E75DlgUyZhcg="
+            }
+          },
+          "id": "AC3424A0EF27612B6E46A1D58EA3E0BA",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "174466504110088@lid",
+          "participant": "174466504110088@lid",
+          "mtype": "conversation",
+          "msg": "Tag semua ga sih kalau ada adv gratis gitu",
+          "body": "Tag semua ga sih kalau ada adv gratis gitu",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Tag semua ga sih kalau ada adv gratis gitu"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC77D1CD907D2E9AF7C9E4EF664E0E5C",
+            "participant": "174466504110088@lid",
+            "participantPn": "62895332462700@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779929891,
+          "pushName": "N",
+          "broadcast": false,
+          "message": {
+            "conversation": "Advku tinggal 3",
+            "messageContextInfo": {
+              "messageSecret": "mSOTopasZybuOB98X0vnL52QBsBj1A5GV+HWRw+CJRc="
+            }
+          },
+          "id": "AC77D1CD907D2E9AF7C9E4EF664E0E5C",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "174466504110088@lid",
+          "participant": "174466504110088@lid",
+          "mtype": "conversation",
+          "msg": "Advku tinggal 3",
+          "body": "Advku tinggal 3",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Advku tinggal 3"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACD796759C8F2FE530282CD76364110E",
+            "participant": "174466504110088@lid",
+            "participantPn": "62895332462700@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779929894,
+          "pushName": "N",
+          "broadcast": false,
+          "message": {
+            "stickerMessage": {
+              "url": "https://mmg.whatsapp.net/v/t62.15575-24/651914416_1423811583122883_9113309069477629551_n.enc?ccb=11-4&oh=01_Q5Aa4gHwNOB_pTnGHvq_pFGlZ4X48FY0-NikAMgRtFMqO0taBg&oe=6A3F0FB5&_nc_sid=5e03e0&mms3=true",
+              "fileSha256": "dkwlMMoWtHzC+GdLfNR6dCBMkORYMJa5Ioy22j2D/iI=",
+              "fileEncSha256": "E6H3Qk4U0qJQTo5DKpth74y3VYSLGK/EvGg6N1k7YzY=",
+              "mediaKey": "lzBmfU6blKosAfldo85R/BvGy87gQJZxQAj1lnRKnkA=",
+              "mimetype": "image/webp",
+              "height": 64,
+              "width": 64,
+              "directPath": "/v/t62.15575-24/651914416_1423811583122883_9113309069477629551_n.enc?ccb=11-4&oh=01_Q5Aa4gHwNOB_pTnGHvq_pFGlZ4X48FY0-NikAMgRtFMqO0taBg&oe=6A3F0FB5&_nc_sid=5e03e0",
+              "fileLength": "9986",
+              "mediaKeyTimestamp": "1779757828",
+              "isAnimated": false,
+              "stickerSentTs": "1779929893698",
+              "isAvatar": false,
+              "isAiSticker": false,
+              "isLottie": false
+            },
+            "messageContextInfo": {
+              "messageSecret": "AgcS9foFJ1wZJt3FxQhrtMdZS8aRC8PBvOpbtAPbutk="
+            }
+          },
+          "id": "ACD796759C8F2FE530282CD76364110E",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "174466504110088@lid",
+          "participant": "174466504110088@lid",
+          "mtype": "stickerMessage",
+          "msg": {
+            "url": "https://mmg.whatsapp.net/v/t62.15575-24/651914416_1423811583122883_9113309069477629551_n.enc?ccb=11-4&oh=01_Q5Aa4gHwNOB_pTnGHvq_pFGlZ4X48FY0-NikAMgRtFMqO0taBg&oe=6A3F0FB5&_nc_sid=5e03e0&mms3=true",
+            "fileSha256": "dkwlMMoWtHzC+GdLfNR6dCBMkORYMJa5Ioy22j2D/iI=",
+            "fileEncSha256": "E6H3Qk4U0qJQTo5DKpth74y3VYSLGK/EvGg6N1k7YzY=",
+            "mediaKey": "lzBmfU6blKosAfldo85R/BvGy87gQJZxQAj1lnRKnkA=",
+            "mimetype": "image/webp",
+            "height": 64,
+            "width": 64,
+            "directPath": "/v/t62.15575-24/651914416_1423811583122883_9113309069477629551_n.enc?ccb=11-4&oh=01_Q5Aa4gHwNOB_pTnGHvq_pFGlZ4X48FY0-NikAMgRtFMqO0taBg&oe=6A3F0FB5&_nc_sid=5e03e0",
+            "fileLength": "9986",
+            "mediaKeyTimestamp": "1779757828",
+            "isAnimated": false,
+            "stickerSentTs": "1779929893698",
+            "isAvatar": false,
+            "isAiSticker": false,
+            "isLottie": false
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACCE5E1826173D8905DAD61785BE6669",
+            "participant": "118236272177252@lid",
+            "participantPn": "62895619361692@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779929925,
+          "pushName": "Mizuha",
+          "broadcast": false,
+          "message": {
+            "senderKeyDistributionMessage": {
+              "groupId": "120363406658263857@g.us",
+              "axolotlSenderKeyDistributionMessage": "MwiQvqSsAxAMGiCA1jDQVKOD9Ec+wav4h/Z9tQTelVFB0sfjtGe5X3y9XiIhBb4WqClDAFnwZ+I3Cvc5zzD2sWPE5SvBELNZp1B6uREB"
+            },
+            "extendedTextMessage": {
+              "text": "My bini gueh march 7th",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC260F50DC2FD1DCE5B1234CE790E93C",
+                "participant": "266344276746322@lid",
+                "quotedMessage": {
+                  "stickerMessage": {
+                    "url": "https://mmg.whatsapp.net/v/t62.15575-24/708332822_871427165269672_5268928435631074118_n.enc?ccb=11-4&oh=01_Q5Aa4gH8K6exNFjBlR9PmHhZoc3ogyhO9g4SHBzOZOUyL8Aojw&oe=6A3EC616&_nc_sid=5e03e0&mms3=true",
+                    "fileSha256": "cvBpg3PKk0ZwzcKoaGq5lIKCMDuobdAhiWfJXCKdHLU=",
+                    "fileEncSha256": "fZpX9Hx9le0jGV0Ltt6uF1GhNCguIZ1X8QJIgOIDQos=",
+                    "mediaKey": "KerO8Ha1LDvYfDi8CGKuh8IYCIFjmrRoiu9pZ3YrIpw=",
+                    "mimetype": "image/webp",
+                    "height": 64,
+                    "width": 64,
+                    "directPath": "/v/t62.15575-24/708332822_871427165269672_5268928435631074118_n.enc?ccb=11-4&oh=01_Q5Aa4gH8K6exNFjBlR9PmHhZoc3ogyhO9g4SHBzOZOUyL8Aojw&oe=6A3EC616&_nc_sid=5e03e0",
+                    "fileLength": "88308",
+                    "mediaKeyTimestamp": "1779814611",
+                    "isAnimated": false,
+                    "stickerSentTs": "1779919901000",
+                    "isAvatar": false,
+                    "isAiSticker": false,
+                    "isLottie": false
+                  }
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "voprEa2iayZqC3VTopjhcF9DlBweHKe6b2DQPM6ejns="
+            }
+          },
+          "id": "ACCE5E1826173D8905DAD61785BE6669",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "118236272177252@lid",
+          "participant": "118236272177252@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "My bini gueh march 7th",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC260F50DC2FD1DCE5B1234CE790E93C",
+              "participant": "266344276746322@lid",
+              "quotedMessage": {
+                "stickerMessage": {
+                  "url": "https://mmg.whatsapp.net/v/t62.15575-24/708332822_871427165269672_5268928435631074118_n.enc?ccb=11-4&oh=01_Q5Aa4gH8K6exNFjBlR9PmHhZoc3ogyhO9g4SHBzOZOUyL8Aojw&oe=6A3EC616&_nc_sid=5e03e0&mms3=true",
+                  "fileSha256": "cvBpg3PKk0ZwzcKoaGq5lIKCMDuobdAhiWfJXCKdHLU=",
+                  "fileEncSha256": "fZpX9Hx9le0jGV0Ltt6uF1GhNCguIZ1X8QJIgOIDQos=",
+                  "mediaKey": "KerO8Ha1LDvYfDi8CGKuh8IYCIFjmrRoiu9pZ3YrIpw=",
+                  "mimetype": "image/webp",
+                  "height": 64,
+                  "width": 64,
+                  "directPath": "/v/t62.15575-24/708332822_871427165269672_5268928435631074118_n.enc?ccb=11-4&oh=01_Q5Aa4gH8K6exNFjBlR9PmHhZoc3ogyhO9g4SHBzOZOUyL8Aojw&oe=6A3EC616&_nc_sid=5e03e0",
+                  "fileLength": "88308",
+                  "mediaKeyTimestamp": "1779814611",
+                  "isAnimated": false,
+                  "stickerSentTs": "1779919901000",
+                  "isAvatar": false,
+                  "isAiSticker": false,
+                  "isLottie": false
+                }
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "My bini gueh march 7th",
+          "quoted": {
+            "url": "https://mmg.whatsapp.net/v/t62.15575-24/708332822_871427165269672_5268928435631074118_n.enc?ccb=11-4&oh=01_Q5Aa4gH8K6exNFjBlR9PmHhZoc3ogyhO9g4SHBzOZOUyL8Aojw&oe=6A3EC616&_nc_sid=5e03e0&mms3=true",
+            "fileSha256": "cvBpg3PKk0ZwzcKoaGq5lIKCMDuobdAhiWfJXCKdHLU=",
+            "fileEncSha256": "fZpX9Hx9le0jGV0Ltt6uF1GhNCguIZ1X8QJIgOIDQos=",
+            "mediaKey": "KerO8Ha1LDvYfDi8CGKuh8IYCIFjmrRoiu9pZ3YrIpw=",
+            "mimetype": "image/webp",
+            "height": 64,
+            "width": 64,
+            "directPath": "/v/t62.15575-24/708332822_871427165269672_5268928435631074118_n.enc?ccb=11-4&oh=01_Q5Aa4gH8K6exNFjBlR9PmHhZoc3ogyhO9g4SHBzOZOUyL8Aojw&oe=6A3EC616&_nc_sid=5e03e0",
+            "fileLength": "88308",
+            "mediaKeyTimestamp": "1779814611",
+            "isAnimated": false,
+            "stickerSentTs": "1779919901000",
+            "isAvatar": false,
+            "isAiSticker": false,
+            "isLottie": false
+          },
+          "mentionedJid": [],
+          "text": "My bini gueh march 7th"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC3B01B6C4F5B3EC62792D4FE09880B8",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779930098,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "conversation": ".mq 310|0",
+            "senderKeyDistributionMessage": {
+              "groupId": "120363406658263857@g.us",
+              "axolotlSenderKeyDistributionMessage": "MwjepM/xARAdGiBKhS3U9I8twO2DLXKKfI83Kawj+V2G7j8pP9x9USUqXSIhBTRP8qLVhWsLpMgVLQiBTIpXGa28+399QUfgwHj/3jwv"
+            },
+            "messageContextInfo": {
+              "messageSecret": "X0940ckIQFRhdvv947k+73u5BY9mfJIJj5VBHPt/lhM="
+            }
+          },
+          "id": "AC3B01B6C4F5B3EC62792D4FE09880B8",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "conversation",
+          "msg": ".mq 310|0",
+          "body": ".mq 310|0",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".mq 310|0"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC2ACC5293729B6194EFBE484A23F88C",
+            "participant": "118236272177252@lid",
+            "participantPn": "62895619361692@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930122,
+          "pushName": "Mizuha",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "0TbrKkJbNlCkCWPc+mYMqujyYsuuNZKSIu4Oi8NIMW0="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS36: Parching Dark Mirror",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".mq 310|0 eps36\",\"description\":\"Boss: Zolban\"}"
+              },
+              "contextInfo": {
+                "stanzaId": "3EB0AD1230CC01E99F8380",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "buttonsMessage": {
+                    "text": "Select where MQ to *Start*",
+                    "contentText": "Select where MQ to *Start*",
+                    "footerText": "_*- Vertibus🔹 -*_",
+                    "contextInfo": {
+                      "mentionedJid": [
+                        "126822415098035@lid"
+                      ],
+                      "forwardingScore": 300,
+                      "isForwarded": true
+                    },
+                    "buttons": [
+                      {
+                        "buttonId": "list_button",
+                        "buttonText": {
+                          "displayText": "List MQ"
+                        },
+                        "type": "NATIVE_FLOW"
+                      }
+                    ],
+                    "headerType": "EMPTY"
+                  }
+                }
+              }
+            }
+          },
+          "id": "AC2ACC5293729B6194EFBE484A23F88C",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "118236272177252@lid",
+          "participant": "118236272177252@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS36: Parching Dark Mirror",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".mq 310|0 eps36\",\"description\":\"Boss: Zolban\"}"
+            },
+            "contextInfo": {
+              "stanzaId": "3EB0AD1230CC01E99F8380",
+              "participant": "126822415098035@lid",
+              "quotedMessage": {
+                "buttonsMessage": {
+                  "text": "Select where MQ to *Start*",
+                  "contentText": "Select where MQ to *Start*",
+                  "footerText": "_*- Vertibus🔹 -*_",
+                  "contextInfo": {
+                    "mentionedJid": [
+                      "126822415098035@lid"
+                    ],
+                    "forwardingScore": 300,
+                    "isForwarded": true
+                  },
+                  "buttons": [
+                    {
+                      "buttonId": "list_button",
+                      "buttonText": {
+                        "displayText": "List MQ"
+                      },
+                      "type": "NATIVE_FLOW"
+                    }
+                  ],
+                  "headerType": "EMPTY"
+                }
+              }
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *Start*",
+            "contentText": "Select where MQ to *Start*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "126822415098035@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC3CB80A08378252ED39FDE37B50E5F9",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779930122,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "eLNLKHgXAwwT18+R7NBD5B6voQiFyQIiOGC905w0Sg4="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS120: Ark Crisis",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".mq 310|0 eps120\",\"description\":\"Boss: Bakuzan\"}"
+              },
+              "contextInfo": {
+                "stanzaId": "3EB0AD1230CC01E99F8380",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "buttonsMessage": {
+                    "text": "Select where MQ to *Start*",
+                    "contentText": "Select where MQ to *Start*",
+                    "footerText": "_*- Vertibus🔹 -*_",
+                    "contextInfo": {
+                      "mentionedJid": [
+                        "126822415098035@lid"
+                      ],
+                      "forwardingScore": 300,
+                      "isForwarded": true
+                    },
+                    "buttons": [
+                      {
+                        "buttonId": "list_button",
+                        "buttonText": {
+                          "displayText": "List MQ"
+                        },
+                        "type": "NATIVE_FLOW"
+                      }
+                    ],
+                    "headerType": "EMPTY"
+                  }
+                }
+              }
+            }
+          },
+          "id": "AC3CB80A08378252ED39FDE37B50E5F9",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS120: Ark Crisis",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".mq 310|0 eps120\",\"description\":\"Boss: Bakuzan\"}"
+            },
+            "contextInfo": {
+              "stanzaId": "3EB0AD1230CC01E99F8380",
+              "participant": "6285187238716@s.whatsapp.net",
+              "quotedMessage": {
+                "buttonsMessage": {
+                  "text": "Select where MQ to *Start*",
+                  "contentText": "Select where MQ to *Start*",
+                  "footerText": "_*- Vertibus🔹 -*_",
+                  "contextInfo": {
+                    "mentionedJid": [
+                      "126822415098035@lid"
+                    ],
+                    "forwardingScore": 300,
+                    "isForwarded": true
+                  },
+                  "buttons": [
+                    {
+                      "buttonId": "list_button",
+                      "buttonText": {
+                        "displayText": "List MQ"
+                      },
+                      "type": "NATIVE_FLOW"
+                    }
+                  ],
+                  "headerType": "EMPTY"
+                }
+              }
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *Start*",
+            "contentText": "Select where MQ to *Start*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "126822415098035@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC89F16EBCDFFF259330FB65D649866B",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779930150,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "JjYcZWmxpuuUq6da4kL2glj3rHsarqSpd5+FvROS5uY="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS122: Unda's Rescue Operation",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".calculate 310|0 eps36 eps122\",\"description\":\"Boss: Gula the Gourmet\"}"
+              }
+            }
+          },
+          "id": "AC89F16EBCDFFF259330FB65D649866B",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS122: Unda's Rescue Operation",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".calculate 310|0 eps36 eps122\",\"description\":\"Boss: Gula the Gourmet\"}"
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *End*",
+            "contentText": "Select where MQ to *End*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "118236272177252@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB0BE11285A65B498A880"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n- *Toram MQ Calculator* -\nStart: CH 5: Parching Dark Mirror\nEnd: CH 15: Unda's Rescue Operartion\n\nAfter doing MQ from *eps36* to *eps122* you will reach to level 327 with 91%\n",
+              "contextInfo": {
+                "stanzaId": "AC89F16EBCDFFF259330FB65D649866B",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "interactiveResponseMessage": {
+                    "body": {
+                      "text": "EPS122: Unda's Rescue Operation",
+                      "format": "DEFAULT"
+                    },
+                    "nativeFlowResponseMessage": {
+                      "name": "menu_options",
+                      "paramsJson": "{\"id\":\".calculate 310|0 eps36 eps122\",\"description\":\"Boss: Gula the Gourmet\"}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779930151",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC3E33B3B12B64B5F0406A982D03A16B",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930213,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "@203534222016638 sedang apa maniez",
+              "previewType": "NONE",
+              "contextInfo": {
+                "mentionedJid": [
+                  "203534222016638@lid"
+                ]
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "QZ27KT8SEzMup0rGF1FPuqb57XLjOvfutoQhrRjwgp4="
+            }
+          },
+          "id": "AC3E33B3B12B64B5F0406A982D03A16B",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "@203534222016638 sedang apa maniez",
+            "previewType": "NONE",
+            "contextInfo": {
+              "mentionedJid": [
+                "203534222016638@lid"
+              ]
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "@203534222016638 sedang apa maniez",
+          "quoted": null,
+          "mentionedJid": [
+            "203534222016638@lid"
+          ],
+          "text": "@203534222016638 sedang apa maniez"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACB902D6DA46297707DE96A2ECF1420A",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930232,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "conversation": "baca manhua🗿",
+            "messageContextInfo": {
+              "messageSecret": "K+7mh9hYtIwyTOzXZl7H0kbWL+AsaqsGSShvEQbqJg8="
+            }
+          },
+          "id": "ACB902D6DA46297707DE96A2ECF1420A",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "conversation",
+          "msg": "baca manhua🗿",
+          "body": "baca manhua🗿",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "baca manhua🗿"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC6EA3F69F07D5E8C1130EE7C60EEE9B",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930267,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "conversation": "ohh lanjut dulu aj ku mo keluar dulu",
+            "messageContextInfo": {
+              "messageSecret": "bZkmBZgO2B6nyEhM6ayWJCrxygH6rKIlf6N2KCtrjY0="
+            }
+          },
+          "id": "AC6EA3F69F07D5E8C1130EE7C60EEE9B",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "conversation",
+          "msg": "ohh lanjut dulu aj ku mo keluar dulu",
+          "body": "ohh lanjut dulu aj ku mo keluar dulu",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "ohh lanjut dulu aj ku mo keluar dulu"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC94E4755EE17301B49EC3F448FCEEBD",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930291,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "w juga sbk nanti ampe jam 9.30🗿",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC6EA3F69F07D5E8C1130EE7C60EEE9B",
+                "participant": "50856942645288@lid",
+                "quotedMessage": {
+                  "conversation": "ohh lanjut dulu aj ku mo keluar dulu"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "V1T/FBi4E3J9e0nRBanV99qvYpdj0Kc/ldLdOmgX034="
+            }
+          },
+          "id": "AC94E4755EE17301B49EC3F448FCEEBD",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "w juga sbk nanti ampe jam 9.30🗿",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC6EA3F69F07D5E8C1130EE7C60EEE9B",
+              "participant": "50856942645288@lid",
+              "quotedMessage": {
+                "conversation": "ohh lanjut dulu aj ku mo keluar dulu"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "w juga sbk nanti ampe jam 9.30🗿",
+          "quoted": {
+            "text": "ohh lanjut dulu aj ku mo keluar dulu",
+            "mtype": "conversation",
+            "id": "AC6EA3F69F07D5E8C1130EE7C60EEE9B",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "50856942645288@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "AC6EA3F69F07D5E8C1130EE7C60EEE9B"
+              },
+              "message": {
+                "conversation": "ohh lanjut dulu aj ku mo keluar dulu"
+              },
+              "participant": "50856942645288@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "w juga sbk nanti ampe jam 9.30🗿"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC96D6385B97ABD828C84EAD51CC474D",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930297,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "conversation": "nyuci bacu dll🗿",
+            "messageContextInfo": {
+              "messageSecret": "dvjmopOD4BnnjGYWNufAIL+lN1PHb8jeGKfuUtmN9/c="
+            }
+          },
+          "id": "AC96D6385B97ABD828C84EAD51CC474D",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "conversation",
+          "msg": "nyuci bacu dll🗿",
+          "body": "nyuci bacu dll🗿",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "nyuci bacu dll🗿"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC0CA717A819F01E23E4845D41AA2FC8",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930302,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "stickerMessage": {
+              "url": "https://mmg.whatsapp.net/v/t62.15575-24/538639034_934928989513524_1665091250781628220_n.enc?ccb=11-4&oh=01_Q5Aa4gH3lgqLvmGiX_hW061x5G-W_w-VGFXEx8fzej5ph-iS9w&oe=6A3F210A&_nc_sid=5e03e0&mms3=true",
+              "fileSha256": "5lrHxyXcDxDb+sybXUw4UMTzrgzpHYDv2TzUiKmRGbo=",
+              "fileEncSha256": "Ye9mzJGzMWARgG1KHFnupeFCFf6OGl9679VRvVxc62c=",
+              "mediaKey": "+8RtDDc5qJI/kpshioH2Pen9BmEQ8+MWfNJN0o6axuI=",
+              "mimetype": "image/webp",
+              "height": 64,
+              "width": 64,
+              "directPath": "/v/t62.15575-24/538639034_934928989513524_1665091250781628220_n.enc?ccb=11-4&oh=01_Q5Aa4gH3lgqLvmGiX_hW061x5G-W_w-VGFXEx8fzej5ph-iS9w&oe=6A3F210A&_nc_sid=5e03e0",
+              "fileLength": "20874",
+              "mediaKeyTimestamp": "1779787417",
+              "isAnimated": false,
+              "stickerSentTs": "1779930301570",
+              "isAvatar": false,
+              "isAiSticker": false,
+              "isLottie": false
+            },
+            "messageContextInfo": {
+              "messageSecret": "ZDrZCoEgr12Jt9V2hcAnpk/+0WayGD4kfIQDVpSHf2c="
+            }
+          },
+          "userReceipt": [
+            {
+              "userJid": "126822415098035@lid",
+              "readTimestamp": 1779930303
+            }
+          ],
+          "id": "AC0CA717A819F01E23E4845D41AA2FC8",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "stickerMessage",
+          "msg": {
+            "url": "https://mmg.whatsapp.net/v/t62.15575-24/538639034_934928989513524_1665091250781628220_n.enc?ccb=11-4&oh=01_Q5Aa4gH3lgqLvmGiX_hW061x5G-W_w-VGFXEx8fzej5ph-iS9w&oe=6A3F210A&_nc_sid=5e03e0&mms3=true",
+            "fileSha256": "5lrHxyXcDxDb+sybXUw4UMTzrgzpHYDv2TzUiKmRGbo=",
+            "fileEncSha256": "Ye9mzJGzMWARgG1KHFnupeFCFf6OGl9679VRvVxc62c=",
+            "mediaKey": "+8RtDDc5qJI/kpshioH2Pen9BmEQ8+MWfNJN0o6axuI=",
+            "mimetype": "image/webp",
+            "height": 64,
+            "width": 64,
+            "directPath": "/v/t62.15575-24/538639034_934928989513524_1665091250781628220_n.enc?ccb=11-4&oh=01_Q5Aa4gH3lgqLvmGiX_hW061x5G-W_w-VGFXEx8fzej5ph-iS9w&oe=6A3F210A&_nc_sid=5e03e0",
+            "fileLength": "20874",
+            "mediaKeyTimestamp": "1779787417",
+            "isAnimated": false,
+            "stickerSentTs": "1779930301570",
+            "isAvatar": false,
+            "isAiSticker": false,
+            "isLottie": false
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACA81821B5D9A764B131B16AB3C73E05",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930309,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "lohh",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC96D6385B97ABD828C84EAD51CC474D",
+                "participant": "203534222016638@lid",
+                "quotedMessage": {
+                  "conversation": "nyuci bacu dll🗿"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "oM86o+0CiDYqIc/nai/+yNOyYxMwOFru3BGfjtdQWQE="
+            }
+          },
+          "id": "ACA81821B5D9A764B131B16AB3C73E05",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "lohh",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC96D6385B97ABD828C84EAD51CC474D",
+              "participant": "203534222016638@lid",
+              "quotedMessage": {
+                "conversation": "nyuci bacu dll🗿"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "lohh",
+          "quoted": {
+            "text": "nyuci bacu dll🗿",
+            "mtype": "conversation",
+            "id": "AC96D6385B97ABD828C84EAD51CC474D",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "203534222016638@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "AC96D6385B97ABD828C84EAD51CC474D"
+              },
+              "message": {
+                "conversation": "nyuci bacu dll🗿"
+              },
+              "participant": "203534222016638@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "lohh"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC6008538ECBC0F877ED297678F73A65",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930309,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "secretEncryptedMessage": {
+              "targetMessageKey": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": true,
+                "id": "AC96D6385B97ABD828C84EAD51CC474D"
+              },
+              "encPayload": "RTIPqY1UBACyJS+bYR0f7uHsDNO5BUBcA7TOo5aCG0EpPDm7FwWf/KMEmLjw+17Nie4oAwfqPNU/XnJry7EtS0X+3V5I8pnJHy6P2WEmJlxduLwNySogL93tEYAIglX2MdewB5k8KIgiNsm7cniaF8D6W5yGEaSIxKOsw/s3+Tzni6lbKoPN+jRD9xONMoMzNIfm1bM=",
+              "encIv": "b4w5FnMRxjTeSlcU",
+              "secretEncType": "MESSAGE_EDIT"
+            }
+          },
+          "id": "AC6008538ECBC0F877ED297678F73A65",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "secretEncryptedMessage",
+          "msg": {
+            "targetMessageKey": {
+              "remoteJid": "120363406658263857@g.us",
+              "fromMe": true,
+              "id": "AC96D6385B97ABD828C84EAD51CC474D"
+            },
+            "encPayload": "RTIPqY1UBACyJS+bYR0f7uHsDNO5BUBcA7TOo5aCG0EpPDm7FwWf/KMEmLjw+17Nie4oAwfqPNU/XnJry7EtS0X+3V5I8pnJHy6P2WEmJlxduLwNySogL93tEYAIglX2MdewB5k8KIgiNsm7cniaF8D6W5yGEaSIxKOsw/s3+Tzni6lbKoPN+jRD9xONMoMzNIfm1bM=",
+            "encIv": "b4w5FnMRxjTeSlcU",
+            "secretEncType": "MESSAGE_EDIT"
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC2EB68DE5EF235248ED1F24F0670932",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930316,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "conversation": "(2)",
+            "messageContextInfo": {
+              "messageSecret": "BJCnD7JCTO5HIuBoUV8LmLgpciirNgTrTqQvfkOuQlA="
+            }
+          },
+          "id": "AC2EB68DE5EF235248ED1F24F0670932",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "conversation",
+          "msg": "(2)",
+          "body": "(2)",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "(2)"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC429893B0F634402D220810B40D3B1F",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930366,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "conversation": "cucianku dah numpuk njay",
+            "messageContextInfo": {
+              "messageSecret": "C+3eHnPzzXIdW0urxKquHYTLqzJLAQj1C5ta8JWhDbQ="
+            }
+          },
+          "id": "AC429893B0F634402D220810B40D3B1F",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "conversation",
+          "msg": "cucianku dah numpuk njay",
+          "body": "cucianku dah numpuk njay",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "cucianku dah numpuk njay"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC1BC7D0933803DD6842008EE0A9B2CF",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930373,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "conversation": "🗿",
+            "messageContextInfo": {
+              "messageSecret": "BJpJBfwdJqIV1HqBGuNnvq3TTbrfixH0N+LuCB+5jII="
+            }
+          },
+          "id": "AC1BC7D0933803DD6842008EE0A9B2CF",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "conversation",
+          "msg": "🗿",
+          "body": "🗿",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "🗿"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC7930CD4DB6B7E9D15918B054379A9F",
+            "participant": "50856942645288@lid",
+            "participantPn": "6282126125991@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779930475,
+          "pushName": "Padli Justice",
+          "broadcast": false,
+          "message": {
+            "conversation": "laundry sini gaada yg bener bersih klo cuci baju yg putih²",
+            "messageContextInfo": {
+              "messageSecret": "KRk6ZGX7RBo3O1tyTycNeJTduvuC8y9Us+HsMfAJU3A="
+            }
+          },
+          "id": "AC7930CD4DB6B7E9D15918B054379A9F",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "50856942645288@lid",
+          "participant": "50856942645288@lid",
+          "mtype": "conversation",
+          "msg": "laundry sini gaada yg bener bersih klo cuci baju yg putih²",
+          "body": "laundry sini gaada yg bener bersih klo cuci baju yg putih²",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "laundry sini gaada yg bener bersih klo cuci baju yg putih²"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC0AABD677C9A9023EC9C0C81C048CE1",
+            "participant": "203534222016638@lid",
+            "participantPn": "6283116988955@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779931033,
+          "pushName": "MàppleCh",
+          "broadcast": false,
+          "message": {
+            "conversation": "ganti warna bajuny🗿",
+            "messageContextInfo": {
+              "messageSecret": "P0WNBwkFebZH+3NJjQT1xj/s4+IImX2r8MwZm2pD7Ng="
+            }
+          },
+          "userReceipt": [
+            {
+              "userJid": "126822415098035@lid",
+              "readTimestamp": 1779931034
+            }
+          ],
+          "id": "AC0AABD677C9A9023EC9C0C81C048CE1",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "203534222016638@lid",
+          "participant": "203534222016638@lid",
+          "mtype": "conversation",
+          "msg": "ganti warna bajuny🗿",
+          "body": "ganti warna bajuny🗿",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "ganti warna bajuny🗿"
         }
       ],
       "keyId": {}
@@ -17624,6 +18914,54 @@
             }
           },
           "messageTimestamp": "1779925756",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "AC8A3B3959AEB2C35C8479D60727737E"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": ".menu",
+              "previewType": "NONE",
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "EXLQPUslyXvt+btUIX5xr4yBZsqsEL8namXI7SNTsM4="
+            }
+          },
+          "messageTimestamp": "1779928727",
+          "status": "READ",
+          "messageC2STimestamp": "1779928728",
+          "messageSecret": "EXLQPUslyXvt+btUIX5xr4yBZsqsEL8namXI7SNTsM4=",
+          "originalSelfAuthorUserJidString": "6285187238716@s.whatsapp.net",
+          "isMentionedInStatus": false
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB0477D769787A35DEDF8"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n❏ *Vertibus🔹 Menu* ❏\n\n ❏ *Toram Online Menu*\n │•.lvling\n │•.mob\n │•.mq\n │•.maze\n │•.bag\n │•.ailment\n │•.cwatk\n │•.cdmg\n │•.food\n ╰•.mqmats\n\n ❏ *Toram Buff Menu*\n │•.buff\n │•.watk\n │•.waterres\n │•.maxmp\n │•.pres\n │•.aggro\n │•.dtefire\n │•.dtelight\n │•.mbarrier\n │•.windres\n │•.pbarrier\n │•.maxhp\n │•.dex\n │•.matk\n │•.dodge\n │•.cr\n │•.vit\n │•.int\n │•.str\n │•.ampr\n │•.exp\n │•.drop\n │•.dteearth\n │•.fracbarrier\n │•.neutralres\n │•.dtedark\n │•.fireres\n │•.lightres\n │•.dtewater\n │•.acc\n │•.darkres\n ╰•.earthres\n\n ❏ *Media Menu*\n │•.sticker\n │•.smeme\n │•.pixiv\n │•.loli\n │•.milf\n │•.anime\n │•.pinterest\n ╰•.brat\n\n ❏ *Group Menu*\n │•.metadata\n │•.hidetag\n │•.tagall\n │•.bot\n │•.add\n │•.kick\n │•.promote\n │•.demote\n │•.welcome\n │•.antilink\n ╰•.antilinkgc\n\n ❏ *Bot Menu*\n │•.owner\n │•.info\n ╰•.donate\n\n 💰 *Bantu donasi di :*\n\n 💳 Dana : 085187238716\n 💳 GoPay : 085187238716\n 💳 ShopeePay : 085187238716\n ",
+              "contextInfo": {
+                "stanzaId": "AC8A3B3959AEB2C35C8479D60727737E",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "extendedTextMessage": {
+                    "text": ".menu",
+                    "previewType": "NONE",
+                    "inviteLinkGroupTypeV2": "DEFAULT"
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779928735",
           "status": "PENDING"
         }
       ],

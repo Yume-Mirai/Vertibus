@@ -482,16 +482,16 @@ Global Price:
               "can't calculate because the end chapter is too low than the beginning MQ!"
             );
           }
-          mqData = JSON.parse(
-            fs.readFileSync("./language/Toram-DB/mq-db-eng.json")
-          );
-          //kondisi !mq 260|38 eps58 eps125
-          let lv, percentage;
-          [lv, percentage] = calculateMQ(lvl, exp, startMQ, endMQ);
-          teksTemplate = `
+mqData = JSON.parse(
+             fs.readFileSync("./language/Toram-DB/mq-db-eng.json")
+           );
+           //kondisi !mq 260|38 eps58 eps125
+           let lv, percentage;
+           [lv, percentage] = calculateMQ(level, exp, startMQ, endMQ);
+           teksTemplate = `
 - *Toram MQ Calculator* -
-Start: CH ${mqData[startMQ - 1].chapter}: ${mqData[startMQ - 1].title}
-End: CH ${mqData[endMQ - 1].chapter}: ${mqData[endMQ - 1].title}
+Start: CH ${mqData[startMQ - 1]?.chapter || "Unknown"}: ${mqData[startMQ - 1]?.title || "Unknown"}
+End: CH ${mqData[endMQ - 1]?.chapter || "Unknown"}: ${mqData[endMQ - 1]?.title || "Unknown"}
 
 After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} with ${percentage}%
 `;
@@ -1201,27 +1201,52 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
                 },
               ],
             },
-            {
-              title: "Chapter 15: Coenubia's Awakening",
-              highlight_label: "Chapter 15",
-              rows: [
-                {
-                  title: "EPS120: Ark Crisis",
-                  description: "Boss: Bakuzan",
-                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps120`,
-                },
-                {
-                  title: "EPS121: Coastal Clash",
-                  description: "Boss: Rondine",
-                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps121`,
-                },
-                {
-                  title: "EPS122: Unda's Rescue Operation",
-                  description: "Boss: Gula the Gourmet",
-                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps122`,
-                }
-              ],
-            },
+{
+               title: "Chapter 15: Coenubia's Awakening",
+               highlight_label: "Chapter 15",
+               rows: [
+                 {
+                   title: "EPS120: Ark Crisis",
+                   description: "Boss: Bakuzan",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps120`,
+                 },
+                 {
+                   title: "EPS121: Coastal Clash",
+                   description: "Boss: Rondine",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps121`,
+                 },
+                 {
+                   title: "EPS122: Unda's Rescue Operation",
+                   description: "Boss: Gula the Gourmet",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps122`,
+                 },
+                 {
+                   title: "EPS123: Unda's Return",
+                   description: "Boss: Goudvis",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps123`,
+                 },
+                 {
+                   title: "EPS124: The Young Man and The Old Tree",
+                   description: "Boss: Puiet",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps124`,
+                 },
+                 {
+                   title: "EPS125: The Village of Lixis",
+                   description: "Boss: Gioco",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps125`,
+                 },
+                 {
+                   title: "EPS126: Visions of a Distant Past",
+                   description: "Boss: Baratok",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps126`,
+                 },
+                 {
+                   title: "EPS127: As the Roots Come to Light",
+                   description: "Boss: Doy & Mari",
+                   id: `${prefix}${MQcmd} ${lvl}|${exp} eps127`,
+                 }
+               ],
+             },
           ];
 
           const listMessage = {
