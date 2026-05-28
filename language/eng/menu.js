@@ -2,18 +2,53 @@ exports.menu = (prefix) => {
     return `
 ❏ *${global.botName} Menu* ❏
 
- ❏ *Other Menu*
+ ❏ *Toram Online Menu*
  │•${prefix}lvling
- │•${prefix}watk
- │•${prefix}cdmg
- │•${prefix}food
+ │•${prefix}mob
+ │•${prefix}mq
  │•${prefix}maze
  │•${prefix}bag
- │•${prefix}mq
  │•${prefix}ailment
+ │•${prefix}cwatk
+ │•${prefix}cdmg
+ │•${prefix}food
  ╰•${prefix}mqmats
+ 
 
- ❏ *Other Menu*
+ ❏ *Toram Buff Menu*
+ │•${prefix}buff
+ │•${prefix}watk
+ │•${prefix}waterres
+ │•${prefix}maxmp
+ │•${prefix}pres
+ │•${prefix}aggro
+ │•${prefix}dtefire
+ │•${prefix}dtelight
+ │•${prefix}mbarrier
+ │•${prefix}windres
+ │•${prefix}pbarrier
+ │•${prefix}maxhp
+ │•${prefix}dex
+ │•${prefix}matk
+ │•${prefix}dodge
+ │•${prefix}cr
+ │•${prefix}vit
+ │•${prefix}int
+ │•${prefix}str
+ │•${prefix}ampr
+ │•${prefix}exp
+ │•${prefix}drop
+ │•${prefix}dteearth
+ │•${prefix}fracbarrier
+ │•${prefix}neutralres
+ │•${prefix}dtedark
+ │•${prefix}fireres
+ │•${prefix}lightres
+ │•${prefix}dtewater
+ │•${prefix}acc
+ ╰•${prefix}earthres
+
+ ❏ *Media Menu*
  │•${prefix}sticker
  │•${prefix}smeme
  │•${prefix}pixiv
@@ -35,18 +70,18 @@ exports.menu = (prefix) => {
  │•${prefix}welcome
  │•${prefix}antilink
  ╰•${prefix}antilinkgc
- 
+
  ❏ *Bot Menu*
  │•${prefix}owner
  │•${prefix}info
  ╰•${prefix}donate
- 
-💰 *Bantu donasi di :*
 
-💳 dana : 083831853737
-💳 GoPay : 083831853737
-💳 ShopeePay : 083831853737
-`
+ 💰 *Donate me on :*
+
+ 💳 Dana : 085187238716
+ 💳 GoPay : 085187238716
+ 💳 ShopeePay : 085187238716
+ `
 }
 
 exports.ownerContact = () => {

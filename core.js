@@ -337,13 +337,13 @@ const isOwner = sender ? global.owner.includes(sender.replace(/@(s\.whatsapp\.ne
         break;
 
       /* ================ Toram Online Menu ================ */
-      case "watk":
-        if (!q) return reply(lang.format(prefix, command));
-        int = parseInt(q);
-        proc = eval((int * 110) / 100 + 10);
-        str = proc.toString();
-        m.reply(str);
-        break;
+       case "cwatk":
+         if (!q) return reply(lang.format(prefix, command));
+         int = parseInt(q);
+         proc = eval((int * 110) / 100 + 10);
+         str = proc.toString();
+         m.reply(str);
+         break;
 
       case "cdmg":
         if (!q) return reply(lang.format(prefix, command));

@@ -1978,6 +1978,34 @@
           "quoted": null,
           "mentionedJid": [],
           "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0B8FFB1377F3DBAA472"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779926891",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB040486CE2FA00AA2090"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779928093",
+          "status": "PENDING"
         }
       ],
       "keyId": {}
@@ -15946,6 +15974,110 @@
           },
           "mentionedJid": [],
           "text": "Adv gratis?"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "A50559C65DAD0497ED6F9D1C89296537",
+            "participant": "121982003728599@lid",
+            "participantPn": "6285824923575@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779927741,
+          "pushName": "Yuuki AS Store",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "Iya",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "ACC305846E29DEE0534F472C5E2EE57F",
+                "participant": "174466504110088@lid",
+                "quotedMessage": {
+                  "conversation": "Adv gratis?"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "J7we4Xw4eMxIEWule4H4eGSm4rOh2pHTXfepFOgq9gg="
+            }
+          },
+          "id": "A50559C65DAD0497ED6F9D1C89296537",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "121982003728599@lid",
+          "participant": "121982003728599@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "Iya",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "ACC305846E29DEE0534F472C5E2EE57F",
+              "participant": "174466504110088@lid",
+              "quotedMessage": {
+                "conversation": "Adv gratis?"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "Iya",
+          "quoted": {
+            "text": "Adv gratis?",
+            "mtype": "conversation",
+            "id": "ACC305846E29DEE0534F472C5E2EE57F",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "174466504110088@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "ACC305846E29DEE0534F472C5E2EE57F"
+              },
+              "message": {
+                "conversation": "Adv gratis?"
+              },
+              "participant": "174466504110088@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "Iya"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACFEEFD82505683C64AEB20202E7AA57",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779927822,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "conversation": "Iya jir ku aja baru liat lipe strem karma baru tau kalo ada kode",
+            "messageContextInfo": {
+              "messageSecret": "04AEjMFWsVev5WTamDbM4glRmFD0PzXfgowM5kKf7Js="
+            }
+          },
+          "id": "ACFEEFD82505683C64AEB20202E7AA57",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "conversation",
+          "msg": "Iya jir ku aja baru liat lipe strem karma baru tau kalo ada kode",
+          "body": "Iya jir ku aja baru liat lipe strem karma baru tau kalo ada kode",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Iya jir ku aja baru liat lipe strem karma baru tau kalo ada kode"
         }
       ],
       "keyId": {}
