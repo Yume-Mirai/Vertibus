@@ -333,12 +333,12 @@
     },
     "1198430138519@lid": {
       "1198430138519@lid": {
-        "lastKnownPresence": "available"
+        "lastKnownPresence": "composing"
       }
     },
     "126822415098035@lid": {
       "126822415098035@lid": {
-        "lastKnownPresence": "composing"
+        "lastKnownPresence": "available"
       }
     }
   },
@@ -4040,6 +4040,146 @@
             }
           },
           "messageTimestamp": "1779985578",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB04CF9BD2E0910417920"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779986547",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB00091C1488AF3FA2912"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779986670",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0D4E030F69F0298BA54"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n      Vertibus🔹 has new message\n      Message ID: AC6BF87AEE0F94844E91DED70F06D87B\n      Sender: 1198430138519@lid\n      Name: veong\n      Text: Iya"
+            }
+          },
+          "messageTimestamp": "1779986857",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0A946C216100AFE5054"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n      Vertibus🔹 has new message\n      Message ID: AC797808FC4CBD7BA10D34DBD7F004C6\n      Sender: 1198430138519@lid\n      Name: veong\n      Text: Gini as kek"
+            }
+          },
+          "messageTimestamp": "1779987517",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB07E896DD3CB767C58AD"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n      Vertibus🔹 has new message\n      Message ID: AC41CAEA9885345BE2C603054EE5B231\n      Sender: 1198430138519@lid\n      Name: veong\n      Text: Ign sama job nya apa"
+            }
+          },
+          "messageTimestamp": "1779987526",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0298531D7FF371F4AC1"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n      Vertibus🔹 has new message\n      Message ID: AC5BF3FEDE1191F2731BBFA04B227A1A\n      Sender: 1198430138519@lid\n      Name: veong\n      Text: Jgn lupa mem baru wajib ara²😂"
+            }
+          },
+          "messageTimestamp": "1779987541",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0E99509605269618FB8"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n      Vertibus🔹 has new message\n      Message ID: AC3A0960E35AD4BB756DFC75B121EECA\n      Sender: 1198430138519@lid\n      Name: veong\n      Text: Bisa kan ya"
+            }
+          },
+          "messageTimestamp": "1779987580",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0541B675003104E79BF"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n      Vertibus🔹 has new message\n      Message ID: AC45AC3C651F709E69F78D6E18BD1F99\n      Sender: 1198430138519@lid\n      Name: veong\n      Text: Okey"
+            }
+          },
+          "messageTimestamp": "1779987606",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB03FEF72300DAAD46563"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779988472",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB0389AB5AA9932C6D9D7"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1779988557",
           "status": "PENDING"
         }
       ],
@@ -51686,6 +51826,1592 @@
           },
           "mentionedJid": [],
           "text": "PC atau Mobile?"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC4730BA9DC1E0B14380AD526995DB69",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986291,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "conversation": ".mq 275|10",
+            "messageContextInfo": {
+              "messageSecret": "7gzZb06pvntmIlFcSZK8TXKajI0KklGOff2z6dI0WS4="
+            }
+          },
+          "id": "AC4730BA9DC1E0B14380AD526995DB69",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "conversation",
+          "msg": ".mq 275|10",
+          "body": ".mq 275|10",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".mq 275|10"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC630C525DD9AB49F1167C5081C25042",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986378,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "KsCFR8tVfApQ4G92dLugzwlwQeGYIWeFlAtsPCV7lf0="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS87: Flying the Ark",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".mq 275|10 eps87\",\"description\":\"Boss: Reliza\"}"
+              },
+              "contextInfo": {
+                "stanzaId": "3EB0C5967A146BBCE50A87",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "buttonsMessage": {
+                    "text": "Select where MQ to *Start*",
+                    "contentText": "Select where MQ to *Start*",
+                    "footerText": "_*- Vertibus🔹 -*_",
+                    "contextInfo": {
+                      "mentionedJid": [
+                        "74359087583286@lid"
+                      ],
+                      "forwardingScore": 300,
+                      "isForwarded": true
+                    },
+                    "buttons": [
+                      {
+                        "buttonId": "list_button",
+                        "buttonText": {
+                          "displayText": "List MQ"
+                        },
+                        "type": "NATIVE_FLOW"
+                      }
+                    ],
+                    "headerType": "EMPTY"
+                  }
+                }
+              }
+            }
+          },
+          "id": "AC630C525DD9AB49F1167C5081C25042",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS87: Flying the Ark",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".mq 275|10 eps87\",\"description\":\"Boss: Reliza\"}"
+            },
+            "contextInfo": {
+              "stanzaId": "3EB0C5967A146BBCE50A87",
+              "participant": "126822415098035@lid",
+              "quotedMessage": {
+                "buttonsMessage": {
+                  "text": "Select where MQ to *Start*",
+                  "contentText": "Select where MQ to *Start*",
+                  "footerText": "_*- Vertibus🔹 -*_",
+                  "contextInfo": {
+                    "mentionedJid": [
+                      "74359087583286@lid"
+                    ],
+                    "forwardingScore": 300,
+                    "isForwarded": true
+                  },
+                  "buttons": [
+                    {
+                      "buttonId": "list_button",
+                      "buttonText": {
+                        "displayText": "List MQ"
+                      },
+                      "type": "NATIVE_FLOW"
+                    }
+                  ],
+                  "headerType": "EMPTY"
+                }
+              }
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *Start*",
+            "contentText": "Select where MQ to *Start*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "74359087583286@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC9826399CB63454F256F59BC72771B8",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986386,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "hLH5bWfHsXbyJTDihmZcuNFhdhQf5jaTdTf30yZw2vs="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS127: As the Roots Come to Light",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".calculate 275|10 eps87 eps127\",\"description\":\"Boss: Doy & Mari\"}"
+              }
+            }
+          },
+          "id": "AC9826399CB63454F256F59BC72771B8",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS127: As the Roots Come to Light",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".calculate 275|10 eps87 eps127\",\"description\":\"Boss: Doy & Mari\"}"
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *End*",
+            "contentText": "Select where MQ to *End*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "74359087583286@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB047DF4AB6E51C105398"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n- *Toram MQ Calculator* -\nStart: CH 11: Flying the Ark\nEnd: CH 15: As the Roots Come to Light\nAfter doing MQ from *eps87* to *eps127* you will reach to level 304 with 54%\n",
+              "contextInfo": {
+                "stanzaId": "AC9826399CB63454F256F59BC72771B8",
+                "participant": "74359087583286@lid",
+                "quotedMessage": {
+                  "interactiveResponseMessage": {
+                    "body": {
+                      "text": "EPS127: As the Roots Come to Light",
+                      "format": "DEFAULT"
+                    },
+                    "nativeFlowResponseMessage": {
+                      "name": "menu_options",
+                      "paramsJson": "{\"id\":\".calculate 275|10 eps87 eps127\",\"description\":\"Boss: Doy & Mari\"}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779986386",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACD70BB0E90CBA75B2548F54BF04DAED",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986450,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "conversation": ".mq lvl 1",
+            "messageContextInfo": {
+              "messageSecret": "5jbzTr06du1TKrGzWamIE5ki1Bp/ElbDNv+ZDVlKu7Q="
+            }
+          },
+          "id": "ACD70BB0E90CBA75B2548F54BF04DAED",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "conversation",
+          "msg": ".mq lvl 1",
+          "body": ".mq lvl 1",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".mq lvl 1"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB08D5255EBB372D1ED9E"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Cara penggunaan:\n.mq <level>|<EXP Percentage>\nContoh:\n.mq 270|10",
+              "contextInfo": {
+                "stanzaId": "ACD70BB0E90CBA75B2548F54BF04DAED",
+                "participant": "210445193474136@lid",
+                "quotedMessage": {
+                  "conversation": ".mq lvl 1"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779986451",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC7BC6C0D4D2A1BADD8BF7A7E9625E9A",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986476,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "conversation": ".mq 1 0%",
+            "messageContextInfo": {
+              "messageSecret": "c7rpfkT4ej2Sxd1DGi3iqxzcKRflpnn1akn1xotyWn4="
+            }
+          },
+          "id": "AC7BC6C0D4D2A1BADD8BF7A7E9625E9A",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "conversation",
+          "msg": ".mq 1 0%",
+          "body": ".mq 1 0%",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".mq 1 0%"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB03432765477F9878B50"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Cara penggunaan:\n.mq <level>|<EXP Percentage>\nContoh:\n.mq 270|10",
+              "contextInfo": {
+                "stanzaId": "AC7BC6C0D4D2A1BADD8BF7A7E9625E9A",
+                "participant": "210445193474136@lid",
+                "quotedMessage": {
+                  "conversation": ".mq 1 0%"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779986476",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC9119C8D6B9EA821A7290CCF1455D56",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986532,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "conversation": ".mq 304|54",
+            "messageContextInfo": {
+              "messageSecret": "6gqMDZL/+KSebAboiCnEJRoGXG0KQXce0cqHbodn1Pw="
+            }
+          },
+          "id": "AC9119C8D6B9EA821A7290CCF1455D56",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "conversation",
+          "msg": ".mq 304|54",
+          "body": ".mq 304|54",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".mq 304|54"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC17044B6173E35B6A267A70EB9B0547",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986545,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "conversation": ".mq <1> >0%<",
+            "messageContextInfo": {
+              "messageSecret": "OBn1p25WCSyiKcyHGLIWiDc0vXvxq5fo4z59SqwUubc="
+            }
+          },
+          "id": "AC17044B6173E35B6A267A70EB9B0547",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "conversation",
+          "msg": ".mq <1> >0%<",
+          "body": ".mq <1> >0%<",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".mq <1> >0%<"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC621A2ED8E733B88309A73BBB1FFC01",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986548,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "oOH1TO490htiOvw+VRKIXZEQR4vnuG1aWehqLLx6cH8="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS87: Flying the Ark",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".mq 304|54 eps87\",\"description\":\"Boss: Reliza\"}"
+              },
+              "contextInfo": {
+                "stanzaId": "3EB09B9B7A2C70322E5F3C",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "buttonsMessage": {
+                    "text": "Select where MQ to *Start*",
+                    "contentText": "Select where MQ to *Start*",
+                    "footerText": "_*- Vertibus🔹 -*_",
+                    "contextInfo": {
+                      "mentionedJid": [
+                        "74359087583286@lid"
+                      ],
+                      "forwardingScore": 300,
+                      "isForwarded": true
+                    },
+                    "buttons": [
+                      {
+                        "buttonId": "list_button",
+                        "buttonText": {
+                          "displayText": "List MQ"
+                        },
+                        "type": "NATIVE_FLOW"
+                      }
+                    ],
+                    "headerType": "EMPTY"
+                  }
+                }
+              }
+            }
+          },
+          "id": "AC621A2ED8E733B88309A73BBB1FFC01",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS87: Flying the Ark",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".mq 304|54 eps87\",\"description\":\"Boss: Reliza\"}"
+            },
+            "contextInfo": {
+              "stanzaId": "3EB09B9B7A2C70322E5F3C",
+              "participant": "126822415098035@lid",
+              "quotedMessage": {
+                "buttonsMessage": {
+                  "text": "Select where MQ to *Start*",
+                  "contentText": "Select where MQ to *Start*",
+                  "footerText": "_*- Vertibus🔹 -*_",
+                  "contextInfo": {
+                    "mentionedJid": [
+                      "74359087583286@lid"
+                    ],
+                    "forwardingScore": 300,
+                    "isForwarded": true
+                  },
+                  "buttons": [
+                    {
+                      "buttonId": "list_button",
+                      "buttonText": {
+                        "displayText": "List MQ"
+                      },
+                      "type": "NATIVE_FLOW"
+                    }
+                  ],
+                  "headerType": "EMPTY"
+                }
+              }
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *Start*",
+            "contentText": "Select where MQ to *Start*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "74359087583286@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB04D03F355E1CA79D15F"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Cara penggunaan:\n.mq <level>|<EXP Percentage>\nContoh:\n.mq 270|10",
+              "contextInfo": {
+                "stanzaId": "AC17044B6173E35B6A267A70EB9B0547",
+                "participant": "210445193474136@lid",
+                "quotedMessage": {
+                  "conversation": ".mq <1> >0%<"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779986547",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC2425ED2EA989302FDE708667DD8E57",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986554,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "stickerMessage": {
+              "url": "https://mmg.whatsapp.net/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0&mms3=true",
+              "fileSha256": "ttvfpd7C9o/uKjpYZHwJZUhI7OZwqkLNPV8aFmINNTI=",
+              "fileEncSha256": "vbidImYB06iJ1wUW6HPh6qOOQlEGUXIOSb/9q6ATmNE=",
+              "mediaKey": "x/oFZISEstouiUJgie4shWe0wbsxQBrEzPAd5HiDcDE=",
+              "mimetype": "image/webp",
+              "height": 64,
+              "width": 64,
+              "directPath": "/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0",
+              "fileLength": "17344",
+              "mediaKeyTimestamp": "1779887438",
+              "isAnimated": false,
+              "stickerSentTs": "1779986553770",
+              "isAvatar": false,
+              "isAiSticker": false,
+              "isLottie": false
+            },
+            "messageContextInfo": {
+              "messageSecret": "ZP2I5AIYCsyi/1WsLqrO0qBsG+tb53Trnbxrdtr0XGE="
+            }
+          },
+          "id": "AC2425ED2EA989302FDE708667DD8E57",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "stickerMessage",
+          "msg": {
+            "url": "https://mmg.whatsapp.net/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0&mms3=true",
+            "fileSha256": "ttvfpd7C9o/uKjpYZHwJZUhI7OZwqkLNPV8aFmINNTI=",
+            "fileEncSha256": "vbidImYB06iJ1wUW6HPh6qOOQlEGUXIOSb/9q6ATmNE=",
+            "mediaKey": "x/oFZISEstouiUJgie4shWe0wbsxQBrEzPAd5HiDcDE=",
+            "mimetype": "image/webp",
+            "height": 64,
+            "width": 64,
+            "directPath": "/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0",
+            "fileLength": "17344",
+            "mediaKeyTimestamp": "1779887438",
+            "isAnimated": false,
+            "stickerSentTs": "1779986553770",
+            "isAvatar": false,
+            "isAiSticker": false,
+            "isLottie": false
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACB28E52D690DC13DB313D795E6C8E2A",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986557,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "messageContextInfo": {
+              "messageSecret": "A0f5ETyV+Hhbhe3UtAUh3o6y0rB4m2H5nZ1YYTakYP4="
+            },
+            "interactiveResponseMessage": {
+              "body": {
+                "text": "EPS127: As the Roots Come to Light",
+                "format": "DEFAULT"
+              },
+              "nativeFlowResponseMessage": {
+                "name": "menu_options",
+                "paramsJson": "{\"id\":\".calculate 304|54 eps87 eps127\",\"description\":\"Boss: Doy & Mari\"}"
+              }
+            }
+          },
+          "id": "ACB28E52D690DC13DB313D795E6C8E2A",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "interactiveResponseMessage",
+          "msg": {
+            "body": {
+              "text": "EPS127: As the Roots Come to Light",
+              "format": "DEFAULT"
+            },
+            "nativeFlowResponseMessage": {
+              "name": "menu_options",
+              "paramsJson": "{\"id\":\".calculate 304|54 eps87 eps127\",\"description\":\"Boss: Doy & Mari\"}"
+            }
+          },
+          "quoted": {
+            "text": "Select where MQ to *End*",
+            "contentText": "Select where MQ to *End*",
+            "footerText": "_*- Vertibus🔹 -*_",
+            "contextInfo": {
+              "mentionedJid": [
+                "74359087583286@lid"
+              ],
+              "forwardingScore": 300,
+              "isForwarded": true
+            },
+            "buttons": [
+              {
+                "buttonId": "list_button",
+                "buttonText": {
+                  "displayText": "List MQ"
+                },
+                "type": "NATIVE_FLOW"
+              }
+            ],
+            "headerType": "EMPTY"
+          },
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB0D03D4A056203D51758"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "\n- *Toram MQ Calculator* -\nStart: CH 11: Flying the Ark\nEnd: CH 15: As the Roots Come to Light\nAfter doing MQ from *eps87* to *eps127* you will reach to level 325 with 66%\n",
+              "contextInfo": {
+                "stanzaId": "ACB28E52D690DC13DB313D795E6C8E2A",
+                "participant": "74359087583286@lid",
+                "quotedMessage": {
+                  "interactiveResponseMessage": {
+                    "body": {
+                      "text": "EPS127: As the Roots Come to Light",
+                      "format": "DEFAULT"
+                    },
+                    "nativeFlowResponseMessage": {
+                      "name": "menu_options",
+                      "paramsJson": "{\"id\":\".calculate 304|54 eps87 eps127\",\"description\":\"Boss: Doy & Mari\"}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779986558",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC01BEA8DB66EA28CE732AC3BDB20EE2",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986565,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "conversation": ":v",
+            "messageContextInfo": {
+              "messageSecret": "/6KgrHCGXnILEbufLeQUPUiNfZ4e76DgD/0il23vwmg="
+            }
+          },
+          "id": "AC01BEA8DB66EA28CE732AC3BDB20EE2",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "conversation",
+          "msg": ":v",
+          "body": ":v",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ":v"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "3EB0B5B465B6481D4368E0",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779986584,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "conversation": "bruh",
+            "messageContextInfo": {
+              "messageSecret": "WETlN5Ms2H3DkCzDJg+qwmNGwyDmZM43RaUxYGHmRvw=",
+              "limitSharingV2": {
+                "trigger": "UNKNOWN",
+                "initiatedByMe": false
+              }
+            }
+          },
+          "id": "3EB0B5B465B6481D4368E0",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "conversation",
+          "msg": "bruh",
+          "body": "bruh",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "bruh"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "3EB0B0187FA931D3B238D7",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779986784,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh",
+              "contextInfo": {
+                "stanzaId": "AC01BEA8DB66EA28CE732AC3BDB20EE2",
+                "participant": "74359087583286@lid",
+                "quotedMessage": {
+                  "conversation": ":v",
+                  "messageContextInfo": {}
+                },
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "6l7ATa6b4RpIELKYUpmR9YGc2YUrGYUs3AM0Vgwy28Y=",
+              "limitSharingV2": {
+                "trigger": "UNKNOWN",
+                "initiatedByMe": false
+              }
+            }
+          },
+          "id": "3EB0B0187FA931D3B238D7",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh",
+            "contextInfo": {
+              "stanzaId": "AC01BEA8DB66EA28CE732AC3BDB20EE2",
+              "participant": "74359087583286@lid",
+              "quotedMessage": {
+                "conversation": ":v",
+                "messageContextInfo": {}
+              },
+              "disappearingMode": {
+                "initiator": "CHANGED_IN_CHAT",
+                "trigger": "CHAT_SETTING"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh",
+          "quoted": {
+            "text": ":v",
+            "mtype": "conversation",
+            "id": "AC01BEA8DB66EA28CE732AC3BDB20EE2",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "74359087583286@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "AC01BEA8DB66EA28CE732AC3BDB20EE2"
+              },
+              "message": {
+                "conversation": ":v",
+                "messageContextInfo": {}
+              },
+              "participant": "74359087583286@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC909695EE2BF03C098827033C644325",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986890,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "conversation": ".profile",
+            "messageContextInfo": {
+              "messageSecret": "nyFVacPErB83TIaQvPKr2ezGGlFXYdn+AaXc2Vhcnrk="
+            }
+          },
+          "id": "AC909695EE2BF03C098827033C644325",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "conversation",
+          "msg": ".profile",
+          "body": ".profile",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".profile"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC0F1C9FCCAA48D97369837A33B9B0E4",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986896,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "stickerMessage": {
+              "url": "https://mmg.whatsapp.net/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0&mms3=true",
+              "fileSha256": "ttvfpd7C9o/uKjpYZHwJZUhI7OZwqkLNPV8aFmINNTI=",
+              "fileEncSha256": "vbidImYB06iJ1wUW6HPh6qOOQlEGUXIOSb/9q6ATmNE=",
+              "mediaKey": "x/oFZISEstouiUJgie4shWe0wbsxQBrEzPAd5HiDcDE=",
+              "mimetype": "image/webp",
+              "height": 64,
+              "width": 64,
+              "directPath": "/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0",
+              "fileLength": "17344",
+              "mediaKeyTimestamp": "1779887438",
+              "isAnimated": false,
+              "stickerSentTs": "1779986896002",
+              "isAvatar": false,
+              "isAiSticker": false,
+              "isLottie": false
+            },
+            "messageContextInfo": {
+              "messageSecret": "QlABB9ZkiM6XbcFExysXbTqRXdFSEDy+8rdOYV/Bleo="
+            }
+          },
+          "id": "AC0F1C9FCCAA48D97369837A33B9B0E4",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "stickerMessage",
+          "msg": {
+            "url": "https://mmg.whatsapp.net/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0&mms3=true",
+            "fileSha256": "ttvfpd7C9o/uKjpYZHwJZUhI7OZwqkLNPV8aFmINNTI=",
+            "fileEncSha256": "vbidImYB06iJ1wUW6HPh6qOOQlEGUXIOSb/9q6ATmNE=",
+            "mediaKey": "x/oFZISEstouiUJgie4shWe0wbsxQBrEzPAd5HiDcDE=",
+            "mimetype": "image/webp",
+            "height": 64,
+            "width": 64,
+            "directPath": "/v/t62.15575-24/538035935_1346421974059387_5543732013494131129_n.enc?ccb=11-4&oh=01_Q5Aa4gGatx9fqDWRFnfxW5XFqsfnZBttdSTOfpGYg3L5sFq5xw&oe=6A3FF8B1&_nc_sid=5e03e0",
+            "fileLength": "17344",
+            "mediaKeyTimestamp": "1779887438",
+            "isAnimated": false,
+            "stickerSentTs": "1779986896002",
+            "isAvatar": false,
+            "isAiSticker": false,
+            "isLottie": false
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC0AA93087E3103148EB69D53ECF15E4",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986904,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "protocolMessage": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": true,
+                "id": "AC909695EE2BF03C098827033C644325"
+              },
+              "type": "REVOKE"
+            }
+          },
+          "id": "AC0AA93087E3103148EB69D53ECF15E4",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "protocolMessage",
+          "msg": {
+            "key": {
+              "remoteJid": "120363406658263857@g.us",
+              "fromMe": true,
+              "id": "AC909695EE2BF03C098827033C644325"
+            },
+            "type": "REVOKE"
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC8B0930EEC60DD2E30C956574B570ED",
+            "participant": "210445193474136@lid",
+            "participantPn": "6283159011780@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986904,
+          "pushName": "scalerax",
+          "broadcast": false,
+          "message": {
+            "protocolMessage": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": true,
+                "id": "AC0F1C9FCCAA48D97369837A33B9B0E4"
+              },
+              "type": "REVOKE"
+            }
+          },
+          "id": "AC8B0930EEC60DD2E30C956574B570ED",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "210445193474136@lid",
+          "participant": "210445193474136@lid",
+          "mtype": "protocolMessage",
+          "msg": {
+            "key": {
+              "remoteJid": "120363406658263857@g.us",
+              "fromMe": true,
+              "id": "AC0F1C9FCCAA48D97369837A33B9B0E4"
+            },
+            "type": "REVOKE"
+          },
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC1116AA0F8C93558873CDD18E0C0428",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987028,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "Ini dah bener kah?",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "3EB0B0187FA931D3B238D7",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "conversation": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "/gGA6imDG7S25DxCCfowp3AJbKtXYDKsN9T4TNnWzdo="
+            }
+          },
+          "id": "AC1116AA0F8C93558873CDD18E0C0428",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "Ini dah bener kah?",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "3EB0B0187FA931D3B238D7",
+              "participant": "126822415098035@lid",
+              "quotedMessage": {
+                "conversation": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "Ini dah bener kah?",
+          "quoted": {
+            "text": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh",
+            "mtype": "conversation",
+            "id": "3EB0B0187FA931D3B238D7",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "126822415098035@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "3EB0B0187FA931D3B238D7"
+              },
+              "message": {
+                "conversation": "sorry masih maintenance tadi papasan sama restart makanya hasilnya ngawur coba lagi deh"
+              },
+              "participant": "126822415098035@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "Ini dah bener kah?"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC652336B9E9352E8D64E2C62154681D",
+            "participant": "74359087583286@lid",
+            "participantPn": "6281226366495@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987033,
+          "pushName": "Dims",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "Yg ini?",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "3EB0D03D4A056203D51758",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "conversation": "\n- *Toram MQ Calculator* -\nStart: CH 11: Flying the Ark\nEnd: CH 15: As the Roots Come to Light\nAfter doing MQ from *eps87* to *eps127* you will reach to level 325 with 66%\n"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "0wo43+gxwF6VbcMOpaIRWzputEqGARbOWxWrbVGI9Hk="
+            }
+          },
+          "id": "AC652336B9E9352E8D64E2C62154681D",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "74359087583286@lid",
+          "participant": "74359087583286@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "Yg ini?",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "3EB0D03D4A056203D51758",
+              "participant": "126822415098035@lid",
+              "quotedMessage": {
+                "conversation": "\n- *Toram MQ Calculator* -\nStart: CH 11: Flying the Ark\nEnd: CH 15: As the Roots Come to Light\nAfter doing MQ from *eps87* to *eps127* you will reach to level 325 with 66%\n"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "Yg ini?",
+          "quoted": {
+            "text": "\n- *Toram MQ Calculator* -\nStart: CH 11: Flying the Ark\nEnd: CH 15: As the Roots Come to Light\nAfter doing MQ from *eps87* to *eps127* you will reach to level 325 with 66%\n",
+            "mtype": "conversation",
+            "id": "3EB0D03D4A056203D51758",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "126822415098035@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "3EB0D03D4A056203D51758"
+              },
+              "message": {
+                "conversation": "\n- *Toram MQ Calculator* -\nStart: CH 11: Flying the Ark\nEnd: CH 15: As the Roots Come to Light\nAfter doing MQ from *eps87* to *eps127* you will reach to level 325 with 66%\n"
+              },
+              "participant": "126822415098035@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "Yg ini?"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "3EB027F40CDF2FFB865728",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779987230,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "kalo pusing di web ini aja mas https://coryn.club/quest_calculator.php",
+              "matchedText": "https://coryn.club/quest_calculator.php",
+              "description": "https://coryn.club/quest_calculator.php",
+              "title": "coryn.club",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "AC652336B9E9352E8D64E2C62154681D",
+                "participant": "74359087583286@lid",
+                "quotedMessage": {
+                  "conversation": "Yg ini?",
+                  "messageContextInfo": {}
+                },
+                "disappearingMode": {
+                  "initiator": "CHANGED_IN_CHAT",
+                  "trigger": "CHAT_SETTING"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "z5vGD10IlwxB1U2bKyS+FLucpsfaN1MtGTjsCPmEdQs=",
+              "limitSharingV2": {
+                "trigger": "UNKNOWN",
+                "initiatedByMe": false
+              }
+            }
+          },
+          "id": "3EB027F40CDF2FFB865728",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "kalo pusing di web ini aja mas https://coryn.club/quest_calculator.php",
+            "matchedText": "https://coryn.club/quest_calculator.php",
+            "description": "https://coryn.club/quest_calculator.php",
+            "title": "coryn.club",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "AC652336B9E9352E8D64E2C62154681D",
+              "participant": "74359087583286@lid",
+              "quotedMessage": {
+                "conversation": "Yg ini?",
+                "messageContextInfo": {}
+              },
+              "disappearingMode": {
+                "initiator": "CHANGED_IN_CHAT",
+                "trigger": "CHAT_SETTING"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "kalo pusing di web ini aja mas https://coryn.club/quest_calculator.php",
+          "quoted": {
+            "text": "Yg ini?",
+            "mtype": "conversation",
+            "id": "AC652336B9E9352E8D64E2C62154681D",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "74359087583286@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "AC652336B9E9352E8D64E2C62154681D"
+              },
+              "message": {
+                "conversation": "Yg ini?",
+                "messageContextInfo": {}
+              },
+              "participant": "74359087583286@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "kalo pusing di web ini aja mas https://coryn.club/quest_calculator.php"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "3EB087DD72FD4788B1272E",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779987394,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "conversation": ".welcome on",
+            "messageContextInfo": {
+              "messageSecret": "nx3B8c0+ywqIjQc1UamF11/QdEBWuPKqDqTkJXKIB3k=",
+              "limitSharingV2": {
+                "trigger": "UNKNOWN",
+                "initiatedByMe": false
+              }
+            }
+          },
+          "id": "3EB087DD72FD4788B1272E",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "conversation",
+          "msg": ".welcome on",
+          "body": ".welcome on",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".welcome on"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB0181CD5E08A5321C621"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Welcome message is now ON!",
+              "contextInfo": {
+                "stanzaId": "3EB087DD72FD4788B1272E",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "conversation": ".welcome on"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779987394",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC8E3D4D6DF99567E6EAF7C34FBF37B7",
+            "participant": "266344276746322@lid",
+            "participantPn": "628568438450@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987542,
+          "pushName": "kagemanekazehaya",
+          "broadcast": false,
+          "message": {
+            "conversation": "Dah bisa botnya?",
+            "messageContextInfo": {
+              "messageSecret": "zu1OdR2vOki6mXo+DlQLMLJ9Kg5qfZ4h63bjPu59kbM="
+            }
+          },
+          "id": "AC8E3D4D6DF99567E6EAF7C34FBF37B7",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "266344276746322@lid",
+          "participant": "266344276746322@lid",
+          "mtype": "conversation",
+          "msg": "Dah bisa botnya?",
+          "body": "Dah bisa botnya?",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Dah bisa botnya?"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACCEA8A0FBF3BFC37C12F92BEABE8B1C",
+            "participant": "1198430138519@lid",
+            "participantPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987559,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "Mobile",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "ACD692A2F70AB25664C5730B6A4FF1AD",
+                "participant": "135557841707223@lid",
+                "quotedMessage": {
+                  "conversation": "PC atau Mobile?"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "uBLHwKmrgYWcZLBofjey4fc8zzLKN+I+n8/gL3b3xrc="
+            }
+          },
+          "id": "ACCEA8A0FBF3BFC37C12F92BEABE8B1C",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "1198430138519@lid",
+          "participant": "1198430138519@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "Mobile",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "ACD692A2F70AB25664C5730B6A4FF1AD",
+              "participant": "135557841707223@lid",
+              "quotedMessage": {
+                "conversation": "PC atau Mobile?"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "Mobile",
+          "quoted": {
+            "text": "PC atau Mobile?",
+            "mtype": "conversation",
+            "id": "ACD692A2F70AB25664C5730B6A4FF1AD",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "135557841707223@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "ACD692A2F70AB25664C5730B6A4FF1AD"
+              },
+              "message": {
+                "conversation": "PC atau Mobile?"
+              },
+              "participant": "135557841707223@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "Mobile"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "AC7287000828059802B6A3D2A6828503",
+            "participant": "135557841707223@lid",
+            "participantPn": "6289695305806@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779988222,
+          "pushName": "Tante_Boss_Merah",
+          "broadcast": false,
+          "message": {
+            "extendedTextMessage": {
+              "text": "udah ku hapus, terlalu berat, aku main Sausage Man ama LifeAfter",
+              "previewType": "NONE",
+              "contextInfo": {
+                "stanzaId": "ACCEA8A0FBF3BFC37C12F92BEABE8B1C",
+                "participant": "1198430138519@lid",
+                "quotedMessage": {
+                  "conversation": "Mobile"
+                }
+              },
+              "inviteLinkGroupTypeV2": "DEFAULT"
+            },
+            "messageContextInfo": {
+              "messageSecret": "gflV1GDPijvYByg65e+FC35cQpRCuFonkjExj8HYnk8="
+            }
+          },
+          "id": "AC7287000828059802B6A3D2A6828503",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "135557841707223@lid",
+          "participant": "135557841707223@lid",
+          "mtype": "extendedTextMessage",
+          "msg": {
+            "text": "udah ku hapus, terlalu berat, aku main Sausage Man ama LifeAfter",
+            "previewType": "NONE",
+            "contextInfo": {
+              "stanzaId": "ACCEA8A0FBF3BFC37C12F92BEABE8B1C",
+              "participant": "1198430138519@lid",
+              "quotedMessage": {
+                "conversation": "Mobile"
+              }
+            },
+            "inviteLinkGroupTypeV2": "DEFAULT"
+          },
+          "body": "udah ku hapus, terlalu berat, aku main Sausage Man ama LifeAfter",
+          "quoted": {
+            "text": "Mobile",
+            "mtype": "conversation",
+            "id": "ACCEA8A0FBF3BFC37C12F92BEABE8B1C",
+            "chat": "120363406658263857@g.us",
+            "isBaileys": false,
+            "sender": "1198430138519@lid",
+            "fromMe": false,
+            "mentionedJid": [],
+            "fakeObj": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "ACCEA8A0FBF3BFC37C12F92BEABE8B1C"
+              },
+              "message": {
+                "conversation": "Mobile"
+              },
+              "participant": "1198430138519@lid"
+            }
+          },
+          "mentionedJid": [],
+          "text": "udah ku hapus, terlalu berat, aku main Sausage Man ama LifeAfter"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "3EB0BC89EB52911C1F210B",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1779988625,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "conversation": ".welcome on",
+            "messageContextInfo": {
+              "messageSecret": "HwNNiL/k5PlrcoeBaRn4devxiyF5QqPmgy7D6TnCZNc=",
+              "limitSharingV2": {
+                "trigger": "UNKNOWN",
+                "initiatedByMe": false
+              }
+            }
+          },
+          "id": "3EB0BC89EB52911C1F210B",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "conversation",
+          "msg": ".welcome on",
+          "body": ".welcome on",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".welcome on"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB00AE2EF77A535ACD39B"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Welcome already on!",
+              "contextInfo": {
+                "stanzaId": "3EB0BC89EB52911C1F210B",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "conversation": ".welcome on"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779988626",
+          "status": "PENDING",
+          "participant": ""
         }
       ],
       "keyId": {}
@@ -53619,6 +55345,79 @@
             }
           },
           "messageTimestamp": "1779984385",
+          "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB0BDBDD7F96C3C49DDAE"
+          },
+          "messageTimestamp": 1779987878,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "conversation": "🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang di grup Toram Online\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨"
+          },
+          "id": "3EB0BDBDD7F96C3C49DDAE",
+          "isBaileys": false,
+          "chat": "126822415098035@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "conversation",
+          "msg": "🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang di grup Toram Online\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨",
+          "body": "🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang di grup Toram Online\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang di grup Toram Online\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB072599846518B1C0520"
+          },
+          "messageTimestamp": 1779987978,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "conversation": ".welcome text 🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @{user} di grup {group}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨"
+          },
+          "id": "3EB072599846518B1C0520",
+          "isBaileys": false,
+          "chat": "126822415098035@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "conversation",
+          "msg": ".welcome text 🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @{user} di grup {group}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨",
+          "body": ".welcome text 🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @{user} di grup {group}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".welcome text 🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @{user} di grup {group}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨"
+        },
+        {
+          "key": {
+            "remoteJid": "126822415098035@lid",
+            "fromMe": true,
+            "id": "3EB037066FCA29D5D75B9E"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Fitur ini hanya tersedia di Grup!",
+              "contextInfo": {
+                "stanzaId": "3EB072599846518B1C0520",
+                "participant": "6285187238716@s.whatsapp.net",
+                "quotedMessage": {
+                  "conversation": ".welcome text 🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @{user} di grup {group}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib “ara ara” dulu ✨"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1779987979",
           "status": "PENDING"
         }
       ],
@@ -55633,6 +57432,288 @@
           "quoted": null,
           "mentionedJid": [],
           "text": "okay kalo mau request fitur bilang aja"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": true,
+            "id": "3EB06A3CF6E998F10DD0FA"
+          },
+          "messageTimestamp": 1779986848,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "conversation": "P"
+          },
+          "id": "3EB06A3CF6E998F10DD0FA",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "conversation",
+          "msg": "P",
+          "body": "P",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "P"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": false,
+            "id": "AC6BF87AEE0F94844E91DED70F06D87B",
+            "senderPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779986856,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "conversation": "Iya",
+            "messageContextInfo": {
+              "deviceListMetadata": {
+                "recipientKeyHash": "GStkPIhn4o8tPQ==",
+                "recipientTimestamp": "1779891115"
+              },
+              "deviceListMetadataVersion": 2,
+              "messageSecret": "1C1zRkIVXTiMloT6k5BSu5YsGVqDu04m+YezEmL19a0="
+            }
+          },
+          "id": "AC6BF87AEE0F94844E91DED70F06D87B",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": false,
+          "isGroup": false,
+          "sender": "1198430138519@lid",
+          "mtype": "conversation",
+          "msg": "Iya",
+          "body": "Iya",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Iya"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": true,
+            "id": "3EB00C40F5EA6156019BC9"
+          },
+          "messageTimestamp": 1779986862,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "conversation": "Template welcomenya kek gimana?"
+          },
+          "id": "3EB00C40F5EA6156019BC9",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "conversation",
+          "msg": "Template welcomenya kek gimana?",
+          "body": "Template welcomenya kek gimana?",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Template welcomenya kek gimana?"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": false,
+            "id": "AC797808FC4CBD7BA10D34DBD7F004C6",
+            "senderPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987517,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "conversation": "Gini as kek",
+            "messageContextInfo": {
+              "deviceListMetadata": {
+                "recipientKeyHash": "GStkPIhn4o8tPQ==",
+                "recipientTimestamp": "1779891115"
+              },
+              "deviceListMetadataVersion": 2,
+              "messageSecret": "W27Xb35veX5eu/T0xGa0bq2xgVsD7yMrboa0DYay6OI="
+            }
+          },
+          "id": "AC797808FC4CBD7BA10D34DBD7F004C6",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": false,
+          "isGroup": false,
+          "sender": "1198430138519@lid",
+          "mtype": "conversation",
+          "msg": "Gini as kek",
+          "body": "Gini as kek",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Gini as kek"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": false,
+            "id": "AC41CAEA9885345BE2C603054EE5B231",
+            "senderPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987526,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "conversation": "Ign sama job nya apa",
+            "messageContextInfo": {
+              "deviceListMetadata": {
+                "recipientKeyHash": "GStkPIhn4o8tPQ==",
+                "recipientTimestamp": "1779891115"
+              },
+              "deviceListMetadataVersion": 2,
+              "messageSecret": "0F35huqRrQ1YEVoOaJQhI+XregQTpuBEkWYDpTpcJDg="
+            }
+          },
+          "id": "AC41CAEA9885345BE2C603054EE5B231",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": false,
+          "isGroup": false,
+          "sender": "1198430138519@lid",
+          "mtype": "conversation",
+          "msg": "Ign sama job nya apa",
+          "body": "Ign sama job nya apa",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Ign sama job nya apa"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": false,
+            "id": "AC5BF3FEDE1191F2731BBFA04B227A1A",
+            "senderPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987541,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "conversation": "Jgn lupa mem baru wajib ara²😂",
+            "messageContextInfo": {
+              "deviceListMetadata": {
+                "recipientKeyHash": "GStkPIhn4o8tPQ==",
+                "recipientTimestamp": "1779891115"
+              },
+              "deviceListMetadataVersion": 2,
+              "messageSecret": "m0+euFD00GlvBkse5bH+B9ksgNKBYN1zj6MSCHq3dOY="
+            }
+          },
+          "id": "AC5BF3FEDE1191F2731BBFA04B227A1A",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": false,
+          "isGroup": false,
+          "sender": "1198430138519@lid",
+          "mtype": "conversation",
+          "msg": "Jgn lupa mem baru wajib ara²😂",
+          "body": "Jgn lupa mem baru wajib ara²😂",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Jgn lupa mem baru wajib ara²😂"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": false,
+            "id": "AC3A0960E35AD4BB756DFC75B121EECA",
+            "senderPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987580,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "conversation": "Bisa kan ya",
+            "messageContextInfo": {
+              "deviceListMetadata": {
+                "recipientKeyHash": "GStkPIhn4o8tPQ==",
+                "recipientTimestamp": "1779891115"
+              },
+              "deviceListMetadataVersion": 2,
+              "messageSecret": "XI7xPM7LC23LcZFT5Xh3OV6eXRL8bsBzwJ6bp0ny3Sk="
+            }
+          },
+          "id": "AC3A0960E35AD4BB756DFC75B121EECA",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": false,
+          "isGroup": false,
+          "sender": "1198430138519@lid",
+          "mtype": "conversation",
+          "msg": "Bisa kan ya",
+          "body": "Bisa kan ya",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Bisa kan ya"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": true,
+            "id": "3EB007ECEAEA162C63550C"
+          },
+          "messageTimestamp": 1779987593,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "status": 2,
+          "message": {
+            "conversation": "yaudah deh gua coba"
+          },
+          "id": "3EB007ECEAEA162C63550C",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": true,
+          "isGroup": false,
+          "sender": "6285187238716@s.whatsapp.net",
+          "mtype": "conversation",
+          "msg": "yaudah deh gua coba",
+          "body": "yaudah deh gua coba",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "yaudah deh gua coba"
+        },
+        {
+          "key": {
+            "remoteJid": "1198430138519@lid",
+            "fromMe": false,
+            "id": "AC45AC3C651F709E69F78D6E18BD1F99",
+            "senderPn": "6285215673336@s.whatsapp.net"
+          },
+          "messageTimestamp": 1779987605,
+          "pushName": "veong",
+          "broadcast": false,
+          "message": {
+            "conversation": "Okey",
+            "messageContextInfo": {
+              "deviceListMetadata": {
+                "recipientKeyHash": "GStkPIhn4o8tPQ==",
+                "recipientTimestamp": "1779891115"
+              },
+              "deviceListMetadataVersion": 2,
+              "messageSecret": "cA8V9T7Le1dGLhwDfAePSdqBFjjfCcZM0iJnskmxWnA="
+            }
+          },
+          "id": "AC45AC3C651F709E69F78D6E18BD1F99",
+          "isBaileys": false,
+          "chat": "1198430138519@lid",
+          "fromMe": false,
+          "isGroup": false,
+          "sender": "1198430138519@lid",
+          "mtype": "conversation",
+          "msg": "Okey",
+          "body": "Okey",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Okey"
         }
       ],
       "keyId": {}

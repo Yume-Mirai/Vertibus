@@ -2084,13 +2084,13 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
 
         break;
 
-      case "welcome":
-        if (!text) return reply("ON/OFF?");
+case "welcome":
+        if (!text) return reply("Usage:\n.welcome on\n.welcome off");
         if (!m.isGroup) return reply(lang.onGroup());
         if (!isGroupAdmins) return reply(lang.onAdmin());
         if (text.toLowerCase() === "on") {
           if (global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already on!");
-          if (!global.db.groups[groupMetadata.id]) {
+          if(!global.db.groups[groupMetadata.id]) {
             global.db.groups[groupMetadata.id] = { welcome: true };
           } else {
             global.db.groups[groupMetadata.id].welcome = true;
@@ -2099,7 +2099,7 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         }
         if (text.toLowerCase() === "off") {
           if (!global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already off!");
-          if (!global.db.groups[groupMetadata.id]) {
+          if(!global.db.groups[groupMetadata.id]) {
             global.db.groups[groupMetadata.id] = { welcome: false };
           } else {
             global.db.groups[groupMetadata.id].welcome = false;

@@ -1,10 +1,11 @@
 {
   "private_usage": 26,
-  "group_usage": 71,
+  "group_usage": 79,
   "store": {},
   "groups": {
     "120363406658263857@g.us": {
-      "open": true
+      "open": true,
+      "welcome": true
     }
   },
   "database": {},
