@@ -13,6 +13,7 @@ exports.menu = (prefix) => {
  │•${prefix}food
  │•${prefix}monster
  │•${prefix}item
+ │•${prefix}piercer
  ╰•${prefix}mqmats
  
 

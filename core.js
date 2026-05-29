@@ -12,6 +12,7 @@ const { color } = require("./lib/color");
 const { performance } = require("perf_hooks");
 const ind = require("./language/ind");
 const eng = require("./language/eng");
+const piercerData = require("./piercer");
 const calculateMQ = require("./lib/MQcalculator");
 const {
   getBuffer,
@@ -348,15 +349,24 @@ module.exports = core = async (client, m, chatUpdate) => {
     switch (command) {
       case "menu":
         m.reply(lang.menu(prefix));
-        break;
+break;
 
-      /* ================ Toram Online Menu ================ */
+/* ================ Toram Online Menu ================ */
       case "cwatk":
         if (!q) return reply(lang.format(prefix, command));
         int = parseInt(q);
         proc = eval((int * 110) / 100 + 10);
         str = proc.toString();
         m.reply(str);
+        break;
+        
+      case "piercer":
+      case "pembolong":
+        reply(piercerData.piercer());
+        break;
+
+      case "owner":
+        reply(lang.ownerContact());
         break;
 
       case "cdmg":
