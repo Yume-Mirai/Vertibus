@@ -1454,6 +1454,127 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
       }
         break;
 
+      case "item":
+      case "items": {
+        if (!text) return m.reply(`Format: ${prefix}item <nama item>\nContoh: ${prefix}item Mythriller Blade`);
+        try {
+          progress("⏳");
+          const itemRes = await axios.get(`https://coryn.club/api/v1/items.php?name=${encodeURIComponent(text)}`);
+          if (!itemRes.data.success || itemRes.data.data.length === 0) {
+            progress("❌");
+            return m.reply(`Item *${text}* tidak ditemukan!`);
+          }
+          const items = itemRes.data.data;
+          // Ambil detail item pertama
+          const first = items[0];
+          const detailRes = await axios.get(`https://coryn.club/api/v1/items.php?id=${first.id}`);
+          const detail = detailRes.data.data;
+
+          // Format hasil
+          let msg = `*🔍 Item Search: ${text}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n`;
+
+          if (items.length > 1) {
+            msg += `_Ditemukan ${items.length} item, menampilkan yang pertama_\n\n`;
+          }
+
+          msg += `*📦 Nama:* ${detail.name}\n`;
+          msg += `*🏷️ Tipe:* ${detail.type_label}\n`;
+          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
+          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
+          msg += `*💰 Sell:* ${detail.sell > 0 ? detail.sell.toLocaleString() : "-"}\n`;
+
+          if (detail.stats && detail.stats.length > 0) {
+            msg += `\n*📊 Stats:*\n`;
+            for (const stat of detail.stats) {
+              const sign = stat.amount > 0 ? "+" : "";
+              msg += `  • ${stat.effect_name}: ${sign}${stat.amount}${stat.effect_name.includes("%") ? "" : ""}\n`;
+            }
+          }
+
+          if (items.length > 1) {
+            msg += `\n*📋 Item lain yang ditemukan:*\n`;
+            for (let i = 1; i < Math.min(items.length, 6); i++) {
+              msg += `  ${i}. ${items[i].name} ${items[i].type_label}\n`;
+            }
+            if (items.length > 6) msg += `  _...dan ${items.length - 6} lainnya_\n`;
+          }
+
+          m.reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+          m.reply("Gagal mengakses Coryn Club API!");
+        }
+      }
+        break;
+
+      case "monster":
+      case "searchmonster":
+      case "cari":
+      case "findmob": {
+        if (!text) return m.reply(`Format: ${prefix}cari <nama monster>\nContoh: ${prefix}cari Mycodian`);
+        try {
+          progress("⏳");
+          const mobRes = await axios.get(`https://coryn.club/api/v1/monsters.php?name=${encodeURIComponent(text)}`);
+          if (!mobRes.data.success || mobRes.data.data.length === 0) {
+            progress("❌");
+            return m.reply(`Monster *${text}* tidak ditemukan!`);
+          }
+          const monsters = mobRes.data.data;
+
+          // Ambil detail monster pertama
+          const first = monsters[0];
+          const detailRes = await axios.get(`https://coryn.club/api/v1/monsters.php?id=${first.id}`);
+          const detail = detailRes.data.data;
+
+          let msg = `*🔍 Monster Search: ${text}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n`;
+
+          if (monsters.length > 1) {
+            msg += `_Ditemukan ${monsters.length} monster, menampilkan yang pertama_\n\n`;
+          }
+
+          msg += `*👾 Nama:* ${detail.name}\n`;
+          msg += `*📍 Lokasi:* ${detail.map_name}\n`;
+          msg += `*⚔️ Tipe:* ${detail.type_label}\n`;
+          msg += `*🎮 Mode:* ${detail.mode || "-"}\n`;
+          msg += `*📈 Level:* ${detail.level}\n`;
+          msg += `*❤️ HP:* ${detail.hp > 0 ? detail.hp.toLocaleString() : "?"}\n`;
+          msg += `*✨ EXP:* ${detail.exp > 0 ? detail.exp.toLocaleString() : "?"}\n`;
+          msg += `*🌀 Elemen:* ${detail.element_label || "-"}\n`;
+          msg += `*🐾 Tameable:* ${detail.tameable ? "Ya" : "Tidak"}\n`;
+          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
+          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
+
+          if (detail.drops && detail.drops.length > 0) {
+            msg += `\n*💎 Drops:*\n`;
+            for (const drop of detail.drops) {
+              msg += `  • ${drop.name} ${drop.type_label}\n`;
+            }
+          } else {
+            msg += `\n*💎 Drops:* -\n`;
+          }
+
+          if (monsters.length > 1) {
+            msg += `\n*📋 Monster lain yang ditemukan:*\n`;
+            for (let i = 1; i < Math.min(monsters.length, 5); i++) {
+              msg += `  ${i}. ${monsters[i].name} - Lv.${monsters[i].level} (${monsters[i].mode || monsters[i].type_label}) @ ${monsters[i].map_name}\n`;
+            }
+            if (monsters.length > 5) msg += `  _...dan ${monsters.length - 5} lainnya_\n`;
+          }
+
+          m.reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+          m.reply("Gagal mengakses Coryn Club API!");
+        }
+      }
+        break;
+
       case "mt":
         url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
         axios.get(url)
@@ -2084,13 +2205,13 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
 
         break;
 
-case "welcome":
+      case "welcome":
         if (!text) return reply("Usage:\n.welcome on\n.welcome off");
         if (!m.isGroup) return reply(lang.onGroup());
         if (!isGroupAdmins) return reply(lang.onAdmin());
         if (text.toLowerCase() === "on") {
           if (global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already on!");
-          if(!global.db.groups[groupMetadata.id]) {
+          if (!global.db.groups[groupMetadata.id]) {
             global.db.groups[groupMetadata.id] = { welcome: true };
           } else {
             global.db.groups[groupMetadata.id].welcome = true;
@@ -2099,7 +2220,7 @@ case "welcome":
         }
         if (text.toLowerCase() === "off") {
           if (!global.db.groups[groupMetadata.id]?.welcome) return reply("Welcome already off!");
-          if(!global.db.groups[groupMetadata.id]) {
+          if (!global.db.groups[groupMetadata.id]) {
             global.db.groups[groupMetadata.id] = { welcome: false };
           } else {
             global.db.groups[groupMetadata.id].welcome = false;

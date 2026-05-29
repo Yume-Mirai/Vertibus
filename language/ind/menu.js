@@ -4,7 +4,6 @@ exports.menu = (prefix) => {
 
  ❏ *Toram Online Menu*
  │•${prefix}lvling
- │•${prefix}mob
  │•${prefix}mq
  │•${prefix}maze
  │•${prefix}bag
@@ -12,7 +11,10 @@ exports.menu = (prefix) => {
  │•${prefix}cwatk
  │•${prefix}cdmg
  │•${prefix}food
+ │•${prefix}monster
+ │•${prefix}item
  ╰•${prefix}mqmats
+ 
 
  ❏ *Toram Buff Menu*
  │•${prefix}buff
