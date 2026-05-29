@@ -1397,62 +1397,62 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         }
         break;
 
-      case "mob":
-      case "mobs":
-      case "monster":
-      case "boss": {
-        if (!text) return m.reply(lang.format(prefix, command));
-        try {
-          progress("⏳");
-          if (language == "eng") {
-            url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-          } else if (language == "ind") {
-            url = `http://indo.coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-          } else {
-            url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-          }
-          axios.get(url)
-            .then((response) => {
-              if (response.status === 200) {
-                const html = response.data;
-                const $ = cheerio.load(html);
-                const mobs = [];
-                $(".card-container > div").each(function () {
-                  mobs.push({
-                    name: $(this).find(".card-title-inverse").text().trim().replace("_id", ""),
-                    level: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(1) > p:nth-child(2) ").text().trim(),
-                    location: $(this).find(".item-prop > div:nth-child(2) > a").text().trim(),
-                    difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(),
-                    element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(),
-                    hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(),
-                    exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(),
-                    tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(),
-                    drops: $(this).find(".monster-drop-list > .monster-drop").map(function () {
-                      return $(this).text().trim();
-                    }).get()
-                  })
-                });
-                if (mobs.length < 1) return m.reply("Monster not found!");
-                let displayText = `*List monster with name ${text}:*\n`;
-                for (let i = 0; i < mobs.length; i++) {
-                  const mob = mobs[i];
-                  let dropsText = mob.drops.length > 0 ? mob.drops.join("\n- ") : "No drops";
-                  displayText += `\n*Name:* ${mob.name}\n*Level:* ${mob.level}\n*Location:* ${mob.location}\n*Difficulty:* ${mob.difficulty}\n*Element:* ${mob.element}\n*HP:* ${mob.hp}\n*EXP:* ${mob.exp}\n*Tameable:* ${mob.tamable}\n*Drops:*\n- ${dropsText}\n`;
-                }
-                m.reply(displayText);
-                progress("✔");
-              } else {
-                m.reply("Monster not found!");
-              }
-            })
-            .catch(() => m.reply("Official Website can't be accessed!"));
-        } catch (err) {
-          progress("❌");
-          m.reply(lang.error(err));
-          console.log(err);
-        }
-      }
-        break;
+      // case "mob":
+      // case "mobs":
+      // case "monster":
+      // case "boss": {
+      //   if (!text) return m.reply(lang.format(prefix, command));
+      //   try {
+      //     progress("⏳");
+      //     if (language == "eng") {
+      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
+      //     } else if (language == "ind") {
+      //       url = `http://indo.coryn.club/monster.php?name=${encodeURIComponent(text)}`;
+      //     } else {
+      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
+      //     }
+      //     axios.get(url)
+      //       .then((response) => {
+      //         if (response.status === 200) {
+      //           const html = response.data;
+      //           const $ = cheerio.load(html);
+      //           const mobs = [];
+      //           $(".card-container > div").each(function () {
+      //             mobs.push({
+      //               name: $(this).find(".card-title-inverse").text().trim().replace("_id", ""),
+      //               level: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(1) > p:nth-child(2) ").text().trim(),
+      //               location: $(this).find(".item-prop > div:nth-child(2) > a").text().trim(),
+      //               difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(),
+      //               element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(),
+      //               hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(),
+      //               exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(),
+      //               tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(),
+      //               drops: $(this).find(".monster-drop-list > .monster-drop").map(function () {
+      //                 return $(this).text().trim();
+      //               }).get()
+      //             })
+      //           });
+      //           if (mobs.length < 1) return m.reply("Monster not found!");
+      //           let displayText = `*List monster with name ${text}:*\n`;
+      //           for (let i = 0; i < mobs.length; i++) {
+      //             const mob = mobs[i];
+      //             let dropsText = mob.drops.length > 0 ? mob.drops.join("\n- ") : "No drops";
+      //             displayText += `\n*Name:* ${mob.name}\n*Level:* ${mob.level}\n*Location:* ${mob.location}\n*Difficulty:* ${mob.difficulty}\n*Element:* ${mob.element}\n*HP:* ${mob.hp}\n*EXP:* ${mob.exp}\n*Tameable:* ${mob.tamable}\n*Drops:*\n- ${dropsText}\n`;
+      //           }
+      //           m.reply(displayText);
+      //           progress("✔");
+      //         } else {
+      //           m.reply("Monster not found!");
+      //         }
+      //       })
+      //       .catch(() => m.reply("Official Website can't be accessed!"));
+      //   } catch (err) {
+      //     progress("❌");
+      //     m.reply(lang.error(err));
+      //     console.log(err);
+      //   }
+      // }
+      //   break;
 
       case "item":
       case "items": {

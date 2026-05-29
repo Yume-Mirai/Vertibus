@@ -371,6 +371,9 @@
       },
       "88588146462830@lid": {
         "lastKnownPresence": "composing"
+      },
+      "276261003853977@lid": {
+        "lastKnownPresence": "available"
       }
     },
     "120363284904551089@g.us": {
@@ -5422,297 +5425,26 @@
           },
           "messageTimestamp": "1780058754",
           "status": "PENDING"
+        },
+        {
+          "key": {
+            "remoteJid": "6285187238716@s.whatsapp.net",
+            "fromMe": true,
+            "id": "3EB016E530C62CB719E63A"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Bot started!\n\nDon't forget to donate the creator :)\nhttps://saweria.co/Asfari01"
+            }
+          },
+          "messageTimestamp": "1780058811",
+          "status": "PENDING"
         }
       ],
       "keyId": {}
     },
     "120363406658263857@g.us": {
       "array": [
-        {
-          "key": {
-            "remoteJid": "120363406658263857@g.us",
-            "fromMe": false,
-            "id": "AC22C4CB2DD7D778E7820A4CAB4930DC",
-            "participant": "118236272177252@lid",
-            "participantPn": "62895619361692@s.whatsapp.net"
-          },
-          "messageTimestamp": 1779934092,
-          "pushName": "Mizuha",
-          "broadcast": false,
-          "message": {
-            "extendedTextMessage": {
-              "text": "Kalo sama ryu 15m aja",
-              "previewType": "NONE",
-              "contextInfo": {
-                "stanzaId": "AC48586A154CE30BED7D81B19FAF6E01",
-                "participant": "216188000944290@lid",
-                "quotedMessage": {
-                  "conversation": "ajg dipapan jg 10m, opad jual 8m"
-                }
-              },
-              "inviteLinkGroupTypeV2": "DEFAULT"
-            },
-            "messageContextInfo": {
-              "messageSecret": "itVEuQUeV1UJsDH9rsDpoxl4/Dfckloxpea1WfQXtSY="
-            }
-          },
-          "id": "AC22C4CB2DD7D778E7820A4CAB4930DC",
-          "isBaileys": false,
-          "chat": "120363406658263857@g.us",
-          "fromMe": false,
-          "isGroup": true,
-          "sender": "118236272177252@lid",
-          "participant": "118236272177252@lid",
-          "mtype": "extendedTextMessage",
-          "msg": {
-            "text": "Kalo sama ryu 15m aja",
-            "previewType": "NONE",
-            "contextInfo": {
-              "stanzaId": "AC48586A154CE30BED7D81B19FAF6E01",
-              "participant": "216188000944290@lid",
-              "quotedMessage": {
-                "conversation": "ajg dipapan jg 10m, opad jual 8m"
-              }
-            },
-            "inviteLinkGroupTypeV2": "DEFAULT"
-          },
-          "body": "Kalo sama ryu 15m aja",
-          "quoted": {
-            "text": "ajg dipapan jg 10m, opad jual 8m",
-            "mtype": "conversation",
-            "id": "AC48586A154CE30BED7D81B19FAF6E01",
-            "chat": "120363406658263857@g.us",
-            "isBaileys": false,
-            "sender": "216188000944290@lid",
-            "fromMe": false,
-            "mentionedJid": [],
-            "fakeObj": {
-              "key": {
-                "remoteJid": "120363406658263857@g.us",
-                "fromMe": false,
-                "id": "AC48586A154CE30BED7D81B19FAF6E01"
-              },
-              "message": {
-                "conversation": "ajg dipapan jg 10m, opad jual 8m"
-              },
-              "participant": "216188000944290@lid"
-            }
-          },
-          "mentionedJid": [],
-          "text": "Kalo sama ryu 15m aja"
-        },
-        {
-          "key": {
-            "remoteJid": "120363406658263857@g.us",
-            "fromMe": false,
-            "id": "AC92351ABF7135EAC738B1B0548C3CF8",
-            "participant": "118236272177252@lid",
-            "participantPn": "62895619361692@s.whatsapp.net"
-          },
-          "messageTimestamp": 1779934096,
-          "pushName": "Mizuha",
-          "broadcast": false,
-          "message": {
-            "stickerMessage": {
-              "url": "https://mmg.whatsapp.net/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gFXoHIZHGhCg1M9a9FOtRvxUzYZcNgqJHWIQJtq3A7A4g&oe=6A3F11B1&_nc_sid=5e03e0&mms3=true",
-              "fileSha256": "v0lT19zivLp4Pm+SuSjGrJ4Lx69aEQcOH/NCCESFgF0=",
-              "fileEncSha256": "AGdxh1P+8EWJClml1gSrLb6lVyT+XMp7fiKIKSQMG7A=",
-              "mediaKey": "wOxdgQb6xUGrbHg1S5U/XOQ+vCEx24ctAJcQaix/iO0=",
-              "mimetype": "image/webp",
-              "height": 64,
-              "width": 64,
-              "directPath": "/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gFXoHIZHGhCg1M9a9FOtRvxUzYZcNgqJHWIQJtq3A7A4g&oe=6A3F11B1&_nc_sid=5e03e0",
-              "fileLength": "152110",
-              "mediaKeyTimestamp": "1779846904",
-              "firstFrameLength": 151800,
-              "firstFrameSidecar": "8Yg/5WrL+juxrQ==",
-              "isAnimated": true,
-              "stickerSentTs": "1779934095692",
-              "isAvatar": false,
-              "isAiSticker": false,
-              "isLottie": false
-            },
-            "messageContextInfo": {
-              "messageSecret": "WGThR1wLDB+01w8r6jfBfUhXR9ataAKMJkjrpE3aWBY="
-            }
-          },
-          "id": "AC92351ABF7135EAC738B1B0548C3CF8",
-          "isBaileys": false,
-          "chat": "120363406658263857@g.us",
-          "fromMe": false,
-          "isGroup": true,
-          "sender": "118236272177252@lid",
-          "participant": "118236272177252@lid",
-          "mtype": "stickerMessage",
-          "msg": {
-            "url": "https://mmg.whatsapp.net/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gFXoHIZHGhCg1M9a9FOtRvxUzYZcNgqJHWIQJtq3A7A4g&oe=6A3F11B1&_nc_sid=5e03e0&mms3=true",
-            "fileSha256": "v0lT19zivLp4Pm+SuSjGrJ4Lx69aEQcOH/NCCESFgF0=",
-            "fileEncSha256": "AGdxh1P+8EWJClml1gSrLb6lVyT+XMp7fiKIKSQMG7A=",
-            "mediaKey": "wOxdgQb6xUGrbHg1S5U/XOQ+vCEx24ctAJcQaix/iO0=",
-            "mimetype": "image/webp",
-            "height": 64,
-            "width": 64,
-            "directPath": "/v/t62.15575-24/575200809_1579278347171868_4663642394006144416_n.enc?ccb=11-4&oh=01_Q5Aa4gFXoHIZHGhCg1M9a9FOtRvxUzYZcNgqJHWIQJtq3A7A4g&oe=6A3F11B1&_nc_sid=5e03e0",
-            "fileLength": "152110",
-            "mediaKeyTimestamp": "1779846904",
-            "firstFrameLength": 151800,
-            "firstFrameSidecar": "8Yg/5WrL+juxrQ==",
-            "isAnimated": true,
-            "stickerSentTs": "1779934095692",
-            "isAvatar": false,
-            "isAiSticker": false,
-            "isLottie": false
-          },
-          "quoted": null,
-          "mentionedJid": [],
-          "text": ""
-        },
-        {
-          "key": {
-            "remoteJid": "120363406658263857@g.us",
-            "fromMe": false,
-            "id": "ACA435D9CC298B199A233F6CA5F31285",
-            "participant": "216188000944290@lid",
-            "participantPn": "6281947459933@s.whatsapp.net"
-          },
-          "messageTimestamp": 1779934141,
-          "pushName": "Ryui'",
-          "broadcast": false,
-          "message": {
-            "extendedTextMessage": {
-              "text": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja",
-              "previewType": "NONE",
-              "contextInfo": {
-                "stanzaId": "AC22C4CB2DD7D778E7820A4CAB4930DC",
-                "participant": "118236272177252@lid",
-                "quotedMessage": {
-                  "conversation": "Kalo sama ryu 15m aja"
-                }
-              },
-              "inviteLinkGroupTypeV2": "DEFAULT"
-            },
-            "messageContextInfo": {
-              "messageSecret": "6iaOecLnBIpRvGYyn+92ywgYiYTaGSq7czLPq3OGb+w="
-            }
-          },
-          "id": "ACA435D9CC298B199A233F6CA5F31285",
-          "isBaileys": false,
-          "chat": "120363406658263857@g.us",
-          "fromMe": false,
-          "isGroup": true,
-          "sender": "216188000944290@lid",
-          "participant": "216188000944290@lid",
-          "mtype": "extendedTextMessage",
-          "msg": {
-            "text": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja",
-            "previewType": "NONE",
-            "contextInfo": {
-              "stanzaId": "AC22C4CB2DD7D778E7820A4CAB4930DC",
-              "participant": "118236272177252@lid",
-              "quotedMessage": {
-                "conversation": "Kalo sama ryu 15m aja"
-              }
-            },
-            "inviteLinkGroupTypeV2": "DEFAULT"
-          },
-          "body": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja",
-          "quoted": {
-            "text": "Kalo sama ryu 15m aja",
-            "mtype": "conversation",
-            "id": "AC22C4CB2DD7D778E7820A4CAB4930DC",
-            "chat": "120363406658263857@g.us",
-            "isBaileys": false,
-            "sender": "118236272177252@lid",
-            "fromMe": false,
-            "mentionedJid": [],
-            "fakeObj": {
-              "key": {
-                "remoteJid": "120363406658263857@g.us",
-                "fromMe": false,
-                "id": "AC22C4CB2DD7D778E7820A4CAB4930DC"
-              },
-              "message": {
-                "conversation": "Kalo sama ryu 15m aja"
-              },
-              "participant": "118236272177252@lid"
-            }
-          },
-          "mentionedJid": [],
-          "text": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja"
-        },
-        {
-          "key": {
-            "remoteJid": "120363406658263857@g.us",
-            "fromMe": false,
-            "id": "AC5E84F956EAD901003DD4799A8F88CF",
-            "participant": "118236272177252@lid",
-            "participantPn": "62895619361692@s.whatsapp.net"
-          },
-          "messageTimestamp": 1779934165,
-          "pushName": "Mizuha",
-          "broadcast": false,
-          "message": {
-            "extendedTextMessage": {
-              "text": "Aku kasih diskon nih 0,00000000000000000001%",
-              "previewType": "NONE",
-              "contextInfo": {
-                "stanzaId": "ACA435D9CC298B199A233F6CA5F31285",
-                "participant": "216188000944290@lid",
-                "quotedMessage": {
-                  "conversation": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja"
-                }
-              },
-              "inviteLinkGroupTypeV2": "DEFAULT"
-            },
-            "messageContextInfo": {
-              "messageSecret": "ixsL9dlv8dg7WF5ptUhE9KrrdreZmtzuM2rWAkZawe8="
-            }
-          },
-          "id": "AC5E84F956EAD901003DD4799A8F88CF",
-          "isBaileys": false,
-          "chat": "120363406658263857@g.us",
-          "fromMe": false,
-          "isGroup": true,
-          "sender": "118236272177252@lid",
-          "participant": "118236272177252@lid",
-          "mtype": "extendedTextMessage",
-          "msg": {
-            "text": "Aku kasih diskon nih 0,00000000000000000001%",
-            "previewType": "NONE",
-            "contextInfo": {
-              "stanzaId": "ACA435D9CC298B199A233F6CA5F31285",
-              "participant": "216188000944290@lid",
-              "quotedMessage": {
-                "conversation": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja"
-              }
-            },
-            "inviteLinkGroupTypeV2": "DEFAULT"
-          },
-          "body": "Aku kasih diskon nih 0,00000000000000000001%",
-          "quoted": {
-            "text": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja",
-            "mtype": "conversation",
-            "id": "ACA435D9CC298B199A233F6CA5F31285",
-            "chat": "120363406658263857@g.us",
-            "isBaileys": false,
-            "sender": "216188000944290@lid",
-            "fromMe": false,
-            "mentionedJid": [],
-            "fakeObj": {
-              "key": {
-                "remoteJid": "120363406658263857@g.us",
-                "fromMe": false,
-                "id": "ACA435D9CC298B199A233F6CA5F31285"
-              },
-              "message": {
-                "conversation": "dah punya1, niaynya moganti app proto ku jamet, tapi disek mo beli katana aja"
-              },
-              "participant": "216188000944290@lid"
-            }
-          },
-          "mentionedJid": [],
-          "text": "Aku kasih diskon nih 0,00000000000000000001%"
-        },
         {
           "key": {
             "remoteJid": "120363406658263857@g.us",
@@ -59914,6 +59646,111 @@
           "quoted": null,
           "mentionedJid": [],
           "text": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "A5A25708AE88A78E30EC1CDC073A5F20",
+            "participant": "121982003728599@lid",
+            "participantPn": "6285824923575@s.whatsapp.net"
+          },
+          "messageTimestamp": 1780058825,
+          "pushName": "Yuuki AS Store",
+          "broadcast": false,
+          "message": {
+            "conversation": "Cuman kertas pola?",
+            "messageContextInfo": {
+              "messageSecret": "H9rOX4IR7aCoA+HiCCIVKA4Zp7K6eAqaCPsLcezArCk="
+            }
+          },
+          "id": "A5A25708AE88A78E30EC1CDC073A5F20",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "121982003728599@lid",
+          "participant": "121982003728599@lid",
+          "mtype": "conversation",
+          "msg": "Cuman kertas pola?",
+          "body": "Cuman kertas pola?",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": "Cuman kertas pola?"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": false,
+            "id": "ACF1848689E02EED62998DABF11792C9",
+            "participant": "126822415098035@lid"
+          },
+          "messageTimestamp": 1780058840,
+          "pushName": "Asfari",
+          "broadcast": false,
+          "message": {
+            "conversation": ".monster mimyu",
+            "messageContextInfo": {
+              "messageSecret": "3u5Qg+Tyjar/2V10Eux/0/TqshQeTHPo5tu3xIA/QWo="
+            }
+          },
+          "id": "ACF1848689E02EED62998DABF11792C9",
+          "isBaileys": false,
+          "chat": "120363406658263857@g.us",
+          "fromMe": false,
+          "isGroup": true,
+          "sender": "126822415098035@lid",
+          "participant": "126822415098035@lid",
+          "mtype": "conversation",
+          "msg": ".monster mimyu",
+          "body": ".monster mimyu",
+          "quoted": null,
+          "mentionedJid": [],
+          "text": ".monster mimyu"
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB08F7BC08C560442C3F8"
+          },
+          "message": {
+            "reactionMessage": {
+              "key": {
+                "remoteJid": "120363406658263857@g.us",
+                "fromMe": false,
+                "id": "ACF1848689E02EED62998DABF11792C9",
+                "participant": "126822415098035@lid"
+              },
+              "text": "⏳",
+              "senderTimestampMs": "1780058841183"
+            }
+          },
+          "messageTimestamp": "1780058841",
+          "status": "PENDING",
+          "participant": ""
+        },
+        {
+          "key": {
+            "remoteJid": "120363406658263857@g.us",
+            "fromMe": true,
+            "id": "3EB07D48500578CB0DEA7D"
+          },
+          "message": {
+            "extendedTextMessage": {
+              "text": "Official Website can't be accessed!",
+              "contextInfo": {
+                "stanzaId": "ACF1848689E02EED62998DABF11792C9",
+                "participant": "126822415098035@lid",
+                "quotedMessage": {
+                  "conversation": ".monster mimyu"
+                }
+              }
+            }
+          },
+          "messageTimestamp": "1780058842",
+          "status": "PENDING",
+          "participant": ""
         }
       ],
       "keyId": {}
