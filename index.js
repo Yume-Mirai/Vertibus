@@ -274,24 +274,50 @@ async function start() {
 		}
 	});
 
+// client.ev.on("group-participants.update", async (event) => {
+//     group = event.id.endsWith("@g.us")
+//     if (!group) return;
+//     const metadata = await client.groupMetadata(event.id);
+//     if (store && store.groupMetadata) {
+//       store.groupMetadata[event.id] = metadata;
+//     }
+//     if (!global.db.groups[event.id]?.welcome) return;
+//     for (let participant of event.participants) {
+//       const id = client.decodeJid(participant);
+//       if (event.action === "add") {
+//         const welcomeText = `🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @${id.split("@")[0]} di grup ${metadata.subject}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib "ara ara" dulu ✨`;
+//         client.sendText(event.id, welcomeText, {mentions: [id]})
+//       } else if (event.action === "remove") {
+//         client.sendText(event.id, `Goodbye @${id.split("@")[0]}, it was nice to have an adventure with you.`, {mentions: [id]})
+//       }
+//     }
+// })
+
 client.ev.on("group-participants.update", async (event) => {
-    group = event.id.endsWith("@g.us")
-    if (!group) return;
-    const metadata = await client.groupMetadata(event.id);
+    if (!event.id.endsWith("@g.us")) return;
+    const metadata = await client.groupMetadata(event.id).catch(() => null);
+    if (!metadata) return;
     if (store && store.groupMetadata) {
       store.groupMetadata[event.id] = metadata;
     }
     if (!global.db.groups[event.id]?.welcome) return;
     for (let participant of event.participants) {
       const id = client.decodeJid(participant);
+      const numOnly = id.replace(/@(s\.whatsapp\.net|lid|g\.us)/, "");
       if (event.action === "add") {
-        const welcomeText = `🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @${id.split("@")[0]} di grup ${metadata.subject}\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib "ara ara" dulu ✨`;
-        client.sendText(event.id, welcomeText, {mentions: [id]})
+        const welcomeText = `🚨 WOI ADA MEMBER BARU 🚨\nSelamat datang @${numOnly} di grup *${metadata.subject}*\n\nJangan cuma masuk terus jadi mayat grup. Di sini minimal nyaut kalau diajak ngobrol 🗿\nKalau butuh bantuan leveling, build, farming, boss, atau nyari teman mabar tinggal ngomong.\n\nIsi data dulu biar nggak dianggap NPC:\n\n👤 IGN :\n⚔️ JOB :\n📈 LEVEL :\n💰 FARM / DPS / BS / TANK :\n🕒 JAM MAIN :\n🎯 TUJUAN MAIN :\n\nRules sederhana:\n✔ Jangan rusuh nggak jelas\n✔ Jangan drama bocah\n✔ Jangan jadi beban party 24/7\n✔ Kalau hoki drop jangan sombong\n✔ Kalau refine jebol jangan nangis di grup\n\nDan seperti tradisi turun-temurun grup ini...\n✨ Member baru wajib "ara ara" dulu ✨`;
+        await client.sendMessage(event.id, { 
+          text: welcomeText, 
+          mentions: [id] 
+        });
       } else if (event.action === "remove") {
-        client.sendText(event.id, `Goodbye @${id.split("@")[0]}, it was nice to have an adventure with you.`, {mentions: [id]})
+        await client.sendMessage(event.id, { 
+          text: `Goodbye @${numOnly}, it was nice to have an adventure with you.`, 
+          mentions: [id] 
+        });
       }
     }
-})
+});
 
   // Geting name of contact
   client.getName = (jid, withoutContact = false) => {
