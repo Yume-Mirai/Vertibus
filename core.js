@@ -492,7 +492,739 @@ Global Price:
         );
         break;
 
-      case "calculate":
+      case "lv":
+      case "lvl":
+      case "lvling":
+      case "leveling":
+        //return reply("Fitur sedang dalam perbaikan!")
+        try {
+          lvl = q.split("|")[0];
+          bexp = q.split("|")[1];
+          if (!lvl) return m.reply(lang.format(prefix, command));
+          if (q.toLowerCase() == "bs") return reply(lang.bs());
+          if (!bexp) {
+            bexp = "0";
+          }
+          if (isNaN(lvl)) return m.reply(lang.format(prefix, command));
+          if (isNaN(bexp)) return m.reply(lang.format(prefix, command));
+          progress("⏳");
+
+          axios
+            .get(
+              `https://coryn.club/leveling.php?lv=${lvl}&gap=7&bonusEXP=${bexp}`
+            )
+            .then((response) => {
+              if (response.status === 200) {
+                const html = response.data;
+                const $ = cheerio.load(html);
+                const array = [];
+                $(".level-row").each(function (i, elem) {
+                  level = $(this).find(".level-col-1 > b").text().trim();
+                  boss = $(this)
+                    .find(".level-col-2 > p:nth-child(1) > b > a")
+                    .text()
+                    .trim();
+                  location = $(this)
+                    .find(".level-col-2 > p:nth-child(2)")
+                    .text()
+                    .trim();
+                  fullBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(1) > b")
+                    .text()
+                    .trim();
+                  allBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(1)> small")
+                    .text()
+                    .trim();
+                  secondBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(2)")
+                    .text()
+                    .trim();
+                  twoBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(2) > small")
+                    .text()
+                    .trim();
+                  firstBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(3)")
+                    .text()
+                    .trim();
+                  oneBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(3) > small")
+                    .text()
+                    .trim();
+                  noBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(4)")
+                    .text()
+                    .trim();
+                  zeroBreak = $(this)
+                    .find(".level-col-3 > p:nth-child(4)> small")
+                    .text()
+                    .trim();
+
+                  if (fullBreak && oneBreak) {
+                    array.push({
+                      level,
+                      boss,
+                      location,
+                      exp: {
+                        fullBreak,
+                        secondBreak: secondBreak ? secondBreak : " - ",
+                        firstBreak: firstBreak ? firstBreak : " - ",
+                        noBreak: noBreak ? noBreak : " - ",
+                      },
+                      star: {
+                        allBreak,
+                        twoBreak: twoBreak ? twoBreak : " - ",
+                        oneBreak: oneBreak ? oneBreak : " - ",
+                        zeroBreak: zeroBreak ? zeroBreak : " - ",
+                      },
+                    });
+                  }
+                });
+                let gb = `*Leveling lvl ${lvl} & bonus exp ${bexp}%*\n`;
+                for (let i = 0; i < array.length; i++) {
+                  gb += `-------------------------------\nBoss: ${array[i].boss}\nBoss Level: ${array[i].level}\nLocation: ${array[i].location}\nEXP:\n- Full Break: ${array[i].exp.fullBreak} ${array[i].star.allBreak}\n- Two Break: ${array[i].exp.secondBreak}\n- One Break: ${array[i].exp.firstBreak}\n- No Break: ${array[i].exp.noBreak} \n`;
+                }
+                client.sendText(from, gb, mek);
+                progress("✔");
+              }
+            });
+        } catch (err) {
+          progress("❌");
+          m.reply(lang.error(err));
+        }
+        break;
+
+      // case "mob":
+      // case "mobs":
+      // case "monster":
+      // case "boss": {
+      //   if (!text) return m.reply(lang.format(prefix, command));
+      //   try {
+      //     progress("⏳");
+      //     if (language == "eng") {
+      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
+      //     } else if (language == "ind") {
+      //       url = `http://indo.coryn.club/monster.php?name=${encodeURIComponent(text)}`;
+      //     } else {
+      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
+      //     }
+      //     axios.get(url)
+      //       .then((response) => {
+      //         if (response.status === 200) {
+      //           const html = response.data;
+      //           const $ = cheerio.load(html);
+      //           const mobs = [];
+      //           $(".card-container > div").each(function () {
+      //             mobs.push({
+      //               name: $(this).find(".card-title-inverse").text().trim().replace("_id", ""),
+      //               level: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(1) > p:nth-child(2) ").text().trim(),
+      //               location: $(this).find(".item-prop > div:nth-child(2) > a").text().trim(),
+      //               difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(),
+      //               element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(),
+      //               hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(),
+      //               exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(),
+      //               tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(),
+      //               drops: $(this).find(".monster-drop-list > .monster-drop").map(function () {
+      //                 return $(this).text().trim();
+      //               }).get()
+      //             })
+      //           });
+      //           if (mobs.length < 1) return m.reply("Monster not found!");
+      //           let displayText = `*List monster with name ${text}:*\n`;
+      //           for (let i = 0; i < mobs.length; i++) {
+      //             const mob = mobs[i];
+      //             let dropsText = mob.drops.length > 0 ? mob.drops.join("\n- ") : "No drops";
+      //             displayText += `\n*Name:* ${mob.name}\n*Level:* ${mob.level}\n*Location:* ${mob.location}\n*Difficulty:* ${mob.difficulty}\n*Element:* ${mob.element}\n*HP:* ${mob.hp}\n*EXP:* ${mob.exp}\n*Tameable:* ${mob.tamable}\n*Drops:*\n- ${dropsText}\n`;
+      //           }
+      //           m.reply(displayText);
+      //           progress("✔");
+      //         } else {
+      //           m.reply("Monster not found!");
+      //         }
+      //       })
+      //       .catch(() => m.reply("Official Website can't be accessed!"));
+      //   } catch (err) {
+      //     progress("❌");
+      //     m.reply(lang.error(err));
+      //     console.log(err);
+      //   }
+      // }
+      //   break;
+
+      case "item":
+      case "items": {
+        if (!text) return m.reply(`Format: ${prefix}item <nama item>\nContoh: ${prefix}item Mythriller Blade`);
+        try {
+          progress("⏳");
+          const itemRes = await axios.get(`https://coryn.club/api/v1/items.php?name=${encodeURIComponent(text)}`);
+          if (!itemRes.data.success || itemRes.data.data.length === 0) {
+            progress("❌");
+            return m.reply(`Item *${text}* tidak ditemukan!`);
+          }
+          const items = itemRes.data.data;
+          // Ambil detail item pertama
+          const first = items[0];
+          const detailRes = await axios.get(`https://coryn.club/api/v1/items.php?id=${first.id}`);
+          const detail = detailRes.data.data;
+
+          // Format hasil
+          let msg = `*🔍 Item Search: ${text}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n`;
+
+          if (items.length > 1) {
+            msg += `_Ditemukan ${items.length} item, menampilkan yang pertama_\n\n`;
+          }
+
+          msg += `*📦 Nama:* ${detail.name}\n`;
+          msg += `*🏷️ Tipe:* ${detail.type_label}\n`;
+          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
+          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
+          msg += `*💰 Sell:* ${detail.sell > 0 ? detail.sell.toLocaleString() : "-"}\n`;
+
+          if (detail.stats && detail.stats.length > 0) {
+            msg += `\n*📊 Stats:*\n`;
+            for (const stat of detail.stats) {
+              const sign = stat.amount > 0 ? "+" : "";
+              msg += `  • ${stat.effect_name}: ${sign}${stat.amount}${stat.effect_name.includes("%") ? "" : ""}\n`;
+            }
+          }
+
+          if (items.length > 1) {
+            msg += `\n*📋 Item lain yang ditemukan:*\n`;
+            for (let i = 1; i < Math.min(items.length, 6); i++) {
+              msg += `  ${i}. ${items[i].name} ${items[i].type_label}\n`;
+            }
+            if (items.length > 6) msg += `  _...dan ${items.length - 6} lainnya_\n`;
+          }
+
+          m.reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+          m.reply("Gagal mengakses Coryn Club API!");
+        }
+      }
+        break;
+
+      case "monster":
+      case "searchmonster":
+      case "cari":
+      case "findmob": {
+        if (!text) return m.reply(`Format: ${prefix}cari <nama monster>\nContoh: ${prefix}cari Mycodian`);
+        try {
+          progress("⏳");
+          const mobRes = await axios.get(`https://coryn.club/api/v1/monsters.php?name=${encodeURIComponent(text)}`);
+          if (!mobRes.data.success || mobRes.data.data.length === 0) {
+            progress("❌");
+            return m.reply(`Monster *${text}* tidak ditemukan!`);
+          }
+          const monsters = mobRes.data.data;
+
+          // Ambil detail monster pertama
+          const first = monsters[0];
+          const detailRes = await axios.get(`https://coryn.club/api/v1/monsters.php?id=${first.id}`);
+          const detail = detailRes.data.data;
+
+          let msg = `*🔍 Monster Search: ${text}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n`;
+
+          if (monsters.length > 1) {
+            msg += `_Ditemukan ${monsters.length} monster, menampilkan yang pertama_\n\n`;
+          }
+
+          msg += `*👾 Nama:* ${detail.name}\n`;
+          msg += `*📍 Lokasi:* ${detail.map_name}\n`;
+          msg += `*⚔️ Tipe:* ${detail.type_label}\n`;
+          msg += `*🎮 Mode:* ${detail.mode || "-"}\n`;
+          msg += `*📈 Level:* ${detail.level}\n`;
+          msg += `*❤️ HP:* ${detail.hp > 0 ? detail.hp.toLocaleString() : "?"}\n`;
+          msg += `*✨ EXP:* ${detail.exp > 0 ? detail.exp.toLocaleString() : "?"}\n`;
+          msg += `*🌀 Elemen:* ${detail.element_label || "-"}\n`;
+          msg += `*🐾 Tameable:* ${detail.tameable ? "Ya" : "Tidak"}\n`;
+          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
+          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
+
+          if (detail.drops && detail.drops.length > 0) {
+            msg += `\n*💎 Drops:*\n`;
+            for (const drop of detail.drops) {
+              msg += `  • ${drop.name} ${drop.type_label}\n`;
+            }
+          } else {
+            msg += `\n*💎 Drops:* -\n`;
+          }
+
+          if (monsters.length > 1) {
+            msg += `\n*📋 Monster lain yang ditemukan:*\n`;
+            for (let i = 1; i < Math.min(monsters.length, 5); i++) {
+              msg += `  ${i}. ${monsters[i].name} - Lv.${monsters[i].level} (${monsters[i].mode || monsters[i].type_label}) @ ${monsters[i].map_name}\n`;
+            }
+            if (monsters.length > 5) msg += `  _...dan ${monsters.length - 5} lainnya_\n`;
+          }
+
+          m.reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+          m.reply("Gagal mengakses Coryn Club API!");
+        }
+      }
+        break;
+
+      case "mt":
+        url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
+        axios.get(url)
+          .then((response) => {
+            if (response.status === 200) {
+              const html = response.data;
+              const $ = cheerio.load(html);
+              mtNow = $(".news_border > a").attr("href");
+              axios.get(`https://${language == "eng" ? "en" : "id"}.toram.jp/` + mtNow)
+                .then((response) => {
+                  if (response.status === 200) {
+                    const html = response.data;
+                    const $ = cheerio.load(html);
+                    container = $("#news > div").text().trim();
+                    textSample = container.split("Kembali ke atas")[0]
+                    textTemplate = textSample.split("Tweet")[1].trim();
+                    reply(textTemplate)
+                  } else {
+                    m.reply("Official Website can't be accessed!");
+                  }
+                })
+            }
+          })
+          .catch(() => m.reply("Official Website can't be accessed!"));
+        break
+
+      case "food":
+        client.sendText(
+          from,
+          `
+ *List EXP Food Buff*
+ lv = Exp Needed
+ 1 = 1
+ 2 = 3
+ 3 = 9
+ 4 = 21
+ 5 = 45
+ 6 = 93
+ 7 = 189
+ 8 = 381
+ 9 = 765
+ 10 = 1533`,
+          mek
+        );
+        break;
+
+      case "buff":
+        const buffData = fs.readFileSync("./buff.txt", "utf8");
+        client.sendText(from, buffData, mek);
+        break;
+
+      case "waterres":
+        client.sendText(from, `Anchovy Toast: Water Resistance\n\n2020606 (Biotin)`, mek);
+        break;
+
+      case "maxmp":
+      case "mp":
+        client.sendText(from, `Ankake Fried Rice: MaxMP\n\n1010216 (Salmonella)\n1011212 (Epiey!!)\n1020808 (ココルル)\n1027777 (Aka Shiro)\n2010510 (Ultimateわんわん)\n2020101 (Paracetamol)\n3017676 (yuxieyoko)\n3204544 (Amatsuka Kirin)\n4261111 (maruna)\n6053838 (朋@)\n7100720 (Juda)\n7150029 (ORCA29)`, mek);
+        break;
+
+      case "pres":
+        client.sendText(from, `Beef Burger: Physical Resistance\n\n1010081 (Kawasaki)\n1020001 (てんげん)\n1231776 (xxxdsmer)\n2020111 (L. casei)\n2020345 (- C H A R M Z ★)\n2200117 (しいぽ)\n4010051 (マグナ)\n6010701 (ramenEso)`, mek);
+        break;
+
+      case "aggro":
+        client.sendText(from, `Beef Stew: +Aggro\nWhite Stew: -Aggro\nLevel 10\n1010207 (Pew_Pew)\n1130832 (咲愛")\n1140002 (Neaki)\n2020606 (Biotin)\n3053131 (DaoNaga)\n3158668 (VoidWolf)\n4220777 (春姫❤)\n5261002 (マンモスマン)\nLevel 9\n2010136 (S y n 彡)\nLevel 8\n3204544 (Amatsuka Kirin)`, mek);
+        break;
+
+      case "dtefire":
+        client.sendText(from, `Bolognese: DTE Fire\nLevel 9\n1121212 (RioCakra)\n3210106 (♧火のうた)\n7088807 (@Ray)\n9181111 (#Ryopin#)\nLevel 7\n8120000 (Lamlo)`, mek);
+        break;
+
+      case "dtelight":
+        client.sendText(from, `Carbonara: DTE Light\nLevel 9\n1020345 (Death · Gun)\nLevel 8\n3111999 (Espur)`, mek);
+        break;
+
+      case "mbarrier":
+        client.sendText(from, `Cheese Cake: Magic Barrier\nLevel 8\n2020505 (Niacin (B3))`, mek);
+        break;
+
+      case "windres":
+        client.sendText(from, `Cheese Toast: Wind Resistance\nLevel 9\n2020222 (Himura Oza)`, mek);
+        break;
+
+      case "pbarrier":
+        client.sendText(from, `Chocolate Cake: Physical Barrier\nLevel 7\n2020111 (L. casei)`, mek);
+        break;
+
+      case "exp":
+        client.sendText(from, `Chocolate Parfait: EXP Gain\nLevel 4\n4040404 (S A R A)`, mek);
+        break;
+
+      case "mres":
+        client.sendText(from, `Fish Burger: Magical Resistance\nLevel 10\n1111575 (Kiyanh)\n1181220 (梨花)\n2020505 (Niacin (B3))\n5200025 (たつ猫☆)\n6190007 (nanako♪)\n7010016 (Lian戀)\n8010016 (° Roulecca)`, mek);
+        break;
+
+      case "drop":
+        client.sendText(from, `Fruit Parfait: Drop Rate\nLevel 6\n4032850 (Aphrodite tiger)\n4196969 (★Shiro☆)\n4245922 (ふると系#)\n7057777 (t a s t y)`, mek);
+        break;
+
+      case "darkres":
+        client.sendText(from, `Garlic Toast: Dark Resistance\nLevel 9\n2020707 (Ascorbic Acid)\nLevel 4\n1010084 (あきら)`, mek);
+        break;
+
+      case "dteearth":
+        client.sendText(from, `Genovese: DTE Earth\nLevel 10\n2020202 (S A R A)\nLevel 9\n1011001 (S i r F a t h)\n4233333 (AlvinXxX)\n7100666 (itspaez)\nLevel 8\n1010216 (Salmonella)`, mek);
+        break;
+
+      case "maxhp":
+      case "hp":
+        client.sendText(from, `Golden Stir Fry: MaxHP\nLevel 10\n1010032 (★空猫)\n1010084 (あきら)\n1010356 (らいむ03)\n1250015 (雪島いちご)\n2010228 (~シュシュ~)\n3090618 (snow618)\n3092003 (◁ Rikka❤ ▷)\n3191130 (Kail NW)\n3260178 (maluth)\n4262222 (mashilo)\n54154629 (シャルム)\n6010062 (G - Thunder (JPN))\n6199999 (garun1)`, mek);
+        break;
+
+      case "lightres":
+        client.sendText(from, `Honey Toast: Light Resistance\nLevel 9\n1023040 (Quinone (K))\nLevel 4\n4220777 (春姫❤)`, mek);
+        break;
+
+      case "agi":
+        client.sendText(from, `Mentaiko Rice Ball: AGI\nLevel 10\n1220777 (サスケU^ェ^U)\n2020037 (Mana-T)\n4262222 (mashilo)\n7162029 (Player20)\nLevel 9\n1110033 (くりぼー☆)\n6269999 (酒呑)`, mek);
+        break;
+
+      case "dtewind":
+        client.sendText(from, `Naporitan: DTE Wind\nLevel 10\n3030303 (S A R A)\nLevel 9\n7257777 (GODragon)`, mek);
+        break;
+
+      case "str":
+        client.sendText(from, `Okaka Rice Ball: STR\nLevel 10\n1010055 (Echidna@)\n1010968 (アジヤ)\n1011069 (A J I)\n1110033 (くりぼー☆)\n2017890 (みさき*)\n2020303 (Amanita)\n2180000 (Ryopin)\n4010024 (いぐるん)\n5261919 (ルージアル)\n7070777 (-Xen-)`, mek);
+        break;
+
+      case "fracbarrier":
+        client.sendText(from, `Pancake: Fractional Brrier\nLevel 10\n1012222 (gaito123)\n4010024 (いぐるん)\n53010043 (昂 k09)\n53190003 (桜乃宮　千都)\n6150029 (29ψ ORCA)\nLevel 9\n1074649 (∮ ノマァ ∮)\n3190038 (☆カーミラ★)\n6010062 (G - Thunder (JPN))`, mek);
+        break;
+
+      case "atk":
+        client.sendText(from, `Pizza Davola: ATK\nLevel 10\n1119876 (キヅツ)\n7170717 (Isuni☆)`, mek);
+        break;
+
+      case "watk":
+        client.sendText(from, `Pizza Margherita: Weapon ATK\nLevel 10\n1010810 (夜トyato☆)\n1011122 (ベッキー)\n1011126 (ヾferyanz)\n1067777 (YusagKurumi)\n1180020 (Rouen)\n1200020 (ティーク)\n2020404 (HbA1c)\n3010777 (わん　•　にやー)\n3180777 (Reon∮)\n4170999 (おりぴ)\n4240242 (Nakean)\n5110834 (加寿葉)\n6010024 (『 G a p a p a 』)\n6130623 (雪羽)\n6269999 (酒呑)\n7050301 (Keith)`, mek);
+        break;
+
+      case "earthres":
+        client.sendText(from, `Pudding Toast: Earth Resistance\nLevel 9\n6150029 (29ψ ORCA)`, mek);
+        break;
+
+      case "dex":
+        client.sendText(from, `Salmon Rice Ball: DEX\nLevel 10\n1010058 (· H20 ·)\n1010106 (Yoku')\n1010261 (イグルー)\n1074649 (∮ ノマァ ∮)\n1112220 (Kirara♥)\n2020222 (Himura Oza)\n3111999 (Espur)\n3220777 (☆エトワール☆)\n7011001 (【MB】 VolT‾へ凸)\n7140777 (Aurianne)`, mek);
+        break;
+
+      case "matk":
+        client.sendText(from, `Seafood Pizza: MATK\nLevel 10\n1024649 (BUFFERIN)`, mek);
+        break;
+
+      case "dodge":
+        client.sendText(from, `Shio Ramen: Dodge\nLevel 7\n2020808 (Ectoplasm)`, mek);
+        break;
+
+      case "acc":
+        client.sendText(from, `Shoyu Ramen: Accuracy\nLevel 10\n2010308 (@alpha)\n4261111 (maruna)\nLevel 9\n1181220 (梨花)\n7160030 (サーベイ)`, mek);
+        break;
+
+      case "dtedark":
+        client.sendText(from, `Squid Ink Pasta: DTE Dark\nLevel 10\n1190020 (チュレ @迷路屋)\n2130776 (サトリール)\n6116116 ((⭗△⭗))\nLevel 9\n5010092 (Who's Wo)`, mek);
+        break;
+
+      case "fireres":
+        client.sendText(from, `Sunny Side Up Toast: Fire Resistance\nLevel 9\n2020101 (Paracetamol)`, mek);
+        break;
+
+      case "cr":
+        client.sendText(from, `Takoyaki: Critical Rate\nLevel 10\n1037777 (Hati Hervor)\n1100000 (I n u G a m i •)\n1181140 (らんな)\n2022020 (#SAM#)\n3010777 (わん　•　にやー)\n3030159 (Lauryn_)\n3149696 (NoiR)\n4010000 (俺が青娥様)\n5119105 (- Kanna -)\n6021230 (☆Ｐｉｎａ☆)\n7162029 (Player20)`, mek);
+        break;
+
+      case "vit":
+        client.sendText(from, `Tuna Mayo Rice Ball: VIT\nLevel 10\n4032850 (Aphrodite tiger)`, mek);
+        break;
+
+      case "int":
+        client.sendText(from, `Umeboshi Rice Ball: INT\nLevel 10\n1010140 (かがり)\n1010498 (桃夏)\n1032222 (Shyturu)\n1047777 (~Zeref~)\n2020707 (Ascorbic Acid)\n5190001 (シェリア.)\n6010701 (ramenEso)\n7130001 (@みげる)`, mek);
+        break;
+
+      case "neutralres":
+        client.sendText(from, `Vanilla Toast: Neutral Resistance\nLevel 9\n2020303 (Amanita)`, mek);
+        break;
+
+      case "dtewater":
+        client.sendText(from, `Vongole: DTE Water\nLevel 10\n1110111 (S A R A)\n3210100 (♧水のうた)\n7150030 (ファレ)\nLevel 9\n7011001 (【MB】 VolT‾へ凸)`, mek);
+        break;
+
+      case "ampr":
+        client.sendText(from, `Yakisoba: AMPR\nLevel 10\n1010017 (평온한날)\n1010596 (冷Hiro☆)\n1011010 (0 kara)\n1023040 (Quinone (K))\n1047777 (~Zeref~)\n1111000 (カンコウ)\n3020777 (白最中)\n3201003 (『 K E R R Y 』)\n4040404 (S A R A)\n4206969 (xenesis5)\n4233333 (AlvinXxX)\n5236969 (黒澤タイア)\n7069420 (👉 * Garu * 👈)\n7088807 (@Ray)\n7220777 (Veny)\n8120000 (Lamlo)`, mek);
+        break;
+
+      case "mqmats":
+        mq = lang.mq();
+        client.sendText(from, mq, mek);
+        break;
+
+      case "maze":
+        maze = text;
+        if (!maze)
+          return reply(
+            "masukan query! contoh :\n /maze guide\n/maze build\n/maze drop"
+          );
+        dbs = await lang.maze(maze);
+        client.sendText(from, dbs, mek);
+        break;
+
+      case "ailment":
+        ail = await lang.ailment();
+        client.sendText(from, ail, mek);
+        break;
+
+      case "bag":
+        bag = await lang.bag();
+        client.sendText(from, bag, mek);
+        break;
+      /* ================ Toram Online Menu ================ */
+      /* ================ Converter Menu ================ */
+      case "sticker":
+      case "s":
+      case "stickergif":
+      case "sgif":
+      case "stiker":
+        try {
+          ipackName = false;
+          iauthor = false;
+          if (q.split("|")[0]) {
+            ipackName = q.split("|")[0];
+          }
+          if (q.split("|")[1]) {
+            iauthor = q.split("|")[1];
+          }
+          progress("⏳");
+          if (/image/.test(mime)) {
+            let media = await client.downloadMediaMessage(qms);
+            let encmedia = await client.sendImageAsSticker(
+              from,
+              media,
+              m,
+              text.toLowerCase() == "original" ? true : false,
+              {
+                packname: q.split("|")[0] ? ipackName : global.packName,
+                author: q.split("|")[1] ? iauthor : global.author,
+              }
+            );
+            fs.unlinkSync(encmedia);
+            progress("✔");
+          } else if (/video/.test(mime)) {
+            if (qms.seconds > 11) return reply("Max 10 second!");
+            let media = await client.downloadMediaMessage(qms);
+            let encmedia = await client.sendVideoAsSticker(from, media, m, {
+              packname: q.split("|")[0] ? ipackName : global.packName,
+              author: q.split("|")[1] ? iauthor : global.author,
+            });
+            fs.unlinkSync(encmedia);
+            progress("✔");
+          } else {
+            m.reply(lang.unsupported());
+          }
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+
+        break;
+
+      case "smeme":
+      case "stickmeme":
+        try {
+          if (!text) return m.reply(lang.format(prefix, command));
+          progress("⏳");
+          top = encodeURIComponent(q.split("|")[0]);
+          bottom = encodeURIComponent(q.split("|")[1]);
+
+          if (
+            ((isMedia && !m.message.videoMessage) ||
+              isQuotedImage ||
+              isQuotedSticker) &&
+            args.length > 0
+          ) {
+            ranp = getRandom("54");
+            owgi = await client.downloadAndSaveMediaMessage(qms, ranp);
+            options = {
+              apiKey: global.imgbb, // MANDATORY
+
+              imagePath: owgi, // OPTIONAL: pass a local file (max 32Mb)
+
+              name: ranp, // OPTIONAL: pass a custom filename to imgBB API
+
+              expiration: 3600 /* OPTIONAL: pass a numeric value in seconds.
+  It must be in the 60-15552000 range.
+  Enable this to force your image to be deleted after that time. */,
+            };
+
+            anu = await imgbb(options);
+
+            teks = `${anu.display_url}`;
+            anu1 = `https://api.memegen.link/images/custom/${text.split("|")[1] ? top : " "
+              }/${text.split("|")[1] ? bottom : top}.png?background=${teks}`;
+            encmedia = await client.sendImageAsSticker(
+              from,
+              `${anu1}`,
+              m,
+              false,
+              { packname: global.packName, author: global.author }
+            );
+            fs.unlinkSync(owgi);
+            fs.unlinkSync(encmedia);
+            progress("✔");
+          } else {
+            m.reply("please use image/sticker!");
+          }
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+
+      //Proccess MQ
+      case "process":
+        break;
+
+      /* ================ Media Menu ================ */
+
+      case "pixiv":
+        if (!text) return reply(lang.format(prefix, command));
+        try {
+          progress("⏳");
+          res = await axios({
+            method: "get",
+            url: `https://api.lolicon.app/setu/v2?keyword=${encodeURIComponent(
+              text
+            )}`,
+            headers: {
+              DNT: 1,
+              "Upgrade-Insecure-Request": 1,
+            },
+            responseType: "json",
+          });
+          if (res.data.error) return progress("❌");
+          if (res.data.data.length === 0) return reply("Not Found!");
+          textTemplate = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
+          for (let i = 0; i < res.data.data[0].tags.length; i++) {
+            textTemplate += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
+          }
+          client.sendImage(
+            from,
+            res.data.data[0].urls.original,
+            textTemplate,
+            mek
+          );
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+
+      case "pin":
+      case "pinterest":
+        if (!text) return reply(lang.format(prefix, command));
+        try {
+          progress("⏳");
+          fetcher = await pinterest(encodeURIComponent(text));
+          res = fetcher[Math.round(Math.random() * fetcher.length)];
+          client.sendImage(from, res, text, mek);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+
+      case "anime":
+        try {
+          progress("⏳");
+          response = await axios.get(
+            "https://loli-api.glitch.me/api/v1/twintails"
+          );
+          client.sendImage(from, response.data.url, " ", mek);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+
+      case "loli":
+        try {
+          progress("⏳");
+          res = await axios({
+            method: "get",
+            url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=${text == "nsfw" ? "1" : "0"
+              }`,
+            headers: {
+              DNT: 1,
+              "Upgrade-Insecure-Request": 1,
+            },
+            responseType: "json",
+          });
+          teks = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
+          for (let i = 0; i < res.data.data[0].tags.length; i++) {
+            teks += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
+          }
+          client.sendImage(from, res.data.data[0].urls.original, teks, mek);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+
+      case "milf":
+        try {
+          progress("⌛");
+          let milfs = (
+            await axios.get(
+              `https://raw.githubusercontent.com/Arya-was/endak-tau/main/milf.json`
+            )
+          ).data;
+          let milf = milfs[Math.floor(Math.random() * milfs.length)];
+          let res = await getBuffer(milf);
+          client.sendImage(from, res, "", mek);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+
+      case "brat":
+        if (!text) return reply(lang.format(prefix, command));
+        try {
+          progress("⏳");
+          buffer = await getBuffer(
+            `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(
+              text
+            )}&isVideo=false&delay=500`
+          );
+          client.sendImageAsSticker(from, buffer, mek, false, {
+            packname: global.packName,
+            author: global.author,
+          });
+          progress("✔");
+        } catch (err) {
+          console.error(err);
+          progress("❌");
+        }
+        break;
+
+        case "calculate":
         {
           lvl = parseInt(text.split("|")[0]);
           exp = parseInt(text.split("|")[1].split(" ")[0]);
@@ -1301,736 +2033,6 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
           };
 
           await client.sendButtonMsg(from, templateButton, { quoted: m });
-        }
-        break;
-
-      case "lv":
-      case "lvl":
-      case "lvling":
-      case "leveling":
-        //return reply("Fitur sedang dalam perbaikan!")
-        try {
-          lvl = q.split("|")[0];
-          bexp = q.split("|")[1];
-          if (!lvl) return m.reply(lang.format(prefix, command));
-          if (q.toLowerCase() == "bs") return reply(lang.bs());
-          if (!bexp) {
-            bexp = "0";
-          }
-          if (isNaN(lvl)) return m.reply(lang.format(prefix, command));
-          if (isNaN(bexp)) return m.reply(lang.format(prefix, command));
-          progress("⏳");
-
-          axios
-            .get(
-              `https://coryn.club/leveling.php?lv=${lvl}&gap=7&bonusEXP=${bexp}`
-            )
-            .then((response) => {
-              if (response.status === 200) {
-                const html = response.data;
-                const $ = cheerio.load(html);
-                const array = [];
-                $(".level-row").each(function (i, elem) {
-                  level = $(this).find(".level-col-1 > b").text().trim();
-                  boss = $(this)
-                    .find(".level-col-2 > p:nth-child(1) > b > a")
-                    .text()
-                    .trim();
-                  location = $(this)
-                    .find(".level-col-2 > p:nth-child(2)")
-                    .text()
-                    .trim();
-                  fullBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(1) > b")
-                    .text()
-                    .trim();
-                  allBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(1)> small")
-                    .text()
-                    .trim();
-                  secondBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(2)")
-                    .text()
-                    .trim();
-                  twoBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(2) > small")
-                    .text()
-                    .trim();
-                  firstBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(3)")
-                    .text()
-                    .trim();
-                  oneBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(3) > small")
-                    .text()
-                    .trim();
-                  noBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(4)")
-                    .text()
-                    .trim();
-                  zeroBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(4)> small")
-                    .text()
-                    .trim();
-
-                  if (fullBreak && oneBreak) {
-                    array.push({
-                      level,
-                      boss,
-                      location,
-                      exp: {
-                        fullBreak,
-                        secondBreak: secondBreak ? secondBreak : " - ",
-                        firstBreak: firstBreak ? firstBreak : " - ",
-                        noBreak: noBreak ? noBreak : " - ",
-                      },
-                      star: {
-                        allBreak,
-                        twoBreak: twoBreak ? twoBreak : " - ",
-                        oneBreak: oneBreak ? oneBreak : " - ",
-                        zeroBreak: zeroBreak ? zeroBreak : " - ",
-                      },
-                    });
-                  }
-                });
-                let gb = `*Leveling lvl ${lvl} & bonus exp ${bexp}%*\n`;
-                for (let i = 0; i < array.length; i++) {
-                  gb += `-------------------------------\nBoss: ${array[i].boss}\nBoss Level: ${array[i].level}\nLocation: ${array[i].location}\nEXP:\n- Full Break: ${array[i].exp.fullBreak} ${array[i].star.allBreak}\n- Two Break: ${array[i].exp.secondBreak}\n- One Break: ${array[i].exp.firstBreak}\n- No Break: ${array[i].exp.noBreak} \n`;
-                }
-                client.sendText(from, gb, mek);
-                progress("✔");
-              }
-            });
-        } catch (err) {
-          progress("❌");
-          m.reply(lang.error(err));
-        }
-        break;
-
-      // case "mob":
-      // case "mobs":
-      // case "monster":
-      // case "boss": {
-      //   if (!text) return m.reply(lang.format(prefix, command));
-      //   try {
-      //     progress("⏳");
-      //     if (language == "eng") {
-      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-      //     } else if (language == "ind") {
-      //       url = `http://indo.coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-      //     } else {
-      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-      //     }
-      //     axios.get(url)
-      //       .then((response) => {
-      //         if (response.status === 200) {
-      //           const html = response.data;
-      //           const $ = cheerio.load(html);
-      //           const mobs = [];
-      //           $(".card-container > div").each(function () {
-      //             mobs.push({
-      //               name: $(this).find(".card-title-inverse").text().trim().replace("_id", ""),
-      //               level: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(1) > p:nth-child(2) ").text().trim(),
-      //               location: $(this).find(".item-prop > div:nth-child(2) > a").text().trim(),
-      //               difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(),
-      //               element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(),
-      //               hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(),
-      //               exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(),
-      //               tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(),
-      //               drops: $(this).find(".monster-drop-list > .monster-drop").map(function () {
-      //                 return $(this).text().trim();
-      //               }).get()
-      //             })
-      //           });
-      //           if (mobs.length < 1) return m.reply("Monster not found!");
-      //           let displayText = `*List monster with name ${text}:*\n`;
-      //           for (let i = 0; i < mobs.length; i++) {
-      //             const mob = mobs[i];
-      //             let dropsText = mob.drops.length > 0 ? mob.drops.join("\n- ") : "No drops";
-      //             displayText += `\n*Name:* ${mob.name}\n*Level:* ${mob.level}\n*Location:* ${mob.location}\n*Difficulty:* ${mob.difficulty}\n*Element:* ${mob.element}\n*HP:* ${mob.hp}\n*EXP:* ${mob.exp}\n*Tameable:* ${mob.tamable}\n*Drops:*\n- ${dropsText}\n`;
-      //           }
-      //           m.reply(displayText);
-      //           progress("✔");
-      //         } else {
-      //           m.reply("Monster not found!");
-      //         }
-      //       })
-      //       .catch(() => m.reply("Official Website can't be accessed!"));
-      //   } catch (err) {
-      //     progress("❌");
-      //     m.reply(lang.error(err));
-      //     console.log(err);
-      //   }
-      // }
-      //   break;
-
-      case "item":
-      case "items": {
-        if (!text) return m.reply(`Format: ${prefix}item <nama item>\nContoh: ${prefix}item Mythriller Blade`);
-        try {
-          progress("⏳");
-          const itemRes = await axios.get(`https://coryn.club/api/v1/items.php?name=${encodeURIComponent(text)}`);
-          if (!itemRes.data.success || itemRes.data.data.length === 0) {
-            progress("❌");
-            return m.reply(`Item *${text}* tidak ditemukan!`);
-          }
-          const items = itemRes.data.data;
-          // Ambil detail item pertama
-          const first = items[0];
-          const detailRes = await axios.get(`https://coryn.club/api/v1/items.php?id=${first.id}`);
-          const detail = detailRes.data.data;
-
-          // Format hasil
-          let msg = `*🔍 Item Search: ${text}*\n`;
-          msg += `━━━━━━━━━━━━━━━\n`;
-
-          if (items.length > 1) {
-            msg += `_Ditemukan ${items.length} item, menampilkan yang pertama_\n\n`;
-          }
-
-          msg += `*📦 Nama:* ${detail.name}\n`;
-          msg += `*🏷️ Tipe:* ${detail.type_label}\n`;
-          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
-          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
-          msg += `*💰 Sell:* ${detail.sell > 0 ? detail.sell.toLocaleString() : "-"}\n`;
-
-          if (detail.stats && detail.stats.length > 0) {
-            msg += `\n*📊 Stats:*\n`;
-            for (const stat of detail.stats) {
-              const sign = stat.amount > 0 ? "+" : "";
-              msg += `  • ${stat.effect_name}: ${sign}${stat.amount}${stat.effect_name.includes("%") ? "" : ""}\n`;
-            }
-          }
-
-          if (items.length > 1) {
-            msg += `\n*📋 Item lain yang ditemukan:*\n`;
-            for (let i = 1; i < Math.min(items.length, 6); i++) {
-              msg += `  ${i}. ${items[i].name} ${items[i].type_label}\n`;
-            }
-            if (items.length > 6) msg += `  _...dan ${items.length - 6} lainnya_\n`;
-          }
-
-          m.reply(msg);
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-          m.reply("Gagal mengakses Coryn Club API!");
-        }
-      }
-        break;
-
-      case "monster":
-      case "searchmonster":
-      case "cari":
-      case "findmob": {
-        if (!text) return m.reply(`Format: ${prefix}cari <nama monster>\nContoh: ${prefix}cari Mycodian`);
-        try {
-          progress("⏳");
-          const mobRes = await axios.get(`https://coryn.club/api/v1/monsters.php?name=${encodeURIComponent(text)}`);
-          if (!mobRes.data.success || mobRes.data.data.length === 0) {
-            progress("❌");
-            return m.reply(`Monster *${text}* tidak ditemukan!`);
-          }
-          const monsters = mobRes.data.data;
-
-          // Ambil detail monster pertama
-          const first = monsters[0];
-          const detailRes = await axios.get(`https://coryn.club/api/v1/monsters.php?id=${first.id}`);
-          const detail = detailRes.data.data;
-
-          let msg = `*🔍 Monster Search: ${text}*\n`;
-          msg += `━━━━━━━━━━━━━━━\n`;
-
-          if (monsters.length > 1) {
-            msg += `_Ditemukan ${monsters.length} monster, menampilkan yang pertama_\n\n`;
-          }
-
-          msg += `*👾 Nama:* ${detail.name}\n`;
-          msg += `*📍 Lokasi:* ${detail.map_name}\n`;
-          msg += `*⚔️ Tipe:* ${detail.type_label}\n`;
-          msg += `*🎮 Mode:* ${detail.mode || "-"}\n`;
-          msg += `*📈 Level:* ${detail.level}\n`;
-          msg += `*❤️ HP:* ${detail.hp > 0 ? detail.hp.toLocaleString() : "?"}\n`;
-          msg += `*✨ EXP:* ${detail.exp > 0 ? detail.exp.toLocaleString() : "?"}\n`;
-          msg += `*🌀 Elemen:* ${detail.element_label || "-"}\n`;
-          msg += `*🐾 Tameable:* ${detail.tameable ? "Ya" : "Tidak"}\n`;
-          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
-          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
-
-          if (detail.drops && detail.drops.length > 0) {
-            msg += `\n*💎 Drops:*\n`;
-            for (const drop of detail.drops) {
-              msg += `  • ${drop.name} ${drop.type_label}\n`;
-            }
-          } else {
-            msg += `\n*💎 Drops:* -\n`;
-          }
-
-          if (monsters.length > 1) {
-            msg += `\n*📋 Monster lain yang ditemukan:*\n`;
-            for (let i = 1; i < Math.min(monsters.length, 5); i++) {
-              msg += `  ${i}. ${monsters[i].name} - Lv.${monsters[i].level} (${monsters[i].mode || monsters[i].type_label}) @ ${monsters[i].map_name}\n`;
-            }
-            if (monsters.length > 5) msg += `  _...dan ${monsters.length - 5} lainnya_\n`;
-          }
-
-          m.reply(msg);
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-          m.reply("Gagal mengakses Coryn Club API!");
-        }
-      }
-        break;
-
-      case "mt":
-        url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
-        axios.get(url)
-          .then((response) => {
-            if (response.status === 200) {
-              const html = response.data;
-              const $ = cheerio.load(html);
-              mtNow = $(".news_border > a").attr("href");
-              axios.get(`https://${language == "eng" ? "en" : "id"}.toram.jp/` + mtNow)
-                .then((response) => {
-                  if (response.status === 200) {
-                    const html = response.data;
-                    const $ = cheerio.load(html);
-                    container = $("#news > div").text().trim();
-                    textSample = container.split("Kembali ke atas")[0]
-                    textTemplate = textSample.split("Tweet")[1].trim();
-                    reply(textTemplate)
-                  } else {
-                    m.reply("Official Website can't be accessed!");
-                  }
-                })
-            }
-          })
-          .catch(() => m.reply("Official Website can't be accessed!"));
-        break
-
-      case "food":
-        client.sendText(
-          from,
-          `
- *List EXP Food Buff*
- lv = Exp Needed
- 1 = 1
- 2 = 3
- 3 = 9
- 4 = 21
- 5 = 45
- 6 = 93
- 7 = 189
- 8 = 381
- 9 = 765
- 10 = 1533`,
-          mek
-        );
-        break;
-
-      case "buff":
-        const buffData = fs.readFileSync("./buff.txt", "utf8");
-        client.sendText(from, buffData, mek);
-        break;
-
-      case "waterres":
-        client.sendText(from, `Anchovy Toast: Water Resistance\n\n2020606 (Biotin)`, mek);
-        break;
-
-      case "maxmp":
-        client.sendText(from, `Ankake Fried Rice: MaxMP\n\n1010216 (Salmonella)\n1011212 (Epiey!!)\n1020808 (ココルル)\n1027777 (Aka Shiro)\n2010510 (Ultimateわんわん)\n2020101 (Paracetamol)\n3017676 (yuxieyoko)\n3204544 (Amatsuka Kirin)\n4261111 (maruna)\n6053838 (朋@)\n7100720 (Juda)\n7150029 (ORCA29)`, mek);
-        break;
-
-      case "pres":
-        client.sendText(from, `Beef Burger: Physical Resistance\n\n1010081 (Kawasaki)\n1020001 (てんげん)\n1231776 (xxxdsmer)\n2020111 (L. casei)\n2020345 (- C H A R M Z ★)\n2200117 (しいぽ)\n4010051 (マグナ)\n6010701 (ramenEso)`, mek);
-        break;
-
-      case "aggro":
-        client.sendText(from, `Beef Stew: +Aggro\nWhite Stew: -Aggro\nLevel 10\n1010207 (Pew_Pew)\n1130832 (咲愛")\n1140002 (Neaki)\n2020606 (Biotin)\n3053131 (DaoNaga)\n3158668 (VoidWolf)\n4220777 (春姫❤)\n5261002 (マンモスマン)\nLevel 9\n2010136 (S y n 彡)\nLevel 8\n3204544 (Amatsuka Kirin)`, mek);
-        break;
-
-      case "dtefire":
-        client.sendText(from, `Bolognese: DTE Fire\nLevel 9\n1121212 (RioCakra)\n3210106 (♧火のうた)\n7088807 (@Ray)\n9181111 (#Ryopin#)\nLevel 7\n8120000 (Lamlo)`, mek);
-        break;
-
-      case "dtelight":
-        client.sendText(from, `Carbonara: DTE Light\nLevel 9\n1020345 (Death · Gun)\nLevel 8\n3111999 (Espur)`, mek);
-        break;
-
-      case "mbarrier":
-        client.sendText(from, `Cheese Cake: Magic Barrier\nLevel 8\n2020505 (Niacin (B3))`, mek);
-        break;
-
-      case "windres":
-        client.sendText(from, `Cheese Toast: Wind Resistance\nLevel 9\n2020222 (Himura Oza)`, mek);
-        break;
-
-      case "pbarrier":
-        client.sendText(from, `Chocolate Cake: Physical Barrier\nLevel 7\n2020111 (L. casei)`, mek);
-        break;
-
-      case "exp":
-        client.sendText(from, `Chocolate Parfait: EXP Gain\nLevel 4\n4040404 (S A R A)`, mek);
-        break;
-
-      case "mres":
-        client.sendText(from, `Fish Burger: Magical Resistance\nLevel 10\n1111575 (Kiyanh)\n1181220 (梨花)\n2020505 (Niacin (B3))\n5200025 (たつ猫☆)\n6190007 (nanako♪)\n7010016 (Lian戀)\n8010016 (° Roulecca)`, mek);
-        break;
-
-      case "drop":
-        client.sendText(from, `Fruit Parfait: Drop Rate\nLevel 6\n4032850 (Aphrodite tiger)\n4196969 (★Shiro☆)\n4245922 (ふると系#)\n7057777 (t a s t y)`, mek);
-        break;
-
-      case "darkres":
-        client.sendText(from, `Garlic Toast: Dark Resistance\nLevel 9\n2020707 (Ascorbic Acid)\nLevel 4\n1010084 (あきら)`, mek);
-        break;
-
-      case "dteearth":
-        client.sendText(from, `Genovese: DTE Earth\nLevel 10\n2020202 (S A R A)\nLevel 9\n1011001 (S i r F a t h)\n4233333 (AlvinXxX)\n7100666 (itspaez)\nLevel 8\n1010216 (Salmonella)`, mek);
-        break;
-
-      case "maxhp":
-        client.sendText(from, `Golden Stir Fry: MaxHP\nLevel 10\n1010032 (★空猫)\n1010084 (あきら)\n1010356 (らいむ03)\n1250015 (雪島いちご)\n2010228 (~シュシュ~)\n3090618 (snow618)\n3092003 (◁ Rikka❤ ▷)\n3191130 (Kail NW)\n3260178 (maluth)\n4262222 (mashilo)\n54154629 (シャルム)\n6010062 (G - Thunder (JPN))\n6199999 (garun1)`, mek);
-        break;
-
-      case "lightres":
-        client.sendText(from, `Honey Toast: Light Resistance\nLevel 9\n1023040 (Quinone (K))\nLevel 4\n4220777 (春姫❤)`, mek);
-        break;
-
-      case "agi":
-        client.sendText(from, `Mentaiko Rice Ball: AGI\nLevel 10\n1220777 (サスケU^ェ^U)\n2020037 (Mana-T)\n4262222 (mashilo)\n7162029 (Player20)\nLevel 9\n1110033 (くりぼー☆)\n6269999 (酒呑)`, mek);
-        break;
-
-      case "dtewind":
-        client.sendText(from, `Naporitan: DTE Wind\nLevel 10\n3030303 (S A R A)`, mek);
-        break;
-
-      case "str":
-        client.sendText(from, `Okaka Rice Ball: STR\nLevel 10\n1010055 (Echidna@)\n1010968 (アジヤ)\n1011069 (A J I)\n1110033 (くりぼー☆)\n2017890 (みさき*)\n2020303 (Amanita)\n2180000 (Ryopin)\n4010024 (いぐるん)\n5261919 (ルージアル)\n7070777 (-Xen-)`, mek);
-        break;
-
-      case "fracbarrier":
-        client.sendText(from, `Pancake: Fractional Brrier\nLevel 10\n1012222 (gaito123)\n4010024 (いぐるん)\n53010043 (昂 k09)\n53190003 (桜乃宮　千都)\n6150029 (29ψ ORCA)\nLevel 9\n1074649 (∮ ノマァ ∮)\n3190038 (☆カーミラ★)\n6010062 (G - Thunder (JPN))`, mek);
-        break;
-
-      case "atk":
-        client.sendText(from, `Pizza Davola: ATK\nLevel 10\n1119876 (キヅツ)\n7170717 (Isuni☆)`, mek);
-        break;
-
-      case "watk":
-        client.sendText(from, `Pizza Margherita: Weapon ATK\nLevel 10\n1010810 (夜トyato☆)\n1011122 (ベッキー)\n1011126 (ヾferyanz)\n1067777 (YusagKurumi)\n1180020 (Rouen)\n1200020 (ティーク)\n2020404 (HbA1c)\n3010777 (わん　•　にやー)\n3180777 (Reon∮)\n4170999 (おりぴ)\n4240242 (Nakean)\n5110834 (加寿葉)\n6010024 (『 G a p a p a 』)\n6130623 (雪羽)\n6269999 (酒呑)\n7050301 (Keith)`, mek);
-        break;
-
-      case "earthres":
-        client.sendText(from, `Pudding Toast: Earth Resistance\nLevel 9\n6150029 (29ψ ORCA)`, mek);
-        break;
-
-      case "dex":
-        client.sendText(from, `Salmon Rice Ball: DEX\nLevel 10\n1010058 (· H20 ·)\n1010106 (Yoku')\n1010261 (イグルー)\n1074649 (∮ ノマァ ∮)\n1112220 (Kirara♥)\n2020222 (Himura Oza)\n3111999 (Espur)\n3220777 (☆エトワール☆)\n7011001 (【MB】 VolT‾へ凸)\n7140777 (Aurianne)`, mek);
-        break;
-
-      case "matk":
-        client.sendText(from, `Seafood Pizza: MATK\nLevel 10\n1024649 (BUFFERIN)`, mek);
-        break;
-
-      case "dodge":
-        client.sendText(from, `Shio Ramen: Dodge\nLevel 7\n2020808 (Ectoplasm)`, mek);
-        break;
-
-      case "acc":
-        client.sendText(from, `Shoyu Ramen: Accuracy\nLevel 10\n2010308 (@alpha)\n4261111 (maruna)\nLevel 9\n1181220 (梨花)\n7160030 (サーベイ)`, mek);
-        break;
-
-      case "dtedark":
-        client.sendText(from, `Squid Ink Pasta: DTE Dark\nLevel 10\n1190020 (チュレ @迷路屋)\n2130776 (サトリール)\n6116116 ((⭗△⭗))\nLevel 9\n5010092 (Who's Wo)`, mek);
-        break;
-
-      case "fireres":
-        client.sendText(from, `Sunny Side Up Toast: Fire Resistance\nLevel 9\n2020101 (Paracetamol)`, mek);
-        break;
-
-      case "cr":
-        client.sendText(from, `Takoyaki: Critical Rate\nLevel 10\n1037777 (Hati Hervor)\n1100000 (I n u G a m i •)\n1181140 (らんな)\n2022020 (#SAM#)\n3010777 (わん　•　にやー)\n3030159 (Lauryn_)\n3149696 (NoiR)\n4010000 (俺が青娥様)\n5119105 (- Kanna -)\n6021230 (☆Ｐｉｎａ☆)\n7162029 (Player20)`, mek);
-        break;
-
-      case "vit":
-        client.sendText(from, `Tuna Mayo Rice Ball: VIT\nLevel 10\n4032850 (Aphrodite tiger)`, mek);
-        break;
-
-      case "int":
-        client.sendText(from, `Umeboshi Rice Ball: INT\nLevel 10\n1010140 (かがり)\n1010498 (桃夏)\n1032222 (Shyturu)\n1047777 (~Zeref~)\n2020707 (Ascorbic Acid)\n5190001 (シェリア.)\n6010701 (ramenEso)\n7130001 (@みげる)`, mek);
-        break;
-
-      case "neutralres":
-        client.sendText(from, `Vanilla Toast: Neutral Resistance\nLevel 9\n2020303 (Amanita)`, mek);
-        break;
-
-      case "dtewater":
-        client.sendText(from, `Vongole: DTE Water\nLevel 10\n1110111 (S A R A)\n3210100 (♧水のうた)\n7150030 (ファレ)\nLevel 9\n7011001 (【MB】 VolT‾へ凸)`, mek);
-        break;
-
-      case "ampr":
-        client.sendText(from, `Yakisoba: AMPR\nLevel 10\n1010017 (평온한날)\n1010596 (冷Hiro☆)\n1011010 (0 kara)\n1023040 (Quinone (K))\n1047777 (~Zeref~)\n1111000 (カンコウ)\n3020777 (白最中)\n3201003 (『 K E R R Y 』)\n4040404 (S A R A)\n4206969 (xenesis5)\n4233333 (AlvinXxX)\n5236969 (黒澤タイア)\n7069420 (👉 * Garu * 👈)\n7088807 (@Ray)\n7220777 (Veny)\n8120000 (Lamlo)`, mek);
-        break;
-
-      case "mqmats":
-        mq = lang.mq();
-        client.sendText(from, mq, mek);
-        break;
-
-      case "maze":
-        maze = text;
-        if (!maze)
-          return reply(
-            "masukan query! contoh :\n /maze guide\n/maze build\n/maze drop"
-          );
-        dbs = await lang.maze(maze);
-        client.sendText(from, dbs, mek);
-        break;
-
-      case "ailment":
-        ail = await lang.ailment();
-        client.sendText(from, ail, mek);
-        break;
-
-      case "bag":
-        bag = await lang.bag();
-        client.sendText(from, bag, mek);
-        break;
-      /* ================ Toram Online Menu ================ */
-      /* ================ Converter Menu ================ */
-      case "sticker":
-      case "s":
-      case "stickergif":
-      case "sgif":
-      case "stiker":
-        try {
-          ipackName = false;
-          iauthor = false;
-          if (q.split("|")[0]) {
-            ipackName = q.split("|")[0];
-          }
-          if (q.split("|")[1]) {
-            iauthor = q.split("|")[1];
-          }
-          progress("⏳");
-          if (/image/.test(mime)) {
-            let media = await client.downloadMediaMessage(qms);
-            let encmedia = await client.sendImageAsSticker(
-              from,
-              media,
-              m,
-              text.toLowerCase() == "original" ? true : false,
-              {
-                packname: q.split("|")[0] ? ipackName : global.packName,
-                author: q.split("|")[1] ? iauthor : global.author,
-              }
-            );
-            fs.unlinkSync(encmedia);
-            progress("✔");
-          } else if (/video/.test(mime)) {
-            if (qms.seconds > 11) return reply("Max 10 second!");
-            let media = await client.downloadMediaMessage(qms);
-            let encmedia = await client.sendVideoAsSticker(from, media, m, {
-              packname: q.split("|")[0] ? ipackName : global.packName,
-              author: q.split("|")[1] ? iauthor : global.author,
-            });
-            fs.unlinkSync(encmedia);
-            progress("✔");
-          } else {
-            m.reply(lang.unsupported());
-          }
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-
-        break;
-
-      case "smeme":
-      case "stickmeme":
-        try {
-          if (!text) return m.reply(lang.format(prefix, command));
-          progress("⏳");
-          top = encodeURIComponent(q.split("|")[0]);
-          bottom = encodeURIComponent(q.split("|")[1]);
-
-          if (
-            ((isMedia && !m.message.videoMessage) ||
-              isQuotedImage ||
-              isQuotedSticker) &&
-            args.length > 0
-          ) {
-            ranp = getRandom("54");
-            owgi = await client.downloadAndSaveMediaMessage(qms, ranp);
-            options = {
-              apiKey: global.imgbb, // MANDATORY
-
-              imagePath: owgi, // OPTIONAL: pass a local file (max 32Mb)
-
-              name: ranp, // OPTIONAL: pass a custom filename to imgBB API
-
-              expiration: 3600 /* OPTIONAL: pass a numeric value in seconds.
-  It must be in the 60-15552000 range.
-  Enable this to force your image to be deleted after that time. */,
-            };
-
-            anu = await imgbb(options);
-
-            teks = `${anu.display_url}`;
-            anu1 = `https://api.memegen.link/images/custom/${text.split("|")[1] ? top : " "
-              }/${text.split("|")[1] ? bottom : top}.png?background=${teks}`;
-            encmedia = await client.sendImageAsSticker(
-              from,
-              `${anu1}`,
-              m,
-              false,
-              { packname: global.packName, author: global.author }
-            );
-            fs.unlinkSync(owgi);
-            fs.unlinkSync(encmedia);
-            progress("✔");
-          } else {
-            m.reply("please use image/sticker!");
-          }
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-        break;
-
-      //Proccess MQ
-      case "process":
-        break;
-
-      /* ================ Media Menu ================ */
-
-      case "pixiv":
-        if (!text) return reply(lang.format(prefix, command));
-        try {
-          progress("⏳");
-          res = await axios({
-            method: "get",
-            url: `https://api.lolicon.app/setu/v2?keyword=${encodeURIComponent(
-              text
-            )}`,
-            headers: {
-              DNT: 1,
-              "Upgrade-Insecure-Request": 1,
-            },
-            responseType: "json",
-          });
-          if (res.data.error) return progress("❌");
-          if (res.data.data.length === 0) return reply("Not Found!");
-          textTemplate = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
-          for (let i = 0; i < res.data.data[0].tags.length; i++) {
-            textTemplate += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
-          }
-          client.sendImage(
-            from,
-            res.data.data[0].urls.original,
-            textTemplate,
-            mek
-          );
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-        break;
-
-      case "pin":
-      case "pinterest":
-        if (!text) return reply(lang.format(prefix, command));
-        try {
-          progress("⏳");
-          fetcher = await pinterest(encodeURIComponent(text));
-          res = fetcher[Math.round(Math.random() * fetcher.length)];
-          client.sendImage(from, res, text, mek);
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-        break;
-
-      case "anime":
-        try {
-          progress("⏳");
-          response = await axios.get(
-            "https://loli-api.glitch.me/api/v1/twintails"
-          );
-          client.sendImage(from, response.data.url, " ", mek);
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-        break;
-
-      case "loli":
-        try {
-          progress("⏳");
-          res = await axios({
-            method: "get",
-            url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=${text == "nsfw" ? "1" : "0"
-              }`,
-            headers: {
-              DNT: 1,
-              "Upgrade-Insecure-Request": 1,
-            },
-            responseType: "json",
-          });
-          teks = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
-          for (let i = 0; i < res.data.data[0].tags.length; i++) {
-            teks += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
-          }
-          client.sendImage(from, res.data.data[0].urls.original, teks, mek);
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-        break;
-
-      case "milf":
-        try {
-          progress("⌛");
-          let milfs = (
-            await axios.get(
-              `https://raw.githubusercontent.com/Arya-was/endak-tau/main/milf.json`
-            )
-          ).data;
-          let milf = milfs[Math.floor(Math.random() * milfs.length)];
-          let res = await getBuffer(milf);
-          client.sendImage(from, res, "", mek);
-          progress("✔");
-        } catch (err) {
-          progress("❌");
-          console.log(err);
-        }
-        break;
-
-      case "brat":
-        if (!text) return reply(lang.format(prefix, command));
-        try {
-          progress("⏳");
-          buffer = await getBuffer(
-            `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(
-              text
-            )}&isVideo=false&delay=500`
-          );
-          client.sendImageAsSticker(from, buffer, mek, false, {
-            packname: global.packName,
-            author: global.author,
-          });
-          progress("✔");
-        } catch (err) {
-          console.error(err);
-          progress("❌");
         }
         break;
 

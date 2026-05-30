@@ -142,6 +142,8 @@ Miso Ramen: MDEF
 Naporitan: DTE Wind
 Level 10
 3030303 (S A R A)
+Level 9
+7257777 (GODragon)
 
 Okaka Rice Ball: STR
 Level 10

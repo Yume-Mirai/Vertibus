@@ -54,7 +54,7 @@ exports.piercer = () => {
 • Legendary Ornament: 530M+
 
 • *Extract*
-  - 3M+
+  - 5M+
 
 > Harga diatas hanya estimasi
 
