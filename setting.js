@@ -1,9 +1,9 @@
 global.sessionName = "client";
 global.owner = ["6285187238716", "6285187238716"];
-global.botName = "Vertibus🔹";
+global.botName = "Asfari's🔹";
 global.chatLength = 1000;
 global.packName = "^_^"
-global.author = "Vertibus🔹"
+global.author = "Asfari's🔹"
 global.donate = "https://saweria.co/Asfari01";
 global.facebook = "https://web.facebook.com/aswari.aswari.54540"
 global.instagram = "https://www.instagram.com/asfari943/"

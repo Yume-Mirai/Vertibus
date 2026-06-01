@@ -493,107 +493,99 @@ Global Price:
         break;
 
       case "lv":
-      case "lvl":
-      case "lvling":
-      case "leveling":
-        //return reply("Fitur sedang dalam perbaikan!")
-        try {
-          lvl = q.split("|")[0];
-          bexp = q.split("|")[1];
-          if (!lvl) return m.reply(lang.format(prefix, command));
-          if (q.toLowerCase() == "bs") return reply(lang.bs());
-          if (!bexp) {
-            bexp = "0";
-          }
-          if (isNaN(lvl)) return m.reply(lang.format(prefix, command));
-          if (isNaN(bexp)) return m.reply(lang.format(prefix, command));
-          progress("⏳");
+case "lvl":
+case "lvling":
+case "leveling": {
+  try {
+    let lvl = q.split("|")[0];
+    let bexp = q.split("|")[1] || "0";
+    if (!lvl) return m.reply(lang.format(prefix, command));
+    if (q.toLowerCase() === "bs") return reply(lang.bs());
+    if (isNaN(lvl) || isNaN(bexp)) return m.reply(lang.format(prefix, command));
+    progress("⏳");
 
-          axios
-            .get(
-              `https://coryn.club/leveling.php?lv=${lvl}&gap=7&bonusEXP=${bexp}`
-            )
-            .then((response) => {
-              if (response.status === 200) {
-                const html = response.data;
-                const $ = cheerio.load(html);
-                const array = [];
-                $(".level-row").each(function (i, elem) {
-                  level = $(this).find(".level-col-1 > b").text().trim();
-                  boss = $(this)
-                    .find(".level-col-2 > p:nth-child(1) > b > a")
-                    .text()
-                    .trim();
-                  location = $(this)
-                    .find(".level-col-2 > p:nth-child(2)")
-                    .text()
-                    .trim();
-                  fullBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(1) > b")
-                    .text()
-                    .trim();
-                  allBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(1)> small")
-                    .text()
-                    .trim();
-                  secondBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(2)")
-                    .text()
-                    .trim();
-                  twoBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(2) > small")
-                    .text()
-                    .trim();
-                  firstBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(3)")
-                    .text()
-                    .trim();
-                  oneBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(3) > small")
-                    .text()
-                    .trim();
-                  noBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(4)")
-                    .text()
-                    .trim();
-                  zeroBreak = $(this)
-                    .find(".level-col-3 > p:nth-child(4)> small")
-                    .text()
-                    .trim();
-
-                  if (fullBreak && oneBreak) {
-                    array.push({
-                      level,
-                      boss,
-                      location,
-                      exp: {
-                        fullBreak,
-                        secondBreak: secondBreak ? secondBreak : " - ",
-                        firstBreak: firstBreak ? firstBreak : " - ",
-                        noBreak: noBreak ? noBreak : " - ",
-                      },
-                      star: {
-                        allBreak,
-                        twoBreak: twoBreak ? twoBreak : " - ",
-                        oneBreak: oneBreak ? oneBreak : " - ",
-                        zeroBreak: zeroBreak ? zeroBreak : " - ",
-                      },
-                    });
-                  }
-                });
-                let gb = `*Leveling lvl ${lvl} & bonus exp ${bexp}%*\n`;
-                for (let i = 0; i < array.length; i++) {
-                  gb += `-------------------------------\nBoss: ${array[i].boss}\nBoss Level: ${array[i].level}\nLocation: ${array[i].location}\nEXP:\n- Full Break: ${array[i].exp.fullBreak} ${array[i].star.allBreak}\n- Two Break: ${array[i].exp.secondBreak}\n- One Break: ${array[i].exp.firstBreak}\n- No Break: ${array[i].exp.noBreak} \n`;
-                }
-                client.sendText(from, gb, mek);
-                progress("✔");
-              }
-            });
-        } catch (err) {
-          progress("❌");
-          m.reply(lang.error(err));
+    const response = await axios.get(
+      `https://coryn.club/leveling.php?lv=${lvl}&gap=7&bonusEXP=${bexp}`,
+      {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": "en-US,en;q=0.5",
         }
-        break;
+      }
+    );
+
+    const $ = cheerio.load(response.data);
+    const array = [];
+
+    $("article.level-entry").each(function () {
+      const level = $(this).find(".level-entry-level").text().trim().replace("Lv ", "");
+      const boss = $(this).find(".level-entry-main p:first-child b").text().trim();
+      const location = $(this).find(".level-entry-main p:nth-child(2)").text().trim();
+
+      const expLines = [];
+      $(this).find(".level-entry-exp p").each(function () {
+        const line = $(this).clone();
+        // hapus tag <small> agar teks % dan bintang tidak campur
+        line.find("small").remove();
+        expLines.push(line.text().trim());
+      });
+
+      const starLines = [];
+      $(this).find(".level-entry-exp p small").each(function () {
+        starLines.push($(this).text().trim());
+      });
+
+      if (boss && expLines.length > 0) {
+        array.push({
+          level,
+          boss,
+          location,
+          exp: {
+            fullBreak:    expLines[0] || "-",
+            secondBreak:  expLines[1] || "-",
+            firstBreak:   expLines[2] || "-",
+            noBreak:      expLines[3] || "-",
+          },
+          star: {
+            allBreak:   starLines[0] || "",
+            twoBreak:   starLines[1] || "",
+            oneBreak:   starLines[2] || "",
+            zeroBreak:  starLines[3] || "",
+          },
+        });
+      }
+    });
+
+    if (array.length === 0) {
+      progress("❌");
+      return m.reply(`Tidak ada data leveling untuk level *${lvl}*.\nCoba level lain atau cek https://coryn.club/leveling.php`);
+    }
+
+    let gb = `*⚔️ Leveling Guide - Level ${lvl}*\n`;
+    if (bexp !== "0") gb += `*Bonus EXP:* ${bexp}%\n`;
+    gb += `━━━━━━━━━━━━━━━\n`;
+
+    for (const a of array) {
+      gb += `\n*Lv ${a.level} - ${a.boss}*\n`;
+      gb += `📍 ${a.location}\n`;
+      gb += `💠 Full Break: ${a.exp.fullBreak} ${a.star.allBreak}\n`;
+      gb += `💠 Two Break:  ${a.exp.secondBreak} ${a.star.twoBreak}\n`;
+      gb += `💠 One Break:  ${a.exp.firstBreak} ${a.star.oneBreak}\n`;
+      gb += `💠 No Break:   ${a.exp.noBreak} ${a.star.zeroBreak}\n`;
+      gb += `───────────────\n`;
+    }
+
+    client.sendText(from, gb, mek);
+    progress("✔");
+
+  } catch (err) {
+    progress("❌");
+    console.log("[LVL ERROR]", err.message);
+    m.reply(`Error: ${err.message}`);
+  }
+  break;
+}
 
       // case "mob":
       // case "mobs":
