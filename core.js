@@ -13,6 +13,7 @@ const { performance } = require("perf_hooks");
 const ind = require("./language/ind");
 const eng = require("./language/eng");
 const piercerData = require("./piercer");
+const abilityDB = require("./ability");
 const calculateMQ = require("./lib/MQcalculator");
 const {
   getBuffer,
@@ -349,9 +350,9 @@ module.exports = core = async (client, m, chatUpdate) => {
     switch (command) {
       case "menu":
         m.reply(lang.menu(prefix));
-break;
+        break;
 
-/* ================ Toram Online Menu ================ */
+      /* ================ Toram Online Menu ================ */
       case "cwatk":
         if (!q) return reply(lang.format(prefix, command));
         int = parseInt(q);
@@ -359,7 +360,7 @@ break;
         str = proc.toString();
         m.reply(str);
         break;
-        
+
       case "piercer":
       case "pembolong":
         reply(piercerData.piercer());
@@ -493,99 +494,99 @@ Global Price:
         break;
 
       case "lv":
-case "lvl":
-case "lvling":
-case "leveling": {
-  try {
-    let lvl = q.split("|")[0];
-    let bexp = q.split("|")[1] || "0";
-    if (!lvl) return m.reply(lang.format(prefix, command));
-    if (q.toLowerCase() === "bs") return reply(lang.bs());
-    if (isNaN(lvl) || isNaN(bexp)) return m.reply(lang.format(prefix, command));
-    progress("⏳");
+      case "lvl":
+      case "lvling":
+      case "leveling": {
+        try {
+          let lvl = q.split("|")[0];
+          let bexp = q.split("|")[1] || "0";
+          if (!lvl) return m.reply(lang.format(prefix, command));
+          if (q.toLowerCase() === "bs") return reply(lang.bs());
+          if (isNaN(lvl) || isNaN(bexp)) return m.reply(lang.format(prefix, command));
+          progress("⏳");
 
-    const response = await axios.get(
-      `https://coryn.club/leveling.php?lv=${lvl}&gap=7&bonusEXP=${bexp}`,
-      {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-          "Accept-Language": "en-US,en;q=0.5",
+          const response = await axios.get(
+            `https://coryn.club/leveling.php?lv=${lvl}&gap=7&bonusEXP=${bexp}`,
+            {
+              headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.5",
+              }
+            }
+          );
+
+          const $ = cheerio.load(response.data);
+          const array = [];
+
+          $("article.level-entry").each(function () {
+            const level = $(this).find(".level-entry-level").text().trim().replace("Lv ", "");
+            const boss = $(this).find(".level-entry-main p:first-child b").text().trim();
+            const location = $(this).find(".level-entry-main p:nth-child(2)").text().trim();
+
+            const expLines = [];
+            $(this).find(".level-entry-exp p").each(function () {
+              const line = $(this).clone();
+              // hapus tag <small> agar teks % dan bintang tidak campur
+              line.find("small").remove();
+              expLines.push(line.text().trim());
+            });
+
+            const starLines = [];
+            $(this).find(".level-entry-exp p small").each(function () {
+              starLines.push($(this).text().trim());
+            });
+
+            if (boss && expLines.length > 0) {
+              array.push({
+                level,
+                boss,
+                location,
+                exp: {
+                  fullBreak: expLines[0] || "-",
+                  secondBreak: expLines[1] || "-",
+                  firstBreak: expLines[2] || "-",
+                  noBreak: expLines[3] || "-",
+                },
+                star: {
+                  allBreak: starLines[0] || "",
+                  twoBreak: starLines[1] || "",
+                  oneBreak: starLines[2] || "",
+                  zeroBreak: starLines[3] || "",
+                },
+              });
+            }
+          });
+
+          if (array.length === 0) {
+            progress("❌");
+            return m.reply(`Tidak ada data leveling untuk level *${lvl}*.\nCoba level lain atau cek https://coryn.club/leveling.php`);
+          }
+
+          let gb = `*⚔️ Leveling Guide - Level ${lvl}*\n`;
+          if (bexp !== "0") gb += `*Bonus EXP:* ${bexp}%\n`;
+          gb += `━━━━━━━━━━━━━━━\n`;
+
+          for (const a of array) {
+            gb += `\n*Lv ${a.level} - ${a.boss}*\n`;
+            gb += `📍 ${a.location}\n`;
+            gb += `💠 Full Break: ${a.exp.fullBreak} ${a.star.allBreak}\n`;
+            gb += `💠 Two Break:  ${a.exp.secondBreak} ${a.star.twoBreak}\n`;
+            gb += `💠 One Break:  ${a.exp.firstBreak} ${a.star.oneBreak}\n`;
+            gb += `💠 No Break:   ${a.exp.noBreak} ${a.star.zeroBreak}\n`;
+            gb += `───────────────\n`;
+          }
+
+          client.sendText(from, gb, mek);
+          progress("✔");
+
+        } catch (err) {
+          progress("❌");
+          console.log("[LVL ERROR]", err.message);
+          m.reply(`Error: ${err.message}`);
         }
+        break;
       }
-    );
-
-    const $ = cheerio.load(response.data);
-    const array = [];
-
-    $("article.level-entry").each(function () {
-      const level = $(this).find(".level-entry-level").text().trim().replace("Lv ", "");
-      const boss = $(this).find(".level-entry-main p:first-child b").text().trim();
-      const location = $(this).find(".level-entry-main p:nth-child(2)").text().trim();
-
-      const expLines = [];
-      $(this).find(".level-entry-exp p").each(function () {
-        const line = $(this).clone();
-        // hapus tag <small> agar teks % dan bintang tidak campur
-        line.find("small").remove();
-        expLines.push(line.text().trim());
-      });
-
-      const starLines = [];
-      $(this).find(".level-entry-exp p small").each(function () {
-        starLines.push($(this).text().trim());
-      });
-
-      if (boss && expLines.length > 0) {
-        array.push({
-          level,
-          boss,
-          location,
-          exp: {
-            fullBreak:    expLines[0] || "-",
-            secondBreak:  expLines[1] || "-",
-            firstBreak:   expLines[2] || "-",
-            noBreak:      expLines[3] || "-",
-          },
-          star: {
-            allBreak:   starLines[0] || "",
-            twoBreak:   starLines[1] || "",
-            oneBreak:   starLines[2] || "",
-            zeroBreak:  starLines[3] || "",
-          },
-        });
-      }
-    });
-
-    if (array.length === 0) {
-      progress("❌");
-      return m.reply(`Tidak ada data leveling untuk level *${lvl}*.\nCoba level lain atau cek https://coryn.club/leveling.php`);
-    }
-
-    let gb = `*⚔️ Leveling Guide - Level ${lvl}*\n`;
-    if (bexp !== "0") gb += `*Bonus EXP:* ${bexp}%\n`;
-    gb += `━━━━━━━━━━━━━━━\n`;
-
-    for (const a of array) {
-      gb += `\n*Lv ${a.level} - ${a.boss}*\n`;
-      gb += `📍 ${a.location}\n`;
-      gb += `💠 Full Break: ${a.exp.fullBreak} ${a.star.allBreak}\n`;
-      gb += `💠 Two Break:  ${a.exp.secondBreak} ${a.star.twoBreak}\n`;
-      gb += `💠 One Break:  ${a.exp.firstBreak} ${a.star.oneBreak}\n`;
-      gb += `💠 No Break:   ${a.exp.noBreak} ${a.star.zeroBreak}\n`;
-      gb += `───────────────\n`;
-    }
-
-    client.sendText(from, gb, mek);
-    progress("✔");
-
-  } catch (err) {
-    progress("❌");
-    console.log("[LVL ERROR]", err.message);
-    m.reply(`Error: ${err.message}`);
-  }
-  break;
-}
 
       // case "mob":
       // case "mobs":
@@ -649,39 +650,80 @@ case "leveling": {
         if (!text) return m.reply(`Format: ${prefix}item <nama item>\nContoh: ${prefix}item Mythriller Blade`);
         try {
           progress("⏳");
-          const itemRes = await axios.get(`https://coryn.club/api/v1/items.php?name=${encodeURIComponent(text)}`);
+
+          // Cari item via API dulu
+          const itemRes = await axios.get(
+            `https://coryn.club/api/v1/items.php?name=${encodeURIComponent(text)}`,
+            { headers: { "User-Agent": "Mozilla/5.0" } }
+          );
           if (!itemRes.data.success || itemRes.data.data.length === 0) {
             progress("❌");
             return m.reply(`Item *${text}* tidak ditemukan!`);
           }
           const items = itemRes.data.data;
-          // Ambil detail item pertama
-          const first = items[0];
-          const detailRes = await axios.get(`https://coryn.club/api/v1/items.php?id=${first.id}`);
-          const detail = detailRes.data.data;
 
-          // Format hasil
-          let msg = `*🔍 Item Search: ${text}*\n`;
+          // Ambil detail via API
+          const detailRes = await axios.get(
+            `https://coryn.club/api/v1/items.php?id=${items[0].id}`,
+            { headers: { "User-Agent": "Mozilla/5.0" } }
+          );
+          const d = detailRes.data.data;
+
+          // Scrape halaman item.php untuk Obtained From
+          const pageRes = await axios.get(
+            `https://coryn.club/item.php?name=${encodeURIComponent(text)}`,
+            { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" } }
+          );
+          const $ = cheerio.load(pageRes.data);
+
+          // Ambil data Obtained From
+          const obtainedFrom = [];
+          const obtainId = `obtain-list-${items[0].id}`;
+          $(`#${obtainId} .pagination-js-item`).each(function () {
+            const cols = $(this).children("div");
+            const monster = $(cols[0]).text().trim().replace(/\s+/g, " ");
+            const dye = $(cols[1]).text().trim();
+            const map = $(cols[2]).text().trim().replace(/\s+/g, " ");
+            if (monster) obtainedFrom.push({ monster, dye, map });
+          });
+
+          // Format pesan
+          let msg = `*🔍 Item: ${d.name}*\n`;
           msg += `━━━━━━━━━━━━━━━\n`;
+          if (items.length > 1) msg += `_Ditemukan ${items.length} item, menampilkan pertama_\n\n`;
 
-          if (items.length > 1) {
-            msg += `_Ditemukan ${items.length} item, menampilkan yang pertama_\n\n`;
-          }
+          msg += `*📦 Tipe:* ${d.type_label}\n`;
+          if (d.meta?.badge) msg += `*🎖️ Badge:* ${d.meta.badge}\n`;
+          if (d.meta?.note) msg += `*📝 Catatan:* ${d.meta.note}\n`;
+          msg += `*💰 Sell:* ${d.sell > 0 ? d.sell.toLocaleString() + " Spina" : "-"}\n`;
+          msg += `*⚗️ Process:* ${d.process > 0 ? d.process.toLocaleString() + " Mana" : "-"}\n`;
 
-          msg += `*📦 Nama:* ${detail.name}\n`;
-          msg += `*🏷️ Tipe:* ${detail.type_label}\n`;
-          if (detail.meta?.badge) msg += `*🎖️ Badge:* ${detail.meta.badge}\n`;
-          if (detail.meta?.note) msg += `*📝 Catatan:* ${detail.meta.note}\n`;
-          msg += `*💰 Sell:* ${detail.sell > 0 ? detail.sell.toLocaleString() : "-"}\n`;
-
-          if (detail.stats && detail.stats.length > 0) {
+          // Stats
+          if (d.stats?.length > 0) {
             msg += `\n*📊 Stats:*\n`;
-            for (const stat of detail.stats) {
-              const sign = stat.amount > 0 ? "+" : "";
-              msg += `  • ${stat.effect_name}: ${sign}${stat.amount}${stat.effect_name.includes("%") ? "" : ""}\n`;
+            for (const s of d.stats) {
+              msg += `  • ${s.effect_name}: ${s.amount > 0 ? "+" : ""}${s.amount}\n`;
             }
           }
 
+          // Obtained From
+          if (obtainedFrom.length > 0) {
+            msg += `\n*📍 Obtained From:*\n`;
+            const maxShow = Math.min(obtainedFrom.length, 8);
+            for (let i = 0; i < maxShow; i++) {
+              const o = obtainedFrom[i];
+              msg += `  • ${o.monster}\n`;
+              msg += `    📌 ${o.map}\n`;
+              if (o.dye) msg += `    🎨 Dye: ${o.dye}\n`;
+            }
+            if (obtainedFrom.length > 8) {
+              msg += `  _...dan ${obtainedFrom.length - 8} monster lainnya_\n`;
+            }
+          } else {
+            msg += `\n*📍 Obtained From:* -\n`;
+          }
+
+          // List item lain
           if (items.length > 1) {
             msg += `\n*📋 Item lain yang ditemukan:*\n`;
             for (let i = 1; i < Math.min(items.length, 6); i++) {
@@ -692,13 +734,14 @@ case "leveling": {
 
           m.reply(msg);
           progress("✔");
+
         } catch (err) {
           progress("❌");
-          console.log(err);
-          m.reply("Gagal mengakses Coryn Club API!");
+          console.log("[ITEM ERROR]", err.message);
+          m.reply("Gagal mengakses Coryn Club!");
         }
-      }
         break;
+      }
 
       case "monster":
       case "searchmonster":
@@ -764,7 +807,93 @@ case "leveling": {
         }
       }
         break;
+      case "ability":
+      case "trait":
+      case "abil": {
+        const tierLabels = {
+          "1": 1, "i": 1, "t1": 1, "tier1": 1, "tier i": 1,
+          "2": 2, "ii": 2, "t2": 2, "tier2": 2, "tier ii": 2,
+          "3": 3, "iii": 3, "t3": 3, "tier3": 3, "tier iii": 3,
+          "4": 4, "iv": 4, "t4": 4, "tier4": 4, "tier iv": 4,
+          "5": 5, "v": 5, "t5": 5, "tier5": 5, "tier v": 5,
+        };
 
+        if (!text) {
+          return m.reply(
+            `*🔮 Ability/Trait Search*\n━━━━━━━━━━━━━━━\n` +
+            `Format:\n` +
+            `  • ${prefix}ability <nama>\n` +
+            `  • ${prefix}ability tier <1-5>\n\n` +
+            `Contoh:\n` +
+            `  • ${prefix}ability blood regen\n` +
+            `  • ${prefix}ability fighting power\n` +
+            `  • ${prefix}ability tier 3\n` +
+            `  • ${prefix}ability vengeful\n\n` +
+            `_Source: Phantom's Library Drop Item Special Ability List_`
+          );
+        }
+
+        const lowerText = text.toLowerCase().trim();
+
+        // Cek kalau input adalah tier filter
+        const tierNum = tierLabels[lowerText] ||
+          (lowerText.startsWith("tier ") ? tierLabels[lowerText.replace("tier ", "")] : null) ||
+          (lowerText.startsWith("t") && !isNaN(lowerText.slice(1)) ? parseInt(lowerText.slice(1)) : null);
+
+        if (tierNum && tierNum >= 1 && tierNum <= 5) {
+          const results = abilityDB.getByTier(tierNum);
+          const emoji = abilityDB.tierEmoji[tierNum];
+          const tierLabel = abilityDB.tierName[tierNum];
+
+          let msg = `${emoji} *Drop Ability - ${tierLabel}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n`;
+          msg += `_Total: ${results.length} abilities_\n\n`;
+
+          for (const a of results) {
+            msg += `• *${a.name}*\n`;
+          }
+
+          msg += `\n_Ketik *${prefix}ability <nama>* untuk detail_`;
+          return m.reply(msg);
+        }
+
+        // Search by keyword
+        const results = abilityDB.searchAbility(text);
+
+        if (results.length === 0) {
+          return m.reply(`❌ Ability *${text}* tidak ditemukan!\n\nCoba:\n• ${prefix}ability blood\n• ${prefix}ability tier 3\n• ${prefix}ability vengeful`);
+        }
+
+        // Kalau exact match / hanya 1 hasil → tampilkan detail
+        if (results.length === 1) {
+          return m.reply(abilityDB.formatAbility(results[0]));
+        }
+
+        // Kalau 2-5 hasil → tampilkan semua dengan detail
+        if (results.length <= 5) {
+          let msg = `*🔮 Ability Search: "${text}"*\n`;
+          msg += `━━━━━━━━━━━━━━━\n`;
+          msg += `_Ditemukan ${results.length} ability_\n\n`;
+          for (const a of results) {
+            msg += abilityDB.formatAbility(a) + "\n\n";
+          }
+          msg = msg.trimEnd();
+          return m.reply(msg);
+        }
+
+        // Kalau banyak hasil → tampilkan list ringkas
+        let msg = `*🔮 Ability Search: "${text}"*\n`;
+        msg += `━━━━━━━━━━━━━━━\n`;
+        msg += `_Ditemukan ${results.length} ability_\n\n`;
+
+        for (const a of results) {
+          const emoji = abilityDB.tierEmoji[a.tier];
+          msg += `${emoji} *${a.name}* (${abilityDB.tierName[a.tier]})\n`;
+        }
+
+        msg += `\n_Perjelas pencarian untuk melihat detail_`;
+        return m.reply(msg);
+      }
       case "mt":
         url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
         axios.get(url)
@@ -1216,7 +1345,7 @@ case "leveling": {
         }
         break;
 
-        case "calculate":
+      case "calculate":
         {
           lvl = parseInt(text.split("|")[0]);
           exp = parseInt(text.split("|")[1].split(" ")[0]);
@@ -2029,6 +2158,91 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         break;
 
       /* ================ Media Menu ================ */
+      case "play":
+      case "musik":
+      case "lagu": {
+        if (!text) return m.reply(`Format: ${prefix}play <nama lagu>\nContoh: ${prefix}play Hentikan`);
+        try {
+          progress("⏳");
+          const { exec } = require("child_process");
+          const { promisify } = require("util");
+          const execAsync = promisify(exec);
+          const os = require("os");
+          const path = require("path");
+
+          // Search dulu pakai ytsr
+          const ytsr = require("ytsr");
+          const searchResults = await ytsr(text, { limit: 5 });
+          const videos = searchResults.items.filter(i => i.type === "video" && !i.isLive);
+
+          if (videos.length === 0) {
+            progress("❌");
+            return m.reply(`Lagu *${text}* tidak ditemukan!`);
+          }
+
+          const video = videos[0];
+          const title = video.title;
+          const duration = video.duration;
+          const author = video.author?.name || "Unknown";
+          const url = video.url;
+
+          // Cek durasi max 10 menit
+          if (duration) {
+            const parts = duration.split(":").map(Number);
+            const totalSeconds = parts.length === 3
+              ? parts[0] * 3600 + parts[1] * 60 + parts[2]
+              : parts[0] * 60 + parts[1];
+            if (totalSeconds > 600) {
+              progress("❌");
+              return m.reply(`❌ Lagu terlalu panjang!\nMaksimal: *10 menit*\nDurasi *${title}*: ${duration}`);
+            }
+          }
+
+          // Kirim info dulu
+          await client.sendMessage(from, {
+            text: `🎵 *Ditemukan!*\n\n*Judul:* ${title}\n*Artis:* ${author}\n*Durasi:* ${duration || "?"}\n\n_Sedang mengunduh..._`
+          }, { quoted: mek });
+
+          // Download pakai yt-dlp
+          const tmpFile = path.join(os.tmpdir(), `ytdlp_${Date.now()}`);
+          const outputFile = `${tmpFile}.mp3`;
+
+          const cmd = `yt-dlp -x --audio-format mp3 --audio-quality 0 --no-playlist -o "${outputFile}" "${url}"`;
+
+          try {
+            await execAsync(cmd, { timeout: 120000 }); // timeout 2 menit
+          } catch (dlErr) {
+            progress("❌");
+            console.log("[YT-DLP ERROR]", dlErr.message);
+            return m.reply("❌ Gagal mengunduh. Video mungkin dibatasi atau tidak tersedia.");
+          }
+
+          // Cek file ada
+          if (!fs.existsSync(outputFile)) {
+            progress("❌");
+            return m.reply("❌ File audio tidak ditemukan setelah download.");
+          }
+
+          // Kirim audio
+          const audioBuffer = fs.readFileSync(outputFile);
+          await client.sendMessage(from, {
+            audio: audioBuffer,
+            mimetype: "audio/mpeg",
+            ptt: false,
+            fileName: `${title}.mp3`,
+          }, { quoted: mek });
+
+          // Hapus file temp
+          fs.unlink(outputFile, () => { });
+          progress("✔");
+
+        } catch (err) {
+          progress("❌");
+          console.log("[PLAY ERROR]", err.message);
+          m.reply(`❌ Gagal: ${err.message}`);
+        }
+        break;
+      }
 
       /* ================ Group Menu ================ */
       case "metadata":

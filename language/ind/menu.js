@@ -52,6 +52,7 @@ exports.menu = (prefix) => {
  ╰•${prefix}earthres
 
  ❏ *Media Menu*
+ │•${prefix}play
  │•${prefix}sticker
  │•${prefix}smeme
  │•${prefix}pixiv

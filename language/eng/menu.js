@@ -3,7 +3,7 @@ exports.menu = (prefix) => {
 ❏ *${global.botName} Menu* ❏
 
  ❏ *Toram Online Menu*
- │•${prefix}lvling
+ │•${prefix}lvling 
  │•${prefix}mq
  │•${prefix}maze
  │•${prefix}bag
@@ -51,6 +51,7 @@ exports.menu = (prefix) => {
  ╰•${prefix}earthres
 
  ❏ *Media Menu*
+ │•${prefix}play
  │•${prefix}sticker
  │•${prefix}smeme
  │•${prefix}pixiv

@@ -85,12 +85,16 @@ _Item :_ Kulit Tebal Berlendir (20pcs)
 _Mobs :_ Romyzon
 _Map :_ Lahan Basah Latum
 
-_Item :_ Kayu Melilit (10pcs)
+_Item :_ Akar Melilit (10pcs)
 _Mobs :_ Lileaf
 _Map :_ Lahan Tandus Perdida
 
 _Item :_ Kayu Menabra (10pcs)
 _Mobs :_ Delphi
 _Map :_ Dataran Menabra
+
+_Item :_ Pupuk Keruh (10pcs)
+_Mobs :_ Solvay
+_Map :_ Pegunungan Rod Zaag
     `
 }

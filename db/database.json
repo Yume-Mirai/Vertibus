@@ -1,11 +1,14 @@
 {
-  "private_usage": 34,
-  "group_usage": 156,
+  "private_usage": 47,
+  "group_usage": 364,
   "store": {},
   "groups": {
     "120363406658263857@g.us": {
       "open": true,
       "welcome": true
+    },
+    "120363240189688813@g.us": {
+      "open": true
     }
   },
   "database": {},
@@ -21,6 +24,30 @@
       "language": "ind",
       "latest": true,
       "date": "2026-05-27T14:07:22.043Z"
+    },
+    {
+      "id": "272206605082689@lid",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-01T16:12:40.015Z"
+    },
+    {
+      "id": "120363240189688813@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-01T16:41:42.004Z"
+    },
+    {
+      "id": "183081688428613@lid",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-06T12:01:14.768Z"
+    },
+    {
+      "id": "155108969046249@lid",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-12T12:04:05.685Z"
     }
   ]
 }
