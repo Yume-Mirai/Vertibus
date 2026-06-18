@@ -52,6 +52,7 @@ const separate = (int) => {
 };
 
 module.exports = core = async (client, m, chatUpdate) => {
+  if (!m.message) return; // abaikan pesan tanpa konten
   var body =
     (m.mtype === "conversation")
       ? m.message.conversation
@@ -113,7 +114,6 @@ module.exports = core = async (client, m, chatUpdate) => {
   const mime = qms.mimetype || "";
   const mek = chatUpdate.messages[0];
   const content = JSON.stringify(m.message);
-  //   const sender = m.isGroup ? m.key.fromMe ? m.sender : m.key.participant : m.sender;
   const sender = m.isGroup ? (m.key.fromMe ? m.sender : (m.key?.participantPn || m.key.participant || m.sender)) : m.sender;
   const from = m.chat;
   const reply = m.reply;
@@ -134,13 +134,6 @@ module.exports = core = async (client, m, chatUpdate) => {
   };
   const senderNumber = getSenderNumber(sender);
   const isOwner = global.owner.includes(senderNumber) || false;
-  // const getGroupAdmins = (participants) => {
-  //   admins = [];
-  //   for (let i of participants) {
-  //     i.admin ? admins.push(i.jid) : "";
-  //   }
-  //   return admins;
-  // };
   const getGroupAdmins = (participants) => {
     admins = [];
     for (let i of participants) {
@@ -166,16 +159,6 @@ module.exports = core = async (client, m, chatUpdate) => {
     m.mtype === "extendedTextMessage" && content.includes("stickerMessage");
   const isQuotedVideo =
     m.mtype === "extendedTextMessage" && content.includes("videoMessage");
-
-  //Save every Message to JSON
-  /*let infoMSG = JSON.parse(fs.readFileSync("./db/message.json"));
-  infoMSG.push(JSON.parse(JSON.stringify(mek)));
-  fs.writeFileSync("./db/message.json", JSON.stringify(infoMSG, null, 2));
-  const amount_message = infoMSG.length;
-  if (amount_message === 5000) {
-    infoMSG.splice(0, 4300);
-    fs.writeFileSync("./db/message.json", JSON.stringify(infoMSG, null, 2));
-  }*/
 
   //Language
   senderType = m.isGroup ? groupMetadata.id : sender;
@@ -344,6 +327,509 @@ module.exports = core = async (client, m, chatUpdate) => {
       chalk.black.bgYellow(`[ ${currentTime} ]`)
     );
   }
+
+  // ============= TORAM NEWS HELPER =============
+  const _toramHeaders = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" };
+  const _toramBase = (lang) => `https://${lang === "eng" ? "en" : "id"}.toram.jp`;
+
+  const _toramGetLatest = async (typeCode, lang) => {
+    try {
+      const { base, items } = await _toramGetList(typeCode, lang, 1);
+      if (!items.length) return null;
+
+      const latestItem = items[0];
+      const detailUrl = `${base}${latestItem.href}`;
+
+      const detailRes = await axios.get(detailUrl, { headers: _toramHeaders });
+      const $d = cheerio.load(detailRes.data);
+
+      // Judul
+      const title = $d("h1.smallTitle").text().trim()
+        || $d(".smallTitleLine h1").text().trim()
+        || latestItem.title;
+
+      // Tanggal
+      const detailDate = $d("p.news_date time").text().trim() || latestItem.date;
+
+      // === AMBIL KONTEN UTAMA ===
+      // Prioritas: #news (berdasarkan pengalaman sebelumnya), lalu .infoDetailBox, p.pTxt
+      let contentBox = $d("#news");
+      if (!contentBox.length) contentBox = $d(".infoDetailBox");
+      if (!contentBox.length) contentBox = $d("p.pTxt");
+
+      let rawText = "";
+      if (contentBox.length) {
+        rawText = contentBox.text(); // ambil teks mentah
+      }
+
+      if (!rawText) {
+        return {
+          title,
+          date: detailDate,
+          content: "_Tidak dapat memuat konten. Silakan buka link._",
+          url: detailUrl
+        };
+      }
+
+      // Bersihkan teks
+      let content = rawText
+        // Hapus kalimat yang tidak perlu
+        .replace(/Tweet/g, "")
+        .replace(/Kembali ke atas/g, "")
+        .replace(/Back to top/g, "")
+        // Hapus whitespace di awal & akhir tiap baris
+        .split('\n')
+        .map(line => line.trim())
+        .join('\n')
+        // Hapus baris kosong berlebih (maks 1 baris kosong)
+        .replace(/\n{3,}/g, '\n\n')
+        // Hapus spasi ganda
+        .replace(/ {2,}/g, ' ')
+        .trim();
+
+      if (!content) {
+        content = "_Tidak dapat memuat konten. Silakan buka link._";
+      } else if (content.length > 2000) {
+        content = content.substring(0, 2000) + "\n\n_...(terpotong, baca selengkapnya di link)_";
+      }
+
+      return { title, date: detailDate, content, url: detailUrl };
+    } catch (err) {
+      console.error("[_toramGetLatest Error]", err.message);
+      return null;
+    }
+  };
+
+  const _toramGetList = async (typeCode, lang, limit = 5) => {
+    const base = _toramBase(lang);
+    const listRes = await axios.get(`${base}/?type_code=${typeCode}`, { headers: _toramHeaders });
+    const $l = cheerio.load(listRes.data);
+    const items = [];
+    $l(".common_list .news_border").each(function (i) {
+      if (i >= limit) return false;
+      const href = $l(this).find("a").attr("href");
+      const title = $l(this).find(".news_title").text().trim();
+      const date = $l(this).find("time").text().trim().replace(/[\[\]「」]/g, "");
+      if (href) items.push({ title, date, href });
+    });
+    return { base, items };
+  };
+
+  // ============= AVATAR BANNER HELPER =============
+  const _toramGetAvatarBanner = async (lang) => {
+    const base = _toramBase(lang);
+    const listRes = await axios.get(`${base}/?type_code=all#contentArea`, { headers: _toramHeaders });
+    const $ = cheerio.load(listRes.data);
+
+    const newsList = [];
+    $('.common_list li a').each((_, el) => {
+      const href = $(el).attr('href');
+      const dateStr = $(el).find('.time time').text().trim();
+      if (!href || !dateStr) return;
+      const m = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
+      if (!m) return;
+      newsList.push({
+        url: base + href,
+        dateStr,
+        dateObj: new Date(m[1], m[2] - 1, m[3])
+      });
+    });
+
+    if (newsList.length === 0) return [];
+
+    let newestDate = null;
+    let newestBanners = [];
+
+    for (const news of newsList) {
+      const detailRes = await axios.get(news.url, { headers: _toramHeaders });
+      const $detail = cheerio.load(detailRes.data);
+      const banners = [];
+
+      $detail('h2.deluxetitle').each((_, h2) => {
+        const title = $detail(h2).text().trim();
+        const img = $detail(h2).nextAll('center').first().find('img');
+        const src = img.attr('src') || img.attr('data-src');
+        if (src && /toram_avatar_/i.test(src)) {
+          banners.push({
+            title,
+            image: src.startsWith('http') ? src : base + src
+          });
+        }
+      });
+
+      if (banners.length === 0) continue;
+
+      if (!newestDate || news.dateObj > newestDate) {
+        newestDate = news.dateObj;
+        newestBanners = banners.map(b => ({
+          ...b,
+          dateStr: news.dateStr
+        }));
+      }
+    }
+
+    return newestBanners;
+  };
+
+  // ============= NEWS BY ID HELPER =============
+  const _toramGetNewsById = async (newsId, lang) => {
+    const base = _toramBase(lang);
+    const url = `${base}/information/detail/?information_id=${newsId}`;
+    try {
+      const res = await axios.get(url, { headers: _toramHeaders });
+      const $ = cheerio.load(res.data);
+      let title = $("h1").first().text().trim() || `Berita ID: ${newsId}`;
+      let content = $("body").text().trim();
+      content = content
+        .replace(/kembali ke atas.*/gi, "")
+        .replace(/tim operasi toram online.*/gi, "")
+        .replace(/\s+/g, " ")
+        .replace(/([.!?])\s+([A-Z•・])/g, "$1\n\n$2")
+        .replace(/・/g, "\n- ")
+        .trim();
+      if (content.length > 1000) content = content.substring(0, 1000) + "...";
+      return { success: true, title, content, url };
+    } catch (err) {
+      return { success: false, error: err.message };
+    }
+  };
+
+  // ============= SITE STATUS =============
+  const _toramCheckStatus = async (lang) => {
+    const base = _toramBase(lang);
+    try {
+      const res = await axios.head(base, { headers: _toramHeaders, timeout: 10000 });
+      return { status: res.status < 400, code: res.status };
+    } catch (error) {
+      return { status: false, error: error.message };
+    }
+  };
+
+  // ============= AVAILABLE NEWS IDS =============
+  const _toramGetAvailableNewsIds = async (lang, limit = 10) => {
+    const base = _toramBase(lang);
+    try {
+      const res = await axios.get(`${base}/?type_code=update`, { headers: _toramHeaders });
+      const $ = cheerio.load(res.data);
+      const newsIds = [];
+      $('a[href*="information_id"]').each((i, el) => {
+        if (i >= limit) return false;
+        const href = $(el).attr("href");
+        const match = href?.match(/information_id=(\d+)/);
+        if (match) {
+          newsIds.push({
+            id: match[1],
+            title: $(el).text().trim(),
+            url: href.startsWith("/") ? base + href : href
+          });
+        }
+      });
+      return newsIds;
+    } catch (err) {
+      return [];
+    }
+  };
+
+  // ============= BOOST BOSS HELPER =============
+  const _toramGetBoostBoss = async (lang) => {
+    const base = _toramBase(lang);
+    const listUrl = `${base}/top/?type_code=event`;
+    try {
+      const listRes = await axios.get(listUrl, { headers: _toramHeaders });
+      const $ = cheerio.load(listRes.data);
+      const boostNews = [];
+
+      $('ul li a[href*="information_id"]').each((i, el) => {
+        const fullText = $(el).text().trim();
+        const lower = fullText.toLowerCase();
+        const href = $(el).attr('href');
+        const dateMatch = fullText.match(/［(\d{4}-\d{2}-\d{2})］/);
+        const dateStr = dateMatch ? dateMatch[1] : '';
+        const dateParts = dateStr.split('-');
+        if (lower.includes('boost')) {
+          boostNews.push({
+            title: fullText.replace(/［\d{4}-\d{2}-\d{2}］/, '').trim(),
+            href: href.startsWith('http') ? href : base + href,
+            date: dateStr,
+            parsedDate: dateStr ? new Date(dateParts[0], dateParts[1] - 1, dateParts[2]) : null
+          });
+        }
+      });
+
+      if (!boostNews.length) return { active: false, reason: 'no_news' };
+
+      let latest = boostNews[0];
+      for (const n of boostNews) {
+        if (n.parsedDate && latest.parsedDate && n.parsedDate > latest.parsedDate)
+          latest = n;
+      }
+
+      const detailRes = await axios.get(latest.href, { headers: _toramHeaders });
+      const $d = cheerio.load(detailRes.data);
+      const bodyText = $d('body').text();
+
+      let endDate = null;
+      let endStr = '';
+
+      const indMatch = bodyText.match(
+        /(?:Selesai|Berakhir)\s*[:]\s*[^,]*,?\s*(\d{1,2})\s+([a-zA-Z]+)\s+(\d{4})\s+(?:pukul|jam)\s*(\d{1,2})[:.](\d{2})\s*WIB/i
+      );
+      if (indMatch) {
+        const bulanInd = {
+          'januari': 0, 'februari': 1, 'maret': 2, 'april': 3, 'mei': 4, 'juni': 5,
+          'juli': 6, 'agustus': 7, 'september': 8, 'oktober': 9, 'november': 10, 'desember': 11
+        };
+        const d = parseInt(indMatch[1]), m = bulanInd[indMatch[2].toLowerCase()],
+          y = parseInt(indMatch[3]), hh = parseInt(indMatch[4]), mm = parseInt(indMatch[5]);
+        if (m !== undefined) {
+          endDate = new Date(Date.UTC(y, m, d, hh - 7, mm, 0));
+          endStr = `${d} ${indMatch[2]} ${y} ${hh}:${mm.toString().padStart(2, '0')} WIB`;
+        }
+      }
+
+      if (!endDate) {
+        const engMatch = bodyText.match(
+          /Until:\s*([A-Za-z]+)\s+(\d+)[a-z]{2}\s+at\s+(\d{1,2}):(\d{2})\s+(AM|PM)\s+\(JST/i
+        );
+        if (engMatch) {
+          const bulanEng = {
+            'january': 0, 'february': 1, 'march': 2, 'april': 3, 'may': 4, 'june': 5,
+            'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11
+          };
+          const d = parseInt(engMatch[2]), m = bulanEng[engMatch[1].toLowerCase()],
+            hhRaw = parseInt(engMatch[3]), mm = parseInt(engMatch[4]),
+            ampm = engMatch[5];
+          let hh = hhRaw;
+          if (ampm === 'PM' && hh !== 12) hh += 12;
+          if (ampm === 'AM' && hh === 12) hh = 0;
+          const y = new Date().getFullYear();
+          if (m !== undefined) {
+            const jst = new Date(Date.UTC(y, m, d, hh - 9, mm, 0));
+            endDate = new Date(jst.getTime() + 2 * 60 * 60 * 1000);
+            endStr = `${endDate.getDate()} ${engMatch[1]} ${y} ${endDate.getHours()}:${endDate.getMinutes().toString().padStart(2, '0')} WIB`;
+          }
+        }
+      }
+
+      if (endDate && new Date() > endDate) {
+        return { active: false, reason: 'expired', endStr };
+      }
+
+      const bosses = [];
+      $d('.subtitle').each((i, el) => {
+        const txt = $d(el).text().trim();
+        const match = txt.match(/^(Lv\d+)\s+([^(]+)(?:\(([^)]+)\))?/);
+        if (!match) return;
+
+        const level = match[1];
+        const name = match[2].trim();
+        const location = match[3] || '';
+
+        let img = null;
+        let next = $d(el).next();
+        for (let j = 0; j < 3 && next.length; j++) {
+          const found = next.find('img');
+          if (found.length) {
+            img = found.first().attr('src');
+            break;
+          }
+          next = next.next();
+        }
+
+        if (!img) return;
+
+        let imageUrl;
+        if (img.startsWith('http')) imageUrl = img;
+        else if (img.includes('akamaized.net'))
+          imageUrl = (img.startsWith('//') ? 'https:' : 'https://') + img;
+        else if (img.startsWith('/'))
+          imageUrl = 'https://toram-jp.akamaized.net' + img;
+        else
+          imageUrl = 'https://toram-jp.akamaized.net/img/announcement/bossevent/' + img.replace(/^\.\/.*\//, '');
+
+        bosses.push({
+          level, name, location,
+          fullName: `${level} ${name}${location ? ` (${location})` : ''}`,
+          image: imageUrl
+        });
+      });
+
+      return {
+        active: true,
+        bosses,
+        endStr,
+        eventTitle: latest.title
+      };
+
+    } catch (err) {
+      console.error('[BoostBoss Error]', err.message);
+      throw err;
+    }
+  };
+
+  // ============= LIVE STREAM HELPERS =============
+  const _toramGetLiveDetail = async (lang) => {
+    const base = _toramBase(lang);
+    const listUrl = `${base}/?type_code=event#contentArea`;
+    const LIVE_KEYWORDS = ['live', 'livestream', 'live stream', 'viewer present', 'bemmo', 'youtube', 'watch'];
+
+    const listRes = await axios.get(listUrl, { headers: _toramHeaders });
+    const $ = cheerio.load(listRes.data);
+    const liveNews = [];
+
+    $('a[href*="/information/detail/"]').each((i, elem) => {
+      const title = $(elem).text().trim();
+      const url = $(elem).attr('href');
+      const isLive = LIVE_KEYWORDS.some(k => title.toLowerCase().includes(k.toLowerCase()));
+      if (isLive && title) {
+        const infoId = url.match(/information_id=(\d+)/)?.[1];
+        let dateText = $(elem).find('[class*="date"], time').first().text().trim();
+        if (!dateText) {
+          dateText = $(elem).closest('li').find('[class*="date"], time').first().text().trim();
+        }
+        liveNews.push({
+          title: title.replace(/\s+/g, ' ').trim(),
+          url: url.startsWith('http') ? url : base + url,
+          date: dateText,
+          infoId
+        });
+      }
+    });
+
+    if (!liveNews.length) return null;
+
+    const latest = liveNews[0];
+
+    const detailRes = await axios.get(latest.url, { headers: _toramHeaders });
+    const $detail = cheerio.load(detailRes.data);
+    const content = $detail.text();
+
+    const detail = {
+      title: latest.title,
+      date: latest.date,
+      time: '',
+      youtubeUrl: '',
+      thumbnailUrl: '',
+      programs: [],
+      presents: false,
+      url: latest.url
+    };
+
+    const timePatterns = [
+      /(\d{1,2}\/\d{1,2}\([A-Za-z]+\)\s+\d{1,2}:\d{2}\s+[AP]M\s+\(JST\/?\s*GMT\+9\))/i,
+      /(\d{4}-\d{2}-\d{2}\s+\d{1,2}:\d{2}\s+[AP]M)/i,
+      /Start:\s*(.+?(?:JST|GMT\+9))/i,
+      /Time:\s*(.+?(?:JST|GMT\+9))/i
+    ];
+    for (const pat of timePatterns) {
+      const m = content.match(pat);
+      if (m) { detail.time = m[1].trim(); break; }
+    }
+
+    const iframe = $detail('iframe[src*="youtube"]').first();
+    if (iframe.length) {
+      detail.youtubeUrl = iframe.attr('src');
+    }
+    if (!detail.youtubeUrl) {
+      $detail('a[href*="youtube.com"], a[href*="youtu.be"]').each((i, el) => {
+        const href = $detail(el).attr('href');
+        if (href && !detail.youtubeUrl) detail.youtubeUrl = href;
+      });
+    }
+    if (!detail.youtubeUrl) {
+      const urlMatch = content.match(/https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+      if (urlMatch) detail.youtubeUrl = urlMatch[0];
+    }
+
+    if (detail.youtubeUrl) {
+      const vidMatch = detail.youtubeUrl.match(/(?:embed\/|v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+      if (vidMatch) detail.thumbnailUrl = `https://img.youtube.com/vi/${vidMatch[1]}/maxresdefault.jpg`;
+    } else {
+      const bannerImg = $detail('img[src*="banner"], img[src*="live"], .live-banner img').first();
+      if (bannerImg.length) {
+        let src = bannerImg.attr('src');
+        detail.thumbnailUrl = src?.startsWith('http') ? src : base + src;
+      }
+    }
+
+    const progMatch = content.match(/★:Live Contents([\s\S]*?)(?:Live Viewer Present|BeMMO Show|\*Only the players)/i);
+    if (progMatch) {
+      detail.programs = progMatch[1]
+        .split('\n')
+        .filter(line => line.trim().startsWith('★:') || line.trim().startsWith('・'))
+        .map(line => line.replace(/^[★・]\s*:?\s*/, '').trim())
+        .filter(line => line.length > 0);
+    }
+
+    detail.presents = /viewer present|lucky draw|keyword/i.test(content);
+
+    return detail;
+  };
+
+  const _toramGetLiveList = async (lang, limit = 5) => {
+    const base = _toramBase(lang);
+    const listRes = await axios.get(`${base}/?type_code=event`, { headers: _toramHeaders });
+    const $ = cheerio.load(listRes.data);
+    const liveList = [];
+
+    $('a[href*="/information/detail/"]').each((i, elem) => {
+      const title = $(elem).text().trim();
+      const url = $(elem).attr('href');
+      const isLive = /live|livestream|viewer present|bemmo/i.test(title);
+      if (isLive && liveList.length < limit) {
+        const dateText = $(elem).closest('li').find('[class*="date"], time').first().text().trim();
+        liveList.push({
+          title: title.replace(/\s+/g, ' ').trim(),
+          url: url.startsWith('http') ? url : base + url,
+          date: dateText
+        });
+      }
+    });
+    return liveList;
+  };
+
+  const _toramGetShopList = async (lang, limit = 5) => {
+    const base = _toramBase(lang);
+    try {
+      // Ambil list berita shop
+      const { base: _, items } = await _toramGetList("shop", lang, limit);
+      if (!items.length) return [];
+
+      const results = [];
+
+      for (const item of items) {
+        try {
+          const detailUrl = base + item.href;
+          const detailRes = await axios.get(detailUrl, { headers: _toramHeaders });
+          const $d = cheerio.load(detailRes.data);
+          const rawText = $d("#news").text() || $d(".infoDetailBox").text() || $d("body").text();
+
+          // Cari tanggal mulai dan selesai (dwibahasa)
+          const startPattern = /(?:Mulai|Start)\s*:\s*([^\n]+)/i;
+          const endPattern = /(?:Selesai|Berakhir|End|Until)\s*:\s*([^\n]+)/i;
+
+          const startMatch = rawText.match(startPattern);
+          const endMatch = rawText.match(endPattern);
+
+          const title = item.title || $d("h1").first().text().trim();
+          const start = startMatch ? startMatch[1].trim() : "";
+          const end = endMatch ? endMatch[1].trim() : "";
+
+          results.push({ title, start, end });
+        } catch (err) {
+          // Lewati item yang gagal
+          results.push({ title: item.title, start: "", end: "" });
+        }
+      }
+
+      return results;
+    } catch (err) {
+      console.error("[_toramGetShopList Error]", err.message);
+      return [];
+    }
+  };
+
+  // =============================================
 
   //Command Handler
   if (isCmd) {
@@ -587,63 +1073,6 @@ Global Price:
         }
         break;
       }
-
-      // case "mob":
-      // case "mobs":
-      // case "monster":
-      // case "boss": {
-      //   if (!text) return m.reply(lang.format(prefix, command));
-      //   try {
-      //     progress("⏳");
-      //     if (language == "eng") {
-      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-      //     } else if (language == "ind") {
-      //       url = `http://indo.coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-      //     } else {
-      //       url = `https://coryn.club/monster.php?name=${encodeURIComponent(text)}`;
-      //     }
-      //     axios.get(url)
-      //       .then((response) => {
-      //         if (response.status === 200) {
-      //           const html = response.data;
-      //           const $ = cheerio.load(html);
-      //           const mobs = [];
-      //           $(".card-container > div").each(function () {
-      //             mobs.push({
-      //               name: $(this).find(".card-title-inverse").text().trim().replace("_id", ""),
-      //               level: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(1) > p:nth-child(2) ").text().trim(),
-      //               location: $(this).find(".item-prop > div:nth-child(2) > a").text().trim(),
-      //               difficulty: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(2) > p:nth-child(2)").text().trim(),
-      //               element: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(4) > p:nth-child(2)").text().trim(),
-      //               hp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(3) > p:nth-child(2)").text().trim(),
-      //               exp: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(5) > p:nth-child(2)").text().trim(),
-      //               tamable: $(this).find(".monster-no-pic > div > .item-prop > div:nth-child(6) > p:nth-child(2)").text().trim(),
-      //               drops: $(this).find(".monster-drop-list > .monster-drop").map(function () {
-      //                 return $(this).text().trim();
-      //               }).get()
-      //             })
-      //           });
-      //           if (mobs.length < 1) return m.reply("Monster not found!");
-      //           let displayText = `*List monster with name ${text}:*\n`;
-      //           for (let i = 0; i < mobs.length; i++) {
-      //             const mob = mobs[i];
-      //             let dropsText = mob.drops.length > 0 ? mob.drops.join("\n- ") : "No drops";
-      //             displayText += `\n*Name:* ${mob.name}\n*Level:* ${mob.level}\n*Location:* ${mob.location}\n*Difficulty:* ${mob.difficulty}\n*Element:* ${mob.element}\n*HP:* ${mob.hp}\n*EXP:* ${mob.exp}\n*Tameable:* ${mob.tamable}\n*Drops:*\n- ${dropsText}\n`;
-      //           }
-      //           m.reply(displayText);
-      //           progress("✔");
-      //         } else {
-      //           m.reply("Monster not found!");
-      //         }
-      //       })
-      //       .catch(() => m.reply("Official Website can't be accessed!"));
-      //   } catch (err) {
-      //     progress("❌");
-      //     m.reply(lang.error(err));
-      //     console.log(err);
-      //   }
-      // }
-      //   break;
 
       case "item":
       case "items": {
@@ -895,31 +1324,305 @@ Global Price:
         return m.reply(msg);
       }
       case "mt":
-        url = `https://${language == "eng" ? "en" : "id"}.toram.jp/?type_code=update#contentAre`
-        axios.get(url)
-          .then((response) => {
-            if (response.status === 200) {
-              const html = response.data;
-              const $ = cheerio.load(html);
-              mtNow = $(".news_border > a").attr("href");
-              axios.get(`https://${language == "eng" ? "en" : "id"}.toram.jp/` + mtNow)
-                .then((response) => {
-                  if (response.status === 200) {
-                    const html = response.data;
-                    const $ = cheerio.load(html);
-                    container = $("#news > div").text().trim();
-                    textSample = container.split("Kembali ke atas")[0]
-                    textTemplate = textSample.split("Tweet")[1].trim();
-                    reply(textTemplate)
-                  } else {
-                    m.reply("Official Website can't be accessed!");
-                  }
-                })
-            }
-          })
-          .catch(() => m.reply("Official Website can't be accessed!"));
-        break
+      case "torammt":
+      case "maintenance": {
+        try {
+          progress("⏳");
+          const data = await _toramGetLatest("update", language);
+          if (!data) { progress("❌"); return m.reply("Tidak ada data maintenance!"); }
+          let msg = `🔧 *TORAM MAINTENANCE*\n━━━━━━━━━━━━━━━\n`;
+          if (data.title) msg += `*📌 ${data.title}*\n`;
+          if (data.date) msg += `*📅 ${data.date}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n${data.content}\n━━━━━━━━━━━━━━━\n🔗 ${data.url}`;
+          reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[MT ERROR]", err.message);
+          m.reply("Gagal mengakses website Toram!\nError: " + err.message);
+        }
+        break;
+      }
 
+      case "toramupdate": {
+        try {
+          progress("⏳");
+          const { base, items } = await _toramGetList("update", language, 5);
+          if (!items.length) { progress("❌"); return m.reply("Tidak ada data update!"); }
+          let msg = `📢 *TORAM UPDATE - 5 Terbaru*\n━━━━━━━━━━━━━━━\n`;
+          for (let i = 0; i < items.length; i++) {
+            msg += `\n*${i + 1}.* ${items[i].title || "(no title)"}\n`;
+            if (items[i].date) msg += `    📅 ${items[i].date}\n`;
+            msg += `    🔗 ${base}${items[i].href}\n`;
+          }
+          reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[TORAMUPDATE ERROR]", err.message);
+          m.reply("Gagal mengakses website Toram!\nError: " + err.message);
+        }
+        break;
+      }
+
+      case "banner":
+      case "toramava":
+      case "ava": {
+        try {
+          progress("⏳");
+          const banners = await _toramGetAvatarBanner(language);
+          if (banners.length === 0) {
+            progress("❌");
+            return m.reply("Tidak ditemukan banner avatar saat ini.");
+          }
+          progress("✔");
+          for (const banner of banners) {
+            await client.sendMessage(from, {
+              image: { url: banner.image },
+              caption: `👗 *${banner.title}*\n📅 ${banner.dateStr}`
+            }, { quoted: mek });
+            await new Promise(r => setTimeout(r, 700));
+          }
+        } catch (err) {
+          progress("❌");
+          console.log("[BANNERAVA ERROR]", err.message);
+          m.reply(`Gagal: ${err.message}`);
+        }
+        break;
+      }
+
+      case "toramboost":
+      case "boost":
+      case "dropboost": {
+        try {
+          progress("⏳");
+          const data = await _toramGetLatest("event", language);
+          if (!data) { progress("❌"); return m.reply("Tidak ada data boost/event!"); }
+          let msg = `🚀 *TORAM BOOST / EVENT*\n━━━━━━━━━━━━━━━\n`;
+          if (data.title) msg += `*📌 ${data.title}*\n`;
+          if (data.date) msg += `*📅 ${data.date}*\n`;
+          msg += `━━━━━━━━━━━━━━━\n${data.content}\n━━━━━━━━━━━━━━━\n🔗 ${data.url}`;
+          reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[BOOST ERROR]", err.message);
+          m.reply("Gagal mengakses website Toram!\nError: " + err.message);
+        }
+        break;
+      }
+
+      // ============ TORAM NEWS BY ID ============
+      case "toramnews":
+      case "tnews": {
+        if (!text) return reply(`Gunakan: ${prefix}toramnews <id>\nContoh: ${prefix}toramnews 10194`);
+        try {
+          progress("⏳");
+          const result = await _toramGetNewsById(text.trim(), language);
+          if (!result.success) {
+            progress("❌");
+            return reply(`Gagal mengambil berita ID ${text}\nError: ${result.error}`);
+          }
+          const caption = `📰 *${result.title}*\n━━━━━━━━━━━━━━━\n${result.content}\n━━━━━━━━━━━━━━━\n🔗 ${result.url}`;
+          reply(caption);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[TORAMNEWS ERROR]", err.message);
+          m.reply(`Error: ${err.message}`);
+        }
+        break;
+      }
+
+      // ============ TORAM SITE STATUS ============
+      case "toramstatus":
+      case "tstatus": {
+        try {
+          progress("⏳");
+          const status = await _toramCheckStatus(language);
+          if (status.status) {
+            reply(`✅ Website Toram Online *UP*\nStatus code: ${status.code}`);
+          } else {
+            reply(`❌ Website Toram Online *DOWN*\nKode error: ${status.code || status.error}`);
+          }
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          m.reply(`Error: ${err.message}`);
+        }
+        break;
+      }
+
+      // ============ LIST AVAILABLE NEWS ============
+      case "toramlist":
+      case "tlist": {
+        try {
+          progress("⏳");
+          const newsList = await _toramGetAvailableNewsIds(language, 10);
+          if (newsList.length === 0) {
+            progress("❌");
+            return reply("Tidak dapat mengambil daftar berita.");
+          }
+          let msg = `📋 *10 Berita Terbaru (ID)*\n━━━━━━━━━━━━━━━\n`;
+          for (const n of newsList) {
+            msg += `• *${n.title}*\n  ID: ${n.id} | ${n.url}\n`;
+          }
+          msg += `\nGunakan *${prefix}toramnews <id>* untuk baca lengkap.`;
+          reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          m.reply(`Error: ${err.message}`);
+        }
+        break;
+      }
+
+      // ============ BOSS BOOST EVENT ============
+      case "bosboost":
+      case "boostboss":
+      case "bb": {
+        try {
+          progress("⏳");
+          const data = await _toramGetBoostBoss(language);
+
+          if (!data.active) {
+            progress("❌");
+            if (data.reason === 'expired')
+              return reply(`❌ Event Boost Boss sudah berakhir.\n📅 Berakhir pada: ${data.endStr}`);
+            else
+              return reply(`Tidak ada event Boost Boss yang sedang aktif.`);
+          }
+
+          if (!data.bosses || data.bosses.length === 0) {
+            progress("❌");
+            return reply(`Event: ${data.eventTitle}\n\nGagal mengambil daftar boss. Cek manual:\n${_toramBase(language)}/top/?type_code=event`);
+          }
+
+          progress("✔");
+          for (const boss of data.bosses) {
+            await client.sendMessage(from, {
+              image: { url: boss.image },
+              caption: boss.fullName
+            }, { quoted: mek });
+            await new Promise(r => setTimeout(r, 700));
+          }
+
+          if (data.endStr) {
+            client.sendText(from, `📢 *${data.eventTitle}*\n⏰ Berakhir: ${data.endStr}`, mek);
+          }
+
+        } catch (err) {
+          progress("❌");
+          console.log("[BOSBOOST ERROR]", err.message);
+          m.reply(`Gagal mengambil data Boost Boss: ${err.message}`);
+        }
+        break;
+      }
+
+      // ============ LIVE STREAM DETAIL ============
+      case "toramlive":
+      case "live": {
+        try {
+          progress("⏳");
+          const detail = await _toramGetLiveDetail(language);
+
+          if (!detail) {
+            progress("❌");
+            return m.reply("Tidak ada info live streaming saat ini.");
+          }
+
+          const now = moment().tz("Asia/Jakarta");
+          let msgText = `📡 *${detail.title}*\n━━━━━━━━━━━━━━━\n`;
+          if (detail.time) msgText += `⏰ Waktu: ${detail.time}\n`;
+          if (detail.youtubeUrl) msgText += `▶️ YouTube: ${detail.youtubeUrl}\n`;
+          if (detail.programs.length) {
+            msgText += `\n📋 Program:\n`;
+            detail.programs.forEach((p, i) => msgText += `${i + 1}. ${p}\n`);
+          }
+          if (detail.presents) msgText += `\n🎁 Viewer Present: Ada!\n`;
+          msgText += `\n_${now.format('DD/MM/YYYY HH:mm')} WIB_\n🔗 ${detail.url}`;
+
+          if (detail.thumbnailUrl) {
+            await client.sendMessage(from, {
+              image: { url: detail.thumbnailUrl },
+              caption: msgText
+            }, { quoted: mek });
+          } else {
+            reply(msgText);
+          }
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[LIVE ERROR]", err.message);
+          m.reply(`Gagal mengambil live stream: ${err.message}`);
+        }
+        break;
+      }
+
+      // ============ LIVE STREAM LIST ============
+      case "livelist":
+      case "toramlivelist": {
+        try {
+          progress("⏳");
+          const list = await _toramGetLiveList(language, 5);
+          if (!list.length) {
+            progress("❌");
+            return m.reply("Tidak ada live streaming ditemukan.");
+          }
+          let msg = `📋 *Daftar Live Stream Terbaru*\n━━━━━━━━━━━━━━━\n`;
+          list.forEach((l, i) => {
+            msg += `\n${i + 1}. ${l.title}\n   📅 ${l.date || '-'}\n   🔗 ${l.url}\n`;
+          });
+          msg += `\nGunakan *${prefix}live* untuk detail terbaru.`;
+          reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          m.reply(`Error: ${err.message}`);
+        }
+        break;
+      }
+
+      // ============ TORAM SHOP ============
+      case "toramshop":
+      case "shop": {
+        try {
+          progress("⏳");
+          const shopItems = await _toramGetShopList(language, 5);
+
+          if (!shopItems.length) {
+            progress("❌");
+            return m.reply("Tidak ada data shop terbaru.");
+          }
+
+          let msg = `🛒 *TORAM SHOP TERBARU*\n━━━━━━━━━━━━━━━\n`;
+          for (const item of shopItems) {
+            msg += `\n📌 *${item.title}*\n`;
+            if (item.start) msg += `Mulai: ${item.start}\n`;
+            if (item.end) msg += `Selesai: ${item.end}\n`;
+          }
+          reply(msg);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[SHOP ERROR]", err.message);
+          m.reply("Gagal mengakses website Toram!\nError: " + err.message);
+        }
+        break;
+      }
+
+      // ... (kode food buff, sticker, group menu, dll tetap di bawah sini)
+      // Karena file lengkap sangat panjang, saya hanya tampilkan bagian Toram yang baru.
+      // Semua perintah lain seperti "sticker", "play", "group", dll tetap sama.
+
+      /* ================ Food Buff Commands ================ */
+      // (tetap sama seperti file asli, tidak diubah)
+
+      /* ================ Converter Menu ================ */
+      // ...
+
+      /* ================ Group Menu ================ */
+      // ...
       case "food":
         client.sendText(
           from,

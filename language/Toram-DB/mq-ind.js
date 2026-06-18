@@ -93,6 +93,8 @@ _Item :_ Kayu Menabra (10pcs)
 _Mobs :_ Delphi
 _Map :_ Dataran Menabra
 
+*Chapter 15*
+*eps 124: Seorang Pemuda dan Pohon Tua*
 _Item :_ Pupuk Keruh (10pcs)
 _Mobs :_ Solvay
 _Map :_ Pegunungan Rod Zaag

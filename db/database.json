@@ -1,6 +1,6 @@
 {
-  "private_usage": 47,
-  "group_usage": 364,
+  "private_usage": 71,
+  "group_usage": 437,
   "store": {},
   "groups": {
     "120363406658263857@g.us": {
@@ -48,6 +48,12 @@
       "language": "ind",
       "latest": true,
       "date": "2026-06-12T12:04:05.685Z"
+    },
+    {
+      "id": "68496289484834@lid",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-15T10:27:17.038Z"
     }
   ]
 }

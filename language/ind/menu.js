@@ -14,7 +14,15 @@ exports.menu = (prefix) => {
  │•${prefix}monster
  │•${prefix}item
  │•${prefix}piercer
+ │•${prefix}ability
  ╰•${prefix}mqmats
+
+ ❏ *Toram News*
+ │•${prefix}torammt
+ │•${prefix}toramava
+ │•${prefix}toramboost
+ │•${prefix}toramlive
+ ╰•${prefix}toramshop
  
 
  ❏ *Toram Buff Menu*
