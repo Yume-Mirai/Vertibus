@@ -14,6 +14,7 @@ const ind = require("./language/ind");
 const eng = require("./language/eng");
 const piercerData = require("./piercer");
 const abilityDB = require("./ability");
+const { searchRegislet, searchByLocation, formatRegislet } = require("./registlet");
 const calculateMQ = require("./lib/MQcalculator");
 const {
   getBuffer,
@@ -1323,6 +1324,38 @@ Global Price:
         msg += `\n_Perjelas pencarian untuk melihat detail_`;
         return m.reply(msg);
       }
+      case "regis":
+      case "registlet": {
+        if (!text) return m.reply(`Format: ${prefix}regis <nama/lokasi>\nContoh: ${prefix}regis accuracy\n${prefix}regis dark dragon`);
+
+        // Cari berdasarkan nama dulu
+        let results = searchRegislet(text);
+
+        // Jika tidak ketemu, coba cari berdasarkan lokasi
+        if (results.length === 0) {
+          results = searchByLocation(text);
+        }
+
+        if (results.length === 0) {
+          return m.reply(`❌ Registlet *${text}* tidak ditemukan!\n\nCoba cek nama atau lokasi Stoodie.`);
+        }
+
+        // Jika hasil > 5, tampilkan list
+        if (results.length > 5) {
+          let list = `🔍 *Pencarian: "${text}"*\n━━━━━━━━━━━━━━━\n_Ditemukan ${results.length} registlet_\n\n`;
+          for (const r of results) {
+            list += `• *${r.name}* (Max Lv ${r.maxLv})\n`;
+          }
+          list += `\n_Ketik *${prefix}regis <nama spesifik>* untuk detail._`;
+          return m.reply(list);
+        }
+
+        // Tampilkan detail setiap hasil
+        for (const r of results) {
+          m.reply(formatRegislet(r));
+        }
+        break;
+      }
       case "mt":
       case "torammt":
       case "maintenance": {
@@ -1922,15 +1955,47 @@ Global Price:
 
       /* ================ Media Menu ================ */
 
+      // case "pixiv":
+      //   if (!text) return reply(lang.format(prefix, command));
+      //   try {
+      //     progress("⏳");
+      //     res = await axios({
+      //       method: "get",
+      //       url: `https://api.lolicon.app/setu/v2?keyword=${encodeURIComponent(
+      //         text
+      //       )}`,
+      //       headers: {
+      //         DNT: 1,
+      //         "Upgrade-Insecure-Request": 1,
+      //       },
+      //       responseType: "json",
+      //     });
+      //     if (res.data.error) return progress("❌");
+      //     if (res.data.data.length === 0) return reply("Not Found!");
+      //     textTemplate = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
+      //     for (let i = 0; i < res.data.data[0].tags.length; i++) {
+      //       textTemplate += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
+      //     }
+      //     client.sendImage(
+      //       from,
+      //       res.data.data[0].urls.original,
+      //       textTemplate,
+      //       mek
+      //     );
+      //     progress("✔");
+      //   } catch (err) {
+      //     progress("❌");
+      //     console.log(err);
+      //   }
+      //   break;
+
       case "pixiv":
         if (!text) return reply(lang.format(prefix, command));
         try {
           progress("⏳");
           res = await axios({
             method: "get",
-            url: `https://api.lolicon.app/setu/v2?keyword=${encodeURIComponent(
-              text
-            )}`,
+            url: `https://api.lolicon.app/setu/v2?keyword=${encodeURIComponent(text)}&r18=0`, // ← hanya non‑R18
             headers: {
               DNT: 1,
               "Upgrade-Insecure-Request": 1,
@@ -1939,16 +2004,12 @@ Global Price:
           });
           if (res.data.error) return progress("❌");
           if (res.data.data.length === 0) return reply("Not Found!");
-          textTemplate = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
-          for (let i = 0; i < res.data.data[0].tags.length; i++) {
-            textTemplate += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
+          const d = res.data.data[0];
+          textTemplate = `*Detail:*\n- Title: ${d.title}\n- Author: ${d.author}\nTags:`;
+          for (let i = 0; i < d.tags.length; i++) {
+            textTemplate += `\n- ${i + 1}. ${d.tags[i]}`;
           }
-          client.sendImage(
-            from,
-            res.data.data[0].urls.original,
-            textTemplate,
-            mek
-          );
+          client.sendImage(from, d.urls.original, textTemplate, mek);
           progress("✔");
         } catch (err) {
           progress("❌");
@@ -1985,24 +2046,53 @@ Global Price:
         }
         break;
 
+      // case "loli":
+      //   try {
+      //     progress("⏳");
+      //     res = await axios({
+      //       method: "get",
+      //       url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=${text == "nsfw" ? "1" : "0"
+      //         }`,
+      //       headers: {
+      //         DNT: 1,
+      //         "Upgrade-Insecure-Request": 1,
+      //       },
+      //       responseType: "json",
+      //     });
+      //     teks = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
+      //     for (let i = 0; i < res.data.data[0].tags.length; i++) {
+      //       teks += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
+      //     }
+      //     client.sendImage(from, res.data.data[0].urls.original, teks, mek);
+      //     progress("✔");
+      //   } catch (err) {
+      //     progress("❌");
+      //     console.log(err);
+      //   }
+      //   break;
+
       case "loli":
         try {
           progress("⏳");
           res = await axios({
             method: "get",
-            url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=${text == "nsfw" ? "1" : "0"
-              }`,
+            url: `https://api.lolicon.app/setu/v2?tag=萝莉&r18=0`, // ← selalu non‑R18
             headers: {
               DNT: 1,
               "Upgrade-Insecure-Request": 1,
             },
             responseType: "json",
           });
-          teks = `*Detail:*\n- Title: ${res.data.data[0].title}\n- Author: ${res.data.data[0].author}\nTags:`;
-          for (let i = 0; i < res.data.data[0].tags.length; i++) {
-            teks += `\n- ${i + 1}. ${res.data.data[0].tags[i]}`;
+          if (res.data.error || res.data.data.length === 0) {
+            progress("❌");
+            return reply("Gambar tidak ditemukan.");
           }
-          client.sendImage(from, res.data.data[0].urls.original, teks, mek);
+          const d = res.data.data[0];
+          teks = `*Detail:*\n- Title: ${d.title}\n- Author: ${d.author}\nTags:`;
+          for (let i = 0; i < d.tags.length; i++) {
+            teks += `\n- ${i + 1}. ${d.tags[i]}`;
+          }
+          client.sendImage(from, d.urls.original, teks, mek);
           progress("✔");
         } catch (err) {
           progress("❌");
@@ -2012,21 +2102,94 @@ Global Price:
 
       case "milf":
         try {
-          progress("⌛");
-          let milfs = (
-            await axios.get(
-              `https://raw.githubusercontent.com/Arya-was/endak-tau/main/milf.json`
-            )
-          ).data;
-          let milf = milfs[Math.floor(Math.random() * milfs.length)];
-          let res = await getBuffer(milf);
-          client.sendImage(from, res, "", mek);
+          progress("⏳");
+          res = await axios({
+            method: "get",
+            url: `https://api.lolicon.app/setu/v2?tag=熟女&r18=0`, // ← selalu non‑R18
+            headers: {
+              DNT: 1,
+              "Upgrade-Insecure-Request": 1,
+            },
+            responseType: "json",
+          });
+          if (res.data.error || res.data.data.length === 0) {
+            progress("❌");
+            return reply("Gambar tidak ditemukan.");
+          }
+          const d = res.data.data[0];
+          teks = `*Detail:*\n- Title: ${d.title}\n- Author: ${d.author}\nTags:`;
+          for (let i = 0; i < d.tags.length; i++) {
+            teks += `\n- ${i + 1}. ${d.tags[i]}`;
+          }
+          client.sendImage(from, d.urls.original, teks, mek);
           progress("✔");
         } catch (err) {
           progress("❌");
           console.log(err);
         }
         break;
+
+      // case "milf":
+      //   try {
+      //     progress("⌛");
+      //     let milfs = (
+      //       await axios.get(
+      //         `https://raw.githubusercontent.com/Arya-was/endak-tau/main/milf.json`
+      //       )
+      //     ).data;
+      //     let milf = milfs[Math.floor(Math.random() * milfs.length)];
+      //     let res = await getBuffer(milf);
+      //     client.sendImage(from, res, "", mek);
+      //     progress("✔");
+      //   } catch (err) {
+      //     progress("❌");
+      //     console.log(err);
+      //   }
+      //   break;
+
+      case "waifu":
+      case "animepic": {
+        try {
+          progress("⏳");
+          const { data } = await axios.get("https://nekos.best/api/v2/waifu");
+          if (!data.results?.length) {
+            progress("❌");
+            return reply("Gagal mengambil gambar waifu.");
+          }
+          const img = data.results[0];
+          const caption = `✨ *Waifu*\n` +
+            (img.artist_name ? `🎨 Artist: ${img.artist_name}\n` : "") +
+            (img.source_url ? `🔗 ${img.source_url}` : "");
+          client.sendImage(from, img.url, caption, mek);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+      }
+
+      case "husbu":
+      case "husbando": {
+        try {
+          progress("⏳");
+          const { data } = await axios.get("https://nekos.best/api/v2/husbando");
+          if (!data.results?.length) {
+            progress("❌");
+            return reply("Gagal mengambil gambar husbando.");
+          }
+          const img = data.results[0];
+          const caption = `✨ *Husbando*\n` +
+            (img.artist_name ? `🎨 Artist: ${img.artist_name}\n` : "") +
+            (img.source_url ? `🔗 ${img.source_url}` : "");
+          client.sendImage(from, img.url, caption, mek);
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log(err);
+        }
+        break;
+      }
 
       case "brat":
         if (!text) return reply(lang.format(prefix, command));
@@ -2826,6 +2989,17 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
                 }
               ],
             },
+            {
+              title: "Chapter 16: The Royal Dragon Bloodline",
+              highlight_label: "Chapter 16",
+              rows: [
+                {
+                  title: "EPS128: Freedos's Thoughts",
+                  description: "Boss: Kipina",
+                  id: `${prefix}${MQcmd} ${lvl}|${exp} eps128`,
+                }
+              ],
+            },
           ];
 
           const listMessage = {
@@ -3200,35 +3374,48 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         }
         break;
 
-      case "bot":
-        if (!text)
-          return reply(
-            `bot active!\nsince ${runtime(
-              process.uptime()
-            )} ago\n\n${prefix}bot open - bot can used for all member\n${prefix}bot close - bot can used for admin only`
-          );
-        if (!m.isGroup) return reply(lang.onGroup());
-        if (!isGroupAdmins) return reply(lang.onAdmin());
-        if (global.db.groups[groupMetadata.id]?.open) return reply("Bot already open!");
-        if (text.toLowerCase() === "open") {
-          if (!global.db.groups[groupMetadata.id]) {
-            global.db.groups[groupMetadata.id] = { open: true };
-          } else {
-            global.db.groups[groupMetadata.id].open = true;
-          }
-          reply("Bot is now OPEN!");
-        }
-        if (text.toLowerCase() === "close") {
-          if (!global.db.groups[groupMetadata.id]?.open) return reply("Bot already close!");
-          if (!global.db.groups[groupMetadata.id]) {
-            global.db.groups[groupMetadata.id] = { open: false };
-          } else {
-            global.db.groups[groupMetadata.id].open = false;
-          }
-          reply("Bot is now CLOSED!");
-        }
-        break;
+      case "bot": {
+  if (!m.isGroup) return reply("Perintah ini hanya untuk grup.");
+  if (!isGroupAdmins) return reply("Hanya admin grup yang bisa mengubah pengaturan bot.");
 
+  const groupId = groupMetadata.id;
+  if (!text) {
+    const status = global.db.groups[groupId].active ? "✅ ON" : "❌ OFF";
+    const mode = global.db.groups[groupId].open ? "Public" : "Admin Only";
+    return reply(
+      `⚙️ *Status Bot*\n━━━━━━━━━━━━━━━\n` +
+      `🟢 Aktif: ${status}\n🌐 Mode: ${mode}\n\n` +
+      `Perintah:\n` +
+      `${prefix}bot on - Aktifkan bot\n` +
+      `${prefix}bot off - Nonaktifkan bot\n` +
+      `${prefix}bot open - Semua member\n` +
+      `${prefix}bot close - Admin saja`
+    );
+  }
+
+  const sub = text.toLowerCase().trim();
+  switch (sub) {
+    case "on":
+      global.db.groups[groupId].active = true;
+      reply("✅ Bot diaktifkan kembali.");
+      break;
+    case "off":
+      global.db.groups[groupId].active = false;
+      reply("❌ Bot dinonaktifkan. Hanya admin yang bisa mengaktifkan dengan .bot on");
+      break;
+    case "open":
+      global.db.groups[groupId].open = true;
+      reply("🌐 Bot sekarang bisa digunakan semua member.");
+      break;
+    case "close":
+      global.db.groups[groupId].open = false;
+      reply("🔒 Bot sekarang hanya bisa digunakan admin grup.");
+      break;
+    default:
+      reply("Subcommand tidak dikenal. Gunakan: on, off, open, close");
+  }
+  break;
+}
       /* ================ Group Menu ================ */
 
       /* ================ Other Menu ================ */

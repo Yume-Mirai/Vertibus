@@ -67,6 +67,8 @@ exports.menu = (prefix) => {
  │•${prefix}loli
  │•${prefix}milf
  │•${prefix}anime
+ │•${prefix}waifu
+ │•${prefix}husbu
  │•${prefix}pinterest
  ╰•${prefix}brat
 

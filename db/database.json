@@ -1,6 +1,6 @@
 {
-  "private_usage": 71,
-  "group_usage": 437,
+  "private_usage": 118,
+  "group_usage": 693,
   "store": {},
   "groups": {
     "120363406658263857@g.us": {
@@ -8,6 +8,19 @@
       "welcome": true
     },
     "120363240189688813@g.us": {
+      "open": true
+    },
+    "120363418724671829@g.us": {
+      "open": true
+    },
+    "120363284904551089@g.us": {
+      "open": true
+    },
+    "120363158090872124@g.us": {
+      "open": false,
+      "active": false
+    },
+    "120363341893301805@g.us": {
       "open": true
     }
   },
@@ -54,6 +67,42 @@
       "language": "ind",
       "latest": true,
       "date": "2026-06-15T10:27:17.038Z"
+    },
+    {
+      "id": "120363418724671829@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-23T10:52:06.201Z"
+    },
+    {
+      "id": "120363284904551089@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-25T08:54:06.819Z"
+    },
+    {
+      "id": "120363158090872124@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-26T10:35:33.127Z"
+    },
+    {
+      "id": "120363179652063324@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-26T11:17:21.722Z"
+    },
+    {
+      "id": "120363331560215173@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-28T06:46:43.343Z"
+    },
+    {
+      "id": "120363341893301805@g.us",
+      "language": "ind",
+      "latest": true,
+      "date": "2026-06-28T08:23:24.389Z"
     }
   ]
 }

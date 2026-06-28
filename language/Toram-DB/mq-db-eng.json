@@ -887,5 +887,12 @@
         "chapter": 15,
         "episode": 127,
         "exp": 252100000
+    },
+    {
+        "title": "Freedos's Thoughts",
+        "boss": "Kipina",
+        "chapter": 16,
+        "episode": 128,
+        "exp": 293700000
     }
 ]
