@@ -16,6 +16,39 @@ const piercerData = require("./piercer");
 const abilityDB = require("./ability");
 const { searchRegislet, searchByLocation, formatRegislet } = require("./registlet");
 const calculateMQ = require("./lib/MQcalculator");
+// Fungsi ambil cookie Pinterest secara otomatis
+async function getPinterestCookie() {
+  try {
+    const res = await axios.get('https://www.pinterest.com/', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
+    const setCookie = res.headers['set-cookie'];
+    if (!setCookie) return null;
+    let csrf = '', sess = '';
+    for (const c of setCookie) {
+      const part = c.split(';')[0];
+      if (part.startsWith('csrftoken=')) csrf = part.split('=')[1];
+      if (part.startsWith('_pinterest_sess=')) sess = part.split('=')[1];
+    }
+    if (!csrf || !sess) return null;
+    return `csrftoken=${csrf}; _pinterest_sess=${sess}`;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Cache cookie di memori
+let pinterestCookie = null;
+let cookieExpire = 0;
+
+async function getValidCookie() {
+  if (pinterestCookie && Date.now() < cookieExpire) return pinterestCookie;
+  pinterestCookie = await getPinterestCookie();
+  cookieExpire = Date.now() + 30 * 60 * 1000; // 30 menit
+  return pinterestCookie;
+}
 const {
   getBuffer,
   getRandom,
@@ -301,9 +334,23 @@ module.exports = core = async (client, m, chatUpdate) => {
     }
     global.db.groups[groupMetadata.id].open ??= true;
     opened = global.db.groups[groupMetadata.id].open;
+    const isActive = global.db.groups[groupMetadata.id]?.active !== false;
+
+    // .bot off → semua diblokir kecuali owner bot
+    if (!isActive && !isOwner && !itsMe) return;
+
+    // .bot close → hanya member biasa diblokir, admin masih bisa
     if (!opened && !isGroupAdmins && !itsMe) return;
   }
-
+  // BLOKIR PESAN PRIVATE — hanya izinkan dari grup
+  if (isCmd && !m.isGroup) {
+    // Izinkan owner akses via private
+    if (!isOwner) {
+      return client.sendMessage(from, {
+        text: `⚠️ *${global.botName}*\n\nBot ini hanya bisa digunakan di *grup*!\nSilakan gunakan bot di grup yang sudah ditambahkan.`
+      });
+    }
+  }
   // Push Message To Console
   let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
@@ -2017,34 +2064,105 @@ Global Price:
         }
         break;
 
-      case "pin":
-      case "pinterest":
-        if (!text) return reply(lang.format(prefix, command));
+      case "pokemon": {
         try {
           progress("⏳");
-          fetcher = await pinterest(encodeURIComponent(text));
-          res = fetcher[Math.round(Math.random() * fetcher.length)];
-          client.sendImage(from, res, text, mek);
+          const pkmn = require("./lib/pokemon-card");
+          const card = await pkmn();
+          const caption = `${card.name} adalah kartu yang berhasil anda dapat hari ini\n\n🃏 *${card.name}*\n📌 Sumber: ${card.source}\n\n🔗 https://asia.pokemon-card.com/id/deck-build/`;
+          await client.sendImage(from, card.imageUrl, caption, mek);
           progress("✔");
         } catch (err) {
           progress("❌");
-          console.log(err);
+          console.error(err);
+          m.reply("❌ Gagal mengambil kartu Pokemon");
         }
         break;
+      }
 
-      case "anime":
+      case "yugioh": {
         try {
           progress("⏳");
-          response = await axios.get(
-            "https://loli-api.glitch.me/api/v1/twintails"
-          );
-          client.sendImage(from, response.data.url, " ", mek);
+          const ygo = require("./lib/yugioh-card");
+          const card = await ygo();
+          const desc = card.desc?.length > 200 ? card.desc.substring(0, 200) + "..." : card.desc;
+          const caption = `${card.name} adalah kartu yang berhasil anda dapat hari ini\n\n🎴 *${card.name}*\n▸ Tipe: ${card.type}\n▸ Ras: ${card.race}\n▸ Deskripsi: ${desc}\n\n🔗 https://ygoprodeck.com/card-database/?num=100&offset=0`;
+          await client.sendImage(from, card.imageUrl, caption, mek);
           progress("✔");
         } catch (err) {
           progress("❌");
-          console.log(err);
+          console.error(err);
+          m.reply("❌ Gagal mengambil kartu Yugioh");
         }
         break;
+      }
+
+      case "pin": {
+        if (!text) return reply(`Format: ${prefix}pin <keyword>\nContoh: ${prefix}pin hinata`);
+        try {
+          progress("⏳");
+
+          let images = [];
+
+          // Coba scraping Pinterest dulu
+          try {
+            const pinterest = require("./lib/pinterest");
+            images = await pinterest(text);
+          } catch (e) {
+            console.log("[PIN] Pinterest scrape gagal:", e.message);
+          }
+
+          // Fallback ke Google Images jika Pinterest gagal
+          if (!images || images.length === 0) {
+            try {
+              const googleImages = require("./lib/google-image");
+              images = await googleImages(text);
+            } catch (e) {
+              console.log("[PIN] Google fallback gagal:", e.message);
+            }
+          }
+
+          // Fallback ke Unsplash jika masih gagal
+          if (!images || images.length === 0) {
+            try {
+              const unsplash = require("./lib/unsplash");
+              images = await unsplash(text);
+            } catch (e) {
+              console.log("[PIN] Unsplash fallback gagal:", e.message);
+            }
+          }
+
+          if (!images || images.length === 0) {
+            progress("❌");
+            return reply("❌ Tidak dapat menemukan gambar untuk kata kunci tersebut.");
+          }
+
+          // Pilih gambar random
+          const randomImg = images[Math.floor(Math.random() * images.length)];
+          await client.sendImage(from, randomImg, `🔍 Pinterest: ${text}`, mek);
+          progress("✔");
+
+        } catch (err) {
+          progress("❌");
+          console.log("[PIN ERROR]", err);
+          m.reply("❌ Gagal mengambil gambar, coba lagi nanti.");
+        }
+        break;
+      }
+
+      // case "anime":
+      //   try {
+      //     progress("⏳");
+      //     response = await axios.get(
+      //       "https://loli-api.glitch.me/api/v1/twintails"
+      //     );
+      //     client.sendImage(from, response.data.url, " ", mek);
+      //     progress("✔");
+      //   } catch (err) {
+      //     progress("❌");
+      //     console.log(err);
+      //   }
+      //   break;
 
       // case "loli":
       //   try {
@@ -2105,7 +2223,7 @@ Global Price:
           progress("⏳");
           res = await axios({
             method: "get",
-            url: `https://api.lolicon.app/setu/v2?tag=熟女&r18=0`, // ← selalu non‑R18
+            url: `https://api.lolicon.app/setu/v2?tag=milf&r18=0`, // ← selalu non‑R18
             headers: {
               DNT: 1,
               "Upgrade-Insecure-Request": 1,
@@ -2151,20 +2269,37 @@ Global Price:
       case "animepic": {
         try {
           progress("⏳");
-          const { data } = await axios.get("https://nekos.best/api/v2/waifu");
-          if (!data.results?.length) {
+          let imageUrl = null;
+
+          // 1. Coba waifu.pics (stabil, SFW, tanpa key)
+          try {
+            const { data } = await axios.get("https://api.waifu.pics/sfw/waifu", { timeout: 15000 });
+            if (data?.url) imageUrl = data.url;
+          } catch (e) {
+            console.log("[WAIFU] waifu.pics gagal:", e.message);
+          }
+
+          // 2. Fallback ke nekos.life
+          if (!imageUrl) {
+            try {
+              const { data } = await axios.get("https://nekos.life/api/v2/img/waifu", { timeout: 15000 });
+              if (data?.url) imageUrl = data.url;
+            } catch (e) {
+              console.log("[WAIFU] nekos.life gagal:", e.message);
+            }
+          }
+
+          if (!imageUrl) {
             progress("❌");
             return reply("Gagal mengambil gambar waifu.");
           }
-          const img = data.results[0];
-          const caption = `✨ *Waifu*\n` +
-            (img.artist_name ? `🎨 Artist: ${img.artist_name}\n` : "") +
-            (img.source_url ? `🔗 ${img.source_url}` : "");
-          client.sendImage(from, img.url, caption, mek);
+
+          await client.sendImage(from, imageUrl, "✨ *Waifu*", mek);
           progress("✔");
         } catch (err) {
           progress("❌");
           console.log(err);
+          m.reply("❌ Gagal mengambil gambar waifu.");
         }
         break;
       }
@@ -2173,20 +2308,37 @@ Global Price:
       case "husbando": {
         try {
           progress("⏳");
-          const { data } = await axios.get("https://nekos.best/api/v2/husbando");
-          if (!data.results?.length) {
-            progress("❌");
-            return reply("Gagal mengambil gambar husbando.");
+          let imageUrl = null;
+
+          // 1. Coba waifu.pics (kategori husbando)
+          try {
+            const { data } = await axios.get("https://api.waifu.pics/sfw/husbando", { timeout: 15000 });
+            if (data?.url) imageUrl = data.url;
+          } catch (e) {
+            console.log("[HUSBU] waifu.pics gagal:", e.message);
           }
-          const img = data.results[0];
-          const caption = `✨ *Husbando*\n` +
-            (img.artist_name ? `🎨 Artist: ${img.artist_name}\n` : "") +
-            (img.source_url ? `🔗 ${img.source_url}` : "");
-          client.sendImage(from, img.url, caption, mek);
+
+          // 2. Fallback ke nekos.life
+          if (!imageUrl) {
+            try {
+              const { data } = await axios.get("https://nekos.life/api/v2/img/husbando", { timeout: 15000 });
+              if (data?.url) imageUrl = data.url;
+            } catch (e) {
+              console.log("[HUSBU] nekos.life gagal:", e.message);
+            }
+          }
+
+          if (!imageUrl) {
+            progress("❌");
+            return reply("Gagal mengambil gambar husbu.");
+          }
+
+          await client.sendImage(from, imageUrl, "✨ *Husbando*", mek);
           progress("✔");
         } catch (err) {
           progress("❌");
           console.log(err);
+          m.reply("❌ Gagal mengambil gambar husbu.");
         }
         break;
       }
@@ -3034,6 +3186,80 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         }
         break;
 
+      case "spamadv": {
+        // Format: .spamadv <startLevel> <startPercent> <targetLevel> <chapterStart>
+        if (!text) return reply(`Format: ${prefix}spamadv <startLv> <start%> <targetLv> <chapterStart>\nContoh: ${prefix}spamadv 120 0 325 10`);
+        const args = text.split(" ");
+        if (args.length !== 4) return reply("Parameter harus 4: startLv start% targetLv chapterStart");
+        let startLv = parseInt(args[0]);
+        let startPct = parseInt(args[1]);
+        let targetLv = parseInt(args[2]);
+        let chapStart = parseInt(args[3]);
+        if (isNaN(startLv) || isNaN(startPct) || isNaN(targetLv) || isNaN(chapStart)) return reply("Semua parameter harus angka!");
+
+        const mqData = JSON.parse(fs.readFileSync("./language/Toram-DB/mq-db-eng.json"));
+        const costPerEpisode = 500000;
+
+        // Fungsi exp yang diperlukan untuk naik dari level L ke L+1
+        const expToNext = (lv) => Math.floor(Math.pow(lv, 4) * 0.025 + lv * 2);
+
+        // Ambil episode mulai dari chapter yang dipilih hingga terakhir
+        const episodes = mqData.filter(ep => ep.chapter >= chapStart)
+          .sort((a, b) => a.episode - b.episode);
+        if (episodes.length === 0) return reply(`Tidak ada episode untuk chapter ≥ ${chapStart}`);
+
+        const totalEpisodes = episodes.length;
+        const totalExpPerRun = episodes.reduce((sum, ep) => sum + ep.exp, 0);
+        const totalCost = totalEpisodes * costPerEpisode; // bayar sekali untuk seluruh episode
+
+        let currentLv = startLv;
+        let currentPct = startPct;
+        let runs = 0;
+        const progressLines = [];
+
+        // Fungsi menambahkan exp dan mengembalikan level baru
+        function addExp(lv, pct, expGain) {
+          let expToNextLv = expToNext(lv);
+          let expInLevel = Math.floor(expToNextLv * pct / 100);
+          let total = expInLevel + expGain;
+          while (total >= expToNextLv) {
+            total -= expToNextLv;
+            lv++;
+            expToNextLv = expToNext(lv);
+          }
+          let newPct = Math.floor((total / expToNextLv) * 100);
+          return { lv, pct: newPct };
+        }
+
+        while (currentLv < targetLv && runs < 100) {
+          runs++;
+          let newState = addExp(currentLv, currentPct, totalExpPerRun);
+          progressLines.push(`Run ${runs}x → Lv ${newState.lv} (${newState.pct}%)`);
+          currentLv = newState.lv;
+          currentPct = newState.pct;
+        }
+
+        // Hitung cumulative EXP untuk tampilan
+        let cumulativeExp = 0;
+        for (let i = 1; i < currentLv; i++) {
+          cumulativeExp += expToNext(i);
+        }
+        cumulativeExp += Math.floor(expToNext(currentLv) * currentPct / 100);
+
+        let reached = currentLv >= targetLv ? "Berhasil" : "Gagal";
+
+        let hasil = `Initial State:\n- Start Level : ${startLv} (${startPct}%)\n- Target Level : ${targetLv}\n\n`;
+        hasil += `Calculation Result:\n- Runs Needed : ${runs}x\n`;
+        hasil += `- Final Level : ${currentLv} (${currentPct}%)\n`;
+        hasil += `- Final EXP : ${cumulativeExp.toLocaleString()}\n`;
+        hasil += `- Reached : ${reached}\n`;
+        hasil += `- Cost skip MQ : ${totalCost.toLocaleString()} spina\n\n`;
+        hasil += `Progress Detail:\n${progressLines.join("\n")}\n`;
+
+        reply(hasil);
+      }
+        break;
+
       /* ================ Media Menu ================ */
       case "play":
       case "musik":
@@ -3375,47 +3601,47 @@ After doing MQ from *${startEps}* to *${endEps}* you will reach to level ${lv} w
         break;
 
       case "bot": {
-  if (!m.isGroup) return reply("Perintah ini hanya untuk grup.");
-  if (!isGroupAdmins) return reply("Hanya admin grup yang bisa mengubah pengaturan bot.");
+        if (!m.isGroup) return reply("Perintah ini hanya untuk grup.");
+        if (!isGroupAdmins) return reply("Hanya admin grup yang bisa mengubah pengaturan bot.");
 
-  const groupId = groupMetadata.id;
-  if (!text) {
-    const status = global.db.groups[groupId].active ? "✅ ON" : "❌ OFF";
-    const mode = global.db.groups[groupId].open ? "Public" : "Admin Only";
-    return reply(
-      `⚙️ *Status Bot*\n━━━━━━━━━━━━━━━\n` +
-      `🟢 Aktif: ${status}\n🌐 Mode: ${mode}\n\n` +
-      `Perintah:\n` +
-      `${prefix}bot on - Aktifkan bot\n` +
-      `${prefix}bot off - Nonaktifkan bot\n` +
-      `${prefix}bot open - Semua member\n` +
-      `${prefix}bot close - Admin saja`
-    );
-  }
+        const groupId = groupMetadata.id;
+        if (!text) {
+          const status = global.db.groups[groupId].active ? "✅ ON" : "❌ OFF";
+          const mode = global.db.groups[groupId].open ? "Public" : "Admin Only";
+          return reply(
+            `⚙️ *Status Bot*\n━━━━━━━━━━━━━━━\n` +
+            `🟢 Aktif: ${status}\n🌐 Mode: ${mode}\n\n` +
+            `Perintah:\n` +
+            `${prefix}bot on - Aktifkan bot\n` +
+            `${prefix}bot off - Nonaktifkan bot\n` +
+            `${prefix}bot open - Semua member\n` +
+            `${prefix}bot close - Admin saja`
+          );
+        }
 
-  const sub = text.toLowerCase().trim();
-  switch (sub) {
-    case "on":
-      global.db.groups[groupId].active = true;
-      reply("✅ Bot diaktifkan kembali.");
-      break;
-    case "off":
-      global.db.groups[groupId].active = false;
-      reply("❌ Bot dinonaktifkan. Hanya admin yang bisa mengaktifkan dengan .bot on");
-      break;
-    case "open":
-      global.db.groups[groupId].open = true;
-      reply("🌐 Bot sekarang bisa digunakan semua member.");
-      break;
-    case "close":
-      global.db.groups[groupId].open = false;
-      reply("🔒 Bot sekarang hanya bisa digunakan admin grup.");
-      break;
-    default:
-      reply("Subcommand tidak dikenal. Gunakan: on, off, open, close");
-  }
-  break;
-}
+        const sub = text.toLowerCase().trim();
+        switch (sub) {
+          case "on":
+            global.db.groups[groupId].active = true;
+            reply("✅ Bot diaktifkan kembali.");
+            break;
+          case "off":
+            global.db.groups[groupId].active = false;
+            reply("❌ Bot dinonaktifkan. Hanya admin yang bisa mengaktifkan dengan .bot on");
+            break;
+          case "open":
+            global.db.groups[groupId].open = true;
+            reply("🌐 Bot sekarang bisa digunakan semua member.");
+            break;
+          case "close":
+            global.db.groups[groupId].open = false;
+            reply("🔒 Bot sekarang hanya bisa digunakan admin grup.");
+            break;
+          default:
+            reply("Subcommand tidak dikenal. Gunakan: on, off, open, close");
+        }
+        break;
+      }
       /* ================ Group Menu ================ */
 
       /* ================ Other Menu ================ */
