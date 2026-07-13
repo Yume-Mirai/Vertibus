@@ -1,6 +1,6 @@
 {
-  "private_usage": 131,
-  "group_usage": 1085,
+  "private_usage": 133,
+  "group_usage": 1130,
   "store": {},
   "groups": {
     "120363406658263857@g.us": {
@@ -19,11 +19,12 @@
     },
     "120363158090872124@g.us": {
       "open": false,
-      "active": false,
+      "active": true,
       "welcome": true
     },
     "120363341893301805@g.us": {
-      "open": true
+      "open": true,
+      "active": true
     },
     "120363428732774031@g.us": {
       "open": true

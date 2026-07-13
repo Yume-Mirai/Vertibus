@@ -14,41 +14,11 @@ exports.menu = (prefix) => {
  │•${prefix}monster
  │•${prefix}item
  │•${prefix}piercer
- ╰•${prefix}mqmats
- 
-
- ❏ *Toram Buff Menu*
+ │•${prefix}spamadv
  │•${prefix}buff
- │•${prefix}watk
- │•${prefix}waterres
- │•${prefix}maxmp
- │•${prefix}pres
- │•${prefix}aggro
- │•${prefix}dtefire
- │•${prefix}dtelight
- │•${prefix}mbarrier
- │•${prefix}windres
- │•${prefix}pbarrier
- │•${prefix}maxhp
- │•${prefix}dex
- │•${prefix}matk
- │•${prefix}dodge
- │•${prefix}cr
- │•${prefix}vit
- │•${prefix}int
- │•${prefix}str
- │•${prefix}ampr
- │•${prefix}exp
- │•${prefix}drop
- │•${prefix}dteearth
- │•${prefix}fracbarrier
- │•${prefix}neutralres
- │•${prefix}dtedark
- │•${prefix}fireres
- │•${prefix}lightres
- │•${prefix}dtewater
- │•${prefix}acc
- ╰•${prefix}earthres
+ │•${prefix}ability
+ │•${prefix}regis
+ ╰•${prefix}mqmats
 
  ❏ *Media Menu*
  │•${prefix}play
@@ -61,6 +31,8 @@ exports.menu = (prefix) => {
  │•${prefix}waifu
  │•${prefix}husbu
  │•${prefix}pinterest
+ │•${prefix}pokemon
+ │•${prefix}yugioh
  ╰•${prefix}brat
 
  ❏ *Group Menu*
