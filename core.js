@@ -897,26 +897,26 @@ module.exports = core = async (client, m, chatUpdate) => {
   };
 
   // =============================================
-  const buffAlias = {
-    waterres: "waterres", maxmp: "maxmp", pres: "pres", aggro: "+aggro",
-    dtefire: "dtefire", dtelight: "dtelight", mbarrier: "mbarrier", windres: "windres",
-    pbarrier: "pbarrier", exp: "exp", mres: "magicres", drop: "drop", darkres: "darkres",
-    dteearth: "dteearth", maxhp: "maxhp", lightres: "lightres", dtewind: "dtewind",
-    str: "str", fracbarrier: "fracbarrier", atk: "atk", watk: "watk", earthres: "earthres",
-    dex: "dex", matk: "matk", dodge: "dodge", acc: "acc", dtedark: "dtedark",
-    fireres: "fireres", cr: "cr", vit: "vit", int: "int", neutralres: "neutralres",
-    dtewater: "dtewater", ampr: "ampr", agi: "agi"
-  };
-  if (buffAlias[command]) {
-    text = buffAlias[command];
-    // langsung panggil logika buff
-    const foodData = require("./lib/foodbuff.json");
-    const items = foodData[text];
-    if (items) {
-      const msg = `*${text}*\n${items.join("\n")}\n────────────`;
-      return reply(msg);
-    }
-  }
+  // const buffAlias = {
+  //   waterres: "waterres", maxmp: "maxmp", pres: "pres", aggro: "+aggro",
+  //   dtefire: "dtefire", dtelight: "dtelight", mbarrier: "mbarrier", windres: "windres",
+  //   pbarrier: "pbarrier", exp: "exp", mres: "magicres", drop: "drop", darkres: "darkres",
+  //   dteearth: "dteearth", maxhp: "maxhp", lightres: "lightres", dtewind: "dtewind",
+  //   str: "str", fracbarrier: "fracbarrier", atk: "atk", watk: "watk", earthres: "earthres",
+  //   dex: "dex", matk: "matk", dodge: "dodge", acc: "acc", dtedark: "dtedark",
+  //   fireres: "fireres", cr: "cr", vit: "vit", int: "int", neutralres: "neutralres",
+  //   dtewater: "dtewater", ampr: "ampr", agi: "agi"
+  // };
+  // if (buffAlias[command]) {
+  //   text = buffAlias[command];
+  //   // langsung panggil logika buff
+  //   const foodData = require("./lib/foodbuff.json");
+  //   const items = foodData[text];
+  //   if (items) {
+  //     const msg = `*${text}*\n${items.join("\n")}\n────────────`;
+  //     return reply(msg);
+  //   }
+  // }
 
   //Command Handler
   if (isCmd) {
@@ -1167,7 +1167,7 @@ Global Price:
         try {
           progress("⏳");
 
-          // Cari item via API dulu
+          // Cari item via API
           const itemRes = await axios.get(
             `https://coryn.club/api/v1/items.php?name=${encodeURIComponent(text)}`,
             { headers: { "User-Agent": "Mozilla/5.0" } }
@@ -1178,83 +1178,84 @@ Global Price:
           }
           const items = itemRes.data.data;
 
-          // Ambil detail via API
-          const detailRes = await axios.get(
-            `https://coryn.club/api/v1/items.php?id=${items[0].id}`,
-            { headers: { "User-Agent": "Mozilla/5.0" } }
-          );
-          const d = detailRes.data.data;
+          // Batasi max 5 item agar tidak timeout
+          const maxItems = Math.min(items.length, 5);
+          let fullMsg = `*🔍 Item Search: "${text}"*\n`;
+          fullMsg += `_Ditemukan ${items.length} item${items.length > maxItems ? `, menampilkan ${maxItems} pertama` : ""}_\n`;
+          fullMsg += `━━━━━━━━━━━━━━━\n`;
 
-          // Scrape halaman item.php untuk Obtained From
-          const pageRes = await axios.get(
-            `https://coryn.club/item.php?name=${encodeURIComponent(text)}`,
-            { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" } }
-          );
-          const $ = cheerio.load(pageRes.data);
+          for (let idx = 0; idx < maxItems; idx++) {
+            const item = items[idx];
 
-          // Ambil data Obtained From
-          const obtainedFrom = [];
-          const obtainId = `obtain-list-${items[0].id}`;
-          $(`#${obtainId} .pagination-js-item`).each(function () {
-            const cols = $(this).children("div");
-            const monster = $(cols[0]).text().trim().replace(/\s+/g, " ");
-            const dye = $(cols[1]).text().trim();
-            const map = $(cols[2]).text().trim().replace(/\s+/g, " ");
-            if (monster) obtainedFrom.push({ monster, dye, map });
-          });
+            // Ambil detail tiap item
+            const detailRes = await axios.get(
+              `https://coryn.club/api/v1/items.php?id=${item.id}`,
+              { headers: { "User-Agent": "Mozilla/5.0" } }
+            );
+            const d = detailRes.data.data;
 
-          // Format pesan
-          let msg = `*🔍 Item: ${d.name}*\n`;
-          msg += `━━━━━━━━━━━━━━━\n`;
-          if (items.length > 1) msg += `_Ditemukan ${items.length} item, menampilkan pertama_\n\n`;
+            // Scrape Obtained From tiap item
+            const obtainedFrom = [];
+            try {
+              const pageRes = await axios.get(
+                `https://coryn.club/item.php?id=${item.id}`,
+                { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" } }
+              );
+              const $ = cheerio.load(pageRes.data);
+              $(`#obtain-list-${item.id} .pagination-js-item`).each(function () {
+                const cols = $(this).children("div");
+                const monster = $(cols[0]).text().trim().replace(/\s+/g, " ");
+                const dye = $(cols[1]).text().trim();
+                const map = $(cols[2]).text().trim().replace(/\s+/g, " ");
+                if (monster) obtainedFrom.push({ monster, dye, map });
+              });
+            } catch (_) { }
 
-          msg += `*📦 Tipe:* ${d.type_label}\n`;
-          if (d.meta?.badge) msg += `*🎖️ Badge:* ${d.meta.badge}\n`;
-          if (d.meta?.note) msg += `*📝 Catatan:* ${d.meta.note}\n`;
-          msg += `*💰 Sell:* ${d.sell > 0 ? d.sell.toLocaleString() + " Spina" : "-"}\n`;
-          msg += `*⚗️ Process:* ${d.process > 0 ? d.process.toLocaleString() + " Mana" : "-"}\n`;
+            // Format tiap item
+            fullMsg += `\n*[${idx + 1}] ${d.name}*\n`;
+            fullMsg += `*📦 Tipe:* ${d.type_label}\n`;
+            if (d.meta?.badge) fullMsg += `*🎖️ Badge:* ${d.meta.badge}\n`;
+            if (d.meta?.note && d.meta.note.trim()) fullMsg += `*📝 Catatan:* ${d.meta.note.trim()}\n`;
+            fullMsg += `*💰 Sell:* ${d.sell > 0 ? d.sell.toLocaleString() + " Spina" : "-"}\n`;
+            fullMsg += `*⚗️ Process:* ${d.process > 0 ? d.process.toLocaleString() + " Mana" : "-"}\n`;
 
-          // Stats
-          if (d.stats?.length > 0) {
-            msg += `\n*📊 Stats:*\n`;
-            for (const s of d.stats) {
-              msg += `  • ${s.effect_name}: ${s.amount > 0 ? "+" : ""}${s.amount}\n`;
+            if (d.stats?.length > 0) {
+              fullMsg += `*📊 Stats:*\n`;
+              for (const s of d.stats) {
+                fullMsg += `  • ${s.effect_name}: ${s.amount > 0 ? "+" : ""}${s.amount}\n`;
+              }
             }
+
+            if (obtainedFrom.length > 0) {
+              fullMsg += `*📍 Obtained From:*\n`;
+              const maxShow = Math.min(obtainedFrom.length, 5);
+              for (let i = 0; i < maxShow; i++) {
+                const o = obtainedFrom[i];
+                fullMsg += `  • ${o.monster}\n`;
+                if (o.map) fullMsg += `    📌 ${o.map}\n`;
+                if (o.dye) fullMsg += `    🎨 Dye: ${o.dye}\n`;
+              }
+              if (obtainedFrom.length > 5) {
+                fullMsg += `  _...dan ${obtainedFrom.length - 5} lainnya_\n`;
+              }
+            } else {
+              fullMsg += `*📍 Obtained From:* -\n`;
+            }
+
+            if (idx < maxItems - 1) fullMsg += `━━━━━━━━━━━━━━━\n`;
           }
 
-          // Obtained From
-          if (obtainedFrom.length > 0) {
-            msg += `\n*📍 Obtained From:*\n`;
-            const maxShow = Math.min(obtainedFrom.length, 8);
-            for (let i = 0; i < maxShow; i++) {
-              const o = obtainedFrom[i];
-              msg += `  • ${o.monster}\n`;
-              msg += `    📌 ${o.map}\n`;
-              if (o.dye) msg += `    🎨 Dye: ${o.dye}\n`;
-            }
-            if (obtainedFrom.length > 8) {
-              msg += `  _...dan ${obtainedFrom.length - 8} monster lainnya_\n`;
-            }
-          } else {
-            msg += `\n*📍 Obtained From:* -\n`;
+          if (items.length > maxItems) {
+            fullMsg += `\n_...dan ${items.length - maxItems} item lainnya. Perjelas nama untuk hasil lebih spesifik._`;
           }
 
-          // List item lain
-          if (items.length > 1) {
-            msg += `\n*📋 Item lain yang ditemukan:*\n`;
-            for (let i = 1; i < Math.min(items.length, 6); i++) {
-              msg += `  ${i}. ${items[i].name} ${items[i].type_label}\n`;
-            }
-            if (items.length > 6) msg += `  _...dan ${items.length - 6} lainnya_\n`;
-          }
-
-          m.reply(msg);
+          m.reply(fullMsg);
           progress("✔");
 
         } catch (err) {
           progress("❌");
           console.log("[ITEM ERROR]", err.message);
-          m.reply("Gagal mengakses Coryn Club!");
+          m.reply("Gagal mengakses Coryn Club!\nError: " + err.message);
         }
         break;
       }
@@ -2191,19 +2192,34 @@ Global Price:
       case "animepic": {
         try {
           progress("⏳");
-          const { data } = await axios.get("https://nekos.best/api/v2/waifu", {
-            headers: { "User-Agent": "Vertibus (https://github.com/Vertibus-Bot)" }
+          const https = require("https");
+
+          // Fetch API
+          const apiData = await new Promise((resolve, reject) => {
+            https.get("https://nekos.best/api/v2/waifu", {
+              headers: { "User-Agent": "Vertibus (asfari160904@gmail.com)" }
+            }, (res) => {
+              let data = "";
+              res.on("data", d => data += d);
+              res.on("end", () => resolve(JSON.parse(data)));
+            }).on("error", reject);
           });
-          if (!data.results?.length) {
+
+          if (!apiData.results?.length) {
             progress("❌");
             return reply("Gagal mengambil gambar waifu.");
           }
-          const img = data.results[0];
+          const img = apiData.results[0];
 
-          // Download dulu jadi buffer
-          const imgBuffer = await axios.get(img.url, {
-            responseType: "arraybuffer",
-            headers: { "User-Agent": "Vertibus (https://github.com/Vertibus-Bot)" }
+          // Download gambar
+          const imgBuffer = await new Promise((resolve, reject) => {
+            https.get(img.url, {
+              headers: { "User-Agent": "Vertibus (asfari160904@gmail.com)" }
+            }, (res) => {
+              const chunks = [];
+              res.on("data", d => chunks.push(d));
+              res.on("end", () => resolve(Buffer.concat(chunks)));
+            }).on("error", reject);
           });
 
           const caption = `✨ *Waifu*\n` +
@@ -2211,7 +2227,7 @@ Global Price:
             (img.source_url ? `🔗 ${img.source_url}` : "");
 
           await client.sendMessage(from, {
-            image: Buffer.from(imgBuffer.data),
+            image: imgBuffer,
             caption
           }, { quoted: mek });
 
@@ -2228,18 +2244,32 @@ Global Price:
       case "husbando": {
         try {
           progress("⏳");
-          const { data } = await axios.get("https://nekos.best/api/v2/husbando", {
-            headers: { "User-Agent": "Vertibus (https://github.com/Vertibus-Bot)" }
+          const https = require("https");
+
+          const apiData = await new Promise((resolve, reject) => {
+            https.get("https://nekos.best/api/v2/husbando", {
+              headers: { "User-Agent": "Vertibus (asfari160904@gmail.com)" }
+            }, (res) => {
+              let data = "";
+              res.on("data", d => data += d);
+              res.on("end", () => resolve(JSON.parse(data)));
+            }).on("error", reject);
           });
-          if (!data.results?.length) {
+
+          if (!apiData.results?.length) {
             progress("❌");
             return reply("Gagal mengambil gambar husbando.");
           }
-          const img = data.results[0];
+          const img = apiData.results[0];
 
-          const imgBuffer = await axios.get(img.url, {
-            responseType: "arraybuffer",
-            headers: { "User-Agent": "Vertibus (https://github.com/Vertibus-Bot)" }
+          const imgBuffer = await new Promise((resolve, reject) => {
+            https.get(img.url, {
+              headers: { "User-Agent": "Vertibus (asfari160904@gmail.com)" }
+            }, (res) => {
+              const chunks = [];
+              res.on("data", d => chunks.push(d));
+              res.on("end", () => resolve(Buffer.concat(chunks)));
+            }).on("error", reject);
           });
 
           const caption = `✨ *Husbando*\n` +
@@ -2247,7 +2277,7 @@ Global Price:
             (img.source_url ? `🔗 ${img.source_url}` : "");
 
           await client.sendMessage(from, {
-            image: Buffer.from(imgBuffer.data),
+            image: imgBuffer,
             caption
           }, { quoted: mek });
 
@@ -2256,6 +2286,136 @@ Global Price:
           progress("❌");
           console.log("[HUSBANDO ERROR]", err.message);
           reply("Gagal: " + err.message);
+        }
+        break;
+      }
+
+      case "animegif":
+      case "agif": {
+        const validCategories = [
+          "angry", "baka", "bite", "bleh", "blowkiss", "blush", "bonk", "bored", "carry", "clap",
+          "confused", "cry", "cuddle", "dance", "facepalm", "feed", "handhold", "handshake",
+          "happy", "highfive", "hug", "kabedon", "kick", "kiss", "lappillow", "laugh", "lurk",
+          "nod", "nom", "nope", "nya", "pat", "peck", "poke", "pout", "punch", "run", "salute",
+          "shake", "shoot", "shocked", "shrug", "sip", "slap", "sleep", "smile", "smug", "spin",
+          "stare", "tableflip", "teehee", "think", "thumbsup", "tickle", "wag", "wave", "wink",
+          "yawn", "yeet"
+        ];
+
+        if (!text) {
+          return m.reply(
+            `*🎴 Anime GIF*\n━━━━━━━━━━━━━━━\n` +
+            `Format: ${prefix}animegif <kategori> [query]\n\n` +
+            `Contoh:\n` +
+            `  • ${prefix}animegif pat\n` +
+            `  • ${prefix}animegif hug kaguya\n` +
+            `  • ${prefix}animegif dance\n\n` +
+            `*Kategori tersedia:*\n` +
+            validCategories.join(", ")
+          );
+        }
+
+        const args = text.trim().split(" ");
+        const category = args[0].toLowerCase();
+        const query = args.slice(1).join(" ") || "Generic";
+
+        if (!validCategories.includes(category)) {
+          return m.reply(
+            `❌ Kategori *${category}* tidak valid!\n\n` +
+            `Kategori tersedia:\n${validCategories.join(", ")}`
+          );
+        }
+
+        try {
+          progress("⏳");
+          const https = require("https");
+          const UA = "Vertibus (asfari160904@gmail.com)";
+
+          // Fetch dari search API
+          const encodedQuery = encodeURIComponent(query);
+          const encodedCategory = encodeURIComponent(category);
+          const apiUrl = `https://nekos.best/api/v2/search?query=${encodedQuery}&type=2&category=${encodedCategory}&amount=1`;
+
+          const apiData = await new Promise((resolve, reject) => {
+            https.get(apiUrl, { headers: { "User-Agent": UA } }, (res) => {
+              let data = "";
+              res.on("data", d => data += d);
+              res.on("end", () => {
+                try { resolve(JSON.parse(data)); }
+                catch (e) { reject(new Error("Invalid JSON response")); }
+              });
+            }).on("error", reject);
+          });
+
+          // Fallback ke endpoint langsung kalau search tidak ada hasil
+          let gif = apiData.results?.[0];
+          if (!gif) {
+            const fallbackData = await new Promise((resolve, reject) => {
+              https.get(`https://nekos.best/api/v2/${category}`, {
+                headers: { "User-Agent": UA }
+              }, (res) => {
+                let data = "";
+                res.on("data", d => data += d);
+                res.on("end", () => {
+                  try { resolve(JSON.parse(data)); }
+                  catch (e) { reject(new Error("Invalid JSON")); }
+                });
+              }).on("error", reject);
+            });
+            gif = fallbackData.results?.[0];
+          }
+
+          if (!gif) {
+            progress("❌");
+            return m.reply(`❌ Tidak ada hasil untuk kategori *${category}* dengan query *${query}*.`);
+          }
+
+          // Download GIF
+          const gifBuffer = await new Promise((resolve, reject) => {
+            https.get(gif.url, { headers: { "User-Agent": UA } }, (res) => {
+              const chunks = [];
+              res.on("data", d => chunks.push(d));
+              res.on("end", () => resolve(Buffer.concat(chunks)));
+            }).on("error", reject);
+          });
+
+          // Konversi GIF ke MP4 pakai ffmpeg
+          const { execSync } = require("child_process");
+          const os = require("os");
+          const path = require("path");
+          const fs = require("fs");
+
+          const tmpGif = path.join(os.tmpdir(), `animegif_${Date.now()}.gif`);
+          const tmpMp4 = path.join(os.tmpdir(), `animegif_${Date.now()}.mp4`);
+
+          fs.writeFileSync(tmpGif, gifBuffer);
+
+          execSync(`ffmpeg -y -i "${tmpGif}" -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" "${tmpMp4}"`, {
+            stdio: "pipe"
+          });
+
+          const mp4Buffer = fs.readFileSync(tmpMp4);
+
+          // Hapus file temp
+          fs.unlinkSync(tmpGif);
+          fs.unlinkSync(tmpMp4);
+
+          const caption = `🎴 *Anime GIF - ${category}*\n` +
+            (gif.anime_name ? `🎬 Anime: ${gif.anime_name}\n` : "") +
+            (query !== "Generic" ? `🔍 Query: ${query}` : "");
+
+          await client.sendMessage(from, {
+            video: mp4Buffer,
+            mimetype: "video/mp4",
+            gifPlayback: true,
+            caption
+          }, { quoted: mek });
+
+          progress("✔");
+        } catch (err) {
+          progress("❌");
+          console.log("[ANIMEGIF ERROR]", err.message);
+          reply("Gagal mengambil GIF: " + err.message);
         }
         break;
       }

@@ -27,7 +27,7 @@ exports.menu = (prefix) => {
  │•${prefix}pixiv
  │•${prefix}loli
  │•${prefix}milf
- │•${prefix}anime
+ │•${prefix}animegif
  │•${prefix}waifu
  │•${prefix}husbu
  │•${prefix}pinterest
